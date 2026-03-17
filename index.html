@@ -661,6 +661,115 @@
     </div>
   </section>
 
+  <!-- HOUSING STORY -->
+  <section id="housing-story" style="padding: 100px 48px; background: var(--dark);">
+    <div class="section-inner">
+      <p class="section-label" style="color: rgba(255,255,255,0.3);">NZ Housing Data Story</p>
+      <h2 class="section-title" style="color: white; margin-bottom: 16px;">The story behind NZ's housing crisis</h2>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.5); max-width: 600px; line-height: 1.8; margin-bottom: 72px;">
+        Three datasets. One connected story — how interest rates, house prices, and housing deprivation are linked across New Zealand. All data sourced live from MySQL.
+      </p>
+
+      <!-- Chart 1 -->
+      <div class="story-block reveal">
+        <div class="story-label">01</div>
+        <div class="story-content">
+          <h3 class="story-title">Interest rates hit a 15-year high</h3>
+          <p class="story-desc">The RBNZ slashed the OCR to 0.25% during COVID — then raised it aggressively to 5.5% by 2023 to combat inflation. The fastest hiking cycle in New Zealand's history.</p>
+        </div>
+        <div class="story-chart">
+          <iframe src="chart_ocr.html" width="100%" height="360" frameborder="0" scrolling="no"></iframe>
+        </div>
+      </div>
+
+      <!-- Chart 2 -->
+      <div class="story-block reveal">
+        <div class="story-label">02</div>
+        <div class="story-content">
+          <h3 class="story-title">House prices surged — then corrected</h3>
+          <p class="story-desc">Ultra-low rates fuelled a house price boom across every region. Auckland peaked near $1.2M median in 2022. As rates rose, prices fell — but remain far above pre-COVID levels.</p>
+        </div>
+        <div class="story-chart">
+          <iframe src="chart_house_prices.html" width="100%" height="360" frameborder="0" scrolling="no"></iframe>
+        </div>
+      </div>
+
+      <!-- Chart 3 -->
+      <div class="story-block reveal">
+        <div class="story-label">03</div>
+        <div class="story-content">
+          <h3 class="story-title">Higher prices, higher deprivation</h3>
+          <p class="story-desc">Cross-referencing house prices against Stats NZ deprivation data reveals a clear pattern — regions with higher prices don't always have higher deprivation rates. Northland and Gisborne stand out despite lower prices.</p>
+        </div>
+        <div class="story-chart">
+          <iframe src="chart_cross_reference.html" width="100%" height="360" frameborder="0" scrolling="no"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <style>
+    .story-block {
+      display: grid;
+      grid-template-columns: 48px 280px 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .story-block.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .story-label {
+      font-family: 'Fraunces', serif;
+      font-size: 48px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.12);
+      line-height: 1;
+      padding-top: 4px;
+    }
+    .story-title {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: white;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      letter-spacing: -0.3px;
+    }
+    .story-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.8;
+    }
+    .story-chart {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    @media (max-width: 900px) {
+      .story-block { grid-template-columns: 1fr; }
+      .story-label { font-size: 32px; }
+    }
+  </style>
+
+  <script>
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+
   <!-- PROJECTS -->
   <section id="projects">
     <div class="section-inner">
