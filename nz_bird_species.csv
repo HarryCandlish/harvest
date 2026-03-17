@@ -1,0 +1,109 @@
+species,vernacularName,genus,family,order,sightingCount,earliestYear,latestYear,regions
+Porphyrio melanotus,Australasian Swamphen,Porphyrio,Rallidae,Gruiformes,20,2026,2026,Auckland | Bay of Plenty | Canterbury | Marlborough | Nelson | Waikato | West Coast
+Prosthemadera novaeseelandiae,Tui,Prosthemadera,Meliphagidae,Passeriformes,19,2026,2026,Auckland | Bay of Plenty | Marlborough | Nelson | Otago | Southland | Waikato | Wellington | West Coast
+Anthornis melanura,Bellbird,Anthornis,Meliphagidae,Passeriformes,18,2026,2026,Auckland | Canterbury | Hawke's Bay | Otago | Southland | Wellington | West Coast
+Turdus merula,Blackbird,Turdus,Turdidae,Passeriformes,16,2026,2026,Auckland | Nelson | Otago | Southland | Waikato | Wellington
+Tadorna variegata,Paradise Shelduck,Tadorna,Anatidae,Anseriformes,15,2026,2026,Auckland | Canterbury | Hawke's Bay | Nelson | Otago | Southland | West Coast
+Chroicocephalus novaehollandiae,Silver Gull,Chroicocephalus,Laridae,Charadriiformes,15,2026,2026,Auckland | Bay of Plenty | Canterbury | Hawke's Bay | Manawatu-Wanganui | Marlborough | Nelson | Otago | Wellington
+Petroica australis,New Zealand Robin,Petroica,Petroicidae,Passeriformes,14,2026,2026,Auckland | Canterbury | Nelson | Otago | Southland | Waikato | Wellington | West Coast
+Haematopus unicolor,Variable Oystercatcher,Haematopus,Haematopodidae,Charadriiformes,14,2026,2026,Auckland | Canterbury | Hawke's Bay | Nelson | Northland | Southland | Taranaki
+Platalea regia,Royal Spoonbill,Platalea,Threskiornithidae,Pelecaniformes,13,2026,2026,Canterbury | Gisborne | Hawke's Bay | Marlborough | Otago | Wellington
+Himantopus leucocephalus,Pied Stilt,Himantopus,Recurvirostridae,Charadriiformes,13,2026,2026,Auckland | Bay of Plenty | Canterbury | Hawke's Bay | Manawatu-Wanganui | Otago | Southland | Waikato
+Hemiphaga novaeseelandiae,New Zealand Pigeon,Hemiphaga,Columbidae,Columbiformes,12,2026,2026,Auckland | Bay of Plenty | Canterbury | Otago | Southland | Wellington | West Coast
+Gallirallus australis,Weka,Gallirallus,Rallidae,Gruiformes,11,2026,2026,Bay of Plenty | Marlborough | Nelson | Southland | West Coast
+Rhipidura fuliginosa,New Zealand Fantail,Rhipidura,Rhipiduridae,Passeriformes,11,2026,2026,Auckland | Canterbury | Manawatu-Wanganui | Nelson | Southland | Waikato | Wellington | West Coast
+Phalacrocorax varius,Australian Pied Cormorant,Phalacrocorax,Phalacrocoracidae,Suliformes,11,2026,2026,Auckland | Canterbury | Marlborough | Nelson | Northland | Otago | Waikato
+Passer domesticus,Adar y To,Passer,Passeridae,Passeriformes,11,2026,2026,Auckland | Bay of Plenty | Canterbury
+Acridotheres tristis,Bhat shalik,Acridotheres,Sturnidae,Passeriformes,10,2026,2026,Auckland | Hawke's Bay | Waikato
+Todiramphus sanctus,Sacred Kingfisher,Todiramphus,Alcedinidae,Coraciiformes,10,2026,2026,Auckland | Canterbury | Marlborough | Otago
+Zosterops lateralis,Silver-eye,Zosterops,Zosteropidae,Passeriformes,10,2026,2026,Auckland | Canterbury | Nelson | Northland | Waikato
+Egretta novaehollandiae,White-faced Heron,Egretta,Ardeidae,Pelecaniformes,9,2026,2026,Auckland | Canterbury | Hawke's Bay | Nelson | Northland | Otago
+Turdus philomelos,(drozd) śpiewak,Turdus,Turdidae,Passeriformes,9,2026,2026,Auckland | Canterbury | Taranaki | Waikato | Wellington
+Larus dominicanus,Dominican gull,Larus,Laridae,Charadriiformes,9,2026,2026,Auckland | Nelson | Northland | Otago
+Microcarbo melanoleucos,Little Pied Cormorant,Microcarbo,Phalacrocoracidae,Suliformes,9,2026,2026,Auckland | Bay of Plenty | Canterbury | Northland | Waikato | Wellington
+Anthus novaeseelandiae,Australasian Pipit,Anthus,Motacillidae,Passeriformes,9,2026,2026,Auckland | Hawke's Bay | Manawatu-Wanganui | Nelson | Otago | Waikato
+Emberiza citrinella,Eurasian Yellow Bunting,Emberiza,Emberizidae,Passeriformes,8,2026,2026,Auckland | Canterbury | Nelson | Southland | Waikato
+Morus serrator,Australasian Gannet,Morus,Sulidae,Suliformes,7,2026,2026,Auckland | Hawke's Bay | Marlborough | Wellington
+Nestor meridionalis,New Zealand Kaka,Nestor,Psittacidae,Psittaciformes,6,2026,2026,Auckland | Bay of Plenty | Otago | Wellington
+Carduelis carduelis,Cadernera,Carduelis,Fringillidae,Passeriformes,6,2026,2026,Auckland | Canterbury | Otago | Southland
+Anarhynchus,Animals,Anarhynchus,Charadriidae,Charadriiformes,6,2026,2026,Auckland | Canterbury | Manawatu-Wanganui | Taranaki | Wellington
+Vanellus miles,Masked Lapwing,Vanellus,Charadriidae,Charadriiformes,6,2026,2026,Auckland | Bay of Plenty | Canterbury | Otago
+Chroicocephalus bulleri,Black-billed Gull,Chroicocephalus,Laridae,Charadriiformes,6,2026,2026,Marlborough | Nelson | Otago
+Cygnus atratus,Black Swan,Cygnus,Anatidae,Anseriformes,6,2026,2026,Nelson | Otago | Waikato | Wellington
+Petroica macrocephala,New Zealand Tomtit,Petroica,Petroicidae,Passeriformes,5,2026,2026,Bay of Plenty | Manawatu-Wanganui | Otago | Southland
+Gymnorhina tibicen,Australian Magpie,Gymnorhina,Cracticidae,Passeriformes,5,2026,2026,Auckland | Canterbury | Manawatu-Wanganui
+Hirundo neoxena,Welcome Swallow,Hirundo,Hirundinidae,Passeriformes,5,2026,2026,Auckland | Otago
+Anas platyrhynchos,Anec coll-verd,Anas,Anatidae,Anseriformes,5,2026,2026,Canterbury | Nelson | Waikato
+Spilopelia chinensis,Eastern Spotted Dove,Spilopelia,Columbidae,Columbiformes,5,2026,2026,Auckland
+Sturnus vulgaris,Common Starling,Sturnus,Sturnidae,Passeriformes,4,2026,2026,Auckland | Canterbury
+Anas,Dabbling Ducks,Anas,Anatidae,Anseriformes,4,2026,2026,Auckland | Canterbury | Waikato
+Fringilla coelebs,Chaffinch,Fringilla,Fringillidae,Passeriformes,4,2026,2026,Canterbury | Nelson | Southland
+Sterna striata,Black-naped Tern,Sterna,Laridae,Charadriiformes,4,2026,2026,Hawke's Bay | Nelson
+Pterodroma cookii,Cook's Petrel,Pterodroma,Procellariidae,Procellariiformes,4,2026,2026,Northland | Southland
+Branta canadensis,Canada Goose,Branta,Anatidae,Anseriformes,4,2026,2026,Bay of Plenty | Canterbury | Otago | Wellington
+Urodynamis taitensis,Long-tailed Cuckoo,Urodynamis,Cuculidae,Cuculiformes,4,2026,2026,Southland | Taranaki | Waikato
+Puffinus gavia,Black-vented or Fluttering Shearwater,Puffinus,Procellariidae,Procellariiformes,4,2026,2026,Auckland | Marlborough | Nelson
+Gerygone igata,Gray Gerygone,Gerygone,Acanthizidae,Passeriformes,3,2026,2026,Waikato | Wellington | West Coast
+Columba livia,Colom roquer,Columba,Columbidae,Columbiformes,3,2026,2026,Auckland | Waikato
+Falco novaeseelandiae,New Zealand Falcon,Falco,Falconidae,Falconiformes,3,2026,2026,Marlborough | Wellington
+Thinornis,eteläntyllit,Thinornis,Charadriidae,Charadriiformes,3,2026,2026,Canterbury | Hawke's Bay | Wellington
+Eudyptula minor,Blue Penguin,Eudyptula,Spheniscidae,Sphenisciformes,3,2026,2026,Auckland | Nelson | Wellington
+Prunella modularis,Dunnock,Prunella,Prunellidae,Passeriformes,3,2026,2026,Auckland | Manawatu-Wanganui
+Nestor notabilis,Kea,Nestor,Psittacidae,Psittaciformes,3,2026,2026,Canterbury | Southland
+Puffinus tenuirostris,Short-Tailed Shearwater,Puffinus,Procellariidae,Procellariiformes,3,2026,2026,Northland | Southland
+Chlidonias leucopterus,Baltsparnu zirinš,Chlidonias,Laridae,Charadriiformes,3,2026,2026,Canterbury
+Synoicus ypsilophorus,Brown Quail,Synoicus,Phasianidae,Galliformes,3,2026,2026,Auckland
+Haematopus finschi,South Island Oystercatcher,Haematopus,Haematopodidae,Charadriiformes,2,2026,2026,Canterbury | Otago
+Aythya novaeseelandiae,New Zealand Scaup,Aythya,Anatidae,Anseriformes,2,2026,2026,Canterbury
+Apteryx australis,Brown Kiwi,Apteryx,Apterygidae,Apterygiformes,2,2026,2026,Southland
+Phasianus colchicus,Common Pheasant,Phasianus,Phasianidae,Galliformes,2,2026,2026,Hawke's Bay | Waikato
+Circus approximans,Australasian Harrier,Circus,Accipitridae,Accipitriformes,2,2026,2026,Auckland | Wellington
+Mohoua albicilla,Whitehead,Mohoua,Acanthizidae,Passeriformes,2,2026,2026,Auckland
+Cyanoramphus novaezelandiae,Red-crowned Parakeet,Cyanoramphus,Psittacidae,Psittaciformes,2,2026,2026,Auckland | Wellington
+Streptopelia roseogrisea,African Collared Dove,Streptopelia,Columbidae,Columbiformes,2,2026,2026,Auckland
+Diomedea epomophora,Royal Albatross,Diomedea,Diomedeidae,Procellariiformes,2,2026,2026,Southland
+Gallus gallus,Bonmurag,Gallus,Phasianidae,Galliformes,2,2026,2026,Nelson | Northland
+Anas gracilis,Gray Teal,Anas,Anatidae,Anseriformes,2,2026,2026,Canterbury | Waikato
+Platycercus eximius,Eastern Rosella,Platycercus,Psittacidae,Psittaciformes,2,2026,2026,Auckland
+Cairina moschata,Muscovy Duck,Cairina,Anatidae,Anseriformes,2,2026,2026,Canterbury | Northland
+Phalacrocorax punctatus,Blue Shag,Phalacrocorax,Phalacrocoracidae,Suliformes,2,2026,2026,Marlborough | Wellington
+Chrysococcyx lucidus,Shining Bronze Cuckoo,Chrysococcyx,Cuculidae,Cuculiformes,2,2026,2026,Waikato | Wellington
+Ninox novaeseelandiae,Morepork,Ninox,Strigidae,Strigiformes,2,2026,2026,Waikato | Wellington
+Hymenolaimus malacorhynchos,Blue Duck,Hymenolaimus,Anatidae,Anseriformes,2,2026,2026,Bay of Plenty | Hawke's Bay
+Puffinus bulleri,Buller's Shearwater,Puffinus,Procellariidae,Procellariiformes,2,2026,2026,
+Callaeas cinereus,Kokako,Callaeas,Callaeatidae,Passeriformes,2,2026,2026,Auckland
+Acanthis flammea,Common (Mealy) Redpoll,Acanthis,Fringillidae,Passeriformes,2,2026,2026,Canterbury | Otago
+Thalassarche cauta,Salvin's albatross,Thalassarche,Diomedeidae,Procellariiformes,1,2026,2026,Southland
+Puffinus carneipes,Flesh-footed Shearwater,Puffinus,Procellariidae,Procellariiformes,1,2026,2026,Auckland
+Philesturnus carunculatus,Saddleback,Philesturnus,Callaeatidae,Passeriformes,1,2026,2026,Taranaki
+Limosa lapponica,Bar-tailed Godwit,Limosa,Scolopacidae,Charadriiformes,1,2026,2026,Otago
+Cyanoramphus malherbi,Malherbe's Parakeet,Cyanoramphus,Psittacidae,Psittaciformes,1,2026,2026,Marlborough
+Megadyptes antipodes,Geeloogpinguïn,Megadyptes,Spheniscidae,Sphenisciformes,1,2026,2026,Southland
+Acanthisitta chloris,Rifleman,Acanthisitta,Acanthisittidae,Passeriformes,1,2026,2026,Otago
+Eudyptes filholi,Eastern Rockhopper Penguin,Eudyptes,Spheniscidae,Sphenisciformes,1,2026,2026,Southland
+Podiceps cristatus,Great Crested Grebe,Podiceps,Podicipedidae,Podicipediformes,1,2026,2026,Otago
+Poodytes punctatus,New Zealand Fernbird,Poodytes,Locustellidae,Passeriformes,1,2026,2026,Nelson
+Chloris chloris,Common Greenfinch,Chloris,Fringillidae,Passeriformes,1,2026,2026,Waikato
+Coenocorypha aucklandica,Auckland Snipe,Coenocorypha,Scolopacidae,Charadriiformes,1,2026,2026,Southland
+Nycticorax caledonicus,Nankeen Night Heron,Nycticorax,Ardeidae,Pelecaniformes,1,2026,2026,Manawatu-Wanganui
+Apteryx mantelli,Brown kiwi,Apteryx,Apterygidae,Apterygiformes,1,2026,2026,Taranaki
+Puffinus assimilis,Little Shearwater,Puffinus,Procellariidae,Procellariiformes,1,2026,2026,Northland
+Sterna hirundo,Booby,Sterna,Laridae,Charadriiformes,1,2026,2026,Northland
+Onychoprion fuscatus,Egg bird,Onychoprion,Laridae,Charadriiformes,1,2026,2026,Auckland
+Megalurus punctatus,Fernbird,Megalurus,Locustellidae,Passeriformes,1,2026,2026,Hawke's Bay
+Stercorarius antarcticus,Antarctic skua,Stercorarius,Stercorariidae,Charadriiformes,1,2026,2026,Southland
+Eudyptes robustus,Snares Crested Penguin,Eudyptes,Spheniscidae,Sphenisciformes,1,2026,2026,Southland
+Himantopus novaezelandiae,Black Stilt,Himantopus,Recurvirostridae,Charadriiformes,1,2026,2026,Canterbury
+Thalassarche salvini,Salvin's Albatross,Thalassarche,Diomedeidae,Procellariiformes,1,2026,2026,
+Chlidonias albostriatus,Black-fronted Tern,Chlidonias,Laridae,Charadriiformes,1,2026,2026,Southland
+Hydroprogne caspia,Caspian Tern,Hydroprogne,Laridae,Charadriiformes,1,2026,2026,Canterbury
+Puffinus griseus,Sooty Shear Water,Puffinus,Procellariidae,Procellariiformes,1,2026,2026,
+Unknown,Animals,,Anatidae,Anseriformes,1,2026,2026,Hawke's Bay
+Egretta sacra,Pacific Reef Heron,Egretta,Ardeidae,Pelecaniformes,1,2026,2026,Northland
+Alauda arvensis,Alosa vulgar,Alauda,Alaudidae,Passeriformes,1,2026,2026,Nelson
+Meleagris gallopavo,Common Turkey,Meleagris,Phasianidae,Galliformes,1,2026,2026,Southland
+Phoebetria palpebrata,Light-mantled Albatross,Phoebetria,Diomedeidae,Procellariiformes,1,2026,2026,Southland
+Pachyptila turtur,Fairy Prion,Pachyptila,Procellariidae,Procellariiformes,1,2026,2026,
+Fulica atra,Common Coot,Fulica,Rallidae,Gruiformes,1,2026,2026,Auckland
+Anser anser,Domesticated Geese,Anser,Anatidae,Anseriformes,1,2026,2026,Canterbury
+Callipepla californica,California Quail,Callipepla,Odontophoridae,Galliformes,1,2026,2026,Waikato

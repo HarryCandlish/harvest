@@ -17,9 +17,9 @@ with open("nz_bird_species.csv", newline="", encoding="utf-8") as f:
     rows = sorted(reader, key=lambda r: int(r["sightingCount"]), reverse=True)[:10]
 
 for row in rows:
-    name = row["species"].split()[-1]  # just the species epithet, keeps labels short
-    full = row["species"]
-    species.append(full)
+    common = row.get("vernacularName", "").strip()
+    label = common if common else row["species"]
+    species.append(label)
     counts.append(int(row["sightingCount"]))
 
 # Reverse so highest is at the top
