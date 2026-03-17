@@ -33,25 +33,27 @@ with open("nz_rare_birds.csv", newline="", encoding="utf-8") as f:
     rows = [r for r in csv.DictReader(f)
             if r["decimalLatitude"] and r["decimalLongitude"]]
 
-groups = defaultdict(lambda: {"lats": [], "lons": [], "regions": []})
+groups = defaultdict(lambda: {"lats": [], "lons": [], "regions": [], "total": 0})
 for row in rows:
     name = row["maoriName"]
     groups[name]["lats"].append(float(row["decimalLatitude"]))
     groups[name]["lons"].append(float(row["decimalLongitude"]))
     groups[name]["regions"].append(row.get("stateProvince", "") or "Unknown")
+    groups[name]["total"] = int(row.get("totalRecords", 0) or 0)
 
 # ── Build map ────────────────────────────────────────────────────────────────
 fig = go.Figure()
 
 for name, data in sorted(groups.items(), key=lambda x: x[0]):
     colour = SPECIES_COLOURS.get(name, "#999999")
-    count  = len(data["lats"])
+    total  = data["total"]
+    label  = f"{name} ({total:,} records)"
 
     fig.add_trace(go.Scattergeo(
         lat=data["lats"],
         lon=data["lons"],
         mode="markers",
-        name=f"{name} ({count})",
+        name=label,
         marker=dict(
             size=7,
             color=colour,
