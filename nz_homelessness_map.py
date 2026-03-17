@@ -37,8 +37,8 @@ names  = [r[2] for r in regions]
 counts = [r[3] for r in regions]
 rates  = [r[4] for r in regions]
 
-# Bubble size — square root scaling so Auckland doesn't dwarf everything
-sizes = [math.sqrt(c) * 1.6 for c in counts]
+# Bubble size — small multiplier with a minimum so tiny regions are still visible
+sizes = [max(8, math.sqrt(c) * 0.18) for c in counts]
 
 # ── Build map ────────────────────────────────────────────────────────────────
 fig = go.Figure()
@@ -46,7 +46,7 @@ fig = go.Figure()
 fig.add_trace(go.Scattergeo(
     lat=lats,
     lon=lons,
-    mode="markers+text",
+    mode="markers",
     marker=dict(
         size=sizes,
         color=counts,
