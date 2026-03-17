@@ -11,21 +11,11 @@ import plotly.graph_objects as go
 
 # Colour per species — all within the green/earth palette
 SPECIES_COLOURS = {
-    "Kea":       "#E3120B",  # red — iconic mountain parrot
-    "Kiwi":      "#1E3A2A",  # very dark green
-    "Ruru":      "#4A3728",  # dark brown — nocturnal owl
-    "Kākāriki":  "#5A9E3A",  # bright green — parakeet
-    "Korimako":  "#3A5C45",  # forest green — bellbird
-    "Whio":      "#006BA2",  # blue — blue duck
-    "Kārearea":  "#B8883A",  # gold — falcon
-    "Takahē":    "#7B3FA0",  # purple — very rare
-    "Miromiro":  "#5A7D66",  # mid green — tomtit
-    "Pōpokotea": "#8FAF8A",  # pale green — whitehead
-    "Kuaka":     "#A0856C",  # warm brown — godwit
-    "Hoiho":     "#F0A500",  # amber/yellow — yellow-eyed penguin
-    "Kororā":    "#4472C4",  # mid blue — little blue penguin
-    "Tieke":     "#C0392B",  # dark red — saddleback
-    "Kōtuku":    "#BDC3C7",  # white/silver — white heron
+    "Kōtuku":  "#BDC3C7",  # white/silver — white heron
+    "Whio":    "#006BA2",  # blue — blue duck
+    "Kiwi":    "#1E3A2A",  # very dark green
+    "Hoiho":   "#F0A500",  # amber/yellow — yellow-eyed penguin
+    "Takahē":  "#7B3FA0",  # purple — very rare
 }
 
 # Load data, group by Māori name
@@ -92,9 +82,9 @@ fig.update_layout(
     margin=dict(l=0, r=0, t=100, b=30),
     title=dict(
         text=(
-            "<b>Rare & endemic bird sightings across Aotearoa</b><br>"
+            "<b>NZ's rarest birds — where are they found?</b><br>"
             "<span style='font-size:11px;color:#6B6B6B;'>"
-            "<i>1,800 sightings of 15 native species by Māori name, via GBIF</i>"
+            "<i>Sightings of 5 of New Zealand's rarest species by Māori name, via GBIF</i>"
             "</span>"
         ),
         x=0.02, xanchor="left",

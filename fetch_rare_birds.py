@@ -13,22 +13,12 @@ BASE_URL = "https://api.gbif.org/v1/occurrence/search"
 
 # GBIF species keys for target species + Maori name mapping
 TARGET_SPECIES = {
-    "Nestor notabilis":              ("Kea",       300),
-    "Apteryx mantelli":              ("Kiwi",      300),
-    "Apteryx australis":             ("Kiwi",      300),
-    "Ninox novaeseelandiae":         ("Ruru",      300),
-    "Cyanoramphus novaezelandiae":   ("Kākāriki",  300),
-    "Anthornis melanura":            ("Korimako",  300),
-    "Hymenolaimus malacorhynchos":   ("Whio",      300),
-    "Falco novaeseelandiae":         ("Kārearea",  300),
-    "Porphyrio hochstetteri":        ("Takahē",    300),
-    "Petroica macrocephala":         ("Miromiro",  300),
-    "Mohoua albicilla":              ("Pōpokotea", 300),
-    "Limosa lapponica":              ("Kuaka",     300),
-    "Megadyptes antipodes":          ("Hoiho",     300),
-    "Eudyptula minor":               ("Kororā",    300),
-    "Philesturnus carunculatus":     ("Tieke",     300),
-    "Ardea modesta":                 ("Kōtuku",    100),  # only ~1,100 exist
+    "Ardea modesta":                 ("Kōtuku",  100),  # ~1,131 total — rarest
+    "Hymenolaimus malacorhynchos":   ("Whio",    300),  # ~4,637 total
+    "Apteryx mantelli":              ("Kiwi",    300),  # ~2,999 total
+    "Apteryx australis":             ("Kiwi",    300),  # ~2,882 total
+    "Megadyptes antipodes":          ("Hoiho",   300),  # ~6,012 total
+    "Porphyrio hochstetteri":        ("Takahē",  300),  # ~6,479 total
 }
 
 FIELDS = [
