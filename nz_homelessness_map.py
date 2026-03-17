@@ -51,10 +51,10 @@ fig.add_trace(go.Scattergeo(
         size=sizes,
         color=counts,
         colorscale=[
-            [0.0, "#FDE8E8"],
-            [0.3, "#F4A09A"],
-            [0.6, "#E3120B"],
-            [1.0, "#8B0000"],
+            [0.0, "#C8E6C9"],
+            [0.3, "#8FAF8A"],
+            [0.6, "#5A7D66"],
+            [1.0, "#1E3A2A"],
         ],
         cmin=min(counts),
         cmax=max(counts),
@@ -134,7 +134,7 @@ fig.update_layout(
             xref="paper", yref="paper",
             x0=0.02, x1=0.98,
             y0=0.96, y1=0.96,
-            line=dict(color="#E3120B", width=2.5),
+            line=dict(color="#3A5C45", width=2.5),
         )
     ],
 
@@ -151,7 +151,7 @@ fig.update_layout(
 
     hoverlabel=dict(
         bgcolor="white",
-        bordercolor="#E3120B",
+        bordercolor="#3A5C45",
         font_size=12,
         font_family="Georgia, serif",
     ),
