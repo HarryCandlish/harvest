@@ -92,16 +92,7 @@ fig.update_layout(
         tickfont=dict(size=12, color=ECON_DARK),
     ),
 
-    shapes=[
-        # Red rule line under title — Economist signature
-        dict(
-            type="line",
-            xref="paper", yref="paper",
-            x0=0, x1=1,
-            y0=1.04, y1=1.04,
-            line=dict(color=ECON_RED, width=3),
-        )
-    ],
+    shapes=[],
 
     annotations=[
         dict(

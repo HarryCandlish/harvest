@@ -52,11 +52,7 @@ def base_layout(title_text, subtitle_text, source_text):
             x=0.02, xanchor="left", y=0.97, yanchor="top",
             font=dict(size=15, color=DARK),
         ),
-        shapes=[dict(
-            type="line", xref="paper", yref="paper",
-            x0=0.02, x1=0.98, y0=0.925, y1=0.925,
-            line=dict(color=GREEN_MID, width=2.5),
-        )],
+        shapes=[],
         annotations=[dict(
             text=source_text,
             xref="paper", yref="paper",
