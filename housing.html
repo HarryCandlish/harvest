@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NZ Housing Crisis · Harry Candlish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: #1A1E1A; color: #F7F6F2; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+    /* ── NAV ── */
+    .site-nav {
+      background: #1A1E1A;
+      padding: 0 48px;
+      height: 57px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-back { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: #F7F6F2; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #F7F6F2; }
+    .nav-links a.active { color: #F7F6F2; }
+
+    /* ── MAP CAPTION ── */
+    #map-caption {
+      position: absolute;
+      bottom: 16px;
+      left: 32px;
+      right: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .caption-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .caption-legend { display: flex; gap: 16px; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.55); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── STEP CARDS ── */
+    .step-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 28px;
+    }
+    .step-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .step-title {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: #F7F6F2;
+      line-height: 1.3;
+      letter-spacing: -0.2px;
+      margin-bottom: 12px;
+    }
+    .step-body {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.8;
+    }
+    .step-body strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+    .step-stat {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 300;
+      line-height: 1;
+      margin-top: 16px;
+    }
+    .step-stat span {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      margin-left: 8px;
+    }
+    .step-mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .step-mini-num {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 300;
+      line-height: 1;
+    }
+    .step-mini-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 4px;
+    }
+    .step-source {
+      margin-top: 12px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.25);
+      line-height: 1.6;
+    }
+
+    /* ── POLICY POINTS ── */
+    .policy-row {
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 20px;
+      padding: 24px 28px;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      align-items: start;
+    }
+    .policy-row:last-child { border-bottom: none; }
+    .policy-num {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: #3A5C45;
+      line-height: 1;
+    }
+    .policy-strong { font-size: 14px; color: #F7F6F2; display: block; margin-bottom: 4px; }
+    .policy-text { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.75; }
+
+    @media (max-width: 900px) {
+      .site-nav { padding: 0 24px; }
+      #housing-scrolly { flex-direction: column; }
+      #map-panel { position: sticky; top: 57px; height: 55vw; min-height: 280px; width: 100% !important; }
+      #h-steps-col { width: 100% !important; padding: 0 24px !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-back">← Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="projects.html">Stories</a></li>
+      <li><a href="humpback.html">Humpback</a></li>
+      <li><a href="housing.html" class="active">Housing</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div style="padding:80px 48px; border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:900px;">
+      <p style="font-size:11px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; color:#8FAF8A; margin-bottom:16px;">NZ Housing · 2015–2026</p>
+      <h2 style="font-family:'Fraunces',serif; font-size:clamp(32px,4.5vw,52px); font-weight:300; color:#F7F6F2; line-height:1.2; margin-bottom:20px; letter-spacing:-0.5px;">The decade that priced out <em style="color:#B8883A; font-style:normal;">a generation</em></h2>
+      <p style="font-size:16px; color:rgba(255,255,255,0.45); line-height:1.8; max-width:680px; margin-bottom:48px;">Ten years. Two complete rate cycles. Prices that doubled, then fell — but never returned. Scroll through the map to see where the surge went, who fell hardest, and what the correction actually fixed.</p>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,255,255,0.06); border-radius:12px; overflow:hidden;">
+        <div style="background:rgba(255,255,255,0.03); padding:28px 20px;">
+          <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#B8883A; line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">$1.2m</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.3); line-height:1.5;">Auckland median at peak<br>January 2022</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03); padding:28px 20px;">
+          <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#B85C45; line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">−23%</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.3); line-height:1.5;">Wellington's fall from peak —<br>hardest of any region</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03); padding:28px 20px;">
+          <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#F7F6F2; line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">0.25%</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.3); line-height:1.5;">OCR floor hit in 2020 —<br>lowest in NZ history</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03); padding:28px 20px;">
+          <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#B85C45; line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">4.1%</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.3); line-height:1.5;">Northland households in<br>housing deprivation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scrollytelling -->
+  <div id="housing-scrolly" style="position:relative; display:flex; align-items:flex-start; background:#0D1210;">
+
+    <!-- Sticky map panel -->
+    <div id="map-panel" style="position:sticky; top:57px; height:calc(100vh - 57px); width:58%; flex-shrink:0; display:flex; flex-direction:column; align-items:stretch;">
+      <div style="position:relative; flex:1; padding:16px 8px 8px 16px;">
+        <div id="hmap" style="width:100%; height:100%;"></div>
+        <div id="map-caption">
+          <span class="caption-label" id="caption-label">Bubble size</span>
+          <div class="caption-legend" id="caption-legend"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll steps -->
+    <div id="h-steps-col" style="width:42%; padding:0 48px 0 32px;">
+      <div style="height:40vh;"></div>
+
+      <div class="h-step" data-step="0" style="min-height:60vh; display:flex; align-items:center; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#B8883A;">2015 — the starting point</p>
+          <h3 class="step-title">Eight regions. One decade. One direction.</h3>
+          <p class="step-body">Each bubble is a NZ region. Size reflects median house price. Auckland starts the decade at $640,000. Otago and Northland sit around $280–290,000. This is the baseline — the prices that defined what housing cost before everything changed.</p>
+        </div>
+      </div>
+
+      <div class="h-step" data-step="1" style="min-height:60vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#3A5C45;">March 2020</p>
+          <h3 class="step-title">The Reserve Bank cut to zero</h3>
+          <p class="step-body">The RBNZ cut the OCR to <strong>0.25%</strong> — the lowest in NZ history. Mortgage rates fell to record lows. Watch every bubble on the map begin to grow.</p>
+          <div class="step-stat" style="color:#3A5C45;">0.25%<span>OCR — March 2020</span></div>
+        </div>
+      </div>
+
+      <div class="h-step" data-step="2" style="min-height:60vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#B8883A;">The peak: 2022</p>
+          <h3 class="step-title">Every region hit a record</h3>
+          <p class="step-body">Auckland crossed <strong>$1.2 million</strong>. Wellington hit $950,000. Even Northland — long considered affordable — reached $700,000. In two years, every bubble on the map nearly doubled.</p>
+          <div class="step-mini-grid">
+            <div><div class="step-mini-num" style="color:#B8883A;">$1.2m</div><div class="step-mini-label">Auckland peak</div></div>
+            <div><div class="step-mini-num" style="color:#B8883A;">$950k</div><div class="step-mini-label">Wellington peak</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-step" data-step="3" style="min-height:60vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#B85C45;">2022–2024</p>
+          <h3 class="step-title">The fastest rate cycle in NZ history</h3>
+          <p class="step-body">The RBNZ raised the OCR <strong>seventeen times</strong> in eighteen months — from 0.25% to 5.50%. Bubbles are now coloured by how far each region fell from its peak. Red means the biggest falls.</p>
+          <div class="step-stat" style="color:#B85C45;">5.50%<span>OCR peak — July 2023</span></div>
+        </div>
+      </div>
+
+      <div class="h-step" data-step="4" style="min-height:60vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#B8883A;">Wellington's story</p>
+          <h3 class="step-title">The hardest fall of any region</h3>
+          <p class="step-body">Wellington fell from $950,000 to $730,000 — a <strong>23% decline</strong>, the steepest of any NZ region. Its housing market tracks public sector employment more closely than anywhere else in the country, and 2023–2024 delivered a double blow: the fastest rate cycle in NZ history, and mass redundancies across the public service.</p>
+          <div class="step-mini-grid" style="grid-template-columns:1fr;">
+            <div><div class="step-mini-num" style="color:#B85C45;">−23%</div><div class="step-mini-label">Wellington from peak · $950k → $730k</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-step" data-step="5" style="min-height:60vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:rgba(255,255,255,0.35);">What the correction didn't fix</p>
+          <h3 class="step-title">Prices fell. Affordability didn't recover.</h3>
+          <p class="step-body">Bubble size now shows how far each region is <em style="color:#B8883A; font-style:normal;">still above its 2015 price</em>. Every region is 60–80% higher than where it started. The correction reversed the Covid surge. It didn't reverse the decade.</p>
+        </div>
+      </div>
+
+      <div class="h-step" data-step="6" style="min-height:60vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#B85C45;">Northland · 4.1% deprivation</p>
+          <h3 class="step-title">The highest deprivation rate in the country</h3>
+          <p class="step-body">Northland's housing crisis predates the boom — but the boom made it worse. Whangārei median prices surged from ~$300k to ~$700k, and rents followed. For a region with persistent unemployment and wages well below the national average, the affordability gap became unbridgeable. Many households rely on aging, cold, and damp stock that was never upgraded. The correction brought prices down slightly. It brought rents down by almost nothing.</p>
+          <p class="step-source">Source: Stats NZ 2023 Census. Deprivation includes severe crowding, damaged dwellings, and lack of basic amenities.</p>
+        </div>
+      </div>
+
+      <div class="h-step" data-step="7" style="min-height:60vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#B85C45;">Gisborne · 3.8% deprivation</p>
+          <h3 class="step-title">Isolated, agricultural, and left behind by every cycle</h3>
+          <p class="step-body">Gisborne is one of NZ's most geographically isolated cities, with an economy built on seasonal agriculture and a population that is around 50% Māori. House prices at the peak reached ~$500k — extraordinary relative to local incomes. Multigenerational crowding became the norm as rental supply dried up. Unlike Auckland or Wellington, there was no correction driven by investor retreat: Gisborne never attracted the speculative demand that drives those markets back down.</p>
+          <p class="step-source">Source: Stats NZ 2023 Census.</p>
+        </div>
+      </div>
+
+      <div class="h-step" data-step="8" style="min-height:60vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#B85C45;">West Coast · 3.6% deprivation</p>
+          <h3 class="step-title">Affordable prices. Unaffordable conditions.</h3>
+          <p class="step-body">The West Coast is an outlier: house prices here remain among the lowest in the country, yet deprivation is among the highest. The crisis isn't about price — it's about housing quality, availability, and a shrinking local economy. Young people leave for better opportunities. What remains is an aging population, old mining and forestry housing stock that is cold, damp, and expensive to heat, and a rental market so thin that moving town for work means finding nowhere to live.</p>
+          <p class="step-source">Source: Stats NZ 2023 Census.</p>
+        </div>
+      </div>
+
+      <div style="height:40vh;"></div>
+    </div>
+  </div>
+
+  <!-- Cautious optimism -->
+  <div style="background:#0D1210; padding:80px 48px; border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:900px;">
+      <p style="font-size:11px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; color:#3A5C45; margin-bottom:16px;">Looking ahead · 2026</p>
+      <h3 style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#F7F6F2; line-height:1.3; letter-spacing:-0.3px; margin-bottom:24px;">There are reasons, cautiously, to be hopeful</h3>
+      <p style="font-size:15px; color:rgba(255,255,255,0.5); line-height:1.9; max-width:720px; margin-bottom:48px;">The decade from 2012 to 2022 was defined by a single belief: property only goes up. That belief shaped how New Zealanders saved, invested, and thought about their futures. The data suggests it may finally be softening — and that a few structural forces are, for the first time in years, pointing in the right direction.</p>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:40px;">
+
+        <div style="background:rgba(58,92,69,0.12); border:1px solid rgba(58,92,69,0.25); border-radius:12px; padding:28px;">
+          <div style="font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:#3A5C45; margin-bottom:12px;">Prices have corrected</div>
+          <p style="font-size:14px; color:rgba(255,255,255,0.55); line-height:1.8;">The 15–23% falls from peak are real. For buyers who sat out the boom, entry prices are meaningfully lower than they were in 2022. Not back to 2015 — but the gap between incomes and prices has narrowed for the first time this decade.</p>
+        </div>
+
+        <div style="background:rgba(58,92,69,0.12); border:1px solid rgba(58,92,69,0.25); border-radius:12px; padding:28px;">
+          <div style="font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:#3A5C45; margin-bottom:12px;">Rates are falling</div>
+          <p style="font-size:14px; color:rgba(255,255,255,0.55); line-height:1.8;">The OCR has come down sharply from its 5.50% peak. Mortgage rates are following. For homeowners who fixed at the top of the cycle, refinancing onto lower rates is easing the pressure — and improving serviceability for prospective buyers.</p>
+        </div>
+
+        <div style="background:rgba(58,92,69,0.12); border:1px solid rgba(58,92,69,0.25); border-radius:12px; padding:28px;">
+          <div style="font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:#3A5C45; margin-bottom:12px;">Supply is finally moving</div>
+          <p style="font-size:14px; color:rgba(255,255,255,0.55); line-height:1.8;">Consents remain elevated by historical standards. Infill development, medium-density reforms, and a more permissive planning environment in Auckland and Wellington are beginning to add real stock to markets that spent a decade starved of it.</p>
+        </div>
+
+        <div style="background:rgba(58,92,69,0.12); border:1px solid rgba(58,92,69,0.25); border-radius:12px; padding:28px;">
+          <div style="font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:#3A5C45; margin-bottom:12px;">A cultural shift, quietly underway</div>
+          <p style="font-size:14px; color:rgba(255,255,255,0.55); line-height:1.8;">Investors are increasingly looking past the second property. Shares, index funds, and private equity are attracting capital that a decade ago would have gone into a rental. The tax and regulatory environment for landlords has tightened — and for many, the numbers no longer stack up the way they once did.</p>
+        </div>
+
+      </div>
+
+      <!-- Deprivation regions — separate hopeful note -->
+      <div style="margin-bottom:24px; padding:28px 32px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.07); border-radius:12px;">
+        <p style="font-size:11px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:14px;">For Northland, Gisborne &amp; the West Coast</p>
+        <p style="font-size:14px; color:rgba(255,255,255,0.45); line-height:1.85; margin-bottom:16px;">The four signals above — falling prices, lower rates, new supply, shifting investment culture — are mostly stories about Auckland and Wellington. They don't automatically reach the regions where deprivation is highest. The honest picture there is more complicated. But there are some genuine grounds for guarded hope.</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+          <div style="background:rgba(58,92,69,0.08); border:1px solid rgba(58,92,69,0.18); border-radius:8px; padding:18px;">
+            <div style="font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#3A5C45; margin-bottom:8px;">Iwi-led housing</div>
+            <p style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.75;">In Northland and Gisborne, Māori land trusts and iwi development arms are increasingly building housing on Māori land — outside the mainstream market. These projects don't show up in consent data, but they're adding real homes for whānau who can't access the private market.</p>
+          </div>
+          <div style="background:rgba(58,92,69,0.08); border:1px solid rgba(58,92,69,0.18); border-radius:8px; padding:18px;">
+            <div style="font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#3A5C45; margin-bottom:8px;">Connectivity improving</div>
+            <p style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.75;">Roading improvements into Northland and the slow expansion of digital infrastructure are beginning to make remote work viable in regions that previously had no alternative to local employment. A small but real shift — and one that brings spending power into communities that have been losing it for decades.</p>
+          </div>
+          <div style="background:rgba(58,92,69,0.08); border:1px solid rgba(58,92,69,0.18); border-radius:8px; padding:18px;">
+            <div style="font-size:11px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:#3A5C45; margin-bottom:8px;">Social housing focus</div>
+            <p style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.75;">Lower land costs in Gisborne and the West Coast mean that social housing providers — Kāinga Ora and community housing trusts — can build more for the same budget than in main centres. If funding follows need rather than political salience, these are the regions that should benefit most.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:rgba(184,136,58,0.08); border:1px solid rgba(184,136,58,0.2); border-radius:12px; padding:28px; display:flex; gap:20px; align-items:flex-start;">
+        <div style="font-size:22px; line-height:1; padding-top:2px; flex-shrink:0;">⚠</div>
+        <div>
+          <div style="font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:#B8883A; margin-bottom:10px;">The caveat</div>
+          <p style="font-size:14px; color:rgba(255,255,255,0.5); line-height:1.8;">All of this is contingent. The conflict in Iran has already pushed oil prices higher and introduced inflationary pressure that central banks — including the RBNZ — will need to weigh against cutting further. If inflation re-accelerates, the rate relief that underpins this cautious optimism could stall. The direction is right. The pace is uncertain.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- What this means -->
+  <div style="background:#1A1E1A; padding:80px 48px; border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="border-top:2px solid #3A5C45; padding-top:40px; max-width:900px;">
+      <p style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#3A5C45; margin-bottom:12px;">What this means</p>
+      <h3 style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#F7F6F2; line-height:1.3; letter-spacing:-0.3px; margin-bottom:32px;">Five things the data is telling housing policymakers</h3>
+      <div style="border:1px solid rgba(255,255,255,0.08); border-radius:12px; overflow:hidden;">
+        <div class="policy-row">
+          <div class="policy-num">01</div>
+          <div><strong class="policy-strong">The correction was real — but it only undid two years of gains.</strong><span class="policy-text">Every region fell 15–23% from its 2022 peak. Prices remain 60–80% above 2015 levels across the country. The correction reversed the Covid surge. It didn't reverse the decade. For first-home buyers, the window narrowed slightly — it didn't open.</span></div>
+        </div>
+        <div class="policy-row">
+          <div class="policy-num">02</div>
+          <div><strong class="policy-strong">Wellington's vulnerability reflects economic concentration — not just rate exposure.</strong><span class="policy-text">Wellington's 23% fall is the steepest of any region. Its housing market tracks public sector employment more closely than any other NZ city. Fiscal tightening, redundancies, and higher rates compounded into the country's largest correction. Policy risk and market risk aligned at the same moment.</span></div>
+        </div>
+        <div class="policy-row">
+          <div class="policy-num">03</div>
+          <div><strong class="policy-strong">Deprivation and price are two different crises — and they don't overlap where you'd expect.</strong><span class="policy-text">Northland (4.1%), Gisborne (3.8%), and West Coast (3.6%) have the highest deprivation rates. None are among the most expensive markets. These communities were underserved before the boom, through it, and after it. Policies focused on cooling price growth don't reach them.</span></div>
+        </div>
+        <div class="policy-row">
+          <div class="policy-num">04</div>
+          <div><strong class="policy-strong">The OCR is a blunt instrument — it hits every region equally but labour markets aren't equal.</strong><span class="policy-text">Raising rates to cool Auckland and Wellington also raised mortgage costs for households in Northland and Gisborne — regions with lower median incomes and thinner employment buffers. The tool was right for the cities where the problem was hottest. The cost was shared by regions that barely participated in the boom.</span></div>
+        </div>
+        <div class="policy-row">
+          <div class="policy-num">05</div>
+          <div><strong class="policy-strong">The rate cycle moderated demand. It didn't add a single house.</strong><span class="policy-text">As the OCR falls back toward neutral, demand will return. If supply hasn't materially increased in the regions where people want to live, prices will recover — from a higher floor. The window to build more housing is exactly the period when prices are softening. NZ has not consistently used it.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="background:#1A1E1A; padding:40px 48px; border-top:1px solid rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:space-between;">
+    <span style="font-size:13px; color:rgba(255,255,255,0.3);">Harry Candlish · Data Analyst · Wellington, NZ</span>
+    <a href="index.html" style="font-size:13px; color:#B8883A; text-decoration:none; border:1px solid rgba(184,136,58,0.35); border-radius:40px; padding:10px 20px; transition:all 0.2s;" onmouseover="this.style.background='rgba(184,136,58,0.1)'" onmouseout="this.style.background=''">← Back to portfolio</a>
+  </div>
+
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="https://unpkg.com/scrollama@3.2.0/build/scrollama.min.js"></script>
+  <script>
+  (function() {
+
+    // ── Region data ──────────────────────────────────────────────────────────────
+    // prices in $000s, index = year (0=2015 … 11=2026)
+    var regions = [
+      { name:'Auckland',      lat:-36.85, lon:174.77, tp:'top right',
+        p:[640,820,900,860,840,900,1100,1200,1050,980,995,1010] },
+      { name:'Wellington',    lat:-41.29, lon:174.78, tp:'bottom left',
+        p:[390,430,490,530,570,640,830,950,800,750,730,748] },
+      { name:'Canterbury',    lat:-43.53, lon:172.64, tp:'bottom left',
+        p:[370,390,410,430,450,490,620,750,680,650,660,672] },
+      { name:'Waikato',       lat:-37.78, lon:175.28, tp:'bottom right',
+        p:[330,370,415,445,480,530,700,820,720,680,685,698] },
+      { name:'Bay of Plenty', lat:-37.69, lon:176.17, tp:'top right',
+        p:[350,410,480,510,540,590,780,870,780,730,720,732] },
+      { name:'Otago',         lat:-45.40, lon:169.32, tp:'bottom left',
+        p:[290,320,370,430,480,530,700,780,700,660,665,678] },
+      { name:'Northland',     lat:-35.73, lon:174.32, tp:'top left',
+        p:[280,310,350,380,410,460,620,700,620,580,565,572] },
+      { name:"Hawke's Bay",   lat:-39.49, lon:176.72, tp:'middle right',
+        p:[270,295,330,360,390,430,580,660,580,540,530,538] },
+    ];
+
+    // Deprivation regions (all 12, incl. those without price data)
+    var deprivRegions = [
+      { name:'Canterbury',         lat:-43.53, lon:172.64, tp:'bottom left',  rate:1.8, people:12000 },
+      { name:'Wellington',         lat:-41.29, lon:174.78, tp:'bottom left',  rate:1.9, people:10200 },
+      { name:'Marlborough',        lat:-41.51, lon:173.96, tp:'top right',    rate:2.0, people:1200  },
+      { name:'Waikato',            lat:-37.78, lon:175.28, tp:'bottom right', rate:2.1, people:9200  },
+      { name:'Southland',          lat:-46.10, lon:168.35, tp:'bottom left',  rate:2.1, people:2400  },
+      { name:'Manawatu-Whanganui', lat:-40.35, lon:175.61, tp:'middle right', rate:2.3, people:5500  },
+      { name:'Bay of Plenty',      lat:-37.69, lon:176.17, tp:'top right',    rate:2.4, people:7100  },
+      { name:'Auckland',           lat:-36.85, lon:174.77, tp:'top right',    rate:2.6, people:42800 },
+      { name:"Hawke's Bay",        lat:-39.49, lon:176.72, tp:'middle right', rate:2.7, people:4500  },
+      { name:'West Coast',         lat:-42.46, lon:171.21, tp:'bottom left',  rate:3.6, people:1200  },
+      { name:'Gisborne',           lat:-38.66, lon:178.02, tp:'middle right', rate:3.8, people:1800  },
+      { name:'Northland',          lat:-35.73, lon:174.32, tp:'top left',     rate:4.1, people:6100  },
+    ];
+
+    // ── Helpers ──────────────────────────────────────────────────────────────────
+    function pToSize(p) { return Math.sqrt(p) * 1.9; }
+
+    function fallColor(pct) {
+      if (pct >= 22) return '#B85C45';
+      if (pct >= 19) return '#CC7A45';
+      if (pct >= 16) return '#B8883A';
+      return '#8FAF8A';
+    }
+
+    function deprivColor(rate) {
+      if (rate >= 3.5) return '#B85C45';
+      if (rate >= 2.5) return '#B8883A';
+      return '#3A5C45';
+    }
+
+    var lats  = regions.map(function(r){ return r.lat; });
+    var lons  = regions.map(function(r){ return r.lon; });
+    var names = regions.map(function(r){ return r.name; });
+    var tpos  = regions.map(function(r){ return r.tp; });
+
+    var REGION_COLORS = ['#3A5C45','#B8883A','#5A8069','#8FAF8A','#C8A44A','#7EB8F7','#9B7BB8','#A0856C'];
+
+    // ── Initial trace: price at 2015 ────────────────────────────────────────────
+    var sizes0 = regions.map(function(r){ return pToSize(r.p[0]); });
+    var hover0 = regions.map(function(r){
+      return '<b>'+r.name+'</b><br>2015 median: $'+r.p[0].toLocaleString()+'k<extra></extra>';
+    });
+
+    var priceTrace = {
+      type: 'scattergeo',
+      mode: 'markers+text',
+      lat: lats, lon: lons,
+      text: names,
+      textposition: tpos,
+      textfont: { size: 11, color: 'rgba(255,255,255,0.75)', family: 'Inter, sans-serif' },
+      marker: {
+        size: sizes0,
+        color: REGION_COLORS,
+        opacity: 0.85,
+        line: { color: 'rgba(255,255,255,0.2)', width: 1.5 },
+        sizemode: 'diameter',
+      },
+      hovertemplate: hover0,
+      showlegend: false,
+    };
+
+    // ── Deprivation trace (step 6) ───────────────────────────────────────────────
+    var dLats   = deprivRegions.map(function(d){ return d.lat; });
+    var dLons   = deprivRegions.map(function(d){ return d.lon; });
+    var dNames  = deprivRegions.map(function(d){ return d.name; });
+    var dTpos   = deprivRegions.map(function(d){ return d.tp; });
+    var dSizes  = deprivRegions.map(function(d){ return d.rate * 10; });
+    var dColors = deprivRegions.map(function(d){ return deprivColor(d.rate); });
+    var dHover  = deprivRegions.map(function(d){
+      return '<b>'+d.name+'</b><br>Deprivation rate: '+d.rate+'%<br>Est. people: '+d.people.toLocaleString()+'<extra></extra>';
+    });
+
+    var deprivTrace = {
+      type: 'scattergeo',
+      mode: 'markers+text',
+      lat: dLats, lon: dLons,
+      text: dNames,
+      textposition: dTpos,
+      textfont: { size: 11, color: 'rgba(255,255,255,0.75)', family: 'Inter, sans-serif' },
+      marker: {
+        size: dSizes,
+        color: dColors,
+        opacity: 0.85,
+        line: { color: 'rgba(255,255,255,0.2)', width: 1.5 },
+        sizemode: 'diameter',
+      },
+      hovertemplate: dHover,
+      showlegend: false,
+      visible: false,
+    };
+
+    // ── Map layout — dark theme ──────────────────────────────────────────────────
+    var mapLayout = {
+      paper_bgcolor: '#0D1210',
+      geo: {
+        scope: 'world',
+        showland: true,
+        landcolor: '#1E2820',
+        showocean: true,
+        oceancolor: '#0D1210',
+        showframe: false,
+        showcoastlines: true,
+        coastlinecolor: '#3A4A3A',
+        coastlinewidth: 0.8,
+        showlakes: false,
+        lataxis: { range: [-47.8, -33.8] },
+        lonaxis: { range: [165.5, 180.0] },
+        bgcolor: '#0D1210',
+        projection: { type: 'mercator' },
+        resolution: 50,
+      },
+      margin: { l: 0, r: 0, t: 0, b: 0 },
+      showlegend: false,
+      dragmode: false,
+    };
+
+    var cfg = { displayModeBar: false, responsive: true, scrollZoom: false };
+
+    Plotly.newPlot('hmap', [priceTrace, deprivTrace], mapLayout, cfg);
+
+    // ── Caption helper ───────────────────────────────────────────────────────────
+    var captions = [
+      { label: 'Bubble size = 2015 median price', legend: [] },
+      { label: 'Bubble size = 2021 median price', legend: [] },
+      { label: 'Bubble size = 2022 median price (peak)', legend: [] },
+      { label: 'Bubble colour = fall from peak', legend: [
+          {color:'#B85C45', text:'> 22% fall'}, {color:'#B8883A', text:'16–22% fall'}, {color:'#8FAF8A', text:'< 16% fall'}
+      ]},
+      { label: 'Bubble colour = fall from peak', legend: [
+          {color:'#B85C45', text:'Wellington −23%'}, {color:'#3A5C45', text:'Auckland −18%'}
+      ]},
+      { label: 'Bubble size = % still above 2015', legend: [] },
+      { label: 'Northland · deprivation rate 4.1%', legend: [
+          {color:'#B85C45', text:'High (> 3.5%)'}, {color:'#B8883A', text:'Moderate (2.5–3.5%)'}, {color:'#3A5C45', text:'Lower (< 2.5%)'}
+      ]},
+      { label: 'Gisborne · deprivation rate 3.8%', legend: [
+          {color:'#B85C45', text:'High (> 3.5%)'}, {color:'#B8883A', text:'Moderate (2.5–3.5%)'}, {color:'#3A5C45', text:'Lower (< 2.5%)'}
+      ]},
+      { label: 'West Coast · deprivation rate 3.6%', legend: [
+          {color:'#B85C45', text:'High (> 3.5%)'}, {color:'#B8883A', text:'Moderate (2.5–3.5%)'}, {color:'#3A5C45', text:'Lower (< 2.5%)'}
+      ]},
+    ];
+
+    function setCaption(n) {
+      var c = captions[n];
+      document.getElementById('caption-label').textContent = c.label;
+      var leg = document.getElementById('caption-legend');
+      leg.innerHTML = c.legend.map(function(l){
+        return '<span class="legend-item"><span class="legend-dot" style="background:'+l.color+'"></span>'+l.text+'</span>';
+      }).join('');
+    }
+
+    // ── Map zoom helpers ─────────────────────────────────────────────────────────
+    var NZ_VIEW  = { lat: [-47.8, -33.8], lon: [165.5, 180.0] };
+    var WLG_VIEW = { lat: [-46.5, -37.5], lon: [170.0, 178.5] };
+    var NTL_VIEW = { lat: [-38.0, -33.5], lon: [172.0, 177.0] };
+    var GIS_VIEW = { lat: [-41.0, -36.5], lon: [174.5, 180.0] };
+    var WC_VIEW  = { lat: [-46.0, -40.0], lon: [167.0, 175.0] };
+
+    var _zoomRaf = null;
+    var _currentView = { lat: NZ_VIEW.lat.slice(), lon: NZ_VIEW.lon.slice() };
+
+    function animateZoom(target, duration) {
+      if (_zoomRaf) cancelAnimationFrame(_zoomRaf);
+      var start = null;
+      var from = { lat: _currentView.lat.slice(), lon: _currentView.lon.slice() };
+      function ease(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+      function step(ts) {
+        if (!start) start = ts;
+        var t = Math.min((ts - start) / duration, 1);
+        var e = ease(t);
+        var lat = [from.lat[0] + (target.lat[0] - from.lat[0]) * e,
+                   from.lat[1] + (target.lat[1] - from.lat[1]) * e];
+        var lon = [from.lon[0] + (target.lon[0] - from.lon[0]) * e,
+                   from.lon[1] + (target.lon[1] - from.lon[1]) * e];
+        Plotly.relayout('hmap', { 'geo.lataxis.range': lat, 'geo.lonaxis.range': lon });
+        if (t < 1) {
+          _zoomRaf = requestAnimationFrame(step);
+        } else {
+          _currentView = { lat: target.lat.slice(), lon: target.lon.slice() };
+        }
+      }
+      _zoomRaf = requestAnimationFrame(step);
+    }
+
+    // ── Step handler ─────────────────────────────────────────────────────────────
+    function showStep(n) {
+      setCaption(n);
+      var zoomTarget = NZ_VIEW;
+      if (n === 4) zoomTarget = WLG_VIEW;
+      if (n === 6) zoomTarget = NTL_VIEW;
+      if (n === 7) zoomTarget = GIS_VIEW;
+      if (n === 8) zoomTarget = WC_VIEW;
+      animateZoom(zoomTarget, 900);
+
+      if (n >= 6) {
+        // Switch to deprivation trace, highlight one region
+        Plotly.restyle('hmap', { visible: false }, [0]);
+        Plotly.restyle('hmap', { visible: true },  [1]);
+        var spotNames = { 6: 'Northland', 7: 'Gisborne', 8: 'West Coast' };
+        var spot = spotNames[n];
+        var dHighColors   = deprivRegions.map(function(d){ return d.name === spot ? deprivColor(d.rate) : '#2A2A2A'; });
+        var dHighOpacity  = deprivRegions.map(function(d){ return d.name === spot ? 0.95 : 0.12; });
+        var dHighTexts    = deprivRegions.map(function(d){ return d.name === spot ? d.name + '\n' + d.rate + '%' : ''; });
+        Plotly.restyle('hmap', {
+          'marker.color':   [dHighColors],
+          'marker.opacity': [dHighOpacity],
+          'text':           [dHighTexts],
+        }, [1]);
+        return;
+      }
+
+      Plotly.restyle('hmap', { visible: true },  [0]);
+      Plotly.restyle('hmap', { visible: false }, [1]);
+
+      var sizes, colors, opacities, texts, hovers;
+
+      if (n === 0) {
+        sizes     = regions.map(function(r){ return pToSize(r.p[0]); });
+        colors    = REGION_COLORS;
+        opacities = 0.85;
+        texts     = names;
+        hovers    = regions.map(function(r){
+          return '<b>'+r.name+'</b><br>2015 median: $'+r.p[0]+'k<extra></extra>';
+        });
+
+      } else if (n === 1) {
+        sizes     = regions.map(function(r){ return pToSize(r.p[6]); });
+        colors    = REGION_COLORS;
+        opacities = 0.85;
+        texts     = names;
+        hovers    = regions.map(function(r){
+          var pct = Math.round((r.p[6]-r.p[0])/r.p[0]*100);
+          return '<b>'+r.name+'</b><br>2021 median: $'+r.p[6]+'k<br>+'+pct+'% since 2015<extra></extra>';
+        });
+
+      } else if (n === 2) {
+        sizes     = regions.map(function(r){ return pToSize(r.p[7]); });
+        colors    = REGION_COLORS;
+        opacities = 0.85;
+        texts     = regions.map(function(r){
+          return r.name + '\n$' + (r.p[7] >= 1000 ? (r.p[7]/1000).toFixed(1)+'m' : r.p[7]+'k');
+        });
+        hovers    = regions.map(function(r){
+          return '<b>'+r.name+'</b><br>Peak 2022: $'+r.p[7]+'k<extra></extra>';
+        });
+
+      } else if (n === 3) {
+        sizes     = regions.map(function(r){ return pToSize(r.p[9]); });
+        colors    = regions.map(function(r){
+          var peak = r.p[7], curr = r.p[9];
+          return fallColor((peak - curr) / peak * 100);
+        });
+        opacities = 0.85;
+        texts     = names;
+        hovers    = regions.map(function(r){
+          var pct = Math.round((r.p[7]-r.p[9])/r.p[7]*100);
+          return '<b>'+r.name+'</b><br>Peak: $'+r.p[7]+'k → 2024: $'+r.p[9]+'k<br>−'+pct+'% from peak<extra></extra>';
+        });
+
+      } else if (n === 4) {
+        sizes     = regions.map(function(r){ return pToSize(r.p[10]); });
+        colors    = regions.map(function(r){
+          return r.name === 'Wellington' ? '#B8883A' : '#3A3A3A';
+        });
+        opacities = regions.map(function(r){
+          return r.name === 'Wellington' ? 0.95 : 0.12;
+        });
+        texts     = regions.map(function(r){
+          return r.name === 'Wellington' ? 'Wellington\n−23%' : '';
+        });
+        hovers    = regions.map(function(r){
+          var pct = Math.round((r.p[7]-r.p[10])/r.p[7]*100);
+          return '<b>'+r.name+'</b><br>Peak: $'+r.p[7]+'k → 2025: $'+r.p[10]+'k<br>−'+pct+'% from peak<extra></extra>';
+        });
+
+      } else if (n === 5) {
+        sizes     = regions.map(function(r){
+          var pctAbove = (r.p[10] - r.p[0]) / r.p[0] * 100;
+          return pctAbove * 0.55 + 10;
+        });
+        colors    = ['#B8883A','#B8883A','#B8883A','#B8883A','#B8883A','#B8883A','#B8883A','#B8883A'];
+        opacities = 0.8;
+        texts     = regions.map(function(r){
+          var pct = Math.round((r.p[10] - r.p[0]) / r.p[0] * 100);
+          return r.name + '\n+' + pct + '%';
+        });
+        hovers    = regions.map(function(r){
+          var pct = Math.round((r.p[10] - r.p[0]) / r.p[0] * 100);
+          return '<b>'+r.name+'</b><br>2015: $'+r.p[0]+'k → 2025: $'+r.p[10]+'k<br>+'+pct+'% above 2015<extra></extra>';
+        });
+      }
+
+      Plotly.restyle('hmap', {
+        'marker.size':    [sizes],
+        'marker.color':   Array.isArray(colors) ? [colors] : colors,
+        'marker.opacity': Array.isArray(opacities) ? [opacities] : opacities,
+        'text':           [texts],
+        'hovertemplate':  [hovers],
+      }, [0]);
+    }
+
+    // ── Scrollama ────────────────────────────────────────────────────────────────
+    scrollama().setup({ step: '#h-steps-col .h-step', offset: 0.5 })
+      .onStepEnter(function(r) {
+        document.querySelectorAll('#h-steps-col .h-step').forEach(function(el, i) {
+          el.style.opacity = i === r.index ? '1' : '0.3';
+        });
+        showStep(r.index);
+      });
+
+    window.addEventListener('resize', function() { Plotly.Plots.resize('hmap'); });
+    setCaption(0);
+
+  })();
+  </script>
+
+</body>
+</html>

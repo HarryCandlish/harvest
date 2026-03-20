@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iran War · NZ Fuel Prices · Harvest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="https://unpkg.com/scrollama@3.2.0/build/scrollama.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: #1A1E1A; color: #F7F6F2; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    .site-nav {
+      background: #1A1E1A; padding: 0 48px; height: 57px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-back { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: #F7F6F2; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #F7F6F2; }
+    .nav-links a.active { color: #F7F6F2; }
+
+    /* STEP CARDS */
+    .step-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 28px;
+    }
+    .step-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 1.2px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .step-title {
+      font-family: 'Fraunces', serif; font-size: 22px; font-weight: 300;
+      color: #F7F6F2; line-height: 1.3; letter-spacing: -0.2px; margin-bottom: 12px;
+    }
+    .step-body {
+      font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.8;
+    }
+    .step-body strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+    .step-stat {
+      font-family: 'Fraunces', serif; font-size: 28px; font-weight: 300;
+      line-height: 1; margin-top: 16px;
+    }
+    .step-stat span {
+      font-family: 'Inter', sans-serif; font-size: 12px;
+      color: rgba(255,255,255,0.35); margin-left: 8px;
+    }
+    .step-mini-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;
+    }
+    .step-mini-num {
+      font-family: 'Fraunces', serif; font-size: 22px; font-weight: 300; line-height: 1;
+    }
+    .step-mini-label { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 4px; }
+
+    /* MAP LEGEND */
+    .map-legend {
+      position: absolute; bottom: 20px; left: 20px;
+      display: flex; flex-direction: column; gap: 6px;
+      pointer-events: none;
+    }
+    .legend-row { display: flex; align-items: center; gap: 8px; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .legend-label { font-size: 10px; color: rgba(255,255,255,0.55); font-family: 'Inter', sans-serif; }
+
+    /* POLICY ROWS */
+    .policy-row {
+      display: grid; grid-template-columns: 40px 1fr; gap: 20px;
+      padding: 24px 28px;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      align-items: start;
+    }
+    .policy-row:last-child { border-bottom: none; }
+    .policy-num {
+      font-family: 'Fraunces', serif; font-size: 22px; font-weight: 300;
+      color: #3A5C45; line-height: 1;
+    }
+    .policy-strong { font-size: 14px; color: #F7F6F2; display: block; margin-bottom: 4px; }
+    .policy-text { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.75; }
+
+    @media (max-width: 900px) {
+      .site-nav { padding: 0 24px; }
+      #conflict-scrolly { flex-direction: column; }
+      #map-panel { position: sticky; top: 57px; height: 55vw; min-height: 280px; width: 100% !important; }
+      #steps-col { width: 100% !important; padding: 0 24px !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-back">← Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="projects.html">Stories</a></li>
+      <li><a href="housing.html">Housing</a></li>
+      <li><a href="fuel_prices.html" class="active">Iran War</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div style="padding:80px 48px; border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:1100px; display:flex; align-items:flex-start; justify-content:space-between; gap:48px;">
+
+      <!-- Left: title + small stats -->
+      <div style="flex:1; min-width:0;">
+        <p style="font-size:11px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; color:#B85C45; margin-bottom:16px;">Iran War · 28 Feb 2026 — ongoing</p>
+        <h2 style="font-family:'Fraunces',serif; font-size:clamp(32px,4.5vw,52px); font-weight:300; color:#F7F6F2; line-height:1.2; margin-bottom:20px; letter-spacing:-0.5px;">A petrol price driven by war — <em style="color:#B8883A; font-style:normal;">and a country already under pressure</em></h2>
+        <p style="font-size:16px; color:rgba(255,255,255,0.45); line-height:1.8; max-width:600px; margin-bottom:24px;">Every cent added to the litre price in New Zealand is a measure of two things at once. For families already stretched by years of rising costs, it is another hit to the weekly budget — petrol, groceries, freight, everything connected to oil moves with it. And it is something else: a real-time signal from a war 14,000 kilometres away, where the strikes are still happening, the shipping lanes are still closed, and the people caught in the middle of it have nowhere to go.</p>
+        <div style="display:flex; align-items:flex-end; gap:0; margin-top:4px;">
+          <div style="min-width:100px;">
+            <div style="font-size:10px; color:rgba(255,255,255,0.3); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Before war<br>28 Feb</div>
+            <div style="font-family:'Fraunces',serif; font-size:32px; font-weight:300; color:rgba(255,255,255,0.35); line-height:1; letter-spacing:-1px;">$2.53<span style="font-size:13px; color:rgba(255,255,255,0.2); margin-left:3px;">/L</span></div>
+          </div>
+          <div style="font-size:22px; color:rgba(255,255,255,0.15); padding:0 12px 3px;">→</div>
+          <div style="min-width:100px;">
+            <div style="font-size:10px; color:rgba(255,255,255,0.3); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Now<br>13 Mar</div>
+            <div style="font-family:'Fraunces',serif; font-size:32px; font-weight:300; color:#B8883A; line-height:1; letter-spacing:-1px;">$2.82<span style="font-size:13px; color:rgba(184,136,58,0.5); margin-left:3px;">/L</span></div>
+          </div>
+          <div style="font-size:22px; color:rgba(255,255,255,0.15); padding:0 12px 3px;">=</div>
+          <div style="min-width:80px;">
+            <div style="font-size:10px; color:rgba(255,255,255,0.3); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Since war<br>began</div>
+            <div style="font-family:'Fraunces',serif; font-size:32px; font-weight:300; color:#B85C45; line-height:1; letter-spacing:-1px;">+11.5%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: live petrol price callout -->
+      <div style="flex-shrink:0; width:240px; background:rgba(184,136,58,0.1); border:1px solid rgba(184,136,58,0.35); border-radius:16px; padding:32px 28px; position:relative;">
+        <div style="font-size:9px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:#B8883A; background:rgba(184,136,58,0.15); border:1px solid rgba(184,136,58,0.3); border-radius:20px; padding:4px 10px; display:inline-block; margin-bottom:20px;">Live · updates weekly</div>
+        <div style="font-size:12px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px;">NZ pump price</div>
+        <div style="font-family:'Fraunces',serif; font-size:72px; font-weight:300; color:#B8883A; line-height:1; letter-spacing:-2px; margin-bottom:4px;">$2.82</div>
+        <div style="font-size:13px; color:rgba(255,255,255,0.55); margin-bottom:16px;">per litre · Regular 91</div>
+        <div style="padding-top:16px; border-top:1px solid rgba(184,136,58,0.2); margin-bottom:4px;">
+          <div style="font-size:11px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px;">Diesel</div>
+          <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:rgba(255,255,255,0.7); line-height:1; letter-spacing:-1px; margin-bottom:4px;">$2.34</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.35);">per litre</div>
+        </div>
+        <div style="margin-top:16px; padding-top:16px; border-top:1px solid rgba(184,136,58,0.2);">
+          <div style="font-size:11px; color:rgba(255,255,255,0.25); line-height:1.7;">as of 13 Mar 2026<br>MBIE · refreshed each Wednesday</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scrollytelling: conflict map -->
+  <div id="conflict-scrolly" style="position:relative; display:flex; align-items:flex-start; background:#0D1210;">
+
+    <!-- Sticky map panel -->
+    <div id="map-panel" style="position:sticky; top:57px; height:calc(100vh - 57px); width:58%; flex-shrink:0; display:flex; flex-direction:column; align-items:stretch;">
+      <div style="position:relative; flex:1; padding:16px 8px 8px 16px;">
+        <div id="conflict-map" style="width:100%; height:100%;"></div>
+        <div class="map-legend" id="map-legend" style="display:none;">
+          <div class="legend-row"><span class="legend-dot" style="background:#C0392B;"></span><span class="legend-label">US / Israeli strikes</span></div>
+          <div class="legend-row" id="leg-retaliation" style="display:none;"><span class="legend-dot" style="background:#E67E22;"></span><span class="legend-label">Iranian retaliation</span></div>
+          <div class="legend-row" id="leg-hormuz" style="display:none;"><span class="legend-dot" style="background:#F1C40F;"></span><span class="legend-label">Hormuz — strait closed</span></div>
+          <div class="legend-row" id="leg-ships" style="display:none;"><span style="width:10px;height:10px;background:#DC143C;transform:rotate(45deg);flex-shrink:0;display:inline-block;"></span><span class="legend-label" style="margin-left:8px;">Commercial vessel attacked</span></div>
+          <div class="legend-row" id="leg-kharg" style="display:none;"><span class="legend-dot" style="background:#B8883A;"></span><span class="legend-label">Kharg Island — oil export terminal</span></div>
+          <div class="legend-row" id="leg-fujairah" style="display:none;"><span class="legend-dot" style="background:#FF6B35;"></span><span class="legend-label">Red Sea / Fujairah — expanded attacks</span></div>
+          <div class="legend-row" id="leg-larijani" style="display:none;"><span style="width:10px;height:10px;background:#FFFFFF;clip-path:polygon(50% 0%,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0% 50%,40% 40%);flex-shrink:0;display:inline-block;"></span><span class="legend-label" style="margin-left:8px;">Ali Larijani — killed 16 Mar</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll steps -->
+    <div id="steps-col" style="width:42%; padding:0 48px 0 32px;">
+      <div style="height:40vh;"></div>
+
+      <!-- Step 0: The region -->
+      <div class="conf-step" data-step="0" style="min-height:70vh; display:flex; align-items:center; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:rgba(255,255,255,0.3);">The Middle East — February 2026</p>
+          <h3 class="step-title">A region on the edge of war</h3>
+          <p class="step-body">On 28 February 2026, a joint US-Israeli strike force launched one of the largest coordinated air campaigns since the Second World War — targeting military infrastructure and the Iranian leadership in a single night. Scroll through to see how the conflict unfolded, and what it means at the petrol pump in New Zealand.</p>
+        </div>
+      </div>
+
+      <!-- Step 1: Day 1 strikes -->
+      <div class="conf-step" data-step="1" style="min-height:70vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#B85C45;">28 February — Day 1</p>
+          <h3 class="step-title">900 strikes in 12 hours</h3>
+          <p class="step-body">The opening salvo hit simultaneously across Iran. <strong>Supreme Leader Khamenei was killed</strong> in the first hours. Nuclear facilities at Natanz, Fordow, Arak and Isfahan were struck by B-2 stealth bombers. Naval bases at Bandar Abbas — the gateway to the Strait of Hormuz — were among the first targets.</p>
+          <div class="step-mini-grid">
+            <div><div class="step-mini-num" style="color:#B85C45;">~200</div><div class="step-mini-label">Air defence systems degraded</div></div>
+            <div><div class="step-mini-num" style="color:#B85C45;">17</div><div class="step-mini-label">Iranian warships destroyed</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Scale -->
+      <div class="conf-step" data-step="2" style="min-height:70vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#B85C45;">Days 2–3 — 1–2 March</p>
+          <h3 class="step-title">Strikes spread to 26 of 31 provinces</h3>
+          <p class="step-body">Within 48 hours, ACLED had documented strikes across <strong>26 of Iran's 31 provinces</strong>. Air bases, missile storage facilities, IRGC command posts, and oil infrastructure were targeted nationwide. The IRGC ordered civilian evacuation of Mariwan, a Kurdish city near the Iraqi border, signalling preparations for possible ground operations.</p>
+          <div class="step-stat" style="color:#B85C45;">~800<span>confirmed dead by March 3 — Iranian Red Crescent</span></div>
+        </div>
+      </div>
+
+      <!-- Step 3: Retaliation -->
+      <div class="conf-step" data-step="3" style="min-height:70vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#E67E22;">Iranian retaliation — 1–4 March</p>
+          <h3 class="step-title">Iran strikes across 10 countries</h3>
+          <p class="step-body">Iran's response was immediate and regional. Missiles and drones targeted <strong>US bases in the Gulf</strong>, civilian infrastructure in the UAE (the most heavily struck country), and Israeli cities. Hezbollah launched long-range missiles at Tel Aviv from southern Lebanon. More than 90 Iranian missile and drone attempts targeted Israel — approximately 20 reached civilian areas.</p>
+          <div class="step-mini-grid">
+            <div><div class="step-mini-num" style="color:#E67E22;">10</div><div class="step-mini-label">Countries hit by Iranian strikes</div></div>
+            <div><div class="step-mini-num" style="color:#E67E22;">896</div><div class="step-mini-label">Total Iranian strike events (ACLED)</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Hormuz -->
+      <div class="conf-step" data-step="4" style="min-height:70vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#F1C40F;">1 March — Strait of Hormuz</p>
+          <h3 class="step-title">The world's most important shipping lane is closed</h3>
+          <p class="step-body">On 1 March, Iran attacked the first commercial vessel attempting to pass through the Strait of Hormuz — a 21-mile wide channel between Iran and Oman through which <strong>20% of global oil supply</strong> flows every day. Within hours, insurers had suspended coverage for vessels transiting the strait. The global oil price responded immediately.</p>
+          <div class="step-stat" style="color:#F1C40F;">20%<span>of global oil supply — now blocked</span></div>
+        </div>
+      </div>
+
+      <!-- Step 5: Shipping attacks -->
+      <div class="conf-step" data-step="5" style="min-height:70vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#DC143C;">11 March — Commercial shipping</p>
+          <h3 class="step-title">Named vessels struck — 150 ships anchored outside the strait</h3>
+          <p class="step-body">Iran moved from attacking military targets to commercial shipping. Seven named vessels were struck around the Strait of Hormuz and Persian Gulf. The <strong>Mayuree Naree</strong> caught fire — 20 crew were rescued by the Omani Navy, three remain missing. Tanker traffic through the strait collapsed by <strong>70%</strong>, from over 100 ships a day to a trickle.</p>
+          <div class="step-mini-grid">
+            <div><div class="step-mini-num" style="color:#DC143C;">21</div><div class="step-mini-label">confirmed attacks on merchant ships</div></div>
+            <div><div class="step-mini-num" style="color:#DC143C;">150+</div><div class="step-mini-label">ships anchored, waiting outside</div></div>
+            <div><div class="step-mini-num" style="color:#DC143C;">−70%</div><div class="step-mini-label">tanker traffic through the strait</div></div>
+            <div><div class="step-mini-num" style="color:#DC143C;">5 Mar</div><div class="step-mini-label">P&I insurance cancelled — transit effectively impossible</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6: Oil shock -->
+      <div class="conf-step" data-step="6" style="min-height:70vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#B8883A;">The oil shock</p>
+          <h3 class="step-title">Dubai crude surges — New Zealand pays</h3>
+          <p class="step-body">Dubai crude went from <strong>$71/bbl before the war</strong> to <strong>$115/bbl by March 13</strong> — a 62% rise in less than two weeks. Brent crude followed. The NZD also weakened against the USD, amplifying the shock at the pump. Scroll down to see how this fed through to NZ petrol prices.</p>
+          <div class="step-mini-grid">
+            <div><div class="step-mini-num" style="color:#B8883A;">$71</div><div class="step-mini-label">Crude before the war</div></div>
+            <div><div class="step-mini-num" style="color:#B85C45;">$115</div><div class="step-mini-label">Crude as of 13 Mar</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 7: Kharg Island -->
+      <div class="conf-step" data-step="7" style="min-height:70vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#B8883A;">13 March — Kharg Island</p>
+          <h3 class="step-title">Iran's economic lifeline — and America's next target</h3>
+          <p class="step-body">Closing the Strait of Hormuz was a tactical win for Iran — but Trump responded on March 13 by bombing <strong>90+ military targets</strong> on Kharg Island. Naval mine storage, missile bunkers, and military infrastructure were destroyed. The oil export terminal was deliberately left intact. Trump's interest in Kharg is not new — in 1988, at the height of the Iran-Iraq tanker war, he told a reporter he would <em style="color:rgba(255,255,255,0.75);">"do a number"</em> on the island if he were in charge. Nearly four decades later, he was — and he did.</p>
+          <div class="step-mini-grid">
+            <div><div class="step-mini-num" style="color:#B8883A;">90%</div><div class="step-mini-label">of Iran's oil exports pass through Kharg Island</div></div>
+            <div><div class="step-mini-num" style="color:#B8883A;">1.5m</div><div class="step-mini-label">barrels per day — gone if the terminal is hit</div></div>
+          </div>
+          <div style="margin-top:20px; padding:14px 16px; background:rgba(184,136,58,0.08); border:1px solid rgba(184,136,58,0.2); border-radius:8px;">
+            <p style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.75;">The oil export terminal remains standing — deliberately. A direct strike on it would be an economic decapitation of Iran, cutting off <strong style="color:rgba(255,255,255,0.7);">90% of its oil export revenue overnight</strong>. Crude prices would reach levels not seen since 2008. Trump knows this. Kharg is leverage — not yet a target, but never fully off the table.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 8: Red Sea escalation -->
+      <div class="conf-step" data-step="8" style="min-height:70vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#FF6B35;">14 March — The war spreads</p>
+          <h3 class="step-title">Iran opens a second front — the Red Sea</h3>
+          <p class="step-body">With Kharg bombed but still standing, Iran escalated rather than retreated. On 14 March, three tankers bound for Saudi Arabia were struck in the Red Sea — targeting the kingdom through its western shipping corridor. The same day, Iran attempted to hit <strong>Fujairah</strong> on the UAE east coast, a critical oil storage and bunkering hub that serves tankers bypassing the Gulf. The message was unambiguous: if the Persian Gulf was closed, so would every route around it.</p>
+          <p class="step-body" style="margin-top:12px;">Iran does not need to do this alone. The <strong>Houthi movement in Yemen</strong> — Iran's most active regional proxy — proved during the Israel-Hamas war that they could shut down Red Sea traffic almost single-handedly. Between November 2023 and early 2024, Houthi drone and missile attacks reduced Red Sea shipping by over 50%, forcing carriers to reroute around southern Africa. That capability has not gone away. With Iranian direction and resupply, the Houthis represent a second front that requires no Iranian ships, no Iranian casualties, and no direct attribution.</p>
+          <div class="step-mini-grid">
+            <div><div class="step-mini-num" style="color:#FF6B35;">Red Sea</div><div class="step-mini-label">Saudi-bound tankers targeted</div></div>
+            <div><div class="step-mini-num" style="color:#FF4444;">Fujairah</div><div class="step-mini-label">Strike attempt — backup route at risk</div></div>
+          </div>
+          <div style="margin-top:20px; padding:14px 16px; background:rgba(255,107,53,0.08); border:1px solid rgba(255,107,53,0.2); border-radius:8px;">
+            <p style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.75;">Saudi Arabia had not been drawn into the conflict directly — yet. But <strong style="color:rgba(255,255,255,0.7);">sustained attacks on Saudi oil infrastructure or Red Sea shipping</strong> could bring Riyadh into the war on the US-Israeli side, fundamentally changing the character of the conflict.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 9: Diplomatic collapse / Larijani -->
+      <div class="conf-step" data-step="9" style="min-height:70vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:rgba(255,255,255,0.4);">16 March — No way out</p>
+          <h3 class="step-title">The death of the last pragmatist</h3>
+          <p class="step-body">On 16 March, Ali Larijani — former Speaker of Parliament, four-time nuclear negotiator, and the most prominent moderate left in the Iranian regime — was killed in Tehran. Larijani was an extreme figure by any Western standard, but he was <strong>the one senior leader who had historically been willing to come to the table</strong>. His death removes the last credible channel through which a negotiated pause might have been brokered.</p>
+          <div class="step-mini-grid">
+            <div><div class="step-mini-num" style="color:rgba(255,255,255,0.5);">4×</div><div class="step-mini-label">Larijani led nuclear negotiations with the West</div></div>
+            <div><div class="step-mini-num" style="color:rgba(255,255,255,0.5);">0</div><div class="step-mini-label">Senior officials remaining with negotiating history</div></div>
+          </div>
+          <div style="margin-top:20px; padding:14px 16px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:8px;">
+            <p style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.75;">The remaining Iranian leadership — hardline IRGC commanders and clerics who rose through the war — have no history of diplomacy and no political incentive to negotiate. With no ceasefire in sight and fresh attacks on Saudi shipping, <strong style="color:rgba(255,255,255,0.7);">the pathway to negotiations has effectively closed</strong>. The oil price has not yet priced this in.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 10: What happens next -->
+      <div class="conf-step" data-step="10" style="min-height:70vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#B85C45;">What happens next</p>
+          <h3 class="step-title">No exit, no ceasefire — and a price that keeps rising</h3>
+          <p class="step-body">Neither side has an offramp. Iran cannot concede without regime collapse — backing down after absorbing the largest strike campaign since World War Two would end the Islamic Republic. America cannot sustain an indefinite forward presence in the Gulf. And <strong>Israel will not accept enriched uranium remaining in Iranian hands</strong> — somewhere in the country, dispersed facilities survived the opening strikes. That single fact makes a negotiated peace almost impossible to construct.</p>
+          <p class="step-body" style="margin-top:12px;">Iranian drones — cheap, replaceable, and produced in facilities that are difficult to fully destroy — are not going away. Each week the war continues is another week of disrupted shipping, another week of oil priced at crisis levels, another week of the pass-through working its way to the pump.</p>
+          <div class="step-mini-grid">
+            <div><div class="step-mini-num" style="color:#B85C45;">$130+</div><div class="step-mini-label">Crude forecast if closure persists — analyst consensus</div></div>
+            <div><div class="step-mini-num" style="color:#B85C45;">$3.20+</div><div class="step-mini-label">Projected NZ pump price at $135/bbl crude</div></div>
+          </div>
+          <div style="margin-top:20px; padding:16px; background:rgba(184,136,58,0.06); border-left:3px solid #B8883A; border-radius:0 8px 8px 0;">
+            <p style="font-size:13px; color:rgba(255,255,255,0.6); line-height:1.8;">The price at the pump is not just a cost-of-living number. It is a real-time signal of a war reshaping the Middle East — its borders, its regimes, and the lives of the people living there. Each cent added to the litre price in New Zealand reflects another week of a conflict with no visible end.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:40vh;"></div>
+    </div>
+  </div>
+
+  <!-- Context cards -->
+  <div style="background:#1A1E1A; padding:64px 48px; border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:960px; margin:0 auto;">
+      <p style="font-size:11px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; color:#3A5C45; margin-bottom:32px;">Understanding the numbers</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:28px;">
+          <h4 style="font-family:'Fraunces',serif; font-size:18px; font-weight:300; color:#F7F6F2; margin-bottom:12px;">The lag effect</h4>
+          <p style="font-size:14px; color:rgba(255,255,255,0.55); line-height:1.8;">Oil is bought 2–4 weeks before it arrives at the pump. The March 13 price of <strong style="color:rgba(255,255,255,0.85);">$2.82/L</strong> reflects crude bought before the sharpest price moves. Expect further rises through late March and April.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:28px;">
+          <h4 style="font-family:'Fraunces',serif; font-size:18px; font-weight:300; color:#F7F6F2; margin-bottom:12px;">Fixed taxes cushion — partially</h4>
+          <p style="font-size:14px; color:rgba(255,255,255,0.55); line-height:1.8;">Around <strong style="color:rgba(255,255,255,0.85);">77c per litre</strong> is fixed taxes — fuel excise, ETS levy, ACC — that don't move with oil. This acts as a buffer, but also means the base price is already high before the oil cost is added.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:28px;">
+          <h4 style="font-family:'Fraunces',serif; font-size:18px; font-weight:300; color:#F7F6F2; margin-bottom:12px;">The NZD amplifies the shock</h4>
+          <p style="font-size:14px; color:rgba(255,255,255,0.55); line-height:1.8;">Dubai crude is priced in USD. The NZD/USD rate has fallen from <strong style="color:rgba(255,255,255,0.85);">0.633 to 0.589</strong> since the war began — adding extra cost on top of the crude price rise itself.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:28px;">
+          <h4 style="font-family:'Fraunces',serif; font-size:18px; font-weight:300; color:#F7F6F2; margin-bottom:12px;">Where this goes next</h4>
+          <p style="font-size:14px; color:rgba(255,255,255,0.55); line-height:1.8;">If the Hormuz closure persists, analysts expect crude to test <strong style="color:rgba(255,255,255,0.85);">$130–150/bbl</strong>. That would push NZ pump prices above <strong style="color:rgba(255,255,255,0.85);">$3.20/L</strong> — a record, and roughly double the pre-war level of recent years.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- What this means -->
+  <div style="background:#1A1E1A; padding:80px 48px; border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="border-top:2px solid #3A5C45; padding-top:40px; max-width:960px; margin:0 auto;">
+      <p style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#3A5C45; margin-bottom:12px;">What this means</p>
+      <h3 style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#F7F6F2; line-height:1.3; letter-spacing:-0.3px; margin-bottom:32px;">Three things the data is telling us</h3>
+      <div style="border:1px solid rgba(255,255,255,0.08); border-radius:12px; overflow:hidden;">
+        <div class="policy-row">
+          <div class="policy-num">01</div>
+          <div><strong class="policy-strong">The Hormuz closure is the bigger unknown.</strong><span class="policy-text">Crude at $115/bbl was already a significant shock. Rerouting tankers around the Cape of Good Hope adds 10–15 days to shipping time and significant freight cost. If the closure persists, price discovery is still underway — none of this is yet in MBIE data.</span></div>
+        </div>
+        <div class="policy-row">
+          <div class="policy-num">02</div>
+          <div><strong class="policy-strong">NZ's renewable electricity grid provides partial insulation.</strong><span class="policy-text">Around 80–85% of NZ's electricity comes from hydro, wind, and geothermal. Unlike most countries, a fuel price shock doesn't automatically translate into an electricity price shock. The economy is exposed through transport and freight — not through the power grid.</span></div>
+        </div>
+        <div class="policy-row">
+          <div class="policy-num">03</div>
+          <div><strong class="policy-strong">The RBNZ faces a difficult trade-off.</strong><span class="policy-text">Higher fuel prices feed into headline inflation. The Reserve Bank was on a path of gradual rate cuts through 2026. A sustained oil price shock complicates that — cutting into an inflationary environment risks embedding expectations. Fuel prices are now a material input to the monetary policy outlook.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="background:#1A1E1A; padding:40px 48px; border-top:1px solid rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:space-between;">
+    <span style="font-size:13px; color:rgba(255,255,255,0.3);">Harvest · Data Analysis · Wellington, NZ</span>
+    <a href="index.html" style="font-size:13px; color:#B8883A; text-decoration:none; border:1px solid rgba(184,136,58,0.35); border-radius:40px; padding:10px 20px; transition:all 0.2s;" onmouseover="this.style.background='rgba(184,136,58,0.1)'" onmouseout="this.style.background=''">← Back to portfolio</a>
+  </div>
+
+  <script>
+  (function() {
+
+    // ── Conflict data ─────────────────────────────────────────────────────────
+    var iranStrikes      = [{"name": "Tehran \u2014 Supreme Leader compound", "lat": 35.69, "lon": 51.39, "day": 1, "size": 22, "type": "leadership"}, {"name": "Natanz \u2014 nuclear enrichment plant", "lat": 33.72, "lon": 51.73, "day": 1, "size": 18, "type": "nuclear"}, {"name": "Fordow \u2014 underground enrichment", "lat": 34.88, "lon": 50.99, "day": 1, "size": 17, "type": "nuclear"}, {"name": "Arak \u2014 heavy water reactor", "lat": 34.19, "lon": 49.23, "day": 1, "size": 16, "type": "nuclear"}, {"name": "Isfahan \u2014 nuclear complex", "lat": 32.65, "lon": 51.67, "day": 1, "size": 16, "type": "nuclear"}, {"name": "Parchin \u2014 military complex", "lat": 35.52, "lon": 51.77, "day": 1, "size": 14, "type": "military"}, {"name": "Imam Ali \u2014 missile base", "lat": 33.0, "lon": 48.0, "day": 1, "size": 16, "type": "military"}, {"name": "Dezful \u2014 air base", "lat": 32.43, "lon": 48.4, "day": 1, "size": 13, "type": "military"}, {"name": "Bandar Abbas \u2014 naval base", "lat": 27.19, "lon": 56.28, "day": 1, "size": 15, "type": "military"}, {"name": "Kharg Island \u2014 oil terminal", "lat": 29.24, "lon": 50.32, "day": 1, "size": 13, "type": "military"}, {"name": "Bushehr \u2014 naval/nuclear", "lat": 28.83, "lon": 50.91, "day": 1, "size": 13, "type": "military"}, {"name": "Tabriz \u2014 air base", "lat": 38.13, "lon": 46.24, "day": 2, "size": 12, "type": "military"}, {"name": "Kermanshah \u2014 IRGC base", "lat": 34.31, "lon": 47.07, "day": 2, "size": 12, "type": "military"}, {"name": "Ahvaz \u2014 oil region military", "lat": 31.32, "lon": 48.67, "day": 2, "size": 12, "type": "military"}, {"name": "Mashhad \u2014 military facilities", "lat": 36.24, "lon": 59.64, "day": 2, "size": 11, "type": "military"}, {"name": "Shiraz \u2014 air base", "lat": 29.59, "lon": 52.58, "day": 2, "size": 11, "type": "military"}, {"name": "Mariwan \u2014 IRGC evacuation zone", "lat": 35.52, "lon": 46.17, "day": 3, "size": 10, "type": "military"}, {"name": "Zahedan \u2014 southeastern IRGC", "lat": 29.5, "lon": 60.86, "day": 3, "size": 10, "type": "military"}, {"name": "Qom \u2014 missile storage", "lat": 34.64, "lon": 50.88, "day": 3, "size": 11, "type": "military"}, {"name": "Rasht \u2014 northwestern base", "lat": 37.28, "lon": 49.58, "day": 3, "size": 10, "type": "military"}];
+    var retaliation      = [{"name": "Tel Aviv, Israel", "lat": 32.09, "lon": 34.78, "size": 15}, {"name": "Haifa, Israel", "lat": 32.82, "lon": 34.99, "size": 12}, {"name": "Dubai, UAE", "lat": 25.2, "lon": 55.27, "size": 14}, {"name": "Abu Dhabi, UAE", "lat": 24.45, "lon": 54.38, "size": 13}, {"name": "Kuwait City", "lat": 29.38, "lon": 47.98, "size": 12}, {"name": "Manama, Bahrain", "lat": 26.22, "lon": 50.59, "size": 12}, {"name": "Doha, Qatar", "lat": 25.29, "lon": 51.53, "size": 12}, {"name": "Riyadh, Saudi Arabia", "lat": 24.69, "lon": 46.72, "size": 11}, {"name": "Baghdad \u2014 PMF sites", "lat": 33.32, "lon": 44.37, "size": 11}, {"name": "Amman, Jordan", "lat": 31.95, "lon": 35.91, "size": 10}, {"name": "Muscat, Oman", "lat": 23.59, "lon": 58.38, "size": 10}, {"name": "S. Lebanon \u2014 Hezbollah", "lat": 33.3, "lon": 35.5, "size": 11}, {"name": "Nicosia, Cyprus", "lat": 35.19, "lon": 33.38, "size": 9}, {"name": "Baku, Azerbaijan", "lat": 40.41, "lon": 49.87, "size": 9}];
+    var hormuz           = {"lat": 26.55, "lon": 56.5};
+    var shippingAttacks  = [{"name": "MV Mayuree Naree \u2014 Thai bulk carrier<br>Fire, 20 crew rescued, 3 missing", "lat": 26.4, "lon": 56.3}, {"name": "MT Safesea Vishnu \u2014 Marshall Islands tanker<br>Iranian Navy claimed responsibility", "lat": 26.65, "lon": 56.85}, {"name": "MV Express Room \u2014 Liberian container ship<br>Struck by Iranian projectiles", "lat": 26.3, "lon": 56.6}, {"name": "MT Zefyros \u2014 Maltese tanker<br>Persian Gulf attack", "lat": 26.9, "lon": 55.4}, {"name": "MV Stena Imperative \u2014 US-flagged<br>Struck twice at Bahrain port, 1 killed", "lat": 26.2, "lon": 50.6}, {"name": "MV One Majesty \u2014 Persian Gulf<br>Hit 60 miles outside strait", "lat": 25.5, "lon": 57.8}, {"name": "MV Star Gwyneth \u2014 UAE coast<br>Anchored with hull damage", "lat": 25.6, "lon": 55.9}];
+    var kharg            = {"lat": 29.24, "lon": 50.32};
+    var fujairah         = {"lat": 25.13, "lon": 56.34};
+    var redSeaAttacks    = [{"name": "MT Pacific Voyager<br>Crude tanker struck 60nm north of Bab el-Mandeb", "lat": 13.2, "lon": 43.6}, {"name": "MV Golden Oman<br>Bulk carrier disabled in central Red Sea", "lat": 18.4, "lon": 39.2}, {"name": "MT Saudi Pioneer<br>VLCC hit approaching Jeddah \u2014 total loss", "lat": 22.1, "lon": 38.8}];
+    var larijani         = {"lat": 35.7, "lon": 51.42, "date": "16 March 2026"};
+
+    // ── Colour helpers ────────────────────────────────────────────────────────
+    function strikeColor(type) {
+      if (type === 'leadership') return '#FF4444';
+      return '#C0392B';
+    }
+
+    // ── Map views ─────────────────────────────────────────────────────────────
+    var MIDEAST      = { lat: [13, 43], lon: [25, 72] };
+    var HORMUZ_VIEW  = { lat: [22, 31], lon: [50, 63] };
+    var GULF_VIEW    = { lat: [22, 30], lon: [47, 62] };
+    var DUBAI_VIEW   = { lat: [22, 28], lon: [51, 58] };
+    var KHARG_VIEW   = { lat: [27, 32], lon: [47, 54] };
+    var WIDER_VIEW   = { lat: [10, 36], lon: [30, 65] };
+    var TEHRAN_VIEW  = { lat: [27, 42], lon: [42, 62] };
+
+    var _currentView = { lat: MIDEAST.lat.slice(), lon: MIDEAST.lon.slice() };
+    var _zoomRaf = null;
+
+    function animateZoom(target, duration) {
+      if (_zoomRaf) cancelAnimationFrame(_zoomRaf);
+      var start = null;
+      var from = { lat: _currentView.lat.slice(), lon: _currentView.lon.slice() };
+      function ease(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+      function step(ts) {
+        if (!start) start = ts;
+        var t = Math.min((ts - start) / duration, 1);
+        var e = ease(t);
+        var lat = [from.lat[0]+(target.lat[0]-from.lat[0])*e, from.lat[1]+(target.lat[1]-from.lat[1])*e];
+        var lon = [from.lon[0]+(target.lon[0]-from.lon[0])*e, from.lon[1]+(target.lon[1]-from.lon[1])*e];
+        Plotly.relayout('conflict-map', {'geo.lataxis.range': lat, 'geo.lonaxis.range': lon});
+        if (t < 1) { _zoomRaf = requestAnimationFrame(step); }
+        else { _currentView = { lat: target.lat.slice(), lon: target.lon.slice() }; }
+      };
+      _zoomRaf = requestAnimationFrame(step);
+    }
+
+    // ── Build base traces ─────────────────────────────────────────────────────
+    // Trace 0: Iran strikes (hidden initially)
+    var strikeTrace = {
+      type: 'scattergeo', mode: 'markers',
+      lat: iranStrikes.map(function(d){ return d.lat; }),
+      lon: iranStrikes.map(function(d){ return d.lon; }),
+      text: iranStrikes.map(function(d){ return d.name; }),
+      marker: {
+        size: iranStrikes.map(function(d){ return d.size; }),
+        color: iranStrikes.map(function(d){ return strikeColor(d.type); }),
+        opacity: 0.85,
+        line: { color: 'rgba(255,80,80,0.4)', width: 1 },
+        sizemode: 'diameter',
+      },
+      hovertemplate: '<b>%{text}</b><extra></extra>',
+      showlegend: false,
+      visible: false,
+    };
+
+    // Trace 1: Retaliation (hidden initially)
+    var retaliationTrace = {
+      type: 'scattergeo', mode: 'markers',
+      lat: retaliation.map(function(d){ return d.lat; }),
+      lon: retaliation.map(function(d){ return d.lon; }),
+      text: retaliation.map(function(d){ return d.name; }),
+      marker: {
+        size: retaliation.map(function(d){ return d.size; }),
+        color: '#E67E22',
+        opacity: 0.8,
+        line: { color: 'rgba(230,126,34,0.4)', width: 1 },
+        sizemode: 'diameter',
+      },
+      hovertemplate: '<b>%{text}</b><br>Iranian strike<extra></extra>',
+      showlegend: false,
+      visible: false,
+    };
+
+    // Trace 2: Hormuz marker (hidden initially)
+    var hormuzTrace = {
+      type: 'scattergeo', mode: 'markers+text',
+      lat: [hormuz.lat],
+      lon: [hormuz.lon],
+      text: ['Strait of Hormuz'],
+      textposition: 'top center',
+      textfont: { size: 11, color: '#F1C40F', family: 'Inter, sans-serif' },
+      marker: {
+        size: [20], color: ['#F1C40F'],
+        opacity: 0.95,
+        line: { color: 'rgba(241,196,15,0.5)', width: 2 },
+      },
+      hovertemplate: '<b>Strait of Hormuz</b><br>Closed 1 March 2026<extra></extra>',
+      showlegend: false,
+      visible: false,
+    };
+
+    // ── Map layout ────────────────────────────────────────────────────────────
+    var mapLayout = {
+      paper_bgcolor: '#0D1210',
+      geo: {
+        scope: 'world',
+        showland: true, landcolor: '#1C2B22',
+        showocean: true, oceancolor: '#0D1210',
+        showframe: false,
+        showcoastlines: true, coastlinecolor: '#3A5040', coastlinewidth: 0.8,
+        showcountries: true, countrycolor: '#2A3D30', countrywidth: 0.5,
+        showlakes: false,
+        lataxis: { range: MIDEAST.lat },
+        lonaxis: { range: MIDEAST.lon },
+        bgcolor: '#0D1210',
+        projection: { type: 'mercator' },
+        resolution: 50,
+      },
+      margin: { l:0, r:0, t:0, b:0 },
+      showlegend: false,
+      dragmode: false,
+    };
+
+    // Trace 3: Shipping attack markers (shown only on step 5)
+    var shipTrace = {
+      type: 'scattergeo', mode: 'markers',
+      lat: shippingAttacks.map(function(d){ return d.lat; }),
+      lon: shippingAttacks.map(function(d){ return d.lon; }),
+      text: shippingAttacks.map(function(d){ return d.name; }),
+      marker: {
+        size: 12, color: '#DC143C',
+        opacity: 0.9,
+        symbol: 'diamond',
+        line: { color: 'rgba(220,20,60,0.5)', width: 1.5 },
+      },
+      hovertemplate: '<b>%{text}</b><extra></extra>',
+      showlegend: false,
+      visible: false,
+    };
+
+    // Trace 4: Kharg Island (shown on step 7)
+    var khargTrace = {
+      type: 'scattergeo', mode: 'markers+text',
+      lat: [kharg.lat], lon: [kharg.lon],
+      text: ['Kharg Island'],
+      textposition: 'top right',
+      textfont: { size: 12, color: '#B8883A', family: 'Inter, sans-serif' },
+      marker: {
+        size: [22], color: ['#B8883A'],
+        opacity: 0.95,
+        line: { color: 'rgba(184,136,58,0.6)', width: 2 },
+      },
+      hovertemplate: '<b>Kharg Island</b><br>90% of Iranian oil exports<br>1.5 mbpd crude<br>Military targets obliterated 13 Mar<extra></extra>',
+      showlegend: false,
+      visible: false,
+    };
+
+    // Trace 5: Dubai marker (shown only on step 6)
+    var dubaiTrace = {
+      type: 'scattergeo', mode: 'markers+text',
+      lat: [25.20], lon: [55.27],
+      text: ['Dubai'],
+      textposition: 'top center',
+      textfont: { size: 12, color: '#B8883A', family: 'Inter, sans-serif' },
+      marker: {
+        size: [18], color: ['#B8883A'],
+        opacity: 0.95,
+        line: { color: 'rgba(184,136,58,0.5)', width: 2 },
+      },
+      hovertemplate: '<b>Dubai, UAE</b><br>Most heavily struck by Iranian forces<extra></extra>',
+      showlegend: false,
+      visible: false,
+    };
+
+    // Trace 6: Fujairah + Red Sea attacks (shown on step 8)
+    var fujairahTrace = {
+      type: 'scattergeo', mode: 'markers',
+      lat: redSeaAttacks.map(function(d){ return d.lat; }).concat([fujairah.lat]),
+      lon: redSeaAttacks.map(function(d){ return d.lon; }).concat([fujairah.lon]),
+      text: redSeaAttacks.map(function(d){ return d.name; }).concat(['Fujairah — strike attempt 14 Mar']),
+      marker: {
+        size: [14, 14, 14, 16],
+        color: ['#FF6B35', '#FF6B35', '#FF6B35', '#FF4444'],
+        opacity: 0.9,
+        symbol: ['diamond', 'diamond', 'diamond', 'circle'],
+        line: { color: 'rgba(255,100,50,0.4)', width: 1.5 },
+      },
+      hovertemplate: '<b>%{text}</b><extra></extra>',
+      showlegend: false,
+      visible: false,
+    };
+
+    // Trace 7: Ali Larijani death marker (shown on step 9)
+    var larijaniTrace = {
+      type: 'scattergeo', mode: 'markers+text',
+      lat: [larijani.lat],
+      lon: [larijani.lon],
+      text: ['Ali Larijani — killed 16 Mar'],
+      textposition: 'bottom right',
+      textfont: { size: 11, color: 'rgba(255,255,255,0.7)', family: 'Inter, sans-serif' },
+      marker: {
+        size: [16], color: ['#FFFFFF'],
+        opacity: 0.85,
+        symbol: 'cross',
+        line: { color: 'rgba(255,255,255,0.5)', width: 2 },
+      },
+      hovertemplate: '<b>Ali Larijani</b><br>Former Speaker of Parliament<br>Killed 16 March 2026<br>Tehran<extra></extra>',
+      showlegend: false,
+      visible: false,
+    };
+
+    var cfg = { displayModeBar: false, responsive: true, scrollZoom: false };
+    Plotly.newPlot('conflict-map', [strikeTrace, retaliationTrace, hormuzTrace, shipTrace, khargTrace, dubaiTrace, fujairahTrace, larijaniTrace], mapLayout, cfg);
+
+    // ── Step handler ──────────────────────────────────────────────────────────
+    function showStep(n) {
+      document.getElementById('map-legend').style.display = n >= 1 ? 'flex' : 'none';
+      document.getElementById('leg-retaliation').style.display = n >= 3 ? 'flex' : 'none';
+      document.getElementById('leg-hormuz').style.display = n >= 4 ? 'flex' : 'none';
+      document.getElementById('leg-ships').style.display = n === 5 ? 'flex' : 'none';
+      document.getElementById('leg-kharg').style.display = n === 7 || n === 8 ? 'flex' : 'none';
+      document.getElementById('leg-fujairah').style.display = n === 8 ? 'flex' : 'none';
+      document.getElementById('leg-larijani').style.display = n === 9 || n === 10 ? 'flex' : 'none';
+
+      if (n === 0) {
+        Plotly.restyle('conflict-map', { visible: false }, [0, 1, 2, 3, 4, 5, 6, 7]);
+        animateZoom(MIDEAST, 800);
+
+      } else if (n === 1) {
+        var sizes     = iranStrikes.map(function(d){ return d.day === 1 ? d.size : 0; });
+        var opacities = iranStrikes.map(function(d){ return d.day === 1 ? 0.9 : 0; });
+        Plotly.restyle('conflict-map', {'marker.size': [sizes], 'marker.opacity': [opacities], visible: true}, [0]);
+        Plotly.restyle('conflict-map', { visible: false }, [1, 2, 3, 4, 5, 6, 7]);
+        animateZoom(MIDEAST, 800);
+
+      } else if (n === 2) {
+        var sizes     = iranStrikes.map(function(d){ return d.size; });
+        var opacities = iranStrikes.map(function(d){ return 0.85; });
+        Plotly.restyle('conflict-map', {'marker.size': [sizes], 'marker.opacity': [opacities], visible: true}, [0]);
+        Plotly.restyle('conflict-map', { visible: false }, [1, 2, 3, 4, 5, 6, 7]);
+        animateZoom(MIDEAST, 800);
+
+      } else if (n === 3) {
+        Plotly.restyle('conflict-map', { visible: true }, [0, 1]);
+        Plotly.restyle('conflict-map', { visible: false }, [2, 3, 4, 5, 6, 7]);
+        animateZoom(MIDEAST, 800);
+
+      } else if (n === 4) {
+        Plotly.restyle('conflict-map', { visible: false }, [0, 1, 3, 4, 5, 6, 7]);
+        Plotly.restyle('conflict-map', { visible: true }, [2]);
+        animateZoom(HORMUZ_VIEW, 1000);
+
+      } else if (n === 5) {
+        Plotly.restyle('conflict-map', { visible: false }, [0, 1, 4, 5, 6, 7]);
+        Plotly.restyle('conflict-map', { visible: true }, [2, 3]);
+        animateZoom(GULF_VIEW, 900);
+
+      } else if (n === 6) {
+        Plotly.restyle('conflict-map', { visible: false }, [0, 1, 2, 3, 4, 6, 7]);
+        Plotly.restyle('conflict-map', { visible: true }, [5]);
+        animateZoom(DUBAI_VIEW, 900);
+
+      } else if (n === 7) {
+        Plotly.restyle('conflict-map', { visible: false }, [0, 1, 2, 3, 5, 6, 7]);
+        Plotly.restyle('conflict-map', { visible: true }, [4]);
+        animateZoom(KHARG_VIEW, 1000);
+
+      } else if (n === 8) {
+        Plotly.restyle('conflict-map', { visible: false }, [0, 1, 2, 3, 5, 7]);
+        Plotly.restyle('conflict-map', { visible: true }, [4, 6]);
+        animateZoom(WIDER_VIEW, 1200);
+
+      } else if (n === 9) {
+        Plotly.restyle('conflict-map', { visible: false }, [0, 1, 2, 3, 4, 5, 6]);
+        Plotly.restyle('conflict-map', { visible: true }, [7]);
+        animateZoom(TEHRAN_VIEW, 1000);
+
+      } else if (n === 10) {
+        // Full picture — all conflict layers visible, zoom back out
+        var sizes     = iranStrikes.map(function(d){ return d.size; });
+        var opacities = iranStrikes.map(function(d){ return 0.7; });
+        Plotly.restyle('conflict-map', {'marker.size': [sizes], 'marker.opacity': [opacities], visible: true}, [0]);
+        Plotly.restyle('conflict-map', { visible: true }, [1, 2, 4, 6, 7]);
+        Plotly.restyle('conflict-map', { visible: false }, [3, 5]);
+        animateZoom(MIDEAST, 1200);
+      }
+    }
+
+    // ── Scrollama ─────────────────────────────────────────────────────────────
+    scrollama().setup({ step: '#steps-col .conf-step', offset: 0.5 })
+      .onStepEnter(function(r) {
+        document.querySelectorAll('#steps-col .conf-step').forEach(function(el, i) {
+          el.style.opacity = i === r.index ? '1' : '0.3';
+        });
+        showStep(r.index);
+      });
+
+    window.addEventListener('resize', function() { Plotly.Plots.resize('conflict-map'); });
+
+  })();
+  </script>
+
+</body>
+</html>

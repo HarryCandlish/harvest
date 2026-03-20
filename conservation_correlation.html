@@ -1,0 +1,112 @@
+<div id="conservation-chart" style="font-family:'Inter',sans-serif; background:#F7F6F2; border-radius:12px; padding:32px;">
+  <div style="margin-bottom:6px; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; color:#9AA398; font-weight:500;">Citizen science vs conservation operations</div>
+  <div style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:#1A1E1A; margin-bottom:4px; letter-spacing:-0.3px;">Do operations follow the data?</div>
+  <div style="font-size:13px; color:#4A5248; margin-bottom:8px;">Each bubble is a NZ region. X axis: predator sightings from GBIF. Y axis: total conservation operations (DOC + community Trap.NZ). Bubble size reflects kiwi sightings.</div>
+  <div style="display:flex; gap:16px; margin-bottom:16px; flex-wrap:wrap;">
+    <span style="display:flex; align-items:center; gap:6px; font-size:12px; color:#4A5248;"><span style="width:10px; height:10px; border-radius:50%; background:#3A5C45; display:inline-block;"></span>Kiwi thriving (high ratio)</span><span style="display:flex; align-items:center; gap:6px; font-size:12px; color:#4A5248;"><span style="width:10px; height:10px; border-radius:50%; background:#B8883A; display:inline-block;"></span>Moderate predator pressure</span><span style="display:flex; align-items:center; gap:6px; font-size:12px; color:#4A5248;"><span style="width:10px; height:10px; border-radius:50%; background:#B85C45; display:inline-block;"></span>High predator pressure</span>
+  </div>
+  <div id="cons-bubble" style="width:100%; height:480px;"></div>
+  <div style="margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+    <div style="background:white; border-radius:8px; padding:16px 20px; border:1px solid rgba(0,0,0,0.07);">
+      <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#3A5C45; margin-bottom:6px;">Where kiwi thrive</div>
+      <div style="font-size:13px; color:#4A5248; line-height:1.6;"><strong style="color:#1A1E1A;">Southland</strong> has the most kiwi sightings (2,417) and the fewest predator records — suggesting that where human-introduced pressure remains low, kiwi populations hold. Few formal operations are needed because the threat hasn't arrived.</div>
+    </div>
+    <div style="background:white; border-radius:8px; padding:16px 20px; border:1px solid rgba(0,0,0,0.07);">
+      <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:#B85C45; margin-bottom:6px;">Where the community is filling the gap</div>
+      <div style="font-size:13px; color:#4A5248; line-height:1.6;"><strong style="color:#1A1E1A;">Wellington</strong> has the highest predator density of any region, and the highest number of community Trap.NZ projects (323). The community is responding to what it observes — and the data shows it. <strong style="color:#1A1E1A;">Canterbury</strong>, with similarly high predator counts but far fewer operations, stands out as a potential gap.</div>
+    </div>
+  </div>
+  <div style="margin-top:12px; font-size:12px; color:#9AA398; line-height:1.6; padding-top:12px; border-top:1px solid rgba(0,0,0,0.07);">
+    Sources: GBIF occurrence data via iNaturalist NZ · DOC Pesticide Summary (completed operations 2015–2025) · Trap.NZ public community projects · Regions assigned by approximate geographic bounding box.
+  </div>
+</div>
+
+<script>
+(function() {
+  var x     = [1104, 858, 766, 710, 641, 531, 489, 405, 238, 154, 50];
+  var y     = [375, 212, 121, 241, 324, 131, 166, 114, 408, 20, 21];
+  var sizes = [12, 17, 8, 12, 24, 10, 9, 8, 63, 128, 11];
+  var cols  = ["#B85C45", "#B85C45", "#B85C45", "#B85C45", "#B8883A", "#B85C45", "#B85C45", "#B85C45", "#3A5C45", "#3A5C45", "#B8883A"];
+  var regs  = ["Wellington", "Otago", "Canterbury", "Waikato", "Auckland", "East Coast", "West Coast", "Nelson Marlborough", "Northland", "Southland", "Bay of Plenty"];
+  var htexts = ["<b>Wellington</b><br>Predator sightings: 1,104<br>DOC operations: 52<br>Trap.NZ projects: 323<br>Kiwi sightings: 85<br><i>Most predators \u2014 highest community response</i><extra></extra>", "<b>Otago</b><br>Predator sightings: 858<br>DOC operations: 63<br>Trap.NZ projects: 149<br>Kiwi sightings: 180<extra></extra>", "<b>Canterbury</b><br>Predator sightings: 766<br>DOC operations: 14<br>Trap.NZ projects: 107<br>Kiwi sightings: 0<br><i>High predators, few operations</i><extra></extra>", "<b>Waikato</b><br>Predator sightings: 710<br>DOC operations: 79<br>Trap.NZ projects: 162<br>Kiwi sightings: 89<extra></extra>", "<b>Auckland</b><br>Predator sightings: 641<br>DOC operations: 24<br>Trap.NZ projects: 300<br>Kiwi sightings: 330<extra></extra>", "<b>East Coast</b><br>Predator sightings: 531<br>DOC operations: 86<br>Trap.NZ projects: 45<br>Kiwi sightings: 51<extra></extra>", "<b>West Coast</b><br>Predator sightings: 489<br>DOC operations: 98<br>Trap.NZ projects: 68<br>Kiwi sightings: 21<br><i>High DOC ops despite moderate predators</i><extra></extra>", "<b>Nelson Marlborough</b><br>Predator sightings: 405<br>DOC operations: 10<br>Trap.NZ projects: 104<br>Kiwi sightings: 7<extra></extra>", "<b>Northland</b><br>Predator sightings: 238<br>DOC operations: 52<br>Trap.NZ projects: 356<br>Kiwi sightings: 1,107<br><i>High kiwi, strong community trapping</i><extra></extra>", "<b>Southland</b><br>Predator sightings: 154<br>DOC operations: 9<br>Trap.NZ projects: 11<br>Kiwi sightings: 2,417<br><i>Most kiwi, least predator pressure</i><extra></extra>", "<b>Bay of Plenty</b><br>Predator sightings: 50<br>DOC operations: 6<br>Trap.NZ projects: 15<br>Kiwi sightings: 66<extra></extra>"];
+
+  Plotly.newPlot('cons-bubble', [{
+    type: 'scatter',
+    mode: 'markers',
+    x: x, y: y,
+    text: regs,
+    hovertemplate: htexts,
+    marker: {
+      size: sizes,
+      color: cols,
+      opacity: 0.85,
+      line: { color: 'white', width: 1.5 },
+    },
+    showlegend: false,
+  }], {
+    paper_bgcolor: '#F7F6F2',
+    plot_bgcolor: '#F7F6F2',
+    font: { family: 'Georgia, serif', color: '#1A1E1A', size: 12 },
+    margin: { l: 60, r: 20, t: 20, b: 60 },
+    xaxis: {
+      title: { text: 'Predator sightings (citizen science / GBIF)', font: { size: 11, color: '#9AA398' } },
+      showgrid: true, gridcolor: 'rgba(0,0,0,0.07)', zeroline: false, tickfont: { size: 11 },
+    },
+    yaxis: {
+      title: { text: 'Total conservation operations (DOC + Trap.NZ)', font: { size: 11, color: '#9AA398' } },
+      showgrid: true, gridcolor: 'rgba(0,0,0,0.07)', zeroline: false, tickfont: { size: 11 },
+    },
+    annotations: [{
+            x: 1104, y: 375,
+            xref: 'x', yref: 'y',
+            text: 'Wellington',
+            showarrow: false,
+            font: { size: 11, color: '#1A1E1A', family: 'Inter, sans-serif' },
+            xanchor: 'left',
+            xshift: 10,
+            yshift: 4,
+        },{
+            x: 766, y: 121,
+            xref: 'x', yref: 'y',
+            text: 'Canterbury',
+            showarrow: false,
+            font: { size: 11, color: '#1A1E1A', family: 'Inter, sans-serif' },
+            xanchor: 'left',
+            xshift: 10,
+            yshift: 4,
+        },{
+            x: 489, y: 166,
+            xref: 'x', yref: 'y',
+            text: 'West Coast',
+            showarrow: false,
+            font: { size: 11, color: '#1A1E1A', family: 'Inter, sans-serif' },
+            xanchor: 'left',
+            xshift: 10,
+            yshift: 4,
+        },{
+            x: 238, y: 408,
+            xref: 'x', yref: 'y',
+            text: 'Northland',
+            showarrow: false,
+            font: { size: 11, color: '#1A1E1A', family: 'Inter, sans-serif' },
+            xanchor: 'left',
+            xshift: 10,
+            yshift: 4,
+        },{
+            x: 154, y: 20,
+            xref: 'x', yref: 'y',
+            text: 'Southland',
+            showarrow: false,
+            font: { size: 11, color: '#1A1E1A', family: 'Inter, sans-serif' },
+            xanchor: 'left',
+            xshift: 10,
+            yshift: 4,
+        }],
+    hoverlabel: {
+      bgcolor: 'white',
+      bordercolor: '#DEDBD3',
+      font: { size: 12, family: 'Inter, sans-serif', color: '#1A1E1A' },
+    },
+  }, { displayModeBar: false, responsive: true });
+})();
+</script>

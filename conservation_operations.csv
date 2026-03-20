@@ -1,0 +1,575 @@
+block_name,area_name,activity,method,pesticide,lead_agency,start_date,finish_date,lat,lon,region
+ GBI Rabbit Control Whangapoua Spit , GBI Rabbit Control Whangapoua Spit ,,Fumigation,Magnesium Phosphide,DOC,1651449600000,1809043200000,-36.127740669637134,175.42049329197232,Unknown
+ Te Wera CA Trust Fipronil (Vespex) Bait Stations #112,Te Wera Conservation Area Wasp Control,,Bait stations,Fipronil,Trust,1615248000000,1685491200000,-39.23040044735445,174.59672720670977,Unknown
+# 140 Pukaha Mt Bruce Aerial 2024 Pestex,Pukaha - Mount Bruce 2024,,Aerial,Sodium fluoroacetate,Trust,1728000000000,1753920000000,-40.74693179105206,175.63559866828777,Wellington
+#1 Pukaha Mount Bruce - Aerial 1080 - 2024,Pukaha - Mount Bruce 2024,,Aerial,Sodium fluoroacetate,Trust,1728000000000,1740787200000,-40.74823065423358,175.63569946229725,Wellington
+#149,Pukaha - Mount Bruce 2024,,Bait stations,Sodium fluoroacetate,Trust,1728000000000,1753920000000,-40.74693179105206,175.63559866828777,Wellington
+#19 Pukaha Mt Bruce Feratox BB,Pukaha - Mount Bruce 2024,,Bait bags,Cyanide,Trust,1728000000000,1753920000000,-40.74693179105206,175.63559866828777,Wellington
+#2 Pukaha Mt Bruce Aerial 2024,Pukaha - Mount Bruce 2024,,Handlaying,Sodium fluoroacetate,Trust,1728000000000,1753920000000,-40.74693179105206,175.63559866828777,Wellington
+#3 Pukaha Mt Bruce 2024 BS,Pukaha - Mount Bruce 2024,,Bait stations,Sodium fluoroacetate,Trust,1728000000000,1753920000000,-40.74693179105206,175.63559866828777,Wellington
+1080 to Zero Deer Repellent,Pukunui Predator Control,,Aerial,Sodium fluoroacetate,DOC,1751760000000,1751932800000,-46.98074198807027,167.89153560442352,Southland
+15th Oct Brodi paste,Whataroa-Perth - Brodifacoum Paste LoLa ,,Bait stations,Brodifacoum,Shared (detail in comments),1761091200000,1767139200000,-43.287710293533785,170.368803179997,West Coast
+17th Oct Brodi paste,Whataroa-Perth - Brodifacoum Paste LoLa ,,Bait stations,Brodifacoum,Shared (detail in comments),1761264000000,1767139200000,-43.33009803096153,170.45229755391165,West Coast
+2023-24 1080 Cereal pellets in BS,Waipunga and Tutaekuri Waitara Valley TMA Ground 2023-24,,Bait stations,Sodium fluoroacetate,TB Free,1698192000000,1726358400000,-39.05962669167987,176.7431531386277,East Coast
+2023-24 1080 handlaying,Waipunga and Tutaekuri Waitara Valley TMA Ground 2023-24,,Handlaying,Sodium fluoroacetate,TB Free,1698019200000,1726358400000,-39.05962669167987,176.7431531386277,East Coast
+2023-24 Cyanara 50 paste Handlaying,Waipunga and Tutaekuri Waitara Valley TMA Ground 2023-24,,Handlaying,Cyanide,TB Free,1698192000000,1726358400000,-39.05962669167987,176.7431531386277,East Coast
+2023-24 Feratox BB,Waipunga and Tutaekuri Waitara Valley TMA Ground 2023-24,,Bait bags,Cyanide,TB Free,1698192000000,1726358400000,-39.05962669167987,176.7431531386277,East Coast
+2023-24 Feratox with cereal pellet prefeed in BS,Waipunga and Tutaekuri Waitara Valley TMA Ground 2023-24,,Bait stations,Cyanide,TB Free,1698192000000,1726358400000,-39.05962669167987,176.7431531386277,East Coast
+2023-24 Pestoff Rat Bait 50D Cereal pellets in BS,Waipunga and Tutaekuri Waitara Valley TMA Ground 2023-24,,Bait stations,Diphacinone,TB Free,1698192000000,1726358400000,-39.05962669167987,176.7431531386277,East Coast
+2023-24 Pindone Cereal in BS,Waipunga and Tutaekuri Waitara Valley TMA Ground 2023-24,,Bait stations,Pindone,TB Free,1698192000000,1726358400000,-39.05962669167987,176.7431531386277,East Coast
+2023-26 Cholecalciferol BS,Boundary Stream Seabird Site 2023-2026,,Bait stations,Cholecalciferol,DOC,1690416000000,1781568000000,-39.10038417190837,176.7918392316498,East Coast
+2024-25 Cyanide pellet in BB,Mohaka Buffer Ground OSPRI 2024-25,,Bait bags,Cyanide,TB Free,1727913600000,1751241600000,-39.188203838407276,176.63068953117195,East Coast
+2024-25 Cyanide pellets in BS,Mohaka Buffer Ground OSPRI 2024-25,,Bait stations,Cyanide,TB Free,1727913600000,1751241600000,-39.188203838407276,176.63068953117195,East Coast
+2024-25_Cyanide 9.4g pellets in BB,Mohaka Buffer Ground OSPRI 2024-25,,Bait bags,Cyanide,TB Free,1727913600000,1751241600000,-39.188203838407276,176.63068953117195,East Coast
+2024-25_Diphacinone pellets in BS,Mohaka Buffer Ground OSPRI 2024-25,,Bait stations,Diphacinone,TB Free,1727913600000,1751241600000,-39.188203838407276,176.63068953117195,East Coast
+2024-25_Feratox in BS,Mohaka Buffer Ground OSPRI 2024-25,,Bait stations,Cyanide,TB Free,1727913600000,1751241600000,-39.188203838407276,176.63068953117195,East Coast
+2024_25 Te Toa Whenua Waipoua feratox in baitstations,2024_25 Te Toa Whenua Waipoua ground possum control,,Bait stations,Cyanide,Shared (detail in comments),1741305600000,1765152000000,-35.645394579994026,173.53725975323857,Northland
+2025-26 Arthurs Pass East Treatment Area,2025-26 Arthurs Pass East Treatment Area,,Aerial,Sodium fluoroacetate,DOC,1765411200000,1765670400000,-42.93811322221268,171.8638772296285,West Coast
+2025-26 Feratox with cereal prefeed in BS,Matahorua OSPRI Ground 2025-26,,Bait stations,Cyanide,TB Free,1759795200000,1782777600000,-39.15225723928829,176.91461590358452,East Coast
+2025-26 Feratox with prefeed paste in BS,Matahorua OSPRI Ground 2025-26,,Bait stations,Cyanide,TB Free,1791331200000,1791331200000,-39.15225723928829,176.91461590358452,East Coast
+2025-26 Matahorua Feratox BB,Matahorua OSPRI Ground 2025-26,,Bait bags,Cyanide,TB Free,1759795200000,1782777600000,-39.15225723928829,176.91461590358452,East Coast
+2025-26 Matahorua Ground Diphacinone in BS,Matahorua OSPRI Ground 2025-26,,Bait stations,Diphacinone,TB Free,1759795200000,1782777600000,-39.15225723928829,176.91461590358452,East Coast
+2025-26 Matahorua Ground Feratox Bio Bag 12,Matahorua OSPRI Ground 2025-26,,Bait bags,Cyanide,TB Free,1759795200000,1782777600000,-39.15225723928829,176.91461590358452,East Coast
+2025 Incursion Ulva Bait stations,2025 Incursion Ulva Island,,Bait stations,Brodifacoum,DOC,1737590400000,1769126400000,-46.93185805716316,168.13018172715923,Southland
+2026-29 McLeans double tap in bs,McLeans rodent control 26_29,,Bait stations,Diphacinone + Cholecalciferol,Trust,1770595200000,1864425600000,-40.40955847562711,176.5933195682589,Unknown
+2026_29 McLeans Ratabate in bs,McLeans rodent control 26_29,,Bait stations,Diphacinone,Trust,1770595200000,1864425600000,-40.40955847562711,176.5933195682589,Unknown
+22-23 Double Tap BS,HB River Berms,,Bait stations,Diphacinone + Cholecalciferol,Council,1666051200000,1751241600000,-39.793317665957474,176.79911213233817,Unknown
+23-25 Double Tap BS,2023-25 Maraetotara Plateu Rodent Control,,Bait stations,Diphacinone + Cholecalciferol,Council,1682899200000,1764547200000,-39.856189082183,176.89971979080346,Unknown
+23-25 RatAbate BS,2023-25 Maraetotara Plateu Rodent Control,,Bait stations,Diphacinone,Council,1682899200000,1764547200000,-39.856189082183,176.89971979080346,Unknown
+24-25 Erepeti SR_RPMP_Cyanide BS,RPMP Possum_Erepeti SR 24-25,,Bait stations,Cyanide,DOC,1733788800000,1814313600000,-38.73808374100724,177.35593161571077,East Coast
+24-25 Rissington Ground OSPRI_,OSPRI Rissington Ground 24-25,,Bait stations,Cyanide,TB Free,1734652800000,1751241600000,-39.50118640522326,176.7255544119727,Unknown
+24-25 Rissington Ground OSPRI_Cyanide 9.4g/kg BB,OSPRI Rissington Ground 24-25,,Bait bags,Cyanide,TB Free,1734652800000,1751241600000,-39.50118640522326,176.7255544119727,Unknown
+24-25 Rissington Ground OSPRI_Cyanide BB,OSPRI Rissington Ground 24-25,,Bait bags,Cyanide,TB Free,1734652800000,1751241600000,-39.50118640522326,176.7255544119727,Unknown
+24-25 Rissington Ground OSPRI_Cyanide BS,OSPRI Rissington Ground 24-25,,Bait stations,Cyanide,TB Free,1734652800000,1751241600000,-39.50118640522326,176.7255544119727,Unknown
+24-25 Rissington Ground OSPRI_Diphacinone cereal BS,OSPRI Rissington Ground 24-25,,Bait stations,Diphacinone,TB Free,1734652800000,1751241600000,-39.50118640522326,176.7255544119727,Unknown
+24-27 Double Tap in BS,Maraetotara rodent control 2024-27,,Bait stations,Diphacinone + Cholecalciferol,Council,1728000000000,1830211200000,-39.856189082183,176.89971979080346,Unknown
+24-27 Pindone pellets in BS,Maraetotara rodent control 2024-27,,Bait stations,Pindone,Council,1728000000000,1830211200000,-39.856189082183,176.89971979080346,Unknown
+24-27 RatAbate paste in BS,Maraetotara rodent control 2024-27,,Bait stations,Diphacinone,Council,1728000000000,1830211200000,-39.856189082183,176.89971979080346,Unknown
+A_B.Hill Cyanide Bait station Cyanara50,Arnold - Bell Hill 2025,,Bait stations,Cyanide,TB Free,1762992000000,1790726400000,-42.5851087304491,171.4778112451253,West Coast
+A_B.Hill Cyanide Bait Station Feratox,Arnold - Bell Hill 2025,,Bait stations,Cyanide,TB Free,1762992000000,1790726400000,-42.5851087304491,171.4778112451253,West Coast
+A_B.Hill Cyanide Bait Station Trappers,Arnold - Bell Hill 2025,,Bait stations,Cyanide,TB Free,1762992000000,1790726400000,-42.5851087304491,171.4778112451253,West Coast
+A_B.Hill Hand lay 1080,Arnold - Bell Hill 2025,,Handlaying,Sodium fluoroacetate,TB Free,1763942400000,1790726400000,-42.53704446327335,171.4237201912278,West Coast
+Aerial PAPP Trial Monowai,Aerial PAPP Trial Monowai,,Aerial,Para-aminopropiophenone,DOC,1760400000000,1760400000000,-45.824761875716135,167.48451394315506,Southland
+Akaroa_Heads_Res_OP_Bodi,Akaroa_Heads_Res_OP,,Bait stations,Brodifacoum,Trust,1739404800000,1747267200000,-43.88864448683334,172.97924144815207,Canterbury
+AkeAke Pindone,Kerikeri Peninsula Pest Control,,Handlaying,Pindone ,Trust,1683504000000,1698192000000,-35.19360313508316,174.04532122988172,Northland
+Alborn Coal Mine Brodifacoum Bait Stations 2024,Alborn Coal Mine Brodifacoum Bait Stations 2024,,Bait stations,Brodifacoum,DOC,1740009600000,1777507200000,-42.187184228607755,171.87485317200728,West Coast
+Aongatete,Aongatete,,Bait stations,Pindone,Trust,1698796800000,1756512000000,-37.669236710483695,175.91311661742034,Waikato
+Aongatete - Double Tapp 2023-2025,Aongatete,,Bait stations,Diphacinone + Cholecalciferol,Trust,1698796800000,1756512000000,-37.669236710483695,175.91311661742034,Waikato
+Aongatete D-Block 2025-2027,Aongatete 2025 - 2027,,Bait stations,Diphacinone,Trust,1761782400000,1824854400000,-37.669236710483695,175.91311661742034,Waikato
+Aongatete Double Tapp 2025-2027,Aongatete 2025 - 2027,,Bait stations,Diphacinone + Cholecalciferol,Trust,1761782400000,1824854400000,-37.669236710483695,175.91311661742034,Waikato
+Aongatete Feracol 2025-2027,Aongatete 2025 - 2027,,Bait bags,Cholecalciferol,Trust,1761782400000,1824854400000,-37.669236710483695,175.91311661742034,Waikato
+Aongatete Fiprinol 2025-2027,Aongatete 2025 - 2027,,Bait stations,Fipronil,Trust,1761782400000,1824854400000,-37.669236710483695,175.91311661742034,Waikato
+Aongatete Forest Trust Possum Control,Aongatete,,Bait stations,Cholecalciferol,Trust,1698710400000,1756512000000,-37.669236710483695,175.91311661742034,Waikato
+Aongatete Forest Trust Rat control 2023- 2025,Aongatete,,Bait stations,Diphacinone,Trust,1698710400000,1756512000000,-37.669236710483695,175.91311661742034,Waikato
+Aongatete Pindone 2025-2027,Aongatete 2025 - 2027,,Bait stations,Pindone,Trust,1761782400000,1824854400000,-37.669236710483695,175.91311661742034,Waikato
+AR Adams Flank1,Whataroa-Perth - Localised Rat Removal area -1080,,Aerial,Sodium fluoroacetate,Shared (detail in comments),1765238400000,1767139200000,-43.336305976842375,170.461970975859,West Coast
+AR Callery2,ZIP Burster-Price Treatment Area,,Aerial,Sodium fluoroacetate,Shared (detail in comments),1765238400000,1767139200000,-43.41809266799473,170.18134130378854,West Coast
+AR Waiau5,1080 ZIP South Okarito ,,Aerial,Sodium fluoroacetate,Shared (detail in comments),1765238400000,1767139200000,-43.34939008762765,170.16784677196114,West Coast
+AR_2026_Purcell_1,ZIP Burster-Price Treatment Area,,Aerial,Sodium fluoroacetate,Shared (detail in comments),1772150400000,1774915200000,-43.348903947380045,170.24104361935656,West Coast
+Arahura Cyanara bait stations,Arahura Ground,,Bait stations,Cyanide,TB Free,1760659200000,1768608000000,-42.70668781746537,171.12105914659753,West Coast
+Arahura Feratox bait stations,Arahura Ground,,Bait stations,Cyanide,TB Free,1760659200000,1768608000000,-42.70668781746537,171.12105914659753,West Coast
+Arawhata NPCP,Arawhata NPCP,,Aerial,Sodium fluoroacetate,DOC,1769731200000,1769817600000,-44.14679552391765,168.7517354927413,West Coast
+Armstrongs_Scenic_Reserve_Follow_Up_Brodi,Armstrongs_Scenic_Reserve_Follow_Up,,Bait stations,Brodifacoum,Trust,1742774400000,1750723200000,-43.834922953492594,172.99153467139521,Canterbury
+ATNP_PJ_Northern_1080_2025,ATNP_PJ_1080_2025,,Aerial,Sodium fluoroacetate,DOC,1757635200000,1757635200000,-40.80943775635068,172.9847335690345,Nelson Marlborough
+ATNP_PJ_Southern_1080_2025,ATNP_PJ_1080_2025,,Aerial,Sodium fluoroacetate,DOC,1757635200000,1757635200000,-40.9002818202859,173.0025924407848,Nelson Marlborough
+Awaiti Diphacinone 25 26,Forest & Bird Eastern Branch Toxin Operation,,Bait stations,Diphacinone,DOC,1753920000000,1767139200000,-37.918580554220696,176.8117031460142,Bay of Plenty
+Awakopaka Skink Brodi 2025,Homer Cirque 2025,,Bait stations,Brodifacoum,DOC,1738195200000,1861833600000,-44.760902351347944,167.98541497905399,Otago
+AwakopakaSkinkBrodi23,Homer Cirque,,Bait stations,Brodifacoum,DOC,1709683200000,1717113600000,-44.760902351347944,167.98541497905399,Otago
+Bentons Feratox 2025-26,Horowhenua Pest Control 2023-2026,,Bait bags,Cyanide,DOC,1756857600000,1782777600000,-40.649743366212064,175.35527213822894,Wellington
+Bentons pestoff 50D 24-26,Horowhenua Pest Control 2023-2026,,Bait stations,Diphacinone,DOC,1723420800000,1782777600000,-40.649743366212064,175.35527213822894,Wellington
+Big Bay Feratox,Big Bay Awarua Conservation Trust,,Bait stations,Cyanide,DOC,1746748800000,1780185600000,-44.29882090498515,168.1264236870912,West Coast
+Big Bay Pindone,Big Bay Awarua Conservation Trust,,Bait stations,Pindone,Trust,1746748800000,1780185600000,-44.29882090498515,168.1264236870912,West Coast
+Billys Hill brodifacoum pellet bait stations,South Okarito ZIP ground based,,Bait stations,Brodifacoum,Shared (detail in comments),1669852800000,1676678400000,-43.22918278602905,170.18395492712457,West Coast
+Blacksmiths Bay CA Pindone,Kerikeri Peninsula Pest Control,,Handlaying,Pindone ,Trust,1683504000000,1698192000000,-35.18709098906852,174.01439403126798,Northland
+BlanchardsBluff baitstations,1080 ZIP South Okarito ,,Bait stations,Brodifacoum,Shared (detail in comments),1737504000000,1742688000000,-43.26036567386407,170.10377252178944,West Coast
+BOPRC EP Pindone 24 25,Ohope SR BOPRC 2024 2025,,Bait stations,Pindone,Council,1729036800000,1751241600000,-37.97327790883703,177.03129437260034,Bay of Plenty
+BOPRC EP Pindone Baitstations 2025,BOPRC EP 2025-2028,,Bait stations,Pindone,Council,1756684800000,1843430400000,-37.97327790883703,177.03129437260034,Bay of Plenty
+Boulder-Sandymount Bait Bag,Otago Peninsula Possum Control 2023-24,,Bait bags,Cyanide,Trust,1688169600000,1717632000000,-45.896950255007894,170.66162805263994,Otago
+Boulder-Sandymount Bait Station,Otago Peninsula Possum Control 2023-24,,Bait stations,Cyanide,Trust,1688169600000,1717632000000,-45.896950255007894,170.66162805263994,Otago
+Boulder-Sandymount Brodifacoum Bait Station,Otago Peninsula Possum Control 2024-25,,Bait stations,Brodifacoum,Trust,1718755200000,1756684800000,-45.8936319493516,170.66072009533988,Otago
+BP Southern,BP Southern,,Bait bags,Cyanide,Trust,1681171200000,1701388800000,-43.86901604459747,172.95899627547826,Canterbury
+Bream Head Double Tap,Bream Head Double Tap,,Bait stations,Diphacinone + Cholecalciferol,Trust,1754611200000,1782864000000,-35.85484730341562,174.57531475474715,Northland
+Bream Head Pindone,Bream Head Pindone,,Bait stations,Pindone,Trust,1754611200000,1782864000000,-35.85484730341562,174.57531475474715,Northland
+Bream Head Ratabate,Bream Head Ratabate,,Bait stations,Diphacinone,Trust,1754611200000,1782864000000,-35.85484730341562,174.57531475474715,Northland
+Bream Head Vespex,Bream Head Vespex,,Bait stations,Fipronil,Trust,1768953600000,1771632000000,-35.85484730341562,174.57531475474715,Northland
+Brodifacoum Bait Station,Redbank-Wildlife Mouse Control 2024-25,,Bait stations,Brodifacoum,DOC,1721952000000,1793404800000,-45.450512851997644,170.4374316183722,Otago
+Brodifacoum FJ Treatment 1,Burster-Price Ground Based Predator Elimination,,Bait stations,Brodifacoum,Shared (detail in comments),1694736000000,1702598400000,-43.39652341714352,170.18912536815307,West Coast
+Brodifacoum paste,ZIP Brodifacoum Paste Area,,Bait stations,Brodifacoum,Shared (detail in comments),1611532800000,1670976000000,-43.35709202755568,170.4481208524041,West Coast
+Brodifacoum Paste LoLa,Whataroa-Perth - Brodifacoum Paste LoLa ,,Bait stations,Brodifacoum,DOC,1670544000000,1699833600000,-43.353754906641825,170.44828272611784,West Coast
+BSMI Diphacinone paste BS,BSMI rodent control 2025-28,,Bait stations,Diphacinone,DOC,1759276800000,1861833600000,-39.10353546331188,176.83551294334407,East Coast
+BSMI pindone pellets BS,BSMI rodent control 2025-28,,Bait stations,Pindone,DOC,1759276800000,1861833600000,-39.10353546331188,176.83551294334407,East Coast
+BSMI Seabird Site D-block 2024-2027,Boundary Stream Seabird Site 2023-2026,,Bait stations,Diphacinone,DOC,1819670400000,1819670400000,-39.10038417190837,176.7918392316498,East Coast
+BSMI_DOC_2022_D-Block_BS,Boundary Stream DOC Rodent Control 2022,,Bait stations,Diphacinone,DOC,1661990400000,1675123200000,-39.10353546331188,176.83551294334407,East Coast
+BSMI_DOC_2022_Feracol_Striker,Boundary Stream DOC Rodent Control 2022,,Bait bags,Cholecalciferol,DOC,1661990400000,1672444800000,-39.10353546331188,176.83551294334407,East Coast
+Buller 2024 Cyanide Bait Station Feratox,Buller 2024,,Bait stations,Cyanide,TB Free,1755216000000,1783555200000,-41.86464359969512,171.87900164115794,West Coast
+Buller 2024 Cyanide Bait Stations Cyanara50,Buller 2024,,Bait stations,Cyanide,TB Free,1755216000000,1783555200000,-41.86464359969512,171.87900164115794,West Coast
+Burster-Price Brodifacoum Elimination ,Burster-Price Ground Based Predator Elimination,,Bait stations,Brodifacoum,Shared (detail in comments),1682294400000,1767139200000,-43.3605634007363,170.20836822963864,West Coast
+Bushy Point Diphacinone 1,Bushy Point Otatara ,,Bait stations,Diphacinone,Trust,1851292800000,1851292800000,-46.44154851739401,168.32298776265884,Otago
+Bushy Point Otatara Pindone ,Bushy Point Otatara ,,Bait stations,Pindone,Trust,1851292800000,1851292800000,-46.44154851739401,168.32298776265884,Otago
+Callery 1 Aerial,ZIP Burster-Price Treatment Area,,Aerial,Sodium fluoroacetate,Shared (detail in comments),1747612800000,1753920000000,-43.395055228042764,170.19886666451382,West Coast
+Central Wairarapa OSPRI 2025 Diphacinone,Central Wairarapa OSPRI 2025,,Bait stations,Diphacinone,TB Free,1754870400000,1782777600000,-41.31619004995592,175.09328557306915,Wellington
+Central Wairarapa OSPRI 2025 Feratox BB,Central Wairarapa OSPRI 2025,,Bait bags,Cyanide,TB Free,1754870400000,1782777600000,-41.31619004995592,175.09328557306915,Wellington
+Central Wairarapa OSPRI 2025 Feratox BS,Central Wairarapa OSPRI 2025,,Bait stations,Cyanide,TB Free,1754870400000,1782777600000,-41.31619004995592,175.09328557306915,Wellington
+Central Wairarapa OSPRI 2025 Feratox BS cereal prefeed,Central Wairarapa OSPRI 2025,,Bait stations,Cyanide,TB Free,1754870400000,1782777600000,-41.31619004995592,175.09328557306915,Wellington
+Clarence (Molesworth) TMA 2024,Clarence (Molesworth) TMA 2024,,Bait bags,Cyanide,TB Free,1742169600000,1746144000000,-42.11374432564301,173.24182998078598,Nelson Marlborough
+Clarence River North 2024,Clarence River North 2024,,Bait bags,Cyanide,TB Free,1738540800000,1746144000000,-41.99394870445383,173.88275235721304,Nelson Marlborough
+Cluden Aerial Prodeer Sodium fluoroacetate,Cluden OSPRI Aerial sodium fluoroacetate,,Aerial,Sodium fluoroacetate,TB Free,1750118400000,1777507200000,-44.802671044397236,169.68450137941284,Otago
+Clutha Buffer Cyanara 50,Clutha Buffer OSPRI 2024-2025,,Handlaying,Cyanide,TB Free,1726444800000,1782777600000,-45.493288873938425,169.6082869210586,Otago
+Clutha Buffer Cyanide Paste Hand Laid,Clutha Buffer OSPRI 2024-2025,,Handlaying,Cyanide,TB Free,1719705600000,1782777600000,-45.493288873938425,169.6082869210586,Otago
+Clutha Buffer Feratox Bait Bags,Clutha Buffer OSPRI 2024-2025,,Bait bags,Cyanide,TB Free,1726444800000,1782777600000,-45.493288873938425,169.6082869210586,Otago
+Cyanide Bait Stations,Clutha Buffer OSPRI 2024-2025,,Bait stations,Cyanide,TB Free,1752451200000,1783987200000,-45.493288873938425,169.6082869210586,Otago
+Dan_Rodgers_Brodi_Feratox,PFBP_Dan_Rodgers,,Bait stations,Brodifacoum,Trust,1736121600000,1743901200000,-43.87114368579712,172.96571139623504,Canterbury
+Dan_Rodgers_Feratox,PFBP_Dan_Rodgers,,Bait bags,Cyanide,Trust,1736121600000,1743901200000,-43.87114368579712,172.96571139623504,Canterbury
+Dart Caples 1080 2025,Dart Caples NPCP 2025,,Aerial,Sodium fluoroacetate,DOC,1763856000000,1763856000000,-44.66977098755285,168.3122468597745,Otago
+Diphacinone 2,Bushy Point Otatara ,,Bait stations,Diphacinone,Trust,1668038400000,1851292800000,-46.44154851739401,168.32298776265884,Otago
+Dobson,Ohau Forests,,Bait bags,Cyanide,DOC,1762128000000,1783036800000,-43.906555150184,169.9440160059845,West Coast
+Double Tap,"Nukumea, Otanerua, Pohuehue and Warkworth SR",,Bait stations,Diphacinone + Cholecalciferol,Council,1737936000000,1751241600000,-36.45502100156449,174.65114102253065,Northland
+Double Tap Cereal pellets in BS 2023-2026,A'Deanes Bush Rodent Control 2023-2026,,Bait stations,Pindone,Trust,1701388800000,1782777600000,-39.92996214591793,176.30138779724788,Wellington
+East Ahuriri aerial Pindone rabbit control 2024,East Ahuriri aerial Pindone rabbit control 2024,,Aerial,Pindone ,DOC,1721779200000,1725062400000,-44.408802273626115,169.69211732530343,West Coast
+ECan Kirkliston CA Aerial 1080 Wallaby Control April 2025,ECan Kirkliston CA Aerial 1080 Wallaby Control,,Aerial,Sodium fluoroacetate,Council,1747180800000,1749859200000,-44.61873625207403,170.4846951890846,Otago
+ECan Kirkliston CA Aerial 1080 Wallaby Control July 2025,ECan Kirkliston CA Aerial 1080 Wallaby Control,,Aerial,Sodium fluoroacetate,Council,1752710400000,1754784000000,-44.49266841000803,170.56659743502252,West Coast
+ECan Kirkliston CA Aerial 1080 Wallaby Control June 2025,ECan Kirkliston CA Aerial 1080 Wallaby Control,,Aerial,Sodium fluoroacetate,Council,1750032000000,1752364800000,-44.54661276901521,170.54782410204,Otago
+Eglinton 2025,Eglinton 2025,,Aerial,Sodium fluoroacetate,DOC,1763769600000,1763769600000,-45.04641560425742,167.91364235227414,Otago
+Eglinton 2025 Pindone Ground Control,Eglinton 2025,,Bait stations,Pindone,DOC,1763942400000,1771891200000,-44.98121832533035,168.01937425443583,Otago
+Elcho,Ohau Forests,,Bait bags,Cyanide,DOC,1648425600000,1669680000000,-43.916939620122285,169.83915380041415,West Coast
+ettrick NPCP 2025,Murchison Mountains NPCP,,Aerial,Sodium fluoroacetate,DOC,1765584000000,1769817600000,-45.24409630091772,167.5967883082574,Otago
+Eyre Creek Readymade meat bait,Eyre Snowdon_Trial_Readymade Meat Bait_Aerial,,Aerial,Sodium fluoroacetate,DOC,1772496000000,1777507200000,-45.40131462516023,168.42491260012835,Otago
+Eyre Snowdon_Trial_Readymade Meat Bait_Aerial,Eyre Snowdon_Trial_Readymade Meat Bait_Aerial,,Aerial,Sodium fluoroacetate,DOC,1772496000000,1777507200000,-45.366384742703794,168.2183656537571,Otago
+F&B Field Reserve Cholecalcipherol #114 2025,Kapiti Coast Small Reserves Cholecalcipherol #114 2025,,Bait stations,Cholecalciferol,DOC,1761696000000,1763683200000,-40.897829660887176,175.02937268865935,Wellington
+Farewell Spit Nature Reserve PFO possum 2025,Farewell Spit Nature Reserve PFO possum 2025,,Bait stations,Cyanide,Trust,1746489600000,1776643200000,-40.51933618822317,172.87765504265616,Nelson Marlborough
+Feratox,"Nukumea, Otanerua, Pohuehue and Warkworth SR",,Bait bags,Cyanide,Council,1737936000000,1751241600000,-36.45502100156449,174.65114102253065,Northland
+Forest and Bird Reserve Diphacinone 122 2025,Kapiti Small Covenants Diphacinone 121 2025,,Bait stations,Diphacinone,DOC,1747872000000,1752192000000,-40.897829660887176,175.02937268865935,Wellington
+Garibaldi-Kakapo NPCP 2025,Garibaldi-Kakapo NPCP 2025,,Aerial,Sodium fluoroacetate,DOC,1770163200000,1770249600000,-41.29249518541766,172.39121943062844,Unknown
+GBI rabbit control - magtoxin,GBI rabbit control - magtoxin,,Fumigation,Magnesium Phosphide,Council,1613001600000,1798748760000,-36.2367458483716,175.46905655029155,Unknown
+GVN 25-26 1080 hand Lay,Grey V.Nth 2025-26,,Handlaying,Sodium fluoroacetate,TB Free,1756684800000,1785369600000,-42.150018028639316,171.6943217083137,West Coast
+GVN 25-26 Cyanide Bait Station Cyanara50,Grey V.Nth 2025-26,,Bait stations,Cyanide,TB Free,1756080000000,1785456000000,-42.150018028639316,171.6943217083137,West Coast
+GVN 25-26 Cyanide Bait Station Feratox,Grey V.Nth 2025-26,,Bait stations,Cyanide,TB Free,1756080000000,1785456000000,-42.150018028639316,171.6943217083137,West Coast
+GVN 25-26 Cyanide Bait station Trappers,Grey V.Nth 2025-26,,Bait stations,Cyanide,TB Free,1756080000000,1785456000000,-42.150018028639316,171.6943217083137,West Coast
+GVN Rework 1080 Handlay,Grey Valley North Rework 25,,Handlaying,Sodium fluoroacetate,TB Free,1762732800000,1765756800000,-42.300346174639,171.81163785708407,West Coast
+GVN S2 1080 hand lay,Grey Valley North 2024,,Handlaying,Sodium fluoroacetate,TB Free,1750032000000,1751241600000,-42.14210208206318,171.70922492548516,West Coast
+GVN S2 Cyanide Bait station Cyanara50,Grey Valley North 2024,,Bait stations,Cyanide,TB Free,1750032000000,1751241600000,-42.14210208206318,171.70922492548516,West Coast
+GVN S2 Cyanide Bait Station Trappers,Grey Valley North 2024,,Bait stations,Cyanide,TB Free,1750032000000,1751241600000,-42.14210208206318,171.70922492548516,West Coast
+HakarimataEnhancement_25-26_Feracol#82,HakarimataEnhancement_25-26_Area,,Bait bags,Cholecalciferol,Shared (detail in comments),1751328000000,1782777600000,-37.679768429508606,175.12845050734103,Waikato
+HakarimataEnhancement_25-26_Ratabate#121,HakarimataEnhancement_25-26_Area,,Bait stations,Diphacinone,Shared (detail in comments),1751328000000,1782777600000,-37.679768429508606,175.12845050734103,Waikato
+HakatrimataEnhancement_25-26_Pestoff#122,HakarimataEnhancement_25-26_Area,,Bait stations,Diphacinone,Shared (detail in comments),1751328000000,1782777600000,-37.679768429508606,175.12845050734103,Waikato
+Hawdon Core D+C 2023,OFK Bait Stations,,Bait stations,Diphacinone + Cholecalciferol,DOC,1748563200000,1777507200000,-42.94955635155235,171.74206839162588,West Coast
+Hawdon Front Faces D+C,OFK Bait Stations,,Bait stations,Diphacinone + Cholecalciferol,DOC,1748563200000,1777507200000,-42.98934120163546,171.72294734393677,West Coast
+HCC Otematata Feratox Possum Control,HCC Otematata Possum Control,,Bait bags,Cyanide,TB Free,1751241600000,1783555200000,-44.69038226413449,170.24830956295148,Otago
+HCC Otematata Possum Control Additional Area,HCC Otematata Possum Control,,Bait bags,Cyanide,TB Free,1757376000000,1783555200000,-44.606522626907406,169.8020394052115,Otago
+HCC Otematata Possum Control Additional Area Bait Stations,HCC Otematata Possum Control,,Bait stations,Cyanide,TB Free,1757376000000,1783555200000,-44.606522626907406,169.8020394052115,Otago
+HCC Otematata Possum Control Additional Area Cyanide paste,HCC Otematata Possum Control,,Handlaying,Cyanide,TB Free,1757376000000,1783555200000,-44.606522626907406,169.8020394052115,Otago
+HCC Otematata Possum Control Cyanide Paste,HCC Otematata Possum Control,,Handlaying,Cyanide,TB Free,1751241600000,1783555200000,-44.69038226413449,170.24830956295148,Otago
+HCC Otematata Possum Control feratox Baitstations,HCC Otematata Possum Control,,Bait stations,Cyanide,TB Free,1751241600000,1783555200000,-44.69038226413449,170.24830956295148,Otago
+Hemi Matenga Memorial Scenic Reserve,Kapiti Coast Large Reserves,,Bait stations,Cholecalciferol,DOC,1762214400000,1764806400000,-40.870764269697126,175.0862921071263,Wellington
+Hihitahi Aerial 1080,Hihitahi Aerial 1080,,Aerial,Sodium fluoroacetate,DOC,1750723200000,1750723200000,-39.54910656062021,175.75017134044873,Wellington
+Himatangi and barbers pestoff 50D 24-26,Horowhenua Pest Control 2023-2026,,Bait stations,Diphacinone,DOC,1725840000000,1782777600000,-40.433491491196655,175.3766388587747,Wellington
+Himatangi Barbers Feratox 2025-2026,Horowhenua Pest Control 2023-2026,,Bait bags,Cyanide,DOC,1756857600000,1782777600000,-40.433491491196655,175.3766388587747,Wellington
+Hollyford 2025,Hollyford 2025,,Aerial,Sodium fluoroacetate,DOC,1765497600000,1778544000000,-44.665779068668364,168.071380035873,Otago
+Hunua Ranges Aerial,Hunua Ranges Aerial,,Aerial,Sodium fluoroacetate,Council,1761782400000,1782777600000,-37.16078970992777,175.16701448891317,Auckland
+Hunua Ranges Aerial - Block 1,Hunua Ranges Aerial,,Aerial,Sodium fluoroacetate,Council,1760659200000,1782777600000,-37.159433856286,175.17029266035362,Auckland
+Hunua Ranges Aerial - Block 2,Hunua Ranges Aerial,,Aerial,Sodium fluoroacetate,Council,1761782400000,1782777600000,-37.04380191300273,175.18215811653081,Auckland
+Kaiata 1080,Kaiata 2026,,Handlaying,Sodium fluoroacetate,TB Free,1769990400000,1778803200000,-42.49021721860144,171.23868061829103,West Coast
+Kaiata Cyanide baitstation Cyanara50,Kaiata 2026,,Bait stations,Cyanide,TB Free,1769990400000,1778803200000,-42.49021721860144,171.23868061829103,West Coast
+Kaiata cyanide baitstation trappers,Kaiata 2026,,Bait stations,Cyanide,TB Free,1769990400000,1778803200000,-42.49021721860144,171.23868061829103,West Coast
+Kaikoura TMA 2023,Kaikoura TMA 2023,,Bait bags,Cyanide,TB Free,1675209600000,1814313600000,-42.20106055358449,173.82658165771778,Nelson Marlborough
+Kaitake Flats Ground Control,Kaitake Flats Ground Control,,Bait stations,Pindone,DOC,1760832000000,1763510400000,-39.18299015879146,173.97703746436633,Unknown
+Kaitorete Western Sci Pindone,Kaitorete Western Sci Pindone,,Aerial,Pindone ,DOC,1773619200000,1776384000000,-43.83448798003594,172.57597786958434,Canterbury
+Kakahu Bush 2023,Kakahu Bush 2023,,Bait bags,Cyanide,Forestry,1687910400000,1751111700000,-44.14769523869295,171.0656927089073,West Coast
+Kakepuku_Rat_DBlk#137,Kakepuku_Rat_Possum_2025,,Bait stations,Diphacinone,Trust,1755648000000,1782777600000,-38.068008834136926,175.25047008857263,Waikato
+Kakepuku_Rat_Possum_Feracol#82,Kakepuku_Rat_Possum_2025,,Bait bags,Cholecalciferol,Trust,1755648000000,1782777600000,-38.068008834136926,175.25047008857263,Waikato
+Kakepuku_Rat_Possum_Pestoff#122,Kakepuku_Rat_Possum_2025,,Bait stations,Diphacinone,Trust,1755648000000,1782777600000,-38.068008834136926,175.25047008857263,Waikato
+Karioi possum and rat control DoubleTap #144,Karioi possum and rat control 2025,,Bait stations,Diphacinone + Cholecalciferol,Trust,1754784000000,1775779200000,-37.850209479205176,174.80487611036992,Waikato
+Karioi possum and rat control Feracol #82,Karioi possum and rat control 2025,,Bait bags,Cholecalciferol,Trust,1754784000000,1775779200000,-37.850209479205176,174.80487611036992,Waikato
+Karioi possum and rat control Pindone#116,Karioi possum and rat control 2025,,Bait stations,Pindone,Trust,1754784000000,1775779200000,-37.850209479205176,174.80487611036992,Waikato
+Karioi possum and rat D block #137,Karioi possum and rat control 2025,,Bait stations,Diphacinone,Trust,1754784000000,1775779200000,-37.850209479205176,174.80487611036992,Waikato
+Kawau Island brodifacoum for possums,Kawau Island possum & wallaby eradication,,Bait stations,Brodifacoum,Council,1748736000000,1806537600000,-36.43078654411914,174.82504782641604,Unknown
+Kaweka Taramoa 25-26 Cyanide 9.4g/kg BB,Kaweka Taramoa Possum OSPRI 2025-26,,Bait bags,Cyanide,TB Free,1767744000000,1795392000000,-39.276324129218985,176.46714869354523,Unknown
+Kaweka Taramoa 25-26 Diphacinone BS,Kaweka Taramoa Possum OSPRI 2025-26,,Bait stations,Diphacinone,TB Free,1767744000000,1795392000000,-39.276324129218985,176.46714869354523,Unknown
+Kaweka Taramoa 25-26 Feratox BB,Kaweka Taramoa Possum OSPRI 2025-26,,Bait bags,Cyanide,TB Free,1767744000000,1795392000000,-39.276324129218985,176.46714869354523,Unknown
+Kaweka Taramoa 25-26 Feratox pellets in BS,Kaweka Taramoa Possum OSPRI 2025-26,,Bait stations,Cyanide,TB Free,1767744000000,1795392000000,-39.276324129218985,176.46714869354523,Unknown
+Kaweka Taramoa Feratox with prefeed paste BS,Kaweka Taramoa Possum OSPRI 2025-26,,Bait stations,Cyanide,TB Free,1767744000000,1795392000000,-39.276324129218985,176.46714869354523,Unknown
+Kohitere Feratox bait bags 24-25,Horowhenua Pest Control 2023-2026,,Bait bags,Cyanide,DOC,1727222400000,1751241600000,-40.649743366212064,175.35527213822894,Wellington
+Kohitere pestoff 50d bait stations,Horowhenua Pest Control 2023-2026,,Bait stations,Diphacinone,DOC,1722988800000,1782777600000,-40.649743366212064,175.35527213822894,Wellington
+Lagoon edge brodifacoum,South Okarito ZIP ground based,,Bait stations,Brodifacoum,Shared (detail in comments),1711324800000,1729209600000,-43.22828702754392,170.1932139987888,West Coast
+Lake Wahapo Bait Stations,North Okarito Ground Control,,Bait stations,Brodifacoum,Shared (detail in comments),1747094400000,1755648000000,-43.24586204918227,170.28308732015452,West Coast
+Landsborough,Landsborough,,Aerial,Sodium fluoroacetate,DOC,1763856000000,1763942400000,-43.92259832286579,169.49233327072923,West Coast
+Lawries Scenic Reserve double tap 2025,Lawries Scenic Reserve double tap 2025,,Bait stations,Diphacinone + Cholecalciferol,Trust,1760659200000,1760659200000,-36.4063694955377,174.7150956126037,Northland
+Lower Hopkins Feratox,Ohau Forests,,Bait bags,Cyanide,DOC,1720483200000,1720742400000,-43.970135540339975,169.83627390532703,West Coast
+Mahi SR Feratox 24 25,Mahia SR Feratox and Double Tapp 24 25,,Bait stations,Cyanide,DOC,1731888000000,1737331200000,-39.132046655425285,177.87463528208556,East Coast
+Mahia SR Double Tapp 24 25,Mahia SR Feratox and Double Tapp 24 25,,Bait stations,Diphacinone + Cholecalciferol,Council,1731888000000,1754006400000,-39.132046655425285,177.87463528208556,East Coast
+Mahurangi East double tap bait stations,Mahurangi East Scotts landing rodent control,,Bait stations,Diphacinone + Cholecalciferol,Trust,1673913600000,1768564264000,-36.48446478446152,174.72844490955436,Northland
+Mahurangi_Island_ratincursion25,Mahurangi_Island_ratincursion25,,Handlaying,Brodifacoum,DOC,1765152000000,1782777600000,-36.82950514436924,175.820143874521,Unknown
+Main Huxley Baitstation Feratox,Ohau Forests,,Bait stations,Cyanide,DOC,1470700800000,1502150400000,-44.00712611146126,169.77904092921753,West Coast
+Main Huxley Feratox,Ohau Forests,,Bait bags,Cyanide,DOC,1632787200000,1634860800000,-44.00712611146126,169.77904092921753,West Coast
+Makahika Feratox 2025-26,Horowhenua Pest Control 2023-2026,,Bait bags,Cyanide,DOC,1759190400000,1782777600000,-40.635918067845424,175.38660722800444,Wellington
+Makahika pestoff 50D 24-26,Horowhenua Pest Control 2023-2026,,Bait stations,Diphacinone,DOC,1723420800000,1782777600000,-40.635918067845424,175.38660722800444,Wellington
+Makarora NPCP 2025,Makarora NPCP 2025,,Aerial,Sodium fluoroacetate,DOC,1772150400000,1772409600000,-44.19660329655957,169.14835827651822,West Coast
+Makarora Rat Control 2024,Makarora Rat Control 2024,,Bait stations,Diphacinone,Trust,1699574400000,1727654400000,-44.14569015959061,169.30567426743053,West Coast
+Manaia 1080,Manaia Reserve Pest Control,,Bait stations,Sodium fluoroacetate,DOC,1725235200000,1727654400000,-35.8054471520957,174.5133677714363,Northland
+Manawatu Gorge South 1080 Ground 2024 Bait Stations,Manawatu Gorge South 1080 Ground 2024,,Bait stations,Sodium fluoroacetate,DOC,1728864000000,1751241600000,-40.33389162962159,175.80028342418848,Wellington
+Manawatu Gorge South 1080 Ground 2024 hand lay,Manawatu Gorge South 1080 Ground 2024,,Handlaying,Sodium fluoroacetate,DOC,1728864000000,1751241600000,-40.33389162962159,175.80028342418848,Wellington
+Manawatu Gorge South Feratox 2023-2024,Manawatu Gorge South Ground Based Pest Control 2023-2026,,Bait bags,Cyanide,DOC,1701043200000,1782777600000,-40.33389162962159,175.80028342418848,Wellington
+Manawatu Gorge South Pestoff 50D Rats 2024-26,Manawatu Gorge South Ground Based Pest Control 2023-2026,,Bait stations,Diphacinone,DOC,1747612800000,1782777600000,-40.33389162962159,175.80028342418848,Wellington
+Mangatutu-Tunawaea Diphacinone (Pestoff Rat Bait 50D) Bait stations #122,Mangatutu and Tunawaea ground based kokako protection 2025-2029,,Bait stations,Diphacinone,Trust,1756166400000,1869609600000,-38.378658230840486,175.44461418873374,Waikato
+Mangatutu-Tunawaea Diphacinone (RatAbate Paste) Bait stations #121,Mangatutu and Tunawaea ground based kokako protection 2025-2029,,Bait stations,Diphacinone,Trust,1756166400000,1869609600000,-38.378658230840486,175.44461418873374,Waikato
+Mangaweka PestOff 50D 2024-26,Mangaweka Reserves,,Bait stations,Diphacinone,DOC,1728518400000,1782777600000,-39.80866281198914,175.7809814199658,Wellington
+Mangaweka South Feratox 2023-2026,Mangaweka Reserves,,Bait bags,Cyanide,DOC,1702166400000,1719705600000,-39.80866281198914,175.7809814199658,Wellington
+Maniototo Bait Bag,Maniototo Possum Control 2024_25,,Bait bags,Cyanide,TB Free,1724025600000,1751241600000,-45.45758734732622,169.84637040729967,Otago
+Maniototo Bait Station,Maniototo Possum Control 2024 _25,,Bait stations,Cyanide,TB Free,1724025600000,1751241600000,-45.45758734732622,169.84637040729967,Otago
+Maniototo Hand laid,Maniototo Possum Control 2024_25,,Handlaying,Cyanide,TB Free,1724025600000,1751241600000,-45.45758734732622,169.84637040729967,Otago
+MANIOTOTO TMA 25-26 Cyanide Paste,OSPRI MANIOTOTO TMA 25-26,,Handlaying,Cyanide,TB Free,1754006400000,1782777600000,-45.45758734732622,169.84637040729967,Otago
+MANIOTOTO TMA 25-26 Feratox Bait Bags,OSPRI MANIOTOTO TMA 25-26,,Bait bags,Cyanide,TB Free,1754006400000,1782777600000,-45.45758734732622,169.84637040729967,Otago
+MANIOTOTO TMA 25-26 Feratox Baitstations,OSPRI MANIOTOTO TMA 25-26,,Bait stations,Cyanide,TB Free,1754006400000,1782777600000,-45.45758734732622,169.84637040729967,Otago
+Manuherikia TMA Cyanide Bait Bags,OSPRI Manuherikia TMA,,Bait bags,Cyanide,TB Free,1739923200000,1771372800000,-44.739068575797766,169.75483256132068,Otago
+Manuherikia TMA Cyanide Baitstations,OSPRI Manuherikia TMA,,Bait stations,Cyanide,TB Free,1739836800000,1771286400000,-44.739068575797766,169.75483256132068,Otago
+Manuherrikia Cyanara50 Haid laid 2025-2026,Manuherrikia TMA OSPRI 2025-2026,,Handlaying,Cyanide,TB Free,1761696000000,1793404800000,-44.739068575797766,169.75483256132068,Otago
+Manuherrikia Feratox Bait Bags 2025-2026,Manuherrikia TMA OSPRI 2025-2026,,Bait bags,Cyanide,TB Free,1761696000000,1793404800000,-44.739068575797766,169.75483256132068,Otago
+Manuherrikia Feratox bait stations 2025-2026,Manuherrikia TMA OSPRI 2025-2026,,Bait stations,Cyanide,TB Free,1761696000000,1793404800000,-44.739068575797766,169.75483256132068,Otago
+Mapara Aerial 2025,Mapara Aerial 2025,,Aerial,Sodium fluoroacetate,DOC,1755734400000,1755734400000,-38.547313145896375,175.26962207538958,Waikato
+Mapara Ground Baiting 23.24,Mapara Ground Baiting 23.24,,Bait stations,Pindone,DOC,1723680000000,1746057600000,-38.54762788625175,175.2747937955885,Waikato
+Marsden RW 1080 hand Lay,Marsden Rework 2025,,Handlaying,Sodium fluoroacetate,TB Free,1762300800000,1765756800000,-42.55017191017563,171.23272407552375,West Coast
+Marsden RW Cyanide Baitstations,Marsden Rework 2025,,Bait stations,Cyanide,TB Free,1762300800000,1765756800000,-42.55017191017563,171.23272407552375,West Coast
+Martins Bay Feratox - Hollyford Conservation Trust,Hollyford Conservation Trust - Martins Bay,,Bait stations,Cyanide,Trust,1751328000000,1780185600000,-44.368293981753254,168.03491313846277,West Coast
+Martins Bay Pindone - Hollyford Conservation Trust,Hollyford Conservation Trust - Martins Bay,,Bait stations,Pindone,Trust,1751328000000,1780185600000,-44.368293981753254,168.03491313846277,West Coast
+Matahina Aerial,Matahina Aerial,,Aerial,Sodium fluoroacetate,Council,1759881600000,1787529600000,-38.23817795231303,176.72538707568884,Bay of Plenty
+Matietie diphacinone 2025,Matietie rat control 2025,,Bait stations,Diphacinone,Trust,1751328000000,1846022400000,-36.775599872258475,174.98743413404253,Auckland
+Matietie diphacinone Ratabate 2025,Matietie rat control 2025,,Bait stations,Diphacinone,Trust,1751328000000,1846022400000,-36.775599872258475,174.98743413404253,Auckland
+Matietie double tap 2025,Matietie rat control 2025,,Bait stations,Diphacinone + Cholecalciferol,Trust,1751328000000,1846022400000,-36.775599872258475,174.98743413404253,Auckland
+Matietie rat control 2025,Matietie rat control 2025,,Bait stations,Diphacinone,Trust,1751328000000,1846022400000,-36.775599872258475,174.98743413404253,Auckland
+Matiri 1080 NPCP 2025,Matiri 2025,,Aerial,Sodium fluoroacetate,DOC,1762473600000,1762560000000,-41.65916224843206,172.35749448156866,Unknown
+Maungakotukutuku Dam Covenant,Kapiti Coast Large Reserves,,Bait stations,Cholecalciferol,DOC,1762214400000,1764806400000,-40.914388364532414,175.05812635742427,Wellington
+McLeans Bush_2021_2024_Doubletap_BS,McLeans Bush Rodent Control ,,Bait stations,Diphacinone + Cholecalciferol,Shared (detail in comments),1639958400000,1751241600000,-40.40955847562711,176.5933195682589,Unknown
+McLeans Bush_2021_2024_Ratabate BS,McLeans Bush Rodent Control ,,Bait stations,Diphacinone,Shared (detail in comments),1639958400000,1761868800000,-40.40955847562711,176.5933195682589,Unknown
+MGWSR Diphacinone and Cholecalciferol (Double Tap) Bait Stations #144,Predator Control MGWSR 25-26,,Bait stations,Diphacinone + Cholecalciferol,DOC,1737331200000,1792454400000,-38.578967207850006,174.89205139582015,Waikato
+MGWSR Pest Off 25-26,Predator Control MGWSR 25-26,,Bait stations,Diphacinone,DOC,1737331200000,1792454400000,-38.578967207850006,174.89205139582015,Waikato
+Mikonui Totara Cyanara bait stations,Mikonui Totara,,Bait stations,Cyanide,TB Free,1751846400000,1765152000000,-43.00046987588651,170.86020326901917,West Coast
+Mikonui Totara Feratox bait stations,Mikonui Totara,,Bait stations,Cyanide,TB Free,1751846400000,1765152000000,-43.00046987588651,170.86020326901917,West Coast
+Misty Peaks/Armstrong Operational Area,PFBP Brodi Op Armstrong,,Bait stations,Brodifacoum,Trust,1700438400000,1711756800000,-43.834922953492594,172.99153467139521,Canterbury
+Moehau 2025,Moehau 2025,,Aerial,Sodium fluoroacetate,DOC,1757289600000,1764460800000,-36.50091152750426,175.41044468576777,Auckland
+Mohaka Forest 25-26 Cyanide 9.4g/kg BB,Mohaka Forest Ground OSPRI 2025-26,,Bait bags,Cyanide,TB Free,1751328000000,1782777600000,-39.01353132967983,177.05072326931932,East Coast
+Mohaka Forest 25-26 Feratox BB,Mohaka Forest Ground OSPRI 2025-26,,Bait bags,Cyanide,TB Free,1751328000000,1782777600000,-39.01353132967983,177.05072326931932,East Coast
+Mohaka Forest 25-26 Feratox with prefeed paste BS,Mohaka Forest Ground OSPRI 2025-26,,Bait stations,Cyanide,TB Free,1751328000000,1782777600000,-39.01353132967983,177.05072326931932,East Coast
+Mohaka Forest 25-26 Feratox with prefeed pellets BS,Mohaka Forest Ground OSPRI 2025-26,,Bait stations,Cyanide,TB Free,1751328000000,1782777600000,-39.01353132967983,177.05072326931932,East Coast
+Mohaka Forest 25-26 Pestoff 50D BS,Mohaka Forest Ground OSPRI 2025-26,,Bait stations,Diphacinone,TB Free,1751328000000,1782777600000,-39.01353132967983,177.05072326931932,East Coast
+Mokaihaha MKT Pindone Bait Stations 2025,Mokaihaha MKT Ground Rat Control 2025,,Bait stations,Pindone,Trust,1759708800000,1766275200000,-38.18678002729816,176.0810792029665,Waikato
+Mokauiti bushland WRC Cholecalciferol hard paste bait bag,Mokauiti Bushland WRC possum control 2023,,Bait bags,Cholecalciferol,Council,1693599780000,1719705600000,-38.64718863413041,175.03568561969618,Waikato
+Mokihinui - Karamea,Mokihinui - Karamea,,Aerial,Sodium fluoroacetate,DOC,1763164800000,1763251200000,-41.47209557407257,172.16953983846687,Unknown
+Mokomoko Dryland Sanctuary - Broudifacoum bait stations,Mokomoko Dryland Sanctuary - Mouse eradication,,Bait stations,Brodifacoum,Trust,1568764800000,1571184000000,-45.29094777124081,169.30071662836792,Otago
+Molesworth Pindone Operation 2024,Molesworth Pindone Operation 2024,,Aerial,Pindone,Shared (detail in comments),1759276800000,1759276800000,-42.13809856979965,173.0418073202634,Nelson Marlborough
+Morven Bendige 2527 Feratox bait bags,Morven bendigo2527,,Bait bags,Cyanide,TB Free,1750809600000,1814313600000,-44.618134679052154,169.5970224450919,Otago
+Morven Bendigo 2527 Cyanide paste,Morven bendigo2527,,Handlaying,Cyanide,TB Free,1750809600000,1814313600000,-44.618134679052154,169.5970224450919,Otago
+Morven Bendigo Bait stations Feratox,Morven bendigo2527,,Bait stations,Cyanide,TB Free,1750809600000,1814313600000,-44.618134679052154,169.5970224450919,Otago
+Mt Somers Range,Mt Somers Range,,Bait stations,Brodifacoum,DOC,1738627200000,1830211200000,-43.53349169266163,171.2783689336696,West Coast
+Mt William Dblock #127,Mt William rat & possum control 2025-26,,Bait stations,Diphacinone,Trust,1761955200000,1790812800000,-37.216605578524494,175.02478272574874,Auckland
+Mt William DoubleTap #144,Mt William rat & possum control 2025-26,,Bait stations,Diphacinone + Cholecalciferol,Trust,1761955200000,1790812800000,-37.216605578524494,175.02478272574874,Auckland
+MTMA PMA Diphacinone,MTMA PMA 2023,,Bait stations,Diphacinone,Shared (detail in comments),1766188800000,1861833600000,-38.920447901074915,174.6027786232137,Unknown
+MTMA PMA Double Tap 2023,MTMA PMA 2023,,Bait stations,Diphacinone + Cholecalciferol,Shared (detail in comments),1766188800000,1861833600000,-38.920447901074915,174.6027786232137,Unknown
+MTMA PMA Feratox 2023,MTMA PMA 2023,,Bait stations,Cyanide,Shared (detail in comments),1766188800000,1861833600000,-38.920447901074915,174.6027786232137,Unknown
+MTMA PMA Pindone 2023,MTMA PMA 2023,,Bait stations,Pindone,Shared (detail in comments),1703030400000,1861833600000,-38.920447901074915,174.6027786232137,Unknown
+MTMA PMA PredaSTOP (Stoats and cats) 2023,MTMA PMA 2023,,Bait stations,Diphacinone + Cholecalciferol,Shared (detail in comments),1766188800000,1861833600000,-38.920447901074915,174.6027786232137,Unknown
+Nagruroro Tutaekuri 2022 aerial 1080,Ngaruroro Tutaekuri OSPRI 2022,,Aerial,Sodium fluoroacetate,TB Free,1697500800000,1729814400000,-39.488281886254214,176.32115781657984,Unknown
+Nga Motu Islands Brodifacoum Cereal Pellet Bait Stations #53,Nga Motu_Sugar Loaf Islands,,Bait stations,Brodifacoum,DOC,1579478400000,1705708800000,-39.045449224003555,174.01476649676582,Unknown
+Ngaroma2_Epro_Diphacinone_Baitstations,Ngaroma2_Epro_FeratoxDiphacinone_BaitstationsBags,,Bait stations,Diphacinone,TB Free,1739145600000,1767571200000,-38.24254041250119,175.61330708813705,Waikato
+Ngaroma2_Epro_FeratoxDiphacinone_BaitBags,Ngaroma2_Epro_FeratoxDiphacinone_BaitstationsBags,,Bait bags,Cyanide,TB Free,1739145600000,1767571200000,-38.24254041250119,175.61330708813705,Waikato
+Ngaroma2_Epro_FeratoxDiphacinone_BaitstationsBags,Ngaroma2_Epro_FeratoxDiphacinone_BaitstationsBags,,Bait stations,Cyanide,TB Free,1739145600000,1767571200000,-38.24254041250119,175.61330708813705,Waikato
+Ngaruroro Tutaekuri 2022 hand laying 1080,Ngaruroro Tutaekuri OSPRI 2022,,Handlaying,Sodium fluoroacetate,TB Free,1697500800000,1729123200000,-39.488281886254214,176.32115781657984,Unknown
+Nikau Brodi Op,BP Southern,,Bait stations,Brodifacoum,Trust,1685318400000,1701388800000,-43.86901604459747,172.95899627547826,Canterbury
+Nikau_Palm_Gully_Follow_up_OP_Brodi,Nikau_Palm_Gully_Follow_up_OP,,Bait stations,Brodifacoum,Trust,1739318400000,1747180800000,-43.86901604459747,172.95899627547826,Canterbury
+North Huxley Feratox,Ohau Forests,,Bait stations,Cyanide,DOC,1470700800000,1502150400000,-43.98045723157794,169.7293158765691,West Coast
+North Okarito-BursterPrice-Waiau,North Okarito-BursterPrice-Waiau,,Handlaying,Sodium fluoroacetate,Shared (detail in comments),1742342400000,1745452800000,-43.31252434077279,170.34247820314917,West Coast
+North Okarito-Toxic rodents,North Okarito-BursterPrice-Waiau,,Handlaying,Sodium fluoroacetate,Shared (detail in comments),1749340800000,1756598400000,-43.180367582073984,170.33726435539924,West Coast
+North Okarito Ground Control Toxic Rodents,North Okarito Ground Control,,Handlaying,Sodium fluoroacetate,Shared (detail in comments),1768435200000,1774915200000,-43.15337420516524,170.27376719805136,West Coast
+North Okarito Toxic rodent 2,North Okarito Ground Control,,Handlaying,Sodium fluoroacetate,Shared (detail in comments),1766016000000,1769817600000,-43.172473467037385,170.28152985923086,West Coast
+North Okarito Toxic Rodents,North Okarito Ground Control,,Handlaying,Sodium fluoroacetate,Shared (detail in comments),1764892800000,1767139200000,-43.15337420516524,170.27376719805136,West Coast
+North Temple,Ohau Forests,,Bait bags,Cyanide,DOC,1721692800000,1721952000000,-44.096987508464146,169.80682697623115,West Coast
+Northern Ruahine East Block NPCP,Northern Ruahine NPCP,,Aerial,Sodium fluoroacetate,DOC,1772668800000,1793836800000,-39.594200376534246,176.30404679348388,Wellington
+Northern Ruahine NPCP,Northern Ruahine NPCP,,Aerial,Sodium fluoroacetate,DOC,1747872000000,1764460800000,-39.666707185202974,176.1216277684861,Wellington
+Northokarito1,North Okarito-BursterPrice-Waiau,,Aerial,Sodium fluoroacetate,Shared (detail in comments),1769731200000,1769731200000,-43.21570916469995,170.28563743753304,West Coast
+Nukuhakari Possums Cyanara #79,Nukuhakari 2 — Possum CONTROL OPERATION 2025,,Bait stations,Cyanide,Council,1761955200000,1793318400000,-38.536945973431834,174.69805200291904,Waikato
+Nukuhakari possums Decal #114,Nukuhakari 2 — Possum CONTROL OPERATION 2025,,Bait stations,Cholecalciferol,Council,1761955200000,1793318400000,-38.536945973431834,174.69805200291904,Waikato
+Nukuhakari possums DoubleTap #144,Nukuhakari 2 — Possum CONTROL OPERATION 2025,,Bait stations,Diphacinone + Cholecalciferol,Council,1761955200000,1793318400000,-38.536945973431834,174.69805200291904,Waikato
+Nukuhakari possums Feracol #82,Nukuhakari 2 — Possum CONTROL OPERATION 2025,,Bait bags,Cholecalciferol,Council,1761955200000,1793318400000,-38.536945973431834,174.69805200291904,Waikato
+Nukuhakari possums Feratox #18,Nukuhakari 2 — Possum CONTROL OPERATION 2025,,Bait stations,Cyanide,Council,1761955200000,1793318400000,-38.536945973431834,174.69805200291904,Waikato
+Nukuhakari Possums Feratox #19,Nukuhakari 2 — Possum CONTROL OPERATION 2025,,Bait bags,Cyanide,Council,1761955200000,1793318400000,-38.536945973431834,174.69805200291904,Waikato
+Nukuhou Saltmarsh Uretara Island Bait Stations 2025,Nukuhou Saltmarsh Uretara Island Bait Stations 2025,,Bait stations,Diphacinone,Trust,1740787200000,1772236800000,-38.00035672273354,177.11982444040154,Bay of Plenty
+"Nukumea, Otanerua, Pohuehue and Warkworth SR","Nukumea, Otanerua, Pohuehue and Warkworth SR",,Bait bags,Cholecalciferol,Council,1737936000000,1751241600000,-36.45502100156449,174.65114102253065,Northland
+O_Marsden 1080 Handlay,Ospri Marsden 2025,,Handlaying,Sodium fluoroacetate,TB Free,1754870400000,1765756800000,-42.53395826058119,171.24946902013218,West Coast
+O_Marsden Cyanide baitstation Cyanara50,Ospri Marsden 2025,,Bait stations,Cyanide,TB Free,1752710400000,1765756800000,-42.53395826058119,171.24946902013218,West Coast
+O_Marsden Cyanide baitstation Trappers,Ospri Marsden 2025,,Bait stations,Cyanide,TB Free,1752710400000,1765756800000,-42.53395826058119,171.24946902013218,West Coast
+Okahukura Pindone (Pindone pellets) Bait stations #116,Okahukura ground based kokako protection 2025-2026,,Bait stations,Pindone,Trust,1757635200000,1774915200000,-38.38664114572119,175.49897057570212,Waikato
+Omahuta Forest Rat Control,Omahuta Forest Bat Protection,,Bait stations,Cholecalciferol,DOC,1759276800000,1760659200000,-35.23704557159561,173.63607314598636,Northland
+OME Medlands diphacinone bait stations,"OME Rat Control Oruawharo Bay/Medlands area, Aotea",,Bait stations,Diphacinone,Trust,1731283200000,1772236800000,-36.2640099448476,175.48783972310045,Unknown
+OME Medlands Diphacinone Bait Stations,OME Rat Control 2026-2030,,Bait stations,Diphacinone,Trust,1772323200000,1930089600000,-36.2640099448476,175.48783972310045,Unknown
+Oparara Lowland NPCP,Oparara Lowland NPCP,,Aerial,Sodium fluoroacetate,DOC,1762214400000,1762300800000,-41.11350107050107,172.17008239394485,Unknown
+Opouahi ECOED Pestoff pellets BS,Opouahi rodent control ECOED 2025-28,,Bait stations,Brodifacoum,Trust,1757030400000,1861833600000,-39.14390907213254,176.83669214713825,East Coast
+Opouahi Ground 25-26 Diphacinone BS,Opouahi Ground OSPRI 2025-26,,Bait stations,Diphacinone,TB Free,1759795200000,1782777600000,-39.145769949146235,176.81218850848083,East Coast
+Opouahi Ground 25-26 Feratox BB,Opouahi Ground OSPRI 2025-26,,Bait bags,Cyanide,TB Free,1759795200000,1782777600000,-39.145769949146235,176.81218850848083,East Coast
+Opouahi Ground 25-26 Feratox with prefeed paste BS,Opouahi Ground OSPRI 2025-26,,Bait stations,Cyanide,TB Free,1759795200000,1782777600000,-39.145769949146235,176.81218850848083,East Coast
+Opouahi Ground Cyanide 9.4g/kg BB,Opouahi Ground OSPRI 2025-26,,Bait bags,Cyanide,TB Free,1759795200000,1782777600000,-39.145769949146235,176.81218850848083,East Coast
+Opouahi Ground Feratox with prefeed pellets BS,Opouahi Ground OSPRI 2025-26,,Bait stations,Cyanide,TB Free,1759795200000,1782777600000,-39.145769949146235,176.81218850848083,East Coast
+Opouahi rodent 25-28 D-block BS,Opouahi rodent control ECOED 2025-28,,Bait stations,Diphacinone,Trust,1757030400000,1861833600000,-39.14390907213254,176.83669214713825,East Coast
+Opouahi rodent 25-28 D3 one rat feed BS,Opouahi rodent control ECOED 2025-28,,Bait stations,Cholecalciferol,Trust,1757030400000,1861833600000,-39.14390907213254,176.83669214713825,East Coast
+Opouahi rodent 25-28 Pestoff block BS,Opouahi rodent control ECOED 2025-28,,Bait stations,Brodifacoum,Trust,1757030400000,1861833600000,-39.14390907213254,176.83669214713825,East Coast
+Opouahi rodent 25-28 Ratabate BS,Opouahi rodent control ECOED 2025-28,,Bait stations,Diphacinone,Trust,1757030400000,1861833600000,-39.14390907213254,176.83669214713825,East Coast
+Opouahi rodent D-block extreme BS,Opouahi rodent control ECOED 2025-28,,Bait stations,Diphacinone,Trust,1757030400000,1861833600000,-39.14390907213254,176.83669214713825,East Coast
+Opuiaki Possum 2025,Opuiaki Possum 2025,,Bait stations,Cyanide,DOC,1758499200000,1772236800000,-37.93282778190474,175.9735253986466,Waikato
+Opuiaki Rat 2025,Opuiaki Rat 2025,,Bait stations,Pindone,DOC,1758499200000,1772236800000,-37.93282778190474,175.9735253986466,Waikato
+OSPRI Sthn Tararua Aerial 2025-26,OSPRI Sthn Tararua Aerial 2025-26,,Aerial,Sodium fluoroacetate,TB Free,1773878400000,1782777600000,-41.01413562365154,175.33037815216073,Wellington
+OSPRI Sthn Tararua Aerial Deer Repellant 2025-26,OSPRI Sthn Tararua Aerial Deer Repellant 2025-26,,Aerial,Sodium fluoroacetate,TB Free,1773878400000,1782777600000,-40.99872198486823,175.31957247049817,Wellington
+OSPRI Sthn Tararua West aerial 2025-26,OSPRI Sthn Tararua Aerial 2025-26,,Aerial,Sodium fluoroacetate,TB Free,1773187200000,1791158400000,-40.94904156232726,175.20628986316498,Wellington
+Otaika Valley Possum Control,Otaika Valley Rat and Possum,,Bait stations,Cyanide,Trust,1768176000000,1772409600000,-35.77390906441833,174.2760848390759,Northland
+Otaika Valley Rat and Possum Control Double Tap,Otaika Valley Rat and Possum,,Bait stations,Diphacinone + Cholecalciferol,Trust,1768176000000,1772323200000,-35.77390906441833,174.2760848390759,Northland
+Otanewainuku Kiwi Trust (OKT) 2025-26 - Pindone,Otanewainuku Kiwi Trust (OKT) 2025-26,,Bait stations,Pindone,Trust,1756944000000,1775001600000,-37.8723271990934,176.22543767112566,Waikato
+Otanewainuku North DOC 2025,Otanewainuku North DOC 2025,,Bait stations,Pindone,DOC,1757289600000,1764460800000,-37.857532954251624,176.22860110484382,Waikato
+Outram - Maungatua Bait Bag,Outram - Maungatua Possum Control 25-26,,Bait bags,Cyanide,TB Free,1755216000000,1785456000000,-45.854165856542,170.1645034239459,Otago
+Pakaututu Area OSPRI 2025-26 Diphacinone Bait stations,Pakaututu Area OSPRI 2025-26 Feratox Diphacinone,,Bait stations,Diphacinone,TB Free,1759104000000,1782777600000,-39.1505902498208,176.46974702169308,Unknown
+Pakaututu Area OSPRI 2025-26 Feratox Bait Bags,Pakaututu Area OSPRI 2025-26 Feratox Diphacinone,,Bait bags,Cyanide,TB Free,1759104000000,1782777600000,-39.1505902498208,176.46974702169308,Unknown
+Pakaututu Area OSPRI 2025-26 Feratox Bait Bags #139,Pakaututu Area OSPRI 2025-26 Feratox Diphacinone,,Bait bags,Cyanide,TB Free,1759104000000,1782777600000,-39.1505902498208,176.46974702169308,Unknown
+Pakaututu Area OSPRI 2025-26 Feratox bait stations,Pakaututu Area OSPRI 2025-26 Feratox Diphacinone,,Bait stations,Cyanide,TB Free,1759104000000,1782777600000,-39.1505902498208,176.46974702169308,Unknown
+Pakaututu Area OSPRI 2025-26 Feratox Bait Stations #18,Pakaututu Area OSPRI 2025-26 Feratox Diphacinone,,Bait stations,Cyanide,TB Free,1759104000000,1782777600000,-39.1505902498208,176.46974702169308,Unknown
+Papaitonga Diphacinone Bait Stations 24-26,Horowhenua Pest Control 2023-2026,,Bait stations,Diphacinone,DOC,1727136000000,1782777600000,-40.64490652914982,175.23150252407203,Wellington
+Papaitonga Feratox 2025-26,Horowhenua Pest Control 2023-2026,,Bait bags,Cyanide,DOC,1756857600000,1782777600000,-40.64490652914982,175.23150252407203,Wellington
+Papakuri,Titoki Community Pest Control,,Bait stations,Sodium fluoroacetate,Trust,1754870400000,1757635200000,-35.66590623555434,174.0656116148199,Northland
+Paraparaumu Scenic Reserve and Covenants,Kapiti Coast Large Reserves,,Bait stations,Cholecalciferol,DOC,1761004800000,1763683200000,-40.9095679698355,175.04992382986694,Wellington
+Patoka 2024-2025 Bio bag 12g,Patoka possum ground control Better Nature 2024-2025,,Bait bags,Cyanide,TB Free,1719792000000,1751241600000,-39.31292114948874,176.4552155920949,Unknown
+Patoka 2024-2025 Cyanide,Patoka possum ground control Better Nature 2024-2025,,Bait stations,Cyanide,TB Free,1719792000000,1751241600000,-39.40812891047726,176.50969416613992,East Coast
+Patoka 2024-2025 cyanide bait bag,Patoka possum ground control Better Nature 2024-2025,,Bait bags,Cyanide,TB Free,1719792000000,1751241600000,-39.31292114948874,176.4552155920949,Unknown
+Patoka 2024-2025 Cyanide cereal prefeed,Patoka possum ground control Better Nature 2024-2025,,Bait stations,Cyanide,TB Free,1719792000000,1751241600000,-39.31292114948874,176.4552155920949,Unknown
+Patoka 2024-2025 Cyanide prefeed paste,Patoka possum ground control Better Nature 2024-2025,,Bait stations,Cyanide,TB Free,1719792000000,1751241600000,-39.31292114948874,176.4552155920949,Unknown
+Patoka 2024-2025 Diphacinon,Patoka possum ground control Better Nature 2024-2025,,Bait stations,Diphacinone,TB Free,1719792000000,1751241600000,-39.31292114948874,176.4552155920949,Unknown
+Perth toxic rodents March26,Whataroa-Perth - Localised Rat Removal area -1080,,Handlaying,Sodium fluoroacetate,Shared (detail in comments),1772582400000,1774915200000,-43.36846250969112,170.59343446303038,West Coast
+Perth TX,Whataroa-Perth - Localised Rat Removal area -1080,,Aerial,Sodium fluoroacetate,Shared (detail in comments),1747612800000,1753920000000,-43.351410990341975,170.52416163786796,West Coast
+PFTK Cyanide Bait Station Cyanara50,PF Te Kinga 2025_26,,Bait stations,Cyanide,Council,1769990400000,1782777600000,-42.673586383175,171.516070489624,West Coast
+PFTK Cyanide Bait Station Trappers Paste,PF Te Kinga 2025_26,,Bait stations,Cyanide,Council,1769990400000,1782777600000,-42.673586383175,171.516070489624,West Coast
+PFTK Hand Lay 1080,PF Te Kinga 2025_26,,Handlaying,Sodium fluoroacetate,Council,1769990400000,1782777600000,-42.673586383175,171.516070489624,West Coast
+PFWH  Bream Head,Possum Free Whangarei Heads,,Bait stations,Sodium fluoroacetate,Council,1721779200000,1723593600000,-35.85484730341562,174.57531475474715,Northland
+PFWH Kauri Mountain 1080,Possum Free Whangarei Heads,,Bait stations,Sodium fluoroacetate,Council,1750032000000,1751241600000,-35.76819610757525,174.538823091204,Northland
+PFWH Kauri Mountain Brodifacoum,Possum Free Whangarei Heads,,Bait stations,Brodifacoum,Council,1764028800000,1772323200000,-35.76819610757525,174.538823091204,Northland
+PFWH Kauri Mountain Feratox,Possum Free Whangarei Heads,,Bait stations,Cyanide,Council,1759449600000,1760918400000,-35.76819610757525,174.538823091204,Northland
+PFWH Ocean Beach 1080,Possum Free Whangarei Heads,,Bait stations,Sodium fluoroacetate,Council,1749427200000,1751241600000,-35.81371702585395,174.55964371081322,Northland
+Pikiariki Pindone (Pindone pellets) Bait stations #116,Waipapa-Pikiariki-Pukeokahu ground rat control 2025-2027,,Bait stations,Pindone,DOC,1758499200000,1814313600000,-38.511060758358305,175.56927421962806,Waikato
+Pindone BS 2023-2026,A'Deanes Bush Rodent Control 2023-2026,,Bait stations,Pindone,Trust,1701388800000,1782777600000,-39.92996214591793,176.30138779724788,Wellington
+Pindone Cereal BS 2023-24,Boundary Stream Rat Control 2023-24,,Bait stations,Pindone,DOC,1700611200000,1730332800000,-39.10353546331188,176.83551294334407,East Coast
+Piopio East Bush WRC 1080 Bait Station,Piopio East Bush WRC PPCA 2025,,Bait stations,Sodium fluoroacetate,Council,1743120000000,1771804800000,-38.5646656985941,175.06039618460204,Waikato
+Piopio East Bush WRC Aerial 1080,Piopio East Bush WRC PPCA 2025,,Aerial,Sodium fluoroacetate,Council,1743120000000,1771804800000,-38.5646656985941,175.06039618460204,Waikato
+Piopio East Bush WRC PPCA 2025,Piopio East Bush WRC PPCA 2025,,Handlaying,Sodium fluoroacetate,Council,1743120000000,1771804800000,-38.5646656985941,175.06039618460204,Waikato
+Pirongia-Te Kauri rat control 2025-26,Pirongia-Te Kauri rat control 2025-26,,Aerial,Sodium fluoroacetate,DOC,1762300800000,1762387200000,-37.997675920426865,175.05238824263628,Waikato
+Pirongia Ditrac rat and possum #61,Pirongia ground rat and possum control 2025,,Bait stations,Diphacinone,DOC,1761264000000,1766448000000,-37.97889266841535,175.144746698106,Waikato
+Pirongia Double tap rat and possum  #144,Pirongia ground rat and possum control 2025,,Bait stations,Diphacinone + Cholecalciferol,DOC,1761264000000,1777507200000,-37.97889266841535,175.144746698106,Waikato
+Pirongia Waipa possum Cyanara #79,Possum control Pirongia North and Waipa Puniu II PPCA 2025,,Bait stations,Cyanide,Council,1762387200000,1793404800000,-37.884318916748775,174.98688091791544,Waikato
+Pirongia Waipa possum Decal #114,Possum control Pirongia North and Waipa Puniu II PPCA 2025,,Bait stations,Cholecalciferol,Council,1762387200000,1793404800000,-37.884318916748775,174.98688091791544,Waikato
+Pirongia Waipa possum DoubleTap #144,Possum control Pirongia North and Waipa Puniu II PPCA 2025,,Bait stations,Diphacinone + Cholecalciferol,Council,1762387200000,1793404800000,-37.92777754300948,175.06703414480015,Waikato
+Pirongia Waipa possum Feracol #82,Possum control Pirongia North and Waipa Puniu II PPCA 2025,,Bait bags,Cholecalciferol,Council,1762387200000,1793404800000,-37.884318916748775,174.98688091791544,Waikato
+Pirongia Waipa possum Feratox #18,Possum control Pirongia North and Waipa Puniu II PPCA 2025,,Bait stations,Cyanide,Council,1762387200000,1793404800000,-37.884318916748775,174.98688091791544,Waikato
+Pirongia Waipa possum Feratox #19,Possum control Pirongia North and Waipa Puniu II PPCA 2025,,Bait bags,Cyanide,Council,1762387200000,1793404800000,-37.884318916748775,174.98688091791544,Waikato
+Pohatu_brodi_block,Pohatu_Treatment_area,,Bait stations,Brodifacoum,Trust,1762732800000,1770595200000,-43.87349714534668,173.01595880678207,Unknown
+Pohatu_Feratox_block,Pohatu_Treatment_area,,Bait bags,Cyanide,Trust,1762732800000,1770595200000,-43.87349714534668,173.01595880678207,Unknown
+Pomona Island 2025,Pomona Island 2025,,Bait stations,Sodium fluoroacetate,Trust,1759881600000,1762473600000,-45.50789940668697,167.47360015599733,Southland
+Port Waikato South Cyanide paste #79,Port Waikato South East PPCA,,Bait stations,Cyanide,Council,1763078400000,1793491200000,-37.37734940731765,174.77325865322868,Auckland
+Port Waikato South Decal #114,Port Waikato South East PPCA,,Bait stations,Cholecalciferol,Council,1763078400000,1793491200000,-37.37734940731765,174.77325865322868,Auckland
+Port Waikato South East DoubleTap #144,Port Waikato South East PPCA,,Bait stations,Diphacinone + Cholecalciferol,Council,1763078400000,1793491200000,-37.37734940731765,174.77325865322868,Auckland
+Port Waikato South Feracol #82,Port Waikato South East PPCA,,Bait bags,Cholecalciferol,Council,1763078400000,1793491200000,-37.37734940731765,174.77325865322868,Auckland
+Port Waikato South Feratox #18,Port Waikato South East PPCA,,Bait stations,Cyanide,Council,1763078400000,1793491200000,-37.37734940731765,174.77325865322868,Auckland
+Port Waikato South Feratox #19,Port Waikato South East PPCA,,Bait bags,Cyanide,Council,1763078400000,1793491200000,-37.37734940731765,174.77325865322868,Auckland
+Possum control Clarence Catchment 2025-2026,Possum control Clarence Catchment 2025-2026,,Bait bags,Cyanide,TB Free,1757894400000,1814313600000,-42.492004177311024,172.96894199987364,Nelson Marlborough
+Pouiatoa ETEC Double Tap,Pouiatoa ETEC Double Tap,,Bait stations,Diphacinone + Cholecalciferol,Trust,1668384000000,1794182400000,-39.106871774892184,174.51650529140463,Unknown
+Pukaha - Mount Bruce 2024,Pukaha - Mount Bruce 2024,,Bait stations,Cyanide,Trust,1728000000000,1753920000000,-40.74693179105206,175.63559866828777,Wellington
+Pukaha Mt Bruce Rabbit control 2023 Pindone hand lay,Pukaha Mt Bruce Rabbit control 2023 Pindone hand lay,,Handlaying,Pindone,Trust,1703030400000,1734652800000,-40.74693179105206,175.63559866828777,Wellington
+Pukenui rat control,Pukenui Forest,,Bait stations,Diphacinone,Trust,1725062400000,1788134400000,-35.705409049230084,174.2486590188445,Northland
+Pukeokahu Pindone Cereal pellet Bait stations #116,Waipapa-Pikiariki-Pukeokahu ground rat control 2025-2027,,Bait stations,Pindone,DOC,1759276800000,1814313600000,-38.402799913237594,175.53190252382316,Waikato
+Puketi Forest Trust Key Management Area Block 2.10 Rodent control Oct 2025,Puketi Forest Trust Key Management Area Block 2.10 Rodent control Oct 2025,,Bait stations,Pindone,Trust,1759276800000,1761955200000,-35.246633677215584,173.72507180238003,Northland
+Puketi Omahuta Fur Cyanara BS,Puketi Omahuta Fur SH,,Bait stations,Cyanide,Shared (detail in comments),1721779200000,1753228800000,-35.21461739569046,173.71627649250934,Northland
+Puketi Omahuta Fur Cyanara HL,Puketi Omahuta Fur SH,,Handlaying,Cyanide,Shared (detail in comments),1721692800000,1721692800000,-35.21461739569046,173.71627649250934,Northland
+Puketi Omahuta Fur Feratox BS,Puketi Omahuta Fur SH,,Bait stations,Cyanide,Shared (detail in comments),1721779200000,1753228800000,-35.21461739569046,173.71627649250934,Northland
+Pukunui control operation,Pukunui Predator Control,,Aerial,Sodium fluoroacetate,DOC,1755734400000,1755820800000,-47.041682313260836,167.70764162001979,Southland
+Pukunui control operation Deer repellent,Pukunui Predator Control,,Aerial,Sodium fluoroacetate,DOC,1755734400000,1755820800000,-46.97733400479498,167.90276037497216,Southland
+Rakiura Phase 1 1080 to Zero,Pukunui Predator Control,,Aerial,Sodium fluoroacetate,DOC,1751760000000,1751932800000,-46.983212891926996,167.88354217850804,Southland
+Rangitane SR Pindone,Kerikeri Peninsula Pest Control,,Handlaying,Pindone ,Trust,1683504000000,1698192000000,-35.189457106857674,174.00732974707944,Northland
+Rangitane SR Pindone Hand lay,Kerikeri peninsula predator control April24,,Handlaying,Pindone ,Trust,1715558400000,1873324800000,-35.18892417181355,174.0081675346956,Northland
+Rangitane/Blacksmith Reserve Double Tap,Kerikeri peninsula predator control April24,,Bait stations,Diphacinone + Cholecalciferol,Trust,1716854400000,1874880000000,-35.18892417181355,174.0081675346956,Northland
+Rangitane/Blacksmith reserve RatAbate,Kerikeri peninsula predator control April24,,Bait stations,Diphacinone,Trust,1716854400000,1874880000000,-35.18892417181355,174.0081675346956,Northland
+Rangitoto wasp control Vespex bait stations,Rangitoto wasp control Vespex bait stations,,Bait stations,Fipronil,Shared (detail in comments),1773878400000,1814313600000,-36.789182690648275,174.86099256323052,Auckland
+Rangituhi/Colonial Knob Scenic Reserve,Kapiti Coast Large Reserves,,Bait stations,Cholecalciferol,DOC,1762905600000,1765411200000,-41.152985119928914,174.812546811863,Wellington
+RatAbate BS 2023-2026,A'Deanes Bush Rodent Control 2023-2026,,Bait stations,Diphacinone,Trust,1701388800000,1782777600000,-39.92996214591793,176.30138779724788,Wellington
+RatAbate paste in BS 2023-24,Boundary Stream Rat Control 2023-24,,Bait stations,Diphacinone,DOC,1700524800000,1730332800000,-39.10353546331188,176.83551294334407,East Coast
+Resolution Island,Resolution Island,,Bait stations,Brodifacoum,DOC,1689292800000,1693526400000,-45.73348002956035,166.58370878422363,Southland
+Rissington Ground 25-26 Feratox BB,Rissington Ground 25-26,,Bait bags,Cyanide,TB Free,1759968000000,1782777600000,-39.32060739722412,176.67522300394432,East Coast
+Rissington Ground 25-26 Feratox Bio Bag 12 BB,Rissington Ground 25-26,,Bait bags,Cyanide,TB Free,1759968000000,1782777600000,-39.32060739722412,176.67522300394432,East Coast
+Rissington Ground 25-26 Feratox in BS,Rissington Ground 25-26,,Bait stations,Cyanide,TB Free,1759968000000,1782777600000,-39.32060739722412,176.67522300394432,East Coast
+Rissington Ground 25-26 Feratox with cereal prefeed in BS,Rissington Ground 25-26,,Bait stations,Cyanide,TB Free,1759968000000,1782777600000,-39.32060739722412,176.67522300394432,East Coast
+Rissington Ground 25-26 Pestoff 50D Diphacinone in BS,Rissington Ground 25-26,,Bait stations,Diphacinone,TB Free,1759968000000,1782777600000,-39.32060739722412,176.67522300394432,East Coast
+Rona Island,Rona Island,,Bait stations,Brodifacoum,Trust,1702339200000,1798675200000,-45.4930882640299,167.54038040528366,Otago
+Rotorua_Lake Okareka_LOCA_Feratox_BaitStations,Rotorua_Lake Okareka_LOCA_Feratox_Pindone_BaitStations,,Bait stations,Cyanide,Trust,1763683200000,1767139200000,-38.167502012016946,176.36879579919096,Waikato
+Rotorua_Lake Okareka_LOCA_Feratox_BaitStations,Rotorua_Lake Okareka_LOCA_Feratox_Pindone_BaitStations,,Bait stations,Cyanide,Trust,1763683200000,1767139200000,-38.167502012016946,176.36879579919096,Waikato
+Rotorua_Lake Okareka_LOCA_Feratox_Pindone_BaitStations,Rotorua_Lake Okareka_LOCA_Feratox_Pindone_BaitStations,,Bait stations,Pindone,Trust,1763683200000,1767139200000,-38.167502012016946,176.36879579919096,Waikato
+Ruakaka BBCCT pindone,Ruakaka BBCCT pindone,,Handlaying,Pindone ,Trust,1717459200000,1722297600000,-35.90340186110865,174.46150016193525,Northland
+Russell,Russell peninsula April 24,,Bait stations,Diphacinone,Trust,1714521600000,1809129600000,-35.25226014267638,174.13307179610865,Northland
+Russell Double tap,Russell peninsula April 24,,Bait stations,Diphacinone + Cholecalciferol,Trust,1714521600000,1809129600000,-35.25226014267638,174.13307179610865,Northland
+Russell RataBate,Russell peninsula April 24,,Bait stations,Diphacinone,Trust,1714521600000,1809129600000,-35.25226014267638,174.13307179610865,Northland
+Schoolhouse Bay Argentine ant control,Schoolhouse Bay Argentine ant control,,Handlaying,Fipronil,Council,1759276800000,1759276800000,-36.43038307971484,174.83247686265008,Unknown
+Seacliff Feratox Bait Bag,Seacliff Possum Control 2025,,Bait bags,Cyanide,Trust,1760486400000,1790553600000,-45.67566053449992,170.6155129979026,Otago
+SLS Diphacinone Bait Stations 24-26,SLS Diphacinone Bait Stations 24-26,,Bait stations,Diphacinone,Trust,1733702400000,1798675200000,-44.15011546573787,169.29856440901196,West Coast
+South Branch Hurunui Core D+C 2023,OFK Bait Stations,,Bait stations,Diphacinone + Cholecalciferol,DOC,1748563200000,1777507200000,-42.760661805126446,172.01316990997864,Canterbury
+South Branch Hurunui Edge D+C 2023,OFK Bait Stations,,Bait stations,Diphacinone + Cholecalciferol,DOC,1748563200000,1777507200000,-42.74482420937112,172.08111984986274,Canterbury
+South Okarito toxic rodent deployment 100 m buffer from 14_03_26,1080 ZIP South Okarito ,,Handlaying,Sodium fluoroacetate,Shared (detail in comments),1773446400000,1774915200000,-43.25110125978246,170.13138124306383,West Coast
+South Okarito Toxic rodent Feb 5th 26,1080 ZIP South Okarito ,,Handlaying,Sodium fluoroacetate,Shared (detail in comments),1770249600000,1774915200000,-43.320320577030145,170.1414634147942,West Coast
+South Okarito Toxic Rodents,1080 ZIP South Okarito ,,Handlaying,Sodium fluoroacetate,Shared (detail in comments),1769731200000,1782777600000,-43.29796918199402,170.11320719040643,West Coast
+SouthOkaritoBrodifacoum,ZIP Okarito brodifacoum response,,Bait stations,Brodifacoum,Shared (detail in comments),1740700800000,1741478400000,-43.25160143828784,170.2386871815375,West Coast
+Stoney Creek Addition baitstations.,ZIP Brodifacoum Paste Area,,Bait stations,Brodifacoum,Shared (detail in comments),1747094400000,1755648000000,-43.36390818399325,170.21545387891015,West Coast
+Strath Taiari Bait Bag,Strath Taiari Possum Control Area 2025-26,,Bait bags,Cyanide,TB Free,1751328000000,1782777600000,-45.658100369540314,169.86798967946834,Otago
+Strath Taiari Bait Station,Strath Taiari Possum Control Area 2025-26,,Bait stations,Cyanide,TB Free,1751328000000,1782777600000,-45.658100369540314,169.86798967946834,Otago
+Strath Taieri Bait Bag,Strath Taieri Possum Control Area 2024_25,,Bait bags,Cyanide,TB Free,1718409600000,1751241600000,-45.657961600125525,169.86950405310714,Otago
+Strath Taieri Bait Station,Strath Taieri Possum Control Area 2024_25,,Bait stations,Cyanide,TB Free,1715731200000,1751241600000,-45.657961600125525,169.86950405310714,Otago
+Strath Taieri Cyanide Handlaid,Strath Taieri Possum Control Area 2024_25,,Handlaying,Cyanide,TB Free,1718409600000,1751241600000,-45.657961600125525,169.86950405310714,Otago
+Strath Taieri Handlaid Cyanide,Strath Taiari Possum Control Area 2025-26,,Handlaying,Cyanide,TB Free,1751328000000,1782777600000,-45.658100369540314,169.86798967946834,Otago
+T Rex Delta mice 2025,Anchor Isl mouse incursion 2025,,Handlaying,Brodifacoum,DOC,1744416000000,1748649600000,-45.74188844982723,166.56585877961587,Southland
+TAAT 25-26 Cholecalciferol BB,TAAT 25-26,,Bait bags,Cholecalciferol,Shared (detail in comments),1756684800000,1782777600000,-40.30509181562488,175.78654278165197,Wellington
+TAAT 25-26 Diphacinone BS,TAAT 25-26,,Bait stations,Diphacinone,Shared (detail in comments),1756684800000,1782777600000,-40.30509181562488,175.78654278165197,Wellington
+TAAT 25-26 Double Tap BS,TAAT 25-26,,Bait stations,Diphacinone + Cholecalciferol,Shared (detail in comments),1756684800000,1782777600000,-40.30509181562488,175.78654278165197,Wellington
+TAAT 25-26 Feratox,TAAT 25-26,,Bait stations,Cyanide,Shared (detail in comments),1756684800000,1782777600000,-40.30509181562488,175.78654278165197,Wellington
+Taharua Matea 2025 - Cyanide + prefeed paste (bait stations),Taharua Matea 2025 (Better Nature),,Bait stations,Cyanide,TB Free,1750636800000,1756598400000,-38.86992691649737,176.4967260424761,Unknown
+Taharua Matea 2025 - Cyanide 475g/kg (bait bags),Taharua Matea 2025 (Better Nature),,Bait bags,Cyanide,TB Free,1750636800000,1756598400000,-38.86992691649737,176.4967260424761,Unknown
+Taharua Matea 2025 - Diphacinone,Taharua Matea 2025 (Better Nature),,Bait stations,Diphacinone,TB Free,1750636800000,1756598400000,-38.86992691649737,176.4967260424761,Unknown
+Taharua Matea 2025 - Feratox 475 Bait Stations,Taharua Matea 2025 (Better Nature),,Bait stations,Cyanide,TB Free,1750636800000,1756598400000,-38.86992691649737,176.4967260424761,Unknown
+Taharua Matea 2025 - Feratox Bio Bag 12,Taharua Matea 2025 (Better Nature),,Bait bags,Cyanide,TB Free,1750636800000,1756598400000,-38.86992691649737,176.4967260424761,Unknown
+Taipo Cyanara bait stations,Taipo 2025,,Bait stations,Cyanide,TB Free,1752451200000,1765756800000,-42.74381771287784,171.37551439051995,West Coast
+Taipo Feratox bait stations,Taipo 2025,,Bait stations,Cyanide,TB Free,1752451200000,1765756800000,-42.74381771287784,171.37551439051995,West Coast
+Tasman Wilderness NPCP 2025 Deer Repellent,Tasman Wilderness NPCP,,Aerial,Sodium fluoroacetate,DOC,1763596800000,1763683200000,-41.0660968538617,172.5531610895939,Nelson Marlborough
+Tasman Wilderness NPCP 2025 Standard,Tasman Wilderness NPCP,,Aerial,Sodium fluoroacetate,DOC,1763596800000,1763683200000,-41.097335597632394,172.39353327703708,Unknown
+Taupiri Rat and Possum Control #19 Feratox,Taupiri SR Rat and Possum Control_25-26,,Bait bags,Cyanide,Trust,1757894400000,1782777600000,-37.56658379218339,175.19933351061545,Waikato
+Taupiri Rat and Possum Control #3 Pronature,Taupiri SR Rat and Possum Control_25-26,,Bait stations,Sodium fluoroacetate,Trust,1757894400000,1782777600000,-37.56658379218339,175.19933351061545,Waikato
+Taupo_TaupoTMA_Epro_Diphacinone_BaitStations,Taupo_TaupoTMA_Epro_Feratox_Diphacinone,,Bait stations,Diphacinone,TB Free,1743984000000,1775433600000,-38.61604011837927,176.20411168410365,Waikato
+Taupo_TaupoTMA_Epro_Feratox_Baitbags,Taupo_TaupoTMA_Epro_Feratox_Diphacinone,,Bait bags,Cyanide,TB Free,1743984000000,1775433600000,-38.61604011837927,176.20411168410365,Waikato
+Taupo_TaupoTMA_Epro_Feratox_BaitStations,Taupo_TaupoTMA_Epro_Feratox_Diphacinone,,Bait stations,Cyanide,TB Free,1743984000000,1775433600000,-38.61604011837927,176.20411168410365,Waikato
+Te Hawere-a-Maki Ditrac,Te Hawere-a-Maki Area 23-26,,Bait stations,Diphacinone,Shared (detail in comments),1693267200000,1786147200000,-36.26564430992514,174.79742192977847,Northland
+Te Hawere-a-Maki Pestoff,Te Hawere-a-Maki Area 23-26,,Bait stations,Diphacinone,Shared (detail in comments),1693267200000,1786147200000,-36.26564430992514,174.79742192977847,Northland
+Te Maire Double Tap,Te Maire,,Bait stations,Diphacinone + Cholecalciferol,Trust,1694563200000,1753401600000,-37.66289573749291,175.90337883537785,Waikato
+Te Maire Pindone,Te Maire,,Bait stations,Pindone,Trust,1694563200000,1753401600000,-37.66289573749291,175.90337883537785,Waikato
+Te Maruia Aerial 1080 2025,Te Maruia 2025,,Aerial,Sodium fluoroacetate,DOC,1763251200000,1763596800000,-42.277117503578566,172.26520506819207,Canterbury
+Te Matai Feratox Bait Stations 25_26,Te Matai Forest Possum and rat Control 25_26,,Bait stations,Cyanide,Trust,1754870400000,1761868800000,-37.95309371513953,176.23854258071276,Waikato
+Te Matai Forest Pindone Bait Stations 25_26,Te Matai Forest Possum and rat Control 25_26,,Bait stations,Pindone,Trust,1754870400000,1761868800000,-37.95309371513953,176.23854258071276,Waikato
+Te Matuku Diphacinone baitstations 2023_28,Te Matuku Diphacinone baitstations 2023_28,,Bait stations,Diphacinone,Trust,1692057600000,1845936000000,-36.83559947424975,175.13588370593158,Auckland
+Te Matuku Reserves diphacinone 2024-29,Te Matuku Reserves diphacinone 2024-29,,Bait stations,Diphacinone,Trust,1734480000000,1892160000000,-36.83559947424975,175.13588370593158,Auckland
+Te Miro_Cyanide#19_25-26,Te Miro_25-26,,Bait bags,Cyanide,Council,1752451200000,1782777600000,-37.797986901016465,175.54720102669026,Waikato
+Te Miro_DblTap#144_25-26,Te Miro_25-26,,Bait stations,Diphacinone + Cholecalciferol,Council,1752451200000,1782777600000,-37.7980892105166,175.54724873458505,Waikato
+Te Miro_Decal#114_25-26,Te Miro_25-26,,Bait stations,Cholecalciferol,Council,1752451200000,1782777600000,-37.797986901016465,175.54720102669026,Waikato
+Te Miro_Decal#138_25-26,Te Miro_25-26,,Bait bags,Cholecalciferol,Council,1752451200000,1782777600000,-37.7980892105166,175.54724873458505,Waikato
+Te Miro_Ditrac#127_25-26,Te Miro_25-26,,Bait stations,Diphacinone,Council,1752451200000,1782777600000,-37.797986901016465,175.54720102669026,Waikato
+Te Miro_Feracol#82_25-26,Te Miro_25-26,,Bait bags,Cholecalciferol,Council,1752451200000,1782777600000,-37.7980892105166,175.54724873458505,Waikato
+Te Miro_Feratox#18_25-26,Te Miro_25-26,,Bait stations,Cyanide,Council,1752451200000,1782777600000,-37.7980892105166,175.54724873458505,Waikato
+Te Miro_Pestoff#122_25-26,Te Miro_25-26,,Bait stations,Diphacinone,Council,1752451200000,1782777600000,-37.797986901016465,175.54720102669026,Waikato
+Te Miro_Sod.Flu#3_25-26,Te Miro_25-26,,Bait stations,Sodium fluoroacetate,Council,1752451200000,1782777600000,-37.797986901016465,175.54720102669026,Waikato
+TM_25 Hand Lay 1080,Te Maruia 2025,,Handlaying,Sodium fluoroacetate,DOC,1763596800000,1763596800000,-42.42153212210384,172.0955131746205,Canterbury
+Tongariro Forest_TCA_NPCP_PredatorControl_PronatureAerial,Tongariro Forest_TCA_NPCP_PredatorControl_PronatureAerial,,Aerial,Sodium fluoroacetate,DOC,1755734400000,1780272000000,-39.050463382924576,175.48691288131494,Unknown
+Tongariro_NorthHihitahi_Supplejack_Cyanara50,Tongariro_NorthHihitahi_Supplejack_Feratox_Cyanara50_BaitStations,,Bait stations,Cyanide,TB Free,1746403200000,1798502400000,-39.52549453470411,175.70868987270808,Wellington
+Tongariro_NorthHihitahi_Supplejack_Feratox,Tongariro_NorthHihitahi_Supplejack_Feratox_Cyanara50_BaitStations,,Bait stations,Cyanide,TB Free,1746403200000,1798502400000,-39.52549453470411,175.70868987270808,Wellington
+Toxic Rodents Nov 25,ZIP Targeted stoat removal trial,,Handlaying,Sodium fluoroacetate,Shared (detail in comments),1763856000000,1764460800000,-43.40105796177982,170.40670508432854,West Coast
+Trentham Scenic Reserve Diphacinone #122 +DoubleTap #144 2025-2026,Trentham Scenic Reserve Diphacinone #122 +DoubleTap #144 2025-2026,,Bait stations,Diphacinone + Cholecalciferol,DOC,1762819200000,1765670400000,-41.12408228448228,175.03085472434807,Wellington
+Trounson Kauri Park Diphacinone 2025_2026,Trounson Kauri Park 2025_2026,,Bait stations,Diphacinone,DOC,1757376000000,1788220800000,-35.72628307870107,173.63017165506938,Northland
+Trounson Kauri Park Feratox 2025_2026,Trounson Kauri Park 2025_2026,,Bait bags,Cyanide,DOC,1757376000000,1788220800000,-35.72628307870107,173.63017165506938,Northland
+Tryphena Scenic Reserve Diphacinone bait stations,"OME Rat Control Oruawharo Bay/Medlands area, Aotea",,Bait stations,Diphacinone,Trust,1743638400000,1772236800000,-36.28595581673895,175.48352734008972,Unknown
+Tryphena Scenic Reserve Diphacinone Bait Stations,OME Rat Control 2026-2030,,Bait stations,Diphacinone,Trust,1772323200000,1930089600000,-36.28595581673895,175.48352734008972,Unknown
+Tryphena South,Windy Hill,,Bait stations,Diphacinone,Trust,1605744000000,1761868800000,-36.30301000365546,175.5139719053455,Unknown
+Tucker Beach Magtoxin '25 to '27,Tucker Beach Magtoxin '25 to '27,,Fumigation,Magnesium Phosphide,Trust,1750464000000,1806451200000,-44.98215536724592,168.74202329472254,Otago
+Tuckers Beach Magtoxin,Tuckers Beach Rabbit Control 2023-24,,Fumigation,Magnesium Phosphide,Trust,1691366400000,1717027200000,-44.98215536724592,168.74202329472254,Otago
+Turangi_Opepe_Forest Bird_Cholecalciferol_Bags,Turangi_Opepe_Forest Bird_Cholecalciferol Double Tap_Bags  Stations,,Bait bags,Cholecalciferol,Trust,1743465600000,1761868800000,-38.76744925093205,176.2234481265727,Unknown
+Turangi_Taharua TMA_BetterNature_Feratox_BioBags,Turangi_Taharua TMA_BetterNature_Cyanide_Diphacinone_BaitStationsBags,,Bait bags,Cyanide,Shared (detail in comments),1761004800000,1782777600000,-38.989279813571564,176.26029522932944,Unknown
+Tutaekuri Mohaka 1080 Aerial,Tutaekuri Mohaka 2223,,Aerial,Sodium fluoroacetate,TB Free,1663200000000,1688083200000,-39.26919615910001,176.47315169242606,Unknown
+Tutaekuri Mohaka 22-23 1080 handlaying,Tutaekuri Mohaka 2223,,Handlaying,Sodium fluoroacetate,TB Free,1663200000000,1688083200000,-39.26919615910001,176.47315169242606,Unknown
+Tutaekuri Mohaka 22-23 Feratox BS,Tutaekuri Mohaka 2223,,Bait stations,Cyanide,TB Free,1663200000000,1688083200000,-39.26919615910001,176.47315169242606,Unknown
+Tutaekuri Mohaka OSPRI 22-23 1080 BS,Tutaekuri Mohaka 2223,,Bait stations,Sodium fluoroacetate,TB Free,1663200000000,1688083200000,-39.26919615910001,176.47315169242606,Unknown
+Tutaekuri Mohaka OSPRI 22-23 Feratox BB,Tutaekuri Mohaka 2223,,Bait bags,Cyanide,TB Free,1663200000000,1688083200000,-39.26919615910001,176.47315169242606,Unknown
+Tutaekuri OSPRI 2024-25 Feratox BS,Tutaekuri Waitara OSPRI Ground 2024-25,,Bait stations,Cyanide,TB Free,1732406400000,1751241600000,-39.05878993265506,176.7433281563926,East Coast
+Tutaekuri Waitara 25-26 Cyanide 9.4g/kg BB,Tutaekuri Waitara OSPRI Possum 2025-26,,Bait bags,Cyanide,TB Free,1757376000000,1782777600000,-39.05878993265506,176.7433281563926,East Coast
+Tutaekuri Waitara 25-26 Diphacinone BS,Tutaekuri Waitara OSPRI Possum 2025-26,,Bait stations,Diphacinone,TB Free,1757376000000,1782777600000,-39.05878993265506,176.7433281563926,East Coast
+Tutaekuri Waitara 25-26 Feratox BB,Tutaekuri Waitara OSPRI Possum 2025-26,,Bait bags,Cyanide,TB Free,1757376000000,1782777600000,-39.05878993265506,176.7433281563926,East Coast
+Tutaekuri Waitara 25-26 Feratox with cereal prefeed pellets BS,Tutaekuri Waitara OSPRI Possum 2025-26,,Bait stations,Cyanide,TB Free,1757376000000,1782777600000,-39.05878993265506,176.7433281563926,East Coast
+Tutaekuri Waitara 25-26 Feratox with prefeed paste in BS,Tutaekuri Waitara OSPRI Possum 2025-26,,Bait stations,Cyanide,TB Free,1757376000000,1782777600000,-39.05878993265506,176.7433281563926,East Coast
+Tutaekuri Waitara OSPRI 2024-25 Diphacinone cereal pellet,Tutaekuri Waitara OSPRI Ground 2024-25,,Bait stations,Cholecalciferol,TB Free,1732406400000,1751241600000,-39.05878993265506,176.7433281563926,East Coast
+Tutaekuri Waitara OSPRI 2024-25 Feratox BB,Tutaekuri Waitara OSPRI Ground 2024-25,,Bait bags,Cyanide,TB Free,1732406400000,1751241600000,-39.05878993265506,176.7433281563926,East Coast
+Tutaekuri Waitara OSPRI 2024-25 Feratox Bio Bag 12,Tutaekuri Waitara OSPRI Ground 2024-25,,Bait bags,Cyanide,TB Free,1732406400000,1751241600000,-39.05878993265506,176.7433281563926,East Coast
+Tutaekuri Waitara OSPRI 2024-25 Feratox cereal pellets,Tutaekuri Waitara OSPRI Ground 2024-25,,Bait stations,Cyanide,TB Free,1732406400000,1751241600000,-39.05878993265506,176.7433281563926,East Coast
+Tutira 25-26 Cyanide 9.4g/kg BB,Tutira OSPRI Possums 2025-26,,Bait bags,Cyanide,TB Free,1767744000000,1782777600000,-39.225944316872514,176.89803803645287,East Coast
+Tutira 25-26 Diphacinone BS,Tutira OSPRI Possums 2025-26,,Bait stations,Diphacinone,TB Free,1767744000000,1782777600000,-39.225944316872514,176.89803803645287,East Coast
+Tutira 25-26 Feratox BB,Tutira OSPRI Possums 2025-26,,Bait bags,Cyanide,TB Free,1767744000000,1782777600000,-39.225944316872514,176.89803803645287,East Coast
+Tutira 25-26 feratox BS,Tutira OSPRI Possums 2025-26,,Bait stations,Cyanide,TB Free,1767744000000,1782777600000,-39.225944316872514,176.89803803645287,East Coast
+Tutira 25-26 Feratox cereal prefeed BS,Tutira OSPRI Possums 2025-26,,Bait stations,Cyanide,TB Free,1767744000000,1782777600000,-39.225944316872514,176.89803803645287,East Coast
+Tutukakahikura PFBP Operation,Tutukakahikura PFBP Operation,,Bait stations,Brodifacoum,Trust,1744848000000,1744848000000,-43.85003608027583,172.9847305419757,Canterbury
+Upper Hopkins Feratox,Ohau Forests,,Bait bags,Cyanide,DOC,1720483200000,1720742400000,-43.896754597171885,169.87756596346597,West Coast
+Upper Wanganui OSPRI,Upper Wanganui OSPRI,,Aerial,Sodium fluoroacetate,TB Free,1762473600000,1766188800000,-43.210501606373455,170.70482316887666,West Coast
+Waiau1,1080 ZIP South Okarito ,,Aerial,Sodium fluoroacetate,Shared (detail in comments),1769731200000,1769731200000,-43.28567473261562,170.07639811738866,West Coast
+Waiautoa GCO - Tom's Face,Waiautoa GCO - Tom's Face,,Bait bags,Cyanide,TB Free,1733097600000,1748563200000,-42.07446699842943,173.8249335959765,Nelson Marlborough
+Waikanae Scenic Reserve and QEII Cholecalcipherol #114 2025,Kapiti Coast Small Reserves Cholecalcipherol #114 2025,,Bait stations,Cholecalciferol,DOC,1761696000000,1763683200000,-40.84942487413581,175.08691560270773,Wellington
+Waikanae Scenic Reserve and QEII Diphacinone 121 2025,Kapiti Small Covenants Diphacinone 121 2025,,Bait stations,Diphacinone,DOC,1752192000000,1752192000000,-40.84942487413581,175.08691560270773,Wellington
+Waikare Papakauri,Waikare Waihaha Treatment Area,,Bait stations,Diphacinone + Cholecalciferol,Trust,1717200000000,1748736000000,-35.369724529897205,174.24904254782166,Northland
+Waikare Waihaha double tap,Waikare Waihaha Treatment Area,,Bait stations,Diphacinone + Cholecalciferol,Trust,1698105600000,1713916800000,-35.36990375938503,174.21881550274227,Northland
+Waikawa ICMP,Waikawa ES cyanide possum control,,Bait stations,Cyanide,Council,1746403200000,1793404800000,-46.491238176290075,169.08805988840766,Otago
+Waikoau Ground 2025-2026 cyanide in bait bags,Waikoau Ground 2025-2026 laid,,Bait bags,Cyanide,TB Free,1755561600000,1782777600000,-39.21310901829628,176.7939751317549,East Coast
+Waikoau Ground 2025-2026 cyanide with prefeed paste in BS,Waikoau Ground 2025-2026 laid,,Bait stations,Cyanide,TB Free,1755561600000,1782777600000,-39.21310901829628,176.7939751317549,East Coast
+Waikoau Ground 2025-2026 cyanide with prefeed pellets in BS,Waikoau Ground 2025-2026 laid,,Bait stations,Cyanide,TB Free,1755561600000,1782777600000,-39.21310901829628,176.7939751317549,East Coast
+Waikoau Ground 2025-2026 Diphacinone pellets in BS,Waikoau Ground 2025-2026 laid,,Bait stations,Diphacinone,TB Free,1755561600000,1782777600000,-39.21310901829628,176.7939751317549,East Coast
+Waima kokako feratox 2025_26,Kauri Coast kokako area 2025_26,,Bait bags,Cyanide,DOC,1757980800000,1777161600000,-35.535493460943385,173.53952825644564,Northland
+Waima Kokako ratabate 2025_26,Kauri Coast kokako area 2025_26,,Bait stations,Diphacinone,DOC,1756166400000,1777161600000,-35.535493460943385,173.53952825644564,Northland
+Waima kokako ratabate spring 2025,Kauri Coast kokako area 2024_25,,Bait stations,Diphacinone,DOC,1755648000000,1756080000000,-35.535493460943385,173.53952825644564,Northland
+Waimamaku rat control,Kauri Coast SJK Area,,Bait stations,Diphacinone,DOC,1745366400000,1756425600000,-35.55923728482951,173.61698810298563,Northland
+Waipa River WRC Possums 2022-23 Chole bait bags,Waipa River Possum WRC 2022-23,,Bait bags,Cholecalciferol,Council,1657152000000,1677572779000,-38.27066858936066,175.33944490354867,Waikato
+Waipapa Pindone (Pindone pellets) Bait stations #116,Waipapa-Pikiariki-Pukeokahu ground rat control 2025-2027,,Bait stations,Pindone,DOC,1759708800000,1814313600000,-38.453018453622995,175.5776277286465,Waikato
+Waipatiki Ground 25-26,Waipatiki Ground Possum OSPRI 2025-26,,Bait stations,Cyanide,TB Free,1758153600000,1782777600000,-39.20129846246399,177.0501682663406,East Coast
+Waipatiki Ground 25-26 Diphacinone BS,Waipatiki Ground Possum OSPRI 2025-26,,Bait stations,Diphacinone,TB Free,1758153600000,1782777600000,-39.20129846246399,177.0501682663406,East Coast
+Waipatiki Ground Cyanide 9.4g/kg BB,Waipatiki Ground Possum OSPRI 2025-26,,Bait bags,Cyanide,TB Free,1758153600000,1782777600000,-39.20129846246399,177.0501682663406,East Coast
+Waipatiki Ground Feratox BB,Waipatiki Ground Possum OSPRI 2025-26,,Bait bags,Cyanide,TB Free,1758153600000,1782777600000,-39.20129846246399,177.0501682663406,East Coast
+Waipatiki Ground Feratox with cereal prefeed BS,Waipatiki Ground Possum OSPRI 2025-26,,Bait stations,Cyanide,TB Free,1758153600000,1782777600000,-39.20129846246399,177.0501682663406,East Coast
+Waipoua 2025,Waipoua 2025,,Aerial,Sodium fluoroacetate,DOC,1763856000000,1763942400000,-35.62722385980894,173.59866249235031,Northland
+Waipoua Mataraua feratox 2025_26,Kauri Coast kokako area 2025_26,,Bait bags,Cyanide,DOC,1757030400000,1775347200000,-35.61262642720618,173.61586721241363,Northland
+Waipoua Mataraua kokako feracol 2024,Kauri Coast kokako area 2024_25,,Bait bags,Cholecalciferol,DOC,1727913600000,1743811200000,-35.61262642720618,173.61586721241363,Northland
+Waipoua Mataraua kokako ratabate spring 2025,Kauri Coast kokako area 2025_26,,Bait stations,Diphacinone,DOC,1756339200000,1777334400000,-35.61262642720618,173.61586721241363,Northland
+Waipoua Okawawa rat control,Kauri Coast SJK Area,,Bait stations,Diphacinone,DOC,1745366400000,1756425600000,-35.65628734828704,173.57399628212664,Northland
+Waipu Kiwis - Pronature,Waipu Kiwis - Pronature,,Bait stations,Sodium fluoroacetate,Trust,1756252800000,1758067200000,-36.071585551661705,174.5291499068081,Northland
+Waipunga OSPRI 2022-23,Waipunga OSPRI 2022-23,,Aerial,Sodium fluoroacetate,TB Free,1670803200000,1690761600000,-38.8917145425634,176.60351901833195,East Coast
+Waipunga TMA Ground 24-25 Cyanide 9.4g/kg Feratox Bio Bag 12,Waipunga TMA Ground OSPRI 2024-25,,Bait bags,Cyanide,TB Free,1731369600000,1782777600000,-38.92032037229178,176.38759332321658,Unknown
+Waipunga TMA Ground 24-25 Diphacinone cereal in BS,Waipunga TMA Ground OSPRI 2024-25,,Bait stations,Diphacinone,TB Free,1731369600000,1782777600000,-38.92032037229178,176.38759332321658,Unknown
+Waipunga TMA Ground Cyanide pellets with prefeed cereal pelletsin BS,Waipunga TMA Ground OSPRI 2024-25,,Bait stations,Cyanide,TB Free,1731369600000,1782777600000,-38.92032037229178,176.38759332321658,Unknown
+Waipunga TMA Ground Cyanide with prefeed paste in BB,Waipunga TMA Ground OSPRI 2024-25,,Bait bags,Cyanide,TB Free,1731369600000,1782777600000,-38.92032037229178,176.38759332321658,Unknown
+Waipunga TMA Ground_Cyanide with prefeed paste in BS,Waipunga TMA Ground OSPRI 2024-25,,Bait stations,Cyanide,TB Free,1731369600000,1782777600000,-38.92032037229178,176.38759332321658,Unknown
+Waipunga_Tarawera_Waitara_1080_BS,Waipunga_Tarawera_Waitara_OSPRI_21_22_Ground,,Bait stations,Sodium fluoroacetate,TB Free,1637884800000,1668384000000,-39.03490773457957,176.57819255894725,East Coast
+Waipunga_Tarawera_Waitara_Cyanara50_BB,Waipunga_Tarawera_Waitara_OSPRI_21_22_Ground,,Handlaying,Cyanide,TB Free,1637884800000,1668384000000,-39.03490773457957,176.57819255894725,East Coast
+Waipunga_Tarawera_Waitara_Feratox_BB,Waipunga_Tarawera_Waitara_OSPRI_21_22_Ground,,Bait bags,Cyanide,TB Free,1637884800000,1668384000000,-39.03490773457957,176.57819255894725,East Coast
+Waipunga_Tarawera_Waitara_Feratox_Pellets,Waipunga_Tarawera_Waitara_OSPRI_21_22_Ground,,Bait stations,Cyanide,TB Free,1637884800000,1668384000000,-39.03490773457957,176.57819255894725,East Coast
+Waitaanga Kokako,Waitaanga Kokako,,Bait bags,Cyanide,DOC,1762732800000,1766102400000,-38.858272741340166,174.87496344260825,Unknown
+Waitaanga Kokako A block,Waitaanga Kokako,,Bait stations,Pindone,DOC,1763337600000,1766102400000,-38.858272741340166,174.87496344260825,Unknown
+Waitahuna - Mahinerangi,Waitahuna - Mahinerangi Possum Control 2025-26,,Handlaying,Cyanide,TB Free,1770681600000,1798675200000,-45.74014437585125,169.80684252303828,Otago
+Waitahuna - Mahinerangi Bait Bag,Waitahuna - Mahinerangi Possum Control 2025-26,,Bait bags,Cyanide,TB Free,1770681600000,1798675200000,-45.74014437585125,169.80684252303828,Otago
+Waitahuna - Mahinerangi Bait Station,Waitahuna - Mahinerangi Possum Control 2025-26,,Bait stations,Cyanide,TB Free,1770681600000,1798675200000,-45.74014437585125,169.80684252303828,Otago
+Waitahuna Mahinerangi Bait Bag,Waitahuna_Mahinerangi Possum Control 2024_25,,Bait stations,Cyanide,TB Free,1721001600000,1751241600000,-45.7537539521598,169.78590038856947,Otago
+Waitahuna Mahinerangi Bait Station,Waitahuna_Mahinerangi Possum Control 2024_25,,Bait stations,Cyanide,TB Free,1721001600000,1751241600000,-45.7537539521598,169.78590038856947,Otago
+Waitahuna Mahinerangi Cyanide Handlaid,Waitahuna_Mahinerangi Possum Control 2024_25,,Handlaying,Cyanide,TB Free,1721001600000,1751241600000,-45.7537539521598,169.78590038856947,Otago
+Waitawheta Rat Control 2024,Waitawheta Rat Control 2024,,Bait stations,Diphacinone + Cholecalciferol,Trust,1727654400000,1733011200000,-37.46164596492576,175.76175336665906,Waikato
+West Matukituki Rat Control 2024,West Matukituki Rat Control 2024,,Bait stations,Diphacinone,Trust,1699574400000,1727654400000,-44.48607062386327,168.66264970889807,West Coast
+Whakatipu reforestation trust Pindone,Whakatipu reforestation trust Pindone,,Handlaying,Pindone ,Trust,1755820800000,1824854400000,-44.9688333454662,168.8030598279302,Otago
+Whangape Possum cyanide #18,Whangape Possum control PPCA 2025,,Bait stations,Cyanide,Council,1741305600000,1769817600000,-37.47192528136145,175.02427376958556,Auckland
+Whangape possum cyanide #19,Whangape Possum control PPCA 2025,,Bait bags,Cyanide,Council,1741305600000,1769817600000,-37.47192528136145,175.02427376958556,Auckland
+Whangape possum decal #114,Whangape Possum control PPCA 2025,,Bait stations,Cholecalciferol,Council,1741305600000,1769817600000,-37.47192528136145,175.02427376958556,Auckland
+"Whangape possum, DoubleTap #144",Whangape Possum control PPCA 2025,,Bait stations,Diphacinone + Cholecalciferol,Council,1741305600000,1769817600000,-37.47192528136145,175.02427376958556,Auckland
+Whangapoua Basin Rabbit Control ,Whangapoua Basin Rabbit Control ,,Fumigation,Magnesium Phosphide,DOC,1651449600000,1809043200000,-36.15603226132804,175.41016151704656,Unknown
+Whataroa-Perth - Localised Rat Removal area -1080,Whataroa-Perth - Localised Rat Removal area -1080,,Handlaying,Sodium fluoroacetate,Shared (detail in comments),1742342400000,1745452800000,-43.373469044708344,170.57388056981654,West Coast
+Whataroa-Perth 1080 Rodent carcass,ZIP Targeted stoat removal trial,,Handlaying,Sodium fluoroacetate,Shared (detail in comments),1646870400000,1717113600000,-43.35170769764677,170.50305100156228,West Coast
+Whataroa Ext,Whataroa-Perth - Localised Rat Removal area -1080,,Aerial,Sodium fluoroacetate,Shared (detail in comments),1755734400000,1769731200000,-43.3139782378306,170.51300776060285,West Coast
+Whinray Rat Control 2024-25,Whinray Rat Control,,Bait bags,Cholecalciferol,Trust,1714953600000,1772323200000,-38.241317171606674,177.60106091554943,Bay of Plenty
+Whirinaki Core ARea Diphacinone 2025/26,Whirinaki Core ARea Diphacinone 2025/26,,Bait stations,Pindone,DOC,1765238400000,1771200000000,-38.64145867751849,176.69717403240983,East Coast
+Whirinaki Core Area Pindone 2025/26,Whirinaki Core Area Pindone 2025/26,,Bait stations,Pindone,DOC,1757894400000,1774915200000,-38.64145867751849,176.69717403240983,East Coast
+WHPF Ocean Beach Feratox,Possum Free Whangarei Heads,,Bait stations,Cyanide,Council,1717977600000,1754006400000,-35.81371702585395,174.55964371081322,Northland
+Willowflat Ground Possum 2025-2026 cyanide in bait bags,Willowflat Ground Possum 2025-2026,,Bait bags,Cyanide,TB Free,1757376000000,1782777600000,-39.046383895330514,176.85663903961762,East Coast
+Willowflat Ground Possum 2025-2026 cyanide with prefeed paste in bait bags,Willowflat Ground Possum 2025-2026,,Bait bags,Cyanide,TB Free,1757376000000,1782777600000,-39.046383895330514,176.85663903961762,East Coast
+Willowflat Ground Possum 2025-2026 cyanide with prefeed paste in BS,Willowflat Ground Possum 2025-2026,,Bait stations,Cyanide,TB Free,1757376000000,1782777600000,-39.046383895330514,176.85663903961762,East Coast
+Willowflat Ground Possum 2025-2026 cyanide with prefeed pellet in BS,Willowflat Ground Possum 2025-2026,,Bait stations,Cyanide,TB Free,1757376000000,1782777600000,-39.046383895330514,176.85663903961762,East Coast
+Willowflat Ground Possum 2025-2026 Diphacinone in BS,Willowflat Ground Possum 2025-2026,,Bait stations,Diphacinone,TB Free,1757376000000,1782777600000,-39.046383895330514,176.85663903961762,East Coast
+Windy Hill North,Windy Hill,,Bait stations,Diphacinone,Trust,1605744000000,1761868800000,-36.30094395094445,175.5391577834932,Unknown
+Windy Hill South,Windy Hill,,Bait stations,Diphacinone,Trust,1605744000000,1761868800000,-36.308298226401455,175.54653863852718,Unknown
+Wiri Lava Cave SR diphacinone 2024,Wiri Lava Cave SR diphacinone 2024,,Bait stations,Diphacinone,Trust,1716249600000,1810339200000,-37.00589254677133,174.85920473422473,Auckland
+ZIP Brodifacoum Pellet Bait Stations,ZIP Brodifacoum Pellet Bait Stations,,Bait stations,Brodifacoum,Trust,1632787200000,1690761600000,-43.3465500896601,170.53369545754418,West Coast
+ZIP H2Zeros 15 Oct,Whataroa-Perth - Brodifacoum Paste LoLa ,,Bait stations,Brodifacoum,Shared (detail in comments),1760486400000,1766188800000,-43.24346321987294,170.33673944522354,West Coast
+ZIP Kirikirikatata Aerial 1080 Pest Elimination,ZIP Kirikirikatata Pest Elimination,,Aerial,Sodium fluoroacetate,Shared (detail in comments),1765411200000,1776384000000,-43.68559289155385,170.13533307336877,West Coast
+ZIP Liebig Aerial 1080 2kg/ha Alpine Pest Control 2025,ZIP Liebig Aerial 1080 Alpine Pest Control 2025,,Aerial,Sodium fluoroacetate,Shared (detail in comments),1741219200000,1743897600000,-43.66704767228993,170.27327509556756,West Coast
+ZIP Liebig Aerial 1080 Alpine Pest Control 2025,ZIP Liebig Aerial 1080 Alpine Pest Control 2025,,Aerial,Sodium fluoroacetate,Shared (detail in comments),1741219200000,1743904800000,-43.67961725998264,170.23849022631413,West Coast
+ZIP Malte Liebig Feratox Striker Possum Control,ZIP Malte Liebig Feratox Striker Possum Control,,Bait bags,Cyanide,Shared (detail in comments),1763596800000,1779753600000,-43.7408538461548,170.16858506656467,West Coast
+ZIP Okarito brodifacoum response,ZIP Okarito brodifacoum response,,Bait stations,Brodifacoum,Shared (detail in comments),1634515200000,1729209600000,-43.28154813626665,170.22465048141336,West Coast

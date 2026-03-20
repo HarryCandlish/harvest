@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KiwiSaver & First Home Buyers — New Harvest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #F7F6F2;
+      --dark:   #1A1E1A;
+      --mid:    #4A5248;
+      --green:  #3A5C45;
+      --gold:   #B8883A;
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--dark); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 166px; background: var(--bg);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .nav-logo { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 400; color: var(--dark); text-decoration: none; letter-spacing: -0.3px; }
+    .nav-back { font-size: 13px; color: var(--mid); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .nav-back:hover { color: var(--dark); }
+    .nav-back::before { content: "←"; font-size: 14px; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark);
+      padding: 100px 48px 80px;
+    }
+    .hero-inner { max-width: 1200px; margin: 0 auto; }
+    .hero-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; font-weight: 500; }
+    .hero-title { font-family: 'Fraunces', serif; font-size: clamp(32px, 5vw, 56px); font-weight: 300; color: white; line-height: 1.15; letter-spacing: -1px; margin-bottom: 24px; }
+    .hero-title em { color: var(--gold); font-style: normal; }
+    .hero-intro { font-size: 16px; color: rgba(255,255,255,0.55); max-width: 640px; line-height: 1.9; }
+
+    /* ── STATS ROW ── */
+    .stats-row {
+      background: var(--dark);
+      padding: 0 48px 80px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .stat-card { padding: 36px 24px; }
+    .stat-number { font-family: 'Fraunces', serif; font-size: 42px; font-weight: 300; color: white; line-height: 1; margin-bottom: 8px; letter-spacing: -1px; }
+    .stat-number span { color: var(--gold); }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+    /* ── SECTION ── */
+    .ks-section { padding: 80px 48px; }
+    .ks-section.alt { background: #EFEDE7; }
+    .ks-inner { max-width: 1200px; margin: 0 auto; }
+
+    .ks-section-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; font-weight: 500; }
+    .ks-section-title { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 300; color: var(--dark); line-height: 1.3; letter-spacing: -0.3px; margin-bottom: 16px; }
+    .ks-section-body { font-size: 15px; color: var(--mid); line-height: 1.9; max-width: 680px; margin-bottom: 40px; }
+    .ks-section-body strong { color: var(--dark); font-weight: 500; }
+
+    /* ── CHART CARD ── */
+    .chart-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    /* ── TWO-COL ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+    /* ── CAVEAT ── */
+    .caveat {
+      background: var(--dark);
+      padding: 80px 48px;
+    }
+    .caveat-inner { max-width: 1200px; margin: 0 auto; }
+    .caveat-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 12px; font-weight: 500; }
+    .caveat-title { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 300; color: white; line-height: 1.3; letter-spacing: -0.3px; margin-bottom: 24px; }
+    .caveat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .caveat-text p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.9; margin-bottom: 16px; }
+    .caveat-text p:last-child { margin-bottom: 0; }
+    .caveat-text em { color: var(--gold); font-style: normal; }
+    .caveat-stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 32px; }
+    .caveat-stat-num { font-family: 'Fraunces', serif; font-size: 52px; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+    .caveat-stat-label { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+    .caveat-stat + .caveat-stat { margin-top: 16px; }
+
+    /* ── BACK LINK ── */
+    .back-section { padding: 60px 48px; background: var(--bg); text-align: center; border-top: 1px solid rgba(0,0,0,0.06); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--mid); text-decoration: none; border: 1px solid rgba(0,0,0,0.12); border-radius: 40px; padding: 12px 24px; transition: all 0.2s; }
+    .back-link:hover { color: var(--dark); border-color: var(--dark); }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; height: 120px; }
+      .hero { padding: 60px 24px 60px; }
+      .stats-row { padding: 0 24px 60px; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .ks-section { padding: 60px 24px; }
+      .two-col { grid-template-columns: 1fr; }
+      .caveat { padding: 60px 24px; }
+      .caveat-grid { grid-template-columns: 1fr; gap: 40px; }
+      .back-section { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="Minimalist Logo with Curved Leaves (1).png" alt="New Harvest" style="height:150px; width:auto; vertical-align:middle;"></a>
+    <a href="index.html#housing-story" class="nav-back">Back to housing story</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <p class="hero-label">KiwiSaver Analysis</p>
+      <h1 class="hero-title">KiwiSaver & the<br><em>path to home ownership</em></h1>
+      <p class="hero-intro">
+        Since launching in 2007, KiwiSaver has enrolled 3.4 million New Zealanders and become a key tool for first home buyers. But the same data that tells an optimistic story about home ownership also reveals a growing number of people withdrawing under financial hardship — a counterweight worth understanding.
+      </p>
+    </div>
+  </div>
+
+  <!-- KEY STATS -->
+  <div class="stats-row">
+    <div class="stats-inner">
+      <div class="stat-card">
+        <div class="stat-number">3.4<span>m</span></div>
+        <div class="stat-label">Members enrolled<br>as at June 2025</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">43<span>,</span>600</div>
+        <div class="stat-label">Used KiwiSaver for a<br>first home in 2025</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">$1.86<span>b</span></div>
+        <div class="stat-label">Withdrawn for first<br>home purchases in 2025</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">47<span>%</span></div>
+        <div class="stat-label">Of members made no<br>contribution in 2025</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: WHO'S ENROLLED -->
+  <section class="ks-section">
+    <div class="ks-inner">
+      <p class="ks-section-label">Membership</p>
+      <h2 class="ks-section-title">Who is in KiwiSaver?</h2>
+      <p class="ks-section-body">
+        The 25–34 and 35–44 age bands are the largest cohorts — exactly the groups most likely to be saving for a first home or peak earning years. Membership in the 65+ bracket is growing fastest as the scheme matures and older members choose to stay enrolled. The under-17 cohort is gradually shrinking as fewer children are enrolled by parents.
+      </p>
+      <div class="two-col">
+        <div class="chart-card">
+          <iframe src="ks_age_groups.html" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+        </div>
+        <div class="chart-card">
+          <iframe src="ks_contribution_rates.html" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+        </div>
+      </div>
+      <p class="ks-section-body" style="margin-top:24px; margin-bottom:0;">
+        On contribution rates, <strong>3% dominates</strong> — the legal minimum — with over 1.16 million members contributing at that level. The 6% rate is the only one growing; 4% and 8% are declining. Nearly <strong>1.6 million members made no contribution at all</strong> in 2025, a figure that includes children, retirees, those on savings suspension, and overseas members.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 2: FIRST HOME -->
+  <section class="ks-section alt">
+    <div class="ks-inner">
+      <p class="ks-section-label">First home buyers</p>
+      <h2 class="ks-section-title">KiwiSaver as a path to home ownership</h2>
+      <p class="ks-section-body">
+        First home withdrawals peaked in 2021 — the height of the housing boom — when 54,520 members used KiwiSaver to help buy their first home, withdrawing $1.6 billion. As the market cooled and interest rates rose, withdrawals dipped. They are now recovering: 43,600 people made a first home withdrawal in 2025, withdrawing a record <strong>$1.86 billion</strong>. The average first home withdrawal is approximately <strong>$43,000</strong> — a meaningful contribution to a deposit, but still a fraction of what most regions require.
+      </p>
+      <div class="two-col">
+        <div class="chart-card">
+          <iframe src="ks_withdrawals_count.html" width="100%" height="390" frameborder="0" scrolling="no"></iframe>
+        </div>
+        <div class="chart-card">
+          <iframe src="ks_withdrawals_amount.html" width="100%" height="390" frameborder="0" scrolling="no"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: FORECAST -->
+  <section class="ks-section">
+    <div class="ks-inner">
+      <p class="ks-section-label">Policy update · 1 April 2026</p>
+      <h2 class="ks-section-title">Two changes. One clear shift of cost.</h2>
+      <p class="ks-section-body">
+        From 1 April 2026, employers must contribute a minimum of <strong>3.5%</strong> of an employee's salary into KiwiSaver — up from 3%, and now applying to <strong>16 and 17 year olds</strong> for the first time. Simultaneously, the government has halved its own member tax credit: the maximum annual government contribution drops from <strong>$521.43 to $260.72</strong>. The government saves approximately <strong>$417 million per year</strong> — and passes the obligation to employers.
+      </p>
+      <p class="ks-section-body">
+        The net effect depends heavily on what you earn. The employer gain (a fixed percentage of salary) grows with income, while the government credit loss ($260.71) is the same for almost everyone who contributes enough. The break-even point is <strong>~$74,500</strong> — earners below that threshold are net worse off from the combined changes.
+      </p>
+
+      <!-- Forecast stats row -->
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:#EFEDE7; border-radius:var(--radius); overflow:hidden; margin-bottom:40px;">
+        <div style="background:white; padding:28px 20px;">
+          <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#B85C45; line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">−$19</div>
+          <div style="font-size:12px; color:var(--mid); line-height:1.5;">Net annual change for the<br>median earner ($69k salary)</div>
+        </div>
+        <div style="background:white; padding:28px 20px;">
+          <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:var(--dark); line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">~$74.5k</div>
+          <div style="font-size:12px; color:var(--mid); line-height:1.5;">Break-even salary — earners<br>below this are net worse off</div>
+        </div>
+        <div style="background:white; padding:28px 20px;">
+          <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:var(--dark); line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">$480m</div>
+          <div style="font-size:12px; color:var(--mid); line-height:1.5;">Extra employer contributions<br>into accounts per year (net)</div>
+        </div>
+        <div style="background:white; padding:28px 20px;">
+          <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#B85C45; line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">$417m</div>
+          <div style="font-size:12px; color:var(--mid); line-height:1.5;">Government saves annually<br>by halving the tax credit</div>
+        </div>
+      </div>
+
+      <p class="ks-section-body" style="margin-bottom:0; font-size:13px; color:#8A8A8A;">
+        Forecast assumptions: median salary $69,000, mean salary $76,000 (Stats NZ); 1.62 million employer-matched members; ~1.5 million receiving full government credit; blended ESCT 22%. All per-person figures use marginal ESCT rates. Actual government spend sourced from IRD may differ.
+      </p>
+    </div>
+  </section>
+
+  <!-- CAVEAT: HARDSHIP -->
+  <div class="caveat">
+    <div class="caveat-inner">
+      <p class="caveat-label">A note of caution</p>
+      <h2 class="caveat-title">Financial hardship withdrawals are rising</h2>
+      <div class="caveat-grid">
+        <div class="caveat-text">
+          <p>
+            For the first time in KiwiSaver's history, the number of members withdrawing under <em>financial hardship</em> exceeded the number withdrawing for a first home purchase in 2025 — 45,870 versus 43,600.
+          </p>
+          <p>
+            The trend has been building for years. Hardship withdrawals have risen in every single year since 2012, accelerating sharply from 2023 as cost-of-living pressures mounted. The average hardship withdrawal is around $10,000 — a fraction of the first home average, reflecting the crisis-level circumstances that trigger it.
+          </p>
+          <p>
+            The implication is sobering: <em>KiwiSaver is increasingly being drawn upon not as a path to home ownership, but as a last financial resort.</em> For many New Zealanders, the savings intended for retirement or a first home are being consumed by the pressures of today.
+          </p>
+          <p>
+            This data should be read alongside the housing deprivation and rental figures in the main story. The people most likely to be withdrawing under hardship are the same people least likely to ever reach the deposit threshold for home ownership.
+          </p>
+        </div>
+        <div>
+          <div class="caveat-stat">
+            <div class="caveat-stat-num">45,870</div>
+            <div class="caveat-stat-label">Members withdrew under financial hardship in 2025 — the highest number ever recorded, and for the first time exceeding first home withdrawal counts</div>
+          </div>
+          <div class="caveat-stat" style="margin-top:16px;">
+            <div class="caveat-stat-num">$471m</div>
+            <div class="caveat-stat-label">Withdrawn under financial hardship in 2025 — up from $23m in 2012, a 20-fold increase in thirteen years</div>
+          </div>
+          <div class="caveat-stat" style="margin-top:16px;">
+            <div class="caveat-stat-num">81,778</div>
+            <div class="caveat-stat-label">Members currently on savings suspension as of February 2026 — pausing contributions, often due to financial pressure</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACK -->
+  <div class="back-section">
+    <a href="index.html#housing-story" class="back-link">← Back to the housing story</a>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stories · Harry Candlish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: #F7F6F2; color: #1A1E1A; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+    .site-nav {
+      background: #1A1E1A;
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      font-weight: 300;
+      color: #F7F6F2;
+      text-decoration: none;
+      letter-spacing: -0.2px;
+    }
+    .nav-logo span { color: #3A5C45; }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #F7F6F2; }
+    .nav-links a.active { color: #F7F6F2; }
+
+    /* Hero */
+    .page-hero {
+      background: #1A1E1A;
+      padding: 80px 48px 72px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .page-hero-inner { max-width: 760px; }
+    .page-hero-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #8FAF8A;
+      margin-bottom: 16px;
+    }
+    .page-hero-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 300;
+      color: #F7F6F2;
+      line-height: 1.15;
+      letter-spacing: -0.4px;
+      margin-bottom: 20px;
+    }
+    .page-hero-sub {
+      font-size: 16px;
+      color: #9AA398;
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    /* Grid */
+    .projects-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 72px 48px 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    /* Card */
+    .project-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.07);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .project-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .card-band {
+      height: 4px;
+    }
+    .card-body {
+      padding: 28px 28px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .card-title {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: #1A1E1A;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      letter-spacing: -0.2px;
+    }
+    .card-desc {
+      font-size: 13px;
+      color: #4A5248;
+      line-height: 1.75;
+      flex: 1;
+    }
+    .card-footer {
+      padding: 16px 28px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      margin-top: 20px;
+    }
+    .card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .card-tag {
+      font-size: 11px;
+      color: #9AA398;
+      background: #F7F6F2;
+      border: 1px solid rgba(0,0,0,0.07);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+    .card-cta {
+      font-size: 12px;
+      font-weight: 500;
+      color: #3A5C45;
+      white-space: nowrap;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: #1A1E1A;
+      padding: 40px 48px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-footer span {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
+    .site-footer a {
+      font-size: 13px;
+      color: #B8883A;
+      text-decoration: none;
+      border: 1px solid rgba(184,136,58,0.35);
+      border-radius: 40px;
+      padding: 10px 20px;
+      transition: all 0.2s;
+    }
+    .site-footer a:hover { background: rgba(184,136,58,0.1); }
+
+    @media (max-width: 640px) {
+      .site-nav { padding: 0 24px; }
+      .page-hero { padding: 56px 24px 48px; }
+      .projects-grid { padding: 48px 24px 72px; grid-template-columns: 1fr; }
+      .site-footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">New <span>Harvest</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="projects.html" class="active">Stories</a></li>
+      <li><a href="humpback.html">Humpback</a></li>
+      <li><a href="housing.html">Housing</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Get in touch</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-label">Data stories · Harry Candlish</p>
+      <h1 class="page-hero-title">Three collections.<br>Real data. Real questions.</h1>
+      <p class="page-hero-sub">Each story starts with a question worth asking, runs through a full pipeline — API, SQL, Python, Plotly — and ends with something you can actually read. No synthetic data, no toy examples.</p>
+    </div>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- Cabinet Room -->
+    <a href="cabinetroom.html" class="project-card">
+      <div class="card-band" style="background:#2C5F8A;"></div>
+      <div class="card-body">
+        <p class="card-label" style="color:#2C5F8A;">Geopolitics · Conflict · Scenario models</p>
+        <h2 class="card-title">Cabinet Room</h2>
+        <p class="card-desc">The decisions governments hope they never have to make. Interactive scenario models built on real trade data, alliance structures, and economic dependencies — Taiwan, Iran, and what comes next.</p>
+        <div style="margin-top:20px; display:flex; flex-direction:column; gap:8px;">
+          <div style="font-size:12px; color:#9AA398;">Includes:</div>
+          <div style="font-size:13px; color:#4A5248; display:flex; flex-direction:column; gap:5px;">
+            <span>→ If China moved on Taiwan</span>
+            <span>→ Iran War &amp; NZ fuel prices</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-tags">
+          <span class="card-tag">Interactive</span>
+          <span class="card-tag">Trade data</span>
+          <span class="card-tag">Scrollytelling</span>
+        </div>
+        <span class="card-cta">Explore →</span>
+      </div>
+    </a>
+
+    <!-- The Ledger -->
+    <a href="economy.html" class="project-card">
+      <div class="card-band" style="background:#B8883A;"></div>
+      <div class="card-body">
+        <p class="card-label" style="color:#B8883A;">Housing · Retirement · Economic data</p>
+        <h2 class="card-title">The Ledger</h2>
+        <p class="card-desc">Where New Zealand's wealth is going — and why. Two stories tracing the most consequential financial decisions ordinary New Zealanders face: whether they can afford a home, and whether they'll have enough when they stop working.</p>
+        <div style="margin-top:20px; display:flex; flex-direction:column; gap:8px;">
+          <div style="font-size:12px; color:#9AA398;">Includes:</div>
+          <div style="font-size:13px; color:#4A5248; display:flex; flex-direction:column; gap:5px;">
+            <span>→ The decade that priced out a generation</span>
+            <span>→ Inside KiwiSaver — 18 years of data</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-tags">
+          <span class="card-tag">REINZ</span>
+          <span class="card-tag">RBNZ</span>
+          <span class="card-tag">Plotly map</span>
+        </div>
+        <span class="card-cta">Explore →</span>
+      </div>
+    </a>
+
+    <!-- Field Notes -->
+    <a href="nature.html" class="project-card">
+      <div class="card-band" style="background:#3A5C45;"></div>
+      <div class="card-body">
+        <p class="card-label" style="color:#3A5C45;">Wildlife · Conservation · Citizen science</p>
+        <h2 class="card-title">Field Notes</h2>
+        <p class="card-desc">What the data says about the species New Zealand is losing — and saving. Conservation stories built from verified GBIF sightings: a genuine recovery, and a crisis that citizen science is helping to map.</p>
+        <div style="margin-top:20px; display:flex; flex-direction:column; gap:8px;">
+          <div style="font-size:12px; color:#9AA398;">Includes:</div>
+          <div style="font-size:13px; color:#4A5248; display:flex; flex-direction:column; gap:5px;">
+            <span>→ Not all native species are in decline</span>
+            <span>→ Why kiwi are disappearing — and who's tracking it</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-tags">
+          <span class="card-tag">GBIF API</span>
+          <span class="card-tag">iNaturalist</span>
+          <span class="card-tag">DOC data</span>
+        </div>
+        <span class="card-cta">Explore →</span>
+      </div>
+    </a>
+
+    <!-- Election / Hansard — standalone -->
+    <a href="index.html#signal-story" class="project-card">
+      <div class="card-band" style="background:#B8883A;"></div>
+      <div class="card-body">
+        <p class="card-label" style="color:#B8883A;">2026 Election Analysis · AI-guided insight</p>
+        <h2 class="card-title">Finding signal in the noise</h2>
+        <p class="card-desc">What are NZ's political parties actually saying — versus what they're promising? An NLP analysis of Hansard debate transcripts and party policy documents, surfacing the gaps between rhetoric and record.</p>
+      </div>
+      <div class="card-footer">
+        <div class="card-tags">
+          <span class="card-tag">Python</span>
+          <span class="card-tag">NLP</span>
+          <span class="card-tag">Hansard</span>
+          <span class="card-tag">AI</span>
+        </div>
+        <span class="card-cta">Explore →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <footer class="site-footer">
+    <span>Harry Candlish · Data Analyst · Wellington, NZ</span>
+    <a href="index.html">← Back to portfolio</a>
+  </footer>
+
+</body>
+</html>

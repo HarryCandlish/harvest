@@ -37,17 +37,18 @@
 
     /* ── NAV ── */
     nav {
-      position: fixed;
+      position: static;
       top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 48px;
-      height: 68px;
-      background: rgba(247, 246, 242, 0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+      height: 166px;
+      background: rgba(247, 246, 242, 0);
+      backdrop-filter: blur(0px);
+      border-bottom: 1px solid rgba(0,0,0,0);
+      transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
     }
 
     .nav-logo {
@@ -94,7 +95,7 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 120px 48px 80px;
+      padding: 60px 48px 80px;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -536,10 +537,10 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#hero" class="nav-logo">New Harvest<span>.</span></a>
+    <a href="#hero" class="nav-logo"><img src="Minimalist Logo with Curved Leaves (1).png" alt="New Harvest" style="height:150px; width:auto; vertical-align:middle;"></a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
-      <li><a href="#projects">Work</a></li>
+      <li><a href="projects.html">Stories</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact" class="nav-cta">Get in touch</a></li>
     </ul>
@@ -548,305 +549,1694 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-inner">
-      <div class="hero-tag">Data Solutions &amp; Analytics</div>
+      <div class="hero-tag">Harry Candlish &nbsp;·&nbsp; Data Analyst</div>
       <h1 class="hero-headline">
         Turning data into<br /><em>decisions that matter</em>
       </h1>
       <p class="hero-sub">
-        New Harvest helps businesses unlock the value hidden in their data — through tailored Power BI dashboards, strategic analytics, and clear, actionable insight.
+        I take raw, messy data and turn it into stories that actually change how decisions get made. Using Python pipelines, SQL, Plotly, and Power BI, I build the analysis and the narrative around it — because the insight is only half the work. Getting people to act on it is the other half.
       </p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Start a project</a>
-        <a href="#projects" class="btn-ghost">See our work</a>
+        <a href="#contact" class="btn-primary">Get in touch</a>
+        <a href="#projects" class="btn-ghost">See my work</a>
       </div>
     </div>
   </section>
 
-  <!-- INSIGHT SAMPLE -->
-  <section id="insight" style="padding: 80px 48px; background: var(--bg-alt);">
-    <div class="section-inner">
-      <p class="section-label">Live insight example</p>
-      <h2 class="section-title">Rare & endemic birds of Aotearoa</h2>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
-        <div>
-          <p style="font-size: 16px; color: var(--mid); line-height: 1.8; margin-bottom: 20px;">
-            Sightings of 5 of New Zealand's rarest birds — Kōtuku, Whio, Kiwi, Hoiho and Takahē — mapped by GPS coordinates using their Māori names. Kōtuku has just 1,131 recorded sightings globally.
-          </p>
-          <p style="font-size: 16px; color: var(--mid); line-height: 1.8; margin-bottom: 32px;">
-            Each dot is a real observation pulled live from the GBIF API. Click any species in the legend to isolate it on the map — hover a dot to see its region.
-          </p>
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <div style="width: 32px; height: 32px; background: var(--green); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; flex-shrink: 0;">1</div>
-              <span style="font-size: 14px; color: var(--mid);">15 species fetched individually from GBIF by scientific name</span>
-            </div>
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <div style="width: 32px; height: 32px; background: var(--green); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; flex-shrink: 0;">2</div>
-              <span style="font-size: 14px; color: var(--mid);">Mapped by GPS coordinates and labelled with Māori names</span>
-            </div>
-            <div style="display: flex; align-items: center; gap: 12px;">
-              <div style="width: 32px; height: 32px; background: var(--green); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; flex-shrink: 0;">3</div>
-              <span style="font-size: 14px; color: var(--mid);">Click legend to filter — hover any dot for location detail</span>
-            </div>
-          </div>
-        </div>
-        <div style="border-radius: var(--radius); overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.12); border: 1px solid rgba(0,0,0,0.07); background: white;">
-          <iframe src="nz_rare_birds_map.html" width="100%" height="500" frameborder="0" scrolling="no" style="display:block;"></iframe>
-        </div>
-      </div>
+  <!-- SECTION NAV -->
+  <div id="page-section-nav">
+    <div id="page-section-nav-inner">
+      <span class="psnav-label">Jump to</span>
+      <a href="#predator-story" class="psnav-pill" data-section="predator-story">Why Kiwi Are Disappearing</a>
+      <a href="#signal-story" class="psnav-pill" data-section="signal-story">Election Analysis 2026</a>
+      <a href="#kiwisaver" class="psnav-pill" data-section="kiwisaver">KiwiSaver Deep Dive</a>
+      <a href="humpback.html" class="psnav-pill">Humpback Whale</a>
+      <a href="housing.html" class="psnav-pill">NZ Housing</a>
+      <a href="cabinetroom.html" class="psnav-pill">Cabinet Room</a>
     </div>
-  </section>
+  </div>
 
   <!-- SERVICES -->
   <section id="services">
     <div class="section-inner">
-      <p class="section-label">What we do</p>
-      <h2 class="section-title">Services built around your data</h2>
+      <p class="section-label">What I do</p>
+      <h2 class="section-title">From raw data to real decisions</h2>
       <div class="services-grid">
 
         <div class="service-card">
           <div class="service-icon">📊</div>
-          <h3>Power BI Dashboards</h3>
-          <p>Custom-built, interactive dashboards that surface the metrics you care about — designed for clarity, built for speed.</p>
+          <h3>Dashboards &amp; Visualisation</h3>
+          <p>Custom Power BI dashboards and interactive Plotly charts that surface the metrics you care about — designed for clarity, built to be acted on. Connected live to your databases and data sources.</p>
         </div>
 
         <div class="service-card">
-          <div class="service-icon">🔍</div>
-          <h3>Data Strategy &amp; Consulting</h3>
-          <p>We help you define the right questions, structure your data correctly, and build a foundation for long-term insight.</p>
+          <div class="service-icon">✦</div>
+          <h3>AI &amp; Automated Analysis</h3>
+          <p>I use AI and Python to process large, unstructured datasets — categorising feedback, identifying trends, and surfacing insight that would take weeks to find manually. Fast, repeatable, and scalable.</p>
         </div>
 
         <div class="service-card">
           <div class="service-icon">⚙️</div>
-          <h3>Data Modelling &amp; ETL</h3>
-          <p>Clean, reliable data pipelines so your dashboards always reflect reality — connecting your sources and transforming raw data into usable models.</p>
+          <h3>Data Engineering &amp; Strategy</h3>
+          <p>Clean data pipelines, MySQL databases, and ETL processes that connect your sources and transform raw data into reliable models — so every dashboard and report reflects reality.</p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- HOUSING STORY -->
-  <section id="housing-story" style="padding: 100px 48px; background: var(--dark);">
+  <!-- FEATURED WORK -->
+  <section id="featured-work" style="background:var(--bg); padding:80px 48px;">
     <div class="section-inner">
-      <p class="section-label" style="color: rgba(255,255,255,0.3);">NZ Housing Data Story</p>
-      <h2 class="section-title" style="color: white; margin-bottom: 16px;">The story behind NZ's housing crisis</h2>
-      <p style="font-size: 16px; color: rgba(255,255,255,0.5); max-width: 600px; line-height: 1.8; margin-bottom: 72px;">
-        Three datasets. One connected story — how interest rates, house prices, and housing deprivation are linked across New Zealand. All data sourced live from MySQL.
-      </p>
+      <p class="section-label">Featured work</p>
+      <h2 class="section-title" style="margin-bottom:40px;">Projects worth looking at</h2>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch;">
 
-      <!-- Chart 1 -->
-      <div class="story-block reveal">
-        <div class="story-label">01</div>
-        <div class="story-content">
-          <h3 class="story-title">Interest rates hit a 15-year high</h3>
-          <p class="story-desc">The RBNZ slashed the OCR to 0.25% during COVID — then raised it aggressively to 5.5% by 2023 to combat inflation. The fastest hiking cycle in New Zealand's history.</p>
-        </div>
-        <div class="story-chart">
-          <iframe src="chart_ocr.html" width="100%" height="360" frameborder="0" scrolling="no"></iframe>
-        </div>
+        <!-- Cabinet Room -->
+        <a href="cabinetroom.html" style="text-decoration:none; color:inherit; background:white; border:1px solid rgba(0,0,0,0.07); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; transition:box-shadow 0.2s, transform 0.2s;" onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,0.1)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+          <div style="height:3px; background:#2C5F8A;"></div>
+          <div style="padding:28px 28px 20px; flex:1; display:flex; flex-direction:column;">
+            <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:#2C5F8A; margin-bottom:12px;">Geopolitics · Conflict · Scenario models</p>
+            <h3 style="font-family:'Fraunces',serif; font-size:20px; font-weight:400; color:#1A1E1A; line-height:1.3; letter-spacing:-0.2px; margin-bottom:12px;">Cabinet Room</h3>
+            <p style="font-size:13px; color:#4A5248; line-height:1.75; flex:1;">The decisions governments hope they never have to make. Interactive scenario models built on real trade data and economic dependencies.</p>
+            <div style="margin-top:18px; display:flex; flex-direction:column; gap:5px;">
+              <span style="font-size:12px; color:#9AA398;">Includes:</span>
+              <span style="font-size:12px; color:#4A5248;">→ If China moved on Taiwan</span>
+              <span style="font-size:12px; color:#4A5248;">→ Iran War &amp; NZ fuel prices</span>
+            </div>
+          </div>
+          <div style="padding:14px 28px 22px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(0,0,0,0.05); margin-top:auto;">
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <span style="font-size:11px; color:#9AA398; background:#F7F6F2; border:1px solid rgba(0,0,0,0.07); padding:3px 10px; border-radius:100px;">Interactive</span>
+              <span style="font-size:11px; color:#9AA398; background:#F7F6F2; border:1px solid rgba(0,0,0,0.07); padding:3px 10px; border-radius:100px;">Trade data</span>
+            </div>
+            <span style="font-size:12px; font-weight:500; color:#2C5F8A;">Explore →</span>
+          </div>
+        </a>
+
+        <!-- The Ledger -->
+        <a href="economy.html" style="text-decoration:none; color:inherit; background:white; border:1px solid rgba(0,0,0,0.07); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; transition:box-shadow 0.2s, transform 0.2s;" onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,0.1)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+          <div style="height:3px; background:#B8883A;"></div>
+          <div style="padding:28px 28px 20px; flex:1; display:flex; flex-direction:column;">
+            <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:#B8883A; margin-bottom:12px;">Housing · Retirement · Economic data</p>
+            <h3 style="font-family:'Fraunces',serif; font-size:20px; font-weight:400; color:#1A1E1A; line-height:1.3; letter-spacing:-0.2px; margin-bottom:12px;">The Ledger</h3>
+            <p style="font-size:13px; color:#4A5248; line-height:1.75; flex:1;">Where New Zealand's wealth is going — and why. Two stories tracing the financial decisions that define ordinary New Zealanders' lives.</p>
+            <div style="margin-top:18px; display:flex; flex-direction:column; gap:5px;">
+              <span style="font-size:12px; color:#9AA398;">Includes:</span>
+              <span style="font-size:12px; color:#4A5248;">→ The decade that priced out a generation</span>
+              <span style="font-size:12px; color:#4A5248;">→ Inside KiwiSaver — 18 years of data</span>
+            </div>
+          </div>
+          <div style="padding:14px 28px 22px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(0,0,0,0.05); margin-top:auto;">
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <span style="font-size:11px; color:#9AA398; background:#F7F6F2; border:1px solid rgba(0,0,0,0.07); padding:3px 10px; border-radius:100px;">REINZ</span>
+              <span style="font-size:11px; color:#9AA398; background:#F7F6F2; border:1px solid rgba(0,0,0,0.07); padding:3px 10px; border-radius:100px;">Plotly map</span>
+            </div>
+            <span style="font-size:12px; font-weight:500; color:#B8883A;">Explore →</span>
+          </div>
+        </a>
+
+        <!-- Field Notes -->
+        <a href="nature.html" style="text-decoration:none; color:inherit; background:white; border:1px solid rgba(0,0,0,0.07); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; transition:box-shadow 0.2s, transform 0.2s;" onmouseover="this.style.boxShadow='0 8px 32px rgba(0,0,0,0.1)';this.style.transform='translateY(-2px)'" onmouseout="this.style.boxShadow='none';this.style.transform='none'">
+          <div style="height:3px; background:#3A5C45;"></div>
+          <div style="padding:28px 28px 20px; flex:1; display:flex; flex-direction:column;">
+            <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:#3A5C45; margin-bottom:12px;">Wildlife · Conservation · Citizen science</p>
+            <h3 style="font-family:'Fraunces',serif; font-size:20px; font-weight:400; color:#1A1E1A; line-height:1.3; letter-spacing:-0.2px; margin-bottom:12px;">Field Notes</h3>
+            <p style="font-size:13px; color:#4A5248; line-height:1.75; flex:1;">What the data says about the species New Zealand is losing — and saving. Conservation stories built from verified GBIF citizen science observations.</p>
+            <div style="margin-top:18px; display:flex; flex-direction:column; gap:5px;">
+              <span style="font-size:12px; color:#9AA398;">Includes:</span>
+              <span style="font-size:12px; color:#4A5248;">→ Not all native species are in decline</span>
+              <span style="font-size:12px; color:#4A5248;">→ Why kiwi are disappearing — and who's tracking it</span>
+            </div>
+          </div>
+          <div style="padding:14px 28px 22px; display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(0,0,0,0.05); margin-top:auto;">
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <span style="font-size:11px; color:#9AA398; background:#F7F6F2; border:1px solid rgba(0,0,0,0.07); padding:3px 10px; border-radius:100px;">GBIF API</span>
+              <span style="font-size:11px; color:#9AA398; background:#F7F6F2; border:1px solid rgba(0,0,0,0.07); padding:3px 10px; border-radius:100px;">iNaturalist</span>
+            </div>
+            <span style="font-size:12px; font-weight:500; color:#3A5C45;">Explore →</span>
+          </div>
+        </a>
+
       </div>
-
-      <!-- Chart 2 -->
-      <div class="story-block reveal">
-        <div class="story-label">02</div>
-        <div class="story-content">
-          <h3 class="story-title">House prices surged — then corrected</h3>
-          <p class="story-desc">Ultra-low rates fuelled a house price boom across every region. Auckland peaked near $1.2M median in 2022. As rates rose, prices fell — but remain far above pre-COVID levels.</p>
-        </div>
-        <div class="story-chart">
-          <iframe src="chart_house_prices.html" width="100%" height="360" frameborder="0" scrolling="no"></iframe>
-        </div>
+      <div style="text-align:right; margin-top:20px;">
+        <a href="projects.html" style="font-size:13px; color:var(--mid); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='var(--dark)'" onmouseout="this.style.color='var(--mid)'">All stories →</a>
       </div>
-
-      <!-- Chart 3 -->
-      <div class="story-block reveal">
-        <div class="story-label">03</div>
-        <div class="story-content">
-          <h3 class="story-title">Higher prices, higher deprivation</h3>
-          <p class="story-desc">Cross-referencing house prices against Stats NZ deprivation data reveals a clear pattern — regions with higher prices don't always have higher deprivation rates. Northland and Gisborne stand out despite lower prices.</p>
-        </div>
-        <div class="story-chart">
-          <iframe src="chart_cross_reference.html" width="100%" height="360" frameborder="0" scrolling="no"></iframe>
-        </div>
-      </div>
-
     </div>
+  </section>
+
+  <!-- PREDATOR SCROLLYTELLING -->
+  <section id="predator-story" style="background:#1A1E1A; padding:0;">
+    <div class="section-toggle-bar section-toggle-bar-dark" data-target="predator-story-body">
+      <div class="section-toggle-bar-inner">
+        <div class="section-toggle-title">
+          <span class="section-toggle-label">Predator vs prey · NZ Conservation</span>
+          <span class="section-toggle-name">Why kiwi are disappearing</span>
+        </div>
+        <button class="section-toggle-btn" aria-expanded="true">
+          <span class="toggle-btn-text">Hide</span>
+          <svg class="toggle-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="predator-story-body" class="section-collapsible">
+
+    <!-- Section header -->
+    <div style="padding:80px 48px 0; max-width:760px;">
+      <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#8FAF8A; margin-bottom:14px;">Citizen science &amp; conservation · NZ</p>
+      <h2 style="font-family:'Fraunces',serif; font-size:clamp(28px,4vw,44px); font-weight:300; color:#F7F6F2; line-height:1.2; margin-bottom:20px;">Why kiwi are disappearing — and who's tracking it</h2>
+      <p style="font-family:'Inter',sans-serif; font-size:16px; color:#9AA398; line-height:1.8; margin-bottom:20px;">New Zealanders are logging thousands of wildlife sightings every year through citizen science platforms. The question this project set out to answer: <strong style="color:#F7F6F2;">do those sightings actually impact conservation efforts?</strong> Scroll through the story to see what the data reveals — then see how it compares to where DOC and community groups are actually operating.</p>
+      <p style="font-family:'Inter',sans-serif; font-size:15px; color:#6B7B6B; line-height:1.8; margin-bottom:12px;">When someone spots a kiwi — or a stoat, a rat, a possum — and logs it on <strong style="color:#8FAF8A;">iNaturalist NZ (Mātaki Taiao)</strong>, DOC's recommended recording platform, that observation goes through a community verification process. Once enough people agree on the species ID, it reaches "Research Grade" and is automatically shared to <strong style="color:#8FAF8A;">GBIF</strong> — the Global Biodiversity Information Facility — a worldwide database that aggregates verified sightings from citizen scientists, researchers, and museum collections into a single, freely queryable system. The pipeline from public observation to global database is one-way and automatic.</p>
+      <p style="font-family:'Inter',sans-serif; font-size:15px; color:#6B7B6B; line-height:1.8; margin-bottom:12px;">This map was built by calling the GBIF API directly — the same data pipeline any researcher or agency could connect to. Every dot represents a real, verified sighting. Scroll to layer in the predators that share — and threaten — the kiwi's habitat, and see what the data reveals about where the pressure is greatest.</p>
+      <p style="font-family:'Inter',sans-serif; font-size:12px; color:#3A4A3A; line-height:1.7; font-style:italic;">Note: kiwi sightings in Auckland and Wellington are likely concentrated at sanctuaries and zoos — Zealandia (Wellington) and Auckland Zoo in particular — and may not reflect wild population distribution in those regions.</p>
+    </div>
+
+    <!-- Scrollytelling layout -->
+    <div id="scrolly" style="position:relative; display:flex; align-items:flex-start;">
+
+      <!-- Sticky map -->
+      <div style="position:sticky; top:0; height:100vh; width:58%; flex-shrink:0; display:flex; align-items:center;">
+        <div id="predator-map" style="width:100%; height:100%;"></div>
+      </div>
+
+      <!-- Scroll steps -->
+      <div id="scroll-steps" style="width:42%; padding:0 48px 0 32px;">
+        <div style="height:40vh;"></div>
+
+        <div class="scroll-step" data-step="0" style="min-height:60vh; display:flex; align-items:center; transition:opacity 0.4s;">
+          <div style="background:rgba(255,255,255,0.05); border-left:3px solid #3A5C45; border-radius:0 12px 12px 0; padding:28px 28px 28px 24px;">
+            <h3 style="font-family:'Fraunces',serif; font-size:22px; font-weight:400; color:#F7F6F2; margin-bottom:12px;">70 million years of isolation</h3>
+            <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.8; margin-bottom:12px;">Kiwi evolved in complete isolation from land predators. Over millions of years they lost the ability to fly, began nesting on the ground, and developed nostrils at the tip of their beak — the only bird in the world to do so — to sniff out invertebrates in the soil at night. Roughly the size of a domestic cat, they are more closely related to ostriches and emus than to any other New Zealand bird. They had no reason to fear what lived beside them, because for 70 million years, nothing threatened them.</p>
+            <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5A4A; line-height:1.7; margin-bottom:14px;">Each dot on the map is a verified sighting recorded by a member of the public, a researcher, or a conservation worker — logged on iNaturalist NZ and shared automatically to GBIF. The green and yellow dots below are kiwi. Everything that follows is what arrived after.</p>
+            <div style="display:flex; gap:24px;">
+              <div>
+                <div style="font-family:'Fraunces',serif; font-size:32px; font-weight:300; color:#5A7D66;">2,805<span style="font-size:13px; font-family:'Inter',sans-serif; color:#9AA398; margin-left:8px;">sightings</span></div>
+                <div style="font-size:11px; color:#9AA398; margin-top:4px;">North Island Brown Kiwi</div>
+              </div>
+              <div>
+                <div style="font-family:'Fraunces',serif; font-size:32px; font-weight:300; color:#8B6914;">2,719<span style="font-size:13px; font-family:'Inter',sans-serif; color:#9AA398; margin-left:8px;">sightings</span></div>
+                <div style="font-size:11px; color:#9AA398; margin-top:4px;">Southern Brown Kiwi</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scroll-step" data-step="1" style="min-height:60vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+          <div style="background:rgba(255,255,255,0.05); border-left:3px solid #8B4513; border-radius:0 12px 12px 0; padding:28px 28px 28px 24px;">
+            <h3 style="font-family:'Fraunces',serif; font-size:22px; font-weight:400; color:#F7F6F2; margin-bottom:12px;">Then came the possum</h3>
+            <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.8; margin-bottom:16px;">Brought from Australia in 1837 for the fur trade, possums spread across the motu. They strip the forest canopy kiwi depend on for shelter and food.</p>
+            <div style="font-family:'Fraunces',serif; font-size:32px; font-weight:300; color:#8B4513;">3,500+<span style="font-size:13px; font-family:'Inter',sans-serif; color:#9AA398; margin-left:8px;">possum sightings recorded</span></div>
+          </div>
+        </div>
+
+        <div class="scroll-step" data-step="2" style="min-height:60vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+          <div style="background:rgba(255,255,255,0.05); border-left:3px solid #CC4400; border-radius:0 12px 12px 0; padding:28px 28px 28px 24px;">
+            <h3 style="font-family:'Fraunces',serif; font-size:22px; font-weight:400; color:#F7F6F2; margin-bottom:12px;">Rats colonised every corner</h3>
+            <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.8; margin-bottom:16px;">Ship rats and Norway rats arrived with European settlers. They raid kiwi nests — eating eggs and killing newly hatched chicks before they have a chance to run.</p>
+            <div style="font-family:'Fraunces',serif; font-size:32px; font-weight:300; color:#CC4400;">4,500+<span style="font-size:13px; font-family:'Inter',sans-serif; color:#9AA398; margin-left:8px;">rat sightings recorded</span></div>
+          </div>
+        </div>
+
+        <div class="scroll-step" data-step="3" style="min-height:60vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+          <div style="background:rgba(255,255,255,0.05); border-left:3px solid #9B2335; border-radius:0 12px 12px 0; padding:28px 28px 28px 24px;">
+            <h3 style="font-family:'Fraunces',serif; font-size:22px; font-weight:400; color:#F7F6F2; margin-bottom:12px;">The stoat: kiwi's deadliest predator</h3>
+            <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.8; margin-bottom:16px;">In mast years — when forests seed heavily — stoat populations explode. A single stoat can kill 95% of kiwi chicks in a nesting area within one season.</p>
+            <div style="font-family:'Fraunces',serif; font-size:32px; font-weight:300; color:#9B2335;">95%<span style="font-size:13px; font-family:'Inter',sans-serif; color:#9AA398; margin-left:8px;">of kiwi chicks killed in bad years</span></div>
+          </div>
+        </div>
+
+        <div class="scroll-step" data-step="4" style="min-height:60vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+          <div style="background:rgba(255,255,255,0.05); border-left:3px solid #B8883A; border-radius:0 12px 12px 0; padding:28px 28px 28px 24px;">
+            <h3 style="font-family:'Fraunces',serif; font-size:22px; font-weight:400; color:#F7F6F2; margin-bottom:12px;">The full picture</h3>
+            <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.8; margin-bottom:16px;">Every predator dot is a direct threat to kiwi survival. Without <strong style="color:#F7F6F2;">Predator Free 2050</strong> — New Zealand's mission to eradicate introduced predators — the kiwi faces extinction in the wild within decades.</p>
+            <p style="font-size:12px; color:#6B7B6B; font-family:'Inter',sans-serif;">Source: Global Biodiversity Information Facility (GBIF) · Data filtered to verified sightings from 2000 onwards.</p>
+          </div>
+        </div>
+
+        <div style="height:40vh;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Predator story: correlation chart -->
+  <div style="background:#1A1E1A; padding:60px 48px 0;">
+    <div style="max-width:960px;">
+      <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#8FAF8A; margin-bottom:12px;">Citizen data vs conservation operations</p>
+      <h3 style="font-family:'Fraunces',serif; font-size:24px; font-weight:300; color:#F7F6F2; line-height:1.3; margin-bottom:8px;">Do operations follow the data?</h3>
+      <p style="font-family:'Inter',sans-serif; font-size:14px; color:#6B7B6B; line-height:1.7; margin-bottom:24px; max-width:640px;">Each bubble is a NZ region. Horizontal axis: predator sightings from GBIF citizen science. Vertical axis: total conservation operations (DOC completed + Trap.NZ community projects). Bubble size reflects kiwi sightings in that region.</p>
+
+      <!-- Legend -->
+      <div style="display:flex; gap:20px; margin-bottom:16px; flex-wrap:wrap;">
+        <span style="display:flex; align-items:center; gap:7px; font-family:'Inter',sans-serif; font-size:12px; color:#9AA398;">
+          <span style="width:10px; height:10px; border-radius:50%; background:#3A5C45; display:inline-block; flex-shrink:0;"></span>Kiwi thriving
+        </span>
+        <span style="display:flex; align-items:center; gap:7px; font-family:'Inter',sans-serif; font-size:12px; color:#9AA398;">
+          <span style="width:10px; height:10px; border-radius:50%; background:#B8883A; display:inline-block; flex-shrink:0;"></span>Moderate pressure
+        </span>
+        <span style="display:flex; align-items:center; gap:7px; font-family:'Inter',sans-serif; font-size:12px; color:#9AA398;">
+          <span style="width:10px; height:10px; border-radius:50%; background:#B85C45; display:inline-block; flex-shrink:0;"></span>High predator pressure
+        </span>
+      </div>
+
+      <div id="cons-bubble" style="width:100%; height:460px;"></div>
+
+      <!-- Insight cards -->
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2px; background:rgba(255,255,255,0.04); border-radius:10px; overflow:hidden; margin-top:28px;">
+        <div style="background:#1E2320; padding:20px 22px;">
+          <div style="font-size:11px; font-weight:600; color:#8FAF8A; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Northland · ratio 1.71</div>
+          <p style="font-family:'Inter',sans-serif; font-size:13px; color:#6B7B6B; line-height:1.6; margin:0;">Most operations per predator sighting of any region. Also has 1,107 kiwi sightings — the second highest nationally. Suggests concentrated effort is working.</p>
+        </div>
+        <div style="background:#1E2320; padding:20px 22px;">
+          <div style="font-size:11px; font-weight:600; color:#B8883A; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Canterbury · ratio 0.16</div>
+          <p style="font-family:'Inter',sans-serif; font-size:13px; color:#6B7B6B; line-height:1.6; margin:0;">Third-highest predator density. Second-lowest operations ratio. Zero kiwi sightings recorded. High predators, low response, no kiwi — the most concerning combination in the dataset.</p>
+        </div>
+        <div style="background:#1E2320; padding:20px 22px;">
+          <div style="font-size:11px; font-weight:600; color:#3A5C45; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Southland · 2,417 kiwi</div>
+          <p style="font-family:'Inter',sans-serif; font-size:13px; color:#6B7B6B; line-height:1.6; margin:0;">Most kiwi of any region. Fewest predator sightings. Few operations needed — because the threat hasn't arrived. The best conservation outcome is a quiet dataset.</p>
+        </div>
+      </div>
+
+      <p style="font-family:'Inter',sans-serif; font-size:11px; color:#3A4A3A; line-height:1.6; margin-top:16px; padding-bottom:8px;">Sources: GBIF / iNaturalist NZ · DOC Pesticide Summary (completed operations 2015–2025) · Trap.NZ public community projects</p>
+    </div>
+  </div>
+
+  <!-- Predator story: what this means -->
+  <div style="background:#1A1E1A; padding:48px 48px 0;">
+    <div style="max-width:760px;">
+      <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#B8883A; margin-bottom:16px;">What this means</p>
+      <h3 style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#F7F6F2; line-height:1.25; letter-spacing:-0.3px; margin-bottom:12px;">Every sighting logged is a contribution to kiwi survival.</h3>
+      <p style="font-family:'Fraunces',serif; font-size:20px; font-weight:300; color:#B8883A; font-style:italic; margin-bottom:28px; line-height:1.4;">The data shows that where communities engage, conservation follows — and wildlife responds.</p>
+      <p style="font-family:'Inter',sans-serif; font-size:15px; color:#9AA398; line-height:1.8; margin-bottom:32px;">The collection pipeline is working. Observations logged on iNaturalist NZ are verified by the community, reach Research Grade, and flow automatically into GBIF — where they sit alongside records from researchers, universities, and museum collections, all queryable through a single open API. Cross-referencing that sighting data against DOC's completed pesticide operations and Trap.NZ community trapping projects reveals a partial but meaningful answer — and one genuine gap.</p>
+      <div style="display:flex; flex-direction:column; gap:0; border:1px solid rgba(255,255,255,0.07); border-radius:10px; overflow:hidden;">
+        <div style="padding:24px 28px; border-bottom:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.03);">
+          <div style="font-size:12px; font-weight:600; color:#8FAF8A; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Where the community is responding — and it shows</div>
+          <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.7; margin:0;"><strong style="color:#F7F6F2;">Wellington</strong> has the highest predator density of any region and the highest number of community Trap.NZ projects (323). Kiwi are not naturally wild in Wellington — the GBIF sightings here almost certainly come from <strong style="color:#F7F6F2;">Zealandia</strong>, the fenced predator-free sanctuary in Karori. But the community trapping effort is producing real results beyond the fence line: kākā, once locally extinct in Wellington, have spread from Zealandia back into suburban neighbourhoods and are now a common sight across the city. The loop is closing — not for kiwi yet, but for the broader ecosystem that makes kiwi recovery possible. <strong style="color:#F7F6F2;">Northland</strong> tells a different story: the highest conservation-to-predator ratio of any region, and 1,107 kiwi sightings — genuine wild populations — to show for it.</p>
+        </div>
+        <div style="padding:24px 28px; border-bottom:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.03);">
+          <div style="font-size:12px; font-weight:600; color:#B8883A; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">One region stands out as a gap</div>
+          <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.7; margin:0;"><strong style="color:#F7F6F2;">Canterbury</strong> has the third-highest predator sighting density in the country, but only 14 DOC operations and 107 Trap.NZ projects — the second-lowest operations-to-predator ratio after Southland. Unlike Southland, this is not explained by low predator pressure. It has zero recorded kiwi sightings in the GBIF dataset. Historically, kiwi were present across much of the South Island including Canterbury — but conversion of the Canterbury Plains to farmland, combined with unchecked predation, drove them out over generations. With high predator density and limited conservation response, there is currently little realistic pathway for their return. That combination — a species that was once here, predators that are still here, and operations that largely aren't — is the most concerning pattern in the dataset.</p>
+        </div>
+        <div style="padding:24px 28px; background:rgba(255,255,255,0.03);">
+          <div style="font-size:12px; font-weight:600; color:#8FAF8A; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Where kiwi thrive, the data explains why</div>
+          <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.7; margin:0;"><strong style="color:#F7F6F2;">Southland</strong> has more kiwi sightings than any other region (2,417) and the fewest predator records — and the geography explains much of it. The region encompasses <strong style="color:#F7F6F2;">Stewart Island/Rakiura</strong>, estimated to hold around 20,000 kiwi and one of the last places in New Zealand where they live largely free from introduced predators, as well as the remote wilderness of <strong style="color:#F7F6F2;">Fiordland National Park</strong>, home to Piopiotahi (Milford Sound) and vast stretches of terrain so inaccessible that stoats, rats, and possums have never reached full density. These are places where isolation has done what conservation operations elsewhere have to achieve deliberately. Few interventions are needed because geography has already provided the buffer — a reminder that the best conservation outcome is one where the data shows nothing alarming. The question is whether that natural protection holds as climate change shifts mast years and predator ranges.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Predator story: how it was built -->
+  <div style="background:#1A1E1A; padding:48px 48px 0; border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:760px;">
+      <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#8FAF8A; margin-bottom:12px;">How it was built</p>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:rgba(255,255,255,0.05); border-radius:10px; overflow:hidden;">
+        <div style="background:#1E2320; padding:20px 22px;">
+          <div style="font-size:12px; font-weight:600; color:#8FAF8A; letter-spacing:0.05em; margin-bottom:6px;">Data · Python + REST API</div>
+          <div style="font-size:13px; color:#6B7B6B; line-height:1.6;">A Python script calls the GBIF <code style="font-size:12px; color:#9AA398;">/occurrence/search</code> endpoint, paginating through up to 300 verified records per species and writing the results to CSV.</div>
+        </div>
+        <div style="background:#1E2320; padding:20px 22px;">
+          <div style="font-size:12px; font-weight:600; color:#8FAF8A; letter-spacing:0.05em; margin-bottom:6px;">Visualisation · Plotly</div>
+          <div style="font-size:13px; color:#6B7B6B; line-height:1.6;">Six species are rendered as individual <code style="font-size:12px; color:#9AA398;">scattergeo</code> traces. Plotly's <code style="font-size:12px; color:#9AA398;">restyle</code> method swaps trace visibility on each scroll step without re-rendering the full chart.</div>
+        </div>
+        <div style="background:#1E2320; padding:20px 22px;">
+          <div style="font-size:12px; font-weight:600; color:#8FAF8A; letter-spacing:0.05em; margin-bottom:6px;">Scroll logic · Scrollama</div>
+          <div style="font-size:13px; color:#6B7B6B; line-height:1.6;">Scrollama fires step-enter and step-exit events as the user scrolls. Each event maps to a predator layer, creating the layered reveal without any CSS animation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Humpback CTA -->
+  <div style="background:#1A1E1A; padding:60px 48px; border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:760px; display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap;">
+      <div>
+        <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#8FAF8A; margin-bottom:10px;">Marine wildlife</p>
+        <h3 style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:#F7F6F2; line-height:1.3; margin-bottom:8px;">Not all native species are in decline</h3>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.7;">The humpback whale was hunted to near-extinction from NZ shores. 38 years after the whaling moratorium, they're back — one of conservation's genuine success stories.</p>
+      </div>
+      <a href="humpback.html" style="display:inline-flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13px; color:#B8883A; text-decoration:none; border:1px solid rgba(184,136,58,0.35); border-radius:40px; padding:12px 24px; white-space:nowrap; transition:all 0.2s; flex-shrink:0;" onmouseover="this.style.background='rgba(184,136,58,0.1)';this.style.borderColor='#B8883A'" onmouseout="this.style.background='';this.style.borderColor='rgba(184,136,58,0.35)'">Explore the humpback story →</a>
+    </div>
+  </div>
+
+  <!-- Predator map scripts -->
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="https://unpkg.com/scrollama@3.2.0/build/scrollama.min.js"></script>
+  <script src="predator_data.js"></script>
+  <script>
+  (function () {
+    // ── Species config: order matches trace indices 0-5
+    const SPECIES_ORDER = [
+      "Apteryx mantelli",
+      "Apteryx australis",
+      "Trichosurus vulpecula",
+      "Rattus rattus",
+      "Rattus norvegicus",
+      "Mustela erminea",
+    ];
+    const COLOURS = {
+      "Apteryx mantelli":      "#5A7D66",
+      "Apteryx australis":     "#8B6914",
+      "Trichosurus vulpecula": "#8B4513",
+      "Rattus rattus":         "#CC4400",
+      "Rattus norvegicus":     "#E8762B",
+      "Mustela erminea":       "#9B2335",
+    };
+    // Trace order: 0=NI Kiwi, 1=S Kiwi, 2=Possum, 3=Ship rat, 4=Norway rat, 5=Stoat
+    // Kiwi always visible; only one predator group shown at a time
+    const VISIBILITY = [
+      [true,  true,  false, false, false, false],  // step 0: kiwi only
+      [true,  true,  true,  false, false, false],  // step 1: + possum
+      [true,  true,  false, true,  true,  false],  // step 2: possum out, rats in
+      [true,  true,  false, false, false, true ],  // step 3: rats out, stoat in
+      [true,  true,  true,  true,  true,  true ],  // step 4: all visible
+    ];
+
+    function buildTraces() {
+      return SPECIES_ORDER.map((sci, i) => {
+        const d = PREDATOR_DATA[sci];
+        return {
+          type: "scattergeo",
+          lat:  d.records.map(r => r[0]),
+          lon:  d.records.map(r => r[1]),
+          customdata: d.records.map(r => [r[3], r[2]]),
+          mode: "markers",
+          name: d.name + " (" + d.records.length.toLocaleString() + ")",
+          visible: i < 2,
+          marker: {
+            size: 5,
+            color: COLOURS[sci],
+            opacity: 0.7,
+            line: { color: "rgba(0,0,0,0.2)", width: 0.3 },
+          },
+          hovertemplate:
+            "<b>" + d.name + "</b><br>" +
+            "Region: %{customdata[0]}<br>" +
+            "Year: %{customdata[1]}" +
+            "<extra></extra>",
+        };
+      });
+    }
+
+    const layout = {
+      paper_bgcolor: "#1A1E1A",
+      plot_bgcolor:  "#1A1E1A",
+      height: null,
+      autosize: true,
+      margin: { l: 0, r: 0, t: 0, b: 0 },
+      dragmode: false,
+      geo: {
+        resolution: 50,
+        showland: true,
+        landcolor: "#2A2E2A",
+        showocean: true,
+        oceancolor: "#1A1E1A",
+        showcoastlines: true,
+        coastlinecolor: "#4A5A4A",
+        coastlinewidth: 0.8,
+        showframe: false,
+        bgcolor: "#1A1E1A",
+        showlakes: false,
+        lataxis: { range: [-48, -33], showgrid: false },
+        lonaxis: { range: [165, 180], showgrid: false },
+      },
+      legend: {
+        bgcolor: "rgba(26,30,26,0.85)",
+        bordercolor: "#3A4A3A",
+        borderwidth: 1,
+        font: { size: 10, color: "#9AA398", family: "Inter, sans-serif" },
+        x: 0.01, y: 0.06,
+        xanchor: "left", yanchor: "bottom",
+      },
+      hoverlabel: {
+        bgcolor: "#2A2E2A",
+        bordercolor: "#3A5C45",
+        font: { size: 12, family: "Inter, sans-serif", color: "#F7F6F2" },
+      },
+    };
+
+    const mapDiv = document.getElementById("predator-map");
+    Plotly.newPlot(mapDiv, buildTraces(), layout, {
+      displayModeBar: false,
+      scrollZoom: false,
+      responsive: true,
+    });
+
+    // ── Scrollama — init after Plotly finishes rendering ───────────────────
+    function updateMap(step) {
+      const vis = VISIBILITY[Math.min(step, VISIBILITY.length - 1)];
+      Plotly.restyle(mapDiv, { visible: vis });
+    }
+
+    const steps = document.querySelectorAll(".scroll-step");
+    function setActiveStep(index) {
+      steps.forEach((el, i) => {
+        el.style.opacity = i === index ? "1" : "0.3";
+      });
+      updateMap(index);
+    }
+
+    mapDiv.on("plotly_afterplot", function initScrollama() {
+      mapDiv.removeListener("plotly_afterplot", initScrollama);
+      const scroller = scrollama();
+      scroller.setup({
+        step: ".scroll-step",
+        offset: 0.55,
+      })
+      .onStepEnter(({ index }) => setActiveStep(index))
+      .onStepExit(({ index, direction }) => {
+        if (direction === "up" && index > 0) setActiveStep(index - 1);
+      });
+      window.addEventListener("resize", scroller.resize);
+    });
+  })();
+  </script>
+
+  <!-- Conservation correlation chart — runs after Plotly is loaded -->
+  <script>
+  (function() {
+    var regions   = ["Wellington","Otago","Canterbury","Waikato","Auckland","East Coast","West Coast","Nelson Marlborough","Northland","Southland","Bay of Plenty"];
+    var predators = [1104, 858, 766, 710, 641, 531, 489, 405, 238, 154, 50];
+    var totalOps  = [375, 212, 121, 241, 324, 131, 166, 114, 408, 20, 21];
+    var kiwi      = [85, 180, 0, 89, 330, 51, 21, 7, 1107, 2417, 66];
+    var docOps    = [52, 63, 14, 79, 24, 86, 98, 10, 52, 9, 6];
+    var trapnz    = [323, 149, 107, 162, 300, 45, 68, 104, 356, 11, 15];
+
+    var colours = regions.map(function(r, i) {
+      var ratio = kiwi[i] / (predators[i] + 1);
+      if (ratio > 2)   return "#3A5C45";
+      if (ratio > 0.5) return "#B8883A";
+      return "#B85C45";
+    });
+
+    var sizes = kiwi.map(function(k) { return Math.max(12, k / 18 + 12); });
+
+    var customdata = regions.map(function(r, i) {
+      return [r, predators[i], docOps[i], trapnz[i], kiwi[i]];
+    });
+
+    var annotations = [
+      { x: 238,  y: 408, text: "Northland",     xanchor: "left",  xshift: 10,  yshift: 4 },
+      { x: 1104, y: 375, text: "Wellington",     xanchor: "left",  xshift: 10,  yshift: 4 },
+      { x: 766,  y: 121, text: "Canterbury ⚠",   xanchor: "right", xshift: -10, yshift: 4 },
+      { x: 154,  y: 20,  text: "Southland",      xanchor: "left",  xshift: 10,  yshift: 4 },
+      { x: 641,  y: 324, text: "Auckland",       xanchor: "left",  xshift: 10,  yshift: 4 },
+    ].map(function(a) {
+      return Object.assign(a, {
+        xref: "x", yref: "y", showarrow: false,
+        font: { size: 11, color: "#9AA398", family: "Inter, sans-serif" },
+      });
+    });
+
+    Plotly.newPlot("cons-bubble", [{
+      type: "scatter",
+      mode: "markers",
+      x: predators,
+      y: totalOps,
+      customdata: customdata,
+      hovertemplate:
+        "<b>%{customdata[0]}</b><br>" +
+        "Predator sightings: %{customdata[1]}<br>" +
+        "DOC operations: %{customdata[2]}<br>" +
+        "Trap.NZ projects: %{customdata[3]}<br>" +
+        "Kiwi sightings: %{customdata[4]}" +
+        "<extra></extra>",
+      marker: {
+        size: sizes,
+        color: colours,
+        opacity: 0.88,
+        line: { color: "rgba(255,255,255,0.2)", width: 1.5 },
+      },
+      showlegend: false,
+    }], {
+      paper_bgcolor: "#1A1E1A",
+      plot_bgcolor:  "#1A1E1A",
+      font: { family: "Inter, sans-serif", color: "#9AA398", size: 12 },
+      margin: { l: 60, r: 20, t: 10, b: 60 },
+      xaxis: {
+        title: { text: "Predator sightings (citizen science / GBIF)", font: { size: 11, color: "#4A5A4A" } },
+        showgrid: true, gridcolor: "rgba(255,255,255,0.05)",
+        zeroline: false, tickfont: { size: 11, color: "#6B7B6B" },
+      },
+      yaxis: {
+        title: { text: "Conservation operations (DOC + Trap.NZ)", font: { size: 11, color: "#4A5A4A" } },
+        showgrid: true, gridcolor: "rgba(255,255,255,0.05)",
+        zeroline: false, tickfont: { size: 11, color: "#6B7B6B" },
+      },
+      annotations: annotations,
+      hoverlabel: {
+        bgcolor: "#2A2E2A",
+        bordercolor: "#3A5C45",
+        font: { size: 12, family: "Inter, sans-serif", color: "#F7F6F2" },
+      },
+    }, { displayModeBar: false, responsive: true });
+  })();
+  </script>
+
+    </div><!-- /predator-story-body -->
+  </section>
+
+  <!-- FINDING SIGNAL IN THE NOISE -->
+  <section id="signal-story" style="background:#F7F6F2; padding:0;">
+    <div class="section-toggle-bar" data-target="signal-story-body">
+      <div class="section-toggle-bar-inner">
+        <div class="section-toggle-title">
+          <span class="section-toggle-label">2026 Election Analysis · AI-guided insight</span>
+          <span class="section-toggle-name">Finding signal in the noise</span>
+        </div>
+        <button class="section-toggle-btn" aria-expanded="true">
+          <span class="toggle-btn-text">Hide</span>
+          <svg class="toggle-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="signal-story-body" class="section-collapsible" style="padding:100px 0 120px;">
+
+    <!-- Intro -->
+    <div style="max-width:1400px; margin:0 auto; padding:0 48px 64px;">
+      <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#B8883A; margin-bottom:16px;">2026 Election Analysis · AI-guided insight</p>
+      <h2 style="font-family:'Fraunces',serif; font-size:clamp(36px,5vw,64px); font-weight:300; color:#1A1E1A; line-height:1.1; letter-spacing:-0.02em; margin-bottom:24px;">Finding signal<br><em style="font-style:italic; color:#B8883A;">in the noise</em></h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;">
+        <div>
+          <p style="font-family:'Inter',sans-serif; font-size:17px; color:#4A5248; line-height:1.8; margin-bottom:20px;">
+            With New Zealand's 2026 general election approaching, I scraped press releases from all six major parties and ran keyword analysis across eight policy topics to see where each party is choosing to focus. The results reveal starkly different narratives.
+          </p>
+          <p style="font-family:'Inter',sans-serif; font-size:16px; color:#4A5248; line-height:1.8; margin-bottom:20px;">
+            One of AI's most powerful capabilities is finding patterns inside large volumes of unstructured text — the kind of data that's too slow to read manually and too messy for a spreadsheet. Party press releases, customer reviews, support tickets, meeting notes: AI can scan thousands of documents in seconds, extract the topics that matter, and surface insight that would otherwise stay buried.
+          </p>
+          <p style="font-family:'Inter',sans-serif; font-size:16px; color:#4A5248; line-height:1.8;">
+            Here the approach was deliberately transparent: scrape the raw text, define keyword categories before analysis to avoid bias, normalise by word count so volume differences don't skew the comparison, then visualise. Raw text, keyword counts, word-frequency normalisation. No calls on what matters — the data decides what's being talked about.
+          </p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:20px; padding-top:8px;">
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <div style="width:32px; height:32px; background:#3A5C45; border-radius:8px; display:flex; align-items:center; justify-content:center; color:white; font-family:'Inter',sans-serif; font-size:14px; flex-shrink:0;">1</div>
+            <div>
+              <div style="font-family:'Inter',sans-serif; font-size:14px; font-weight:500; color:#1A1E1A; margin-bottom:4px;">Scrape &amp; collect</div>
+              <div style="font-family:'Inter',sans-serif; font-size:14px; color:#6B7B6B; line-height:1.6;">287 press releases pulled automatically from six party websites — raw, unedited text, straight from the source.</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <div style="width:32px; height:32px; background:#3A5C45; border-radius:8px; display:flex; align-items:center; justify-content:center; color:white; font-family:'Inter',sans-serif; font-size:14px; flex-shrink:0;">2</div>
+            <div>
+              <div style="font-family:'Inter',sans-serif; font-size:14px; font-weight:500; color:#1A1E1A; margin-bottom:4px;">Keyword match &amp; classify</div>
+              <div style="font-family:'Inter',sans-serif; font-size:14px; color:#6B7B6B; line-height:1.6;">Each document is scanned against pre-defined topic categories using whole-word regex matching — the same technique used in large-scale text mining pipelines.</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px; align-items:flex-start;">
+            <div style="width:32px; height:32px; background:#3A5C45; border-radius:8px; display:flex; align-items:center; justify-content:center; color:white; font-family:'Inter',sans-serif; font-size:14px; flex-shrink:0;">3</div>
+            <div>
+              <div style="font-family:'Inter',sans-serif; font-size:14px; font-weight:500; color:#1A1E1A; margin-bottom:4px;">Normalise &amp; compare</div>
+              <div style="font-family:'Inter',sans-serif; font-size:14px; color:#6B7B6B; line-height:1.6;">Frequencies normalised per 1,000 words so the comparison is fair regardless of how much each party publishes. The gaps that emerge are real differences in emphasis, not volume.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats row -->
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(0,0,0,0.07); border-top:1px solid rgba(0,0,0,0.07); border-bottom:1px solid rgba(0,0,0,0.07); margin-bottom:80px;">
+      <div style="background:#EFEDE7; padding:32px 40px;">
+        <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:6px;">287</div>
+        <div style="font-family:'Inter',sans-serif; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#9AA398;">Statements analysed</div>
+      </div>
+      <div style="background:#EFEDE7; padding:32px 40px;">
+        <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:6px;">107k</div>
+        <div style="font-family:'Inter',sans-serif; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#9AA398;">Words processed</div>
+      </div>
+      <div style="background:#EFEDE7; padding:32px 40px;">
+        <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:6px;">8</div>
+        <div style="font-family:'Inter',sans-serif; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#9AA398;">Policy topics</div>
+      </div>
+      <div style="background:#EFEDE7; padding:32px 40px;">
+        <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:6px;">6</div>
+        <div style="font-family:'Inter',sans-serif; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#9AA398;">Parties compared</div>
+      </div>
+    </div>
+
+    <!-- Section 01: frequency chart -->
+    <div style="max-width:1400px; margin:0 auto; padding:0 48px 80px; border-bottom:1px solid rgba(0,0,0,0.07);">
+      <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#B8883A; margin-bottom:12px;">01 — Topic frequency</p>
+      <h3 style="font-family:'Fraunces',serif; font-size:clamp(22px,2.5vw,32px); font-weight:300; color:#1A1E1A; margin-bottom:12px;">What each party is talking about</h3>
+      <p style="font-family:'Inter',sans-serif; font-size:15px; color:#4A5248; max-width:640px; line-height:1.8; margin-bottom:36px;">
+        Keyword mentions normalised per 1,000 words — so the comparison is fair regardless of how many statements each party has published.
+      </p>
+      <div style="display:flex; align-items:center; gap:20px; margin-bottom:24px; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13px; color:#4A5248;">
+          <div style="width:10px; height:10px; border-radius:50%; background:#00529F;"></div> National (110 releases)
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13px; color:#4A5248;">
+          <div style="width:10px; height:10px; border-radius:50%; background:#D82A20;"></div> Labour (62 releases)
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13px; color:#4A5248;">
+          <div style="width:10px; height:10px; border-radius:50%; background:#4A4A4A;"></div> NZ First (50 releases)
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13px; color:#4A5248;">
+          <div style="width:10px; height:10px; border-radius:50%; background:#D4A800;"></div> ACT (35 releases)
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13px; color:#4A5248;">
+          <div style="width:10px; height:10px; border-radius:50%; background:#8B0000;"></div> Te Pāti Māori (8 releases)
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13px; color:#4A5248;">
+          <div style="width:10px; height:10px; border-radius:50%; background:#098137;"></div> Green Party (22 releases)
+        </div>
+      </div>
+      <div style="background:white; border:1px solid rgba(0,0,0,0.07); border-radius:2px; padding:28px; box-shadow:0 4px 24px rgba(0,0,0,0.05);">
+        <div id="sn-chart-bar" style="height:660px;"></div>
+      </div>
+    </div>
+
+    <!-- Section 02: gap chart -->
+    <div style="max-width:1400px; margin:0 auto; padding:80px 48px; border-bottom:1px solid rgba(0,0,0,0.07);">
+      <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#B8883A; margin-bottom:12px;">02 — The gap</p>
+      <h3 style="font-family:'Fraunces',serif; font-size:clamp(22px,2.5vw,32px); font-weight:300; color:#1A1E1A; margin-bottom:12px;">Where the narratives diverge</h3>
+      <p style="font-family:'Inter',sans-serif; font-size:15px; color:#4A5248; max-width:640px; line-height:1.8; margin-bottom:36px;">
+        Topics where <span style="color:#D82A20; font-weight:500;">Labour</span> dominates push right, topics where <span style="color:#00529F; font-weight:500;">National</span> leads push left. The bar length is the gap between the two parties.
+      </p>
+      <div style="background:white; border:1px solid rgba(0,0,0,0.07); border-radius:2px; padding:28px; box-shadow:0 4px 24px rgba(0,0,0,0.05);">
+        <div id="sn-chart-gap" style="height:380px;"></div>
+      </div>
+    </div>
+
+    <!-- Section 03: key findings -->
+    <div style="max-width:1400px; margin:0 auto; padding:80px 48px;">
+      <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#B8883A; margin-bottom:12px;">03 — Key findings</p>
+      <h3 style="font-family:'Fraunces',serif; font-size:clamp(22px,2.5vw,32px); font-weight:300; color:#1A1E1A; margin-bottom:12px;">What the data tells us</h3>
+      <p style="font-family:'Inter',sans-serif; font-size:15px; color:#4A5248; max-width:640px; line-height:1.8; margin-bottom:40px;">
+        Opposition parties naturally attack government record — so Labour's heavy focus on economy, health and housing reflects the standard playbook. But the scale of the gaps, National's near-silence on environment, and NZ First's narrow but consistent focus on immigration and sovereignty all stand out.
+      </p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px;">
+        <div style="background:#EFEDE7; border:1px solid rgba(0,0,0,0.06); border-radius:2px; padding:24px;">
+          <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#D82A20; margin-bottom:8px;">Economy · Everyone's talking</div>
+          <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:8px;">Dominant topic</div>
+          <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">Economy and cost of living are the highest-frequency topics across all six parties. Labour (11.43) leads, but Green (3.50) and NZ First (3.94) both outpace National (6.05) on economic language — the opposition is louder on the economy than the government managing it.</p>
+        </div>
+        <div style="background:#EFEDE7; border:1px solid rgba(0,0,0,0.06); border-radius:2px; padding:24px;">
+          <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#098137; margin-bottom:8px;">Environment · Opposition vs Coalition</div>
+          <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:8px;">10× gap</div>
+          <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">Labour and the Greens average 3.97 environment mentions per 1,000 words. National, NZ First and ACT average 0.41. The three governing parties are near-silent on climate. The Greens (3.39) and Labour (4.56) carry almost all the environmental messaging between them.</p>
+        </div>
+        <div style="background:#EFEDE7; border:1px solid rgba(0,0,0,0.06); border-radius:2px; padding:24px;">
+          <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#8B0000; margin-bottom:8px;">Housing · Three parties</div>
+          <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:8px;">Te Pāti Māori #1</div>
+          <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">Te Pāti Māori leads every party on housing at 7.38 per 1,000 words, framing it as a Māori and Tiriti issue. Labour (6.83) and Green (3.50) follow. National sits at 2.03 — the party that campaigned on fixing housing is the quietest governing voice on the topic. <em style="color:#9AA398;">TPM figure based on 8 releases — indicative.</em></p>
+        </div>
+        <div style="background:#EFEDE7; border:1px solid rgba(0,0,0,0.06); border-radius:2px; padding:24px;">
+          <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#9AA398; margin-bottom:8px;">The full picture</div>
+          <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:8px;">Six parties, one story</div>
+          <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">Across 287 releases, the pattern is consistent: opposition parties talk more, about more topics, more loudly. The governing coalition — National, NZ First, ACT — keeps its messaging tight and topic-narrow. Whether that's discipline or defensiveness is a question the election will answer.</p>
+        </div>
+        <div style="background:#EFEDE7; border:1px solid rgba(0,0,0,0.06); border-radius:2px; padding:24px;">
+          <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#4A4A4A; margin-bottom:8px;">Immigration · NZ First</div>
+          <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:8px;">NZ First owns it</div>
+          <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">NZ First leads all parties on immigration at 1.65 per 1,000 words — ahead of National (1.38) and ACT (0.16). Labour, Green and Te Pāti Māori barely register on the topic. NZ First is the only party making immigration a consistent messaging priority in 2026.</p>
+        </div>
+        <div style="background:#EFEDE7; border:1px solid rgba(0,0,0,0.06); border-radius:2px; padding:24px;">
+          <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#D82A20; margin-bottom:8px;">Healthcare · Incumbent disadvantage</div>
+          <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:8px;">2.3× Labour lead</div>
+          <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">Labour mentions health 2.3 times more than National — hospital waitlists, Pharmac cuts, mental health funding. National has little incentive to amplify a topic where they're on the back foot. Notably, Te Pāti Māori (0.74) is quieter than expected given Māori health disparities are a documented priority.</p>
+        </div>
+        <div style="background:#EFEDE7; border:1px solid rgba(0,0,0,0.06); border-radius:2px; padding:24px;">
+          <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#9AA398; margin-bottom:8px;">Crime · Contested ground</div>
+          <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:8px;">Most evenly spread</div>
+          <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">Crime is the most evenly distributed topic across all parties — National (1.72), NZ First (1.47), Te Pāti Māori (4.06), Labour (2.28), ACT (0.82). Everyone has a crime narrative, but they're rarely talking about the same thing: public safety, sentencing, gang policy and systemic incarceration sit in very different conversations.</p>
+        </div>
+        <div style="background:#EFEDE7; border:1px solid rgba(0,0,0,0.06); border-radius:2px; padding:24px;">
+          <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#D4A800; margin-bottom:8px;">Education · Unexpected leaders</div>
+          <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:8px;">ACT 3.68 · TPM 3.32</div>
+          <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">ACT tops all parties on education at 3.68 per 1,000 words, followed closely by Te Pāti Māori at 3.32 — two parties with entirely opposing visions for schooling. National (2.71) sits in the middle while Labour barely registers. Charter schools and curriculum reform versus kaupapa Māori — the same topic, opposite directions.</p>
+        </div>
+      </div>
+
+      <!-- Source note -->
+      <div style="margin-top:48px; padding-top:40px; border-top:1px solid rgba(0,0,0,0.07);">
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.7;">
+          287 press releases · National, Labour, NZ First, ACT, Te Pāti Māori &amp; Green · Jan–Mar 2026 · keyword-matched, normalised per 1,000 words
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <script>
+  (function() {
+    var sBG  = 'white';
+    var sTxt = '#4A5248';
+    var sGrd = '#EBEBEB';
+    var sFnt = { family: 'Georgia, serif', color: sTxt, size: 13 };
+    var cfg  = { displayModeBar: false, responsive: true };
+    var base = { paper_bgcolor: sBG, plot_bgcolor: sBG, font: sFnt, showlegend: false,
+                 margin: { l: 10, r: 20, t: 10, b: 40 } };
+
+    var cats     = ['Economy','Healthcare','Housing','Environment','Crime','Cost of Living','Education','Immigration'];
+    var natRates = [6.05, 3.89, 2.03, 0.44, 1.72, 1.54, 2.71, 1.38];
+    var labRates = [11.43, 9.11, 6.83, 4.56, 2.28, 2.28, 0.04, null];
+    var nzfRates = [3.94, 1.41, 0.53, 0.47, 1.47, 1.18, 0.65, 1.65];
+    var actRates = [1.63, 1.06, 1.06, 0.33, 0.82, 2.45, 3.68, 0.16];
+    var tpmRates = [1.85, 0.74, 7.38, 1.11, 4.06, null, 3.32, null];
+    var grnRates = [3.50, 0.35, 0.70, 3.39, 0.70, 2.69, 0.58, null];
+
+    // Chart 1: grouped bar
+    Plotly.newPlot('sn-chart-bar', [
+      { name:'National', y:cats, x:natRates, type:'bar', orientation:'h',
+        marker:{ color:'#00529F', line:{width:0} }, opacity:0.85,
+        hovertemplate:'<b>%{y}</b><br>National: %{x:.2f} / 1,000 words<extra></extra>' },
+      { name:'Labour',   y:cats, x:labRates, type:'bar', orientation:'h',
+        marker:{ color:'#D82A20', line:{width:0} }, opacity:0.85,
+        hovertemplate:'<b>%{y}</b><br>Labour: %{x:.2f} / 1,000 words<extra></extra>' },
+      { name:'NZ First', y:cats, x:nzfRates, type:'bar', orientation:'h',
+        marker:{ color:'#4A4A4A', line:{width:0} }, opacity:0.85,
+        hovertemplate:'<b>%{y}</b><br>NZ First: %{x:.2f} / 1,000 words<extra></extra>' },
+      { name:'ACT',           y:cats, x:actRates, type:'bar', orientation:'h',
+        marker:{ color:'#D4A800', line:{width:0} }, opacity:0.85,
+        hovertemplate:'<b>%{y}</b><br>ACT: %{x:.2f} / 1,000 words<extra></extra>' },
+      { name:'Te Pāti Māori', y:cats, x:tpmRates, type:'bar', orientation:'h',
+        marker:{ color:'#8B0000', line:{width:0} }, opacity:0.85,
+        hovertemplate:'<b>%{y}</b><br>Te Pāti Māori: %{x:.2f} / 1,000 words<extra></extra>' },
+      { name:'Green Party',   y:cats, x:grnRates, type:'bar', orientation:'h',
+        marker:{ color:'#098137', line:{width:0} }, opacity:0.85,
+        hovertemplate:'<b>%{y}</b><br>Green Party: %{x:.2f} / 1,000 words<extra></extra>' },
+    ], Object.assign({}, base, {
+      showlegend: true,
+      legend: { orientation:'h', yanchor:'bottom', y:1.02, xanchor:'left', x:0,
+                font:{size:13}, bgcolor:'rgba(0,0,0,0)' },
+      barmode:'group', bargap:0.25, bargroupgap:0.06,
+      xaxis: { title:{text:'mentions per 1,000 words', font:{size:11, color:'#9AA398'}},
+               showgrid:true, gridcolor:sGrd, zeroline:false, tickfont:{size:11}, range:[-0.5, null] },
+      yaxis: { showgrid:false, tickfont:{size:13}, automargin:true, ticklabelstandoff:5 },
+    }), cfg);
+
+    // Chart 2: diverging gap
+    var gapCats = ['Education','Immigration','Cost of Living','Crime','Environment','Housing','Healthcare','Economy'];
+    var gapVals = [-2.67, -1.38, 0.74, 0.56, 4.12, 4.80, 5.22, 5.38];
+    Plotly.newPlot('sn-chart-gap', [{
+      y: gapCats, x: gapVals, type:'bar', orientation:'h', showlegend:false,
+      marker:{ color: gapVals.map(function(g){ return g>0?'#D82A20':'#00529F'; }), line:{width:0} },
+      opacity:0.85,
+      customdata: gapVals.map(function(g){ return g>0?'Labour +'+g.toFixed(2):'National +'+Math.abs(g).toFixed(2); }),
+      hovertemplate:'<b>%{y}</b><br>%{customdata}<extra></extra>',
+    }], Object.assign({}, base, {
+      shapes:[{ type:'line', x0:0, x1:0, y0:-0.5, y1:7.5,
+                line:{color:'rgba(0,0,0,0.15)', width:1} }],
+      annotations:[
+        { x:-1.8, y:7.6, xref:'x', yref:'y', text:'← National leads', showarrow:false,
+          font:{size:11, color:'#00529F'}, xanchor:'center' },
+        { x:3.5,  y:7.6, xref:'x', yref:'y', text:'Labour leads →',   showarrow:false,
+          font:{size:11, color:'#D82A20'}, xanchor:'center' },
+      ],
+      xaxis:{ title:{text:'gap in mentions per 1,000 words', font:{size:11, color:'#9AA398'}},
+              showgrid:true, gridcolor:sGrd, zeroline:false, tickfont:{size:11} },
+      yaxis:{ showgrid:false, tickfont:{size:13}, automargin:true },
+    }), cfg);
+  })();
+  </script>
+
+    <!-- What this means -->
+    <div style="max-width:1400px; margin:0 auto; padding:0 48px 80px;">
+      <div style="border-top:2px solid #B8883A; padding-top:40px;">
+        <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#B8883A; margin-bottom:12px;">What this means</p>
+        <h3 style="font-family:'Fraunces',serif; font-size:clamp(22px,2.5vw,32px); font-weight:300; color:#1A1E1A; margin-bottom:24px;">Turning analysis into action</h3>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px;">
+          <div style="background:white; border:1px solid rgba(0,0,0,0.07); border-radius:2px; padding:24px;">
+            <div style="font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#00529F; margin-bottom:8px;">For parties &amp; strategists</div>
+            <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">Messaging gaps are measurable vulnerabilities. National's near-silence on housing and environment — two of voters' top concerns — creates a quantifiable space for opposition parties to fill. Communications teams can use this kind of analysis to identify where they are ceding narrative ground before an election campaign begins.</p>
+          </div>
+          <div style="background:white; border:1px solid rgba(0,0,0,0.07); border-radius:2px; padding:24px;">
+            <div style="font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#D82A20; margin-bottom:8px;">For journalists &amp; researchers</div>
+            <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">Normalising by word count gives a fairer basis for comparing party activity than raw volume — a small party publishing fewer releases isn't quieter on an issue, just smaller. This methodology can be applied to any corpus of political text: speeches, Hansard debates, social media posts, or post-election policy documents.</p>
+          </div>
+          <div style="background:white; border:1px solid rgba(0,0,0,0.07); border-radius:2px; padding:24px;">
+            <div style="font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#4A5248; margin-bottom:8px;">For voters</div>
+            <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">What a party talks about most is a reasonable proxy for what it will prioritise in government. This data cuts through campaign messaging to show revealed priorities — the topics each party chose to put words behind, unprompted, over several months. That's a more reliable signal than a manifesto written for an election.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div><!-- /signal-story-body -->
+  </section>
+
+  <!-- KIWISAVER -->
+  <section id="kiwisaver">
+    <div class="section-toggle-bar section-toggle-bar-dark" data-target="kiwisaver-body">
+      <div class="section-toggle-bar-inner">
+        <div class="section-toggle-title">
+          <span class="section-toggle-label">Deep Dive · KiwiSaver Analysis</span>
+          <span class="section-toggle-name">Inside KiwiSaver — eighteen years of data</span>
+        </div>
+        <button class="section-toggle-btn" aria-expanded="true">
+          <span class="toggle-btn-text">Hide</span>
+          <svg class="toggle-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="kiwisaver-body" class="section-collapsible">
+
+    <!-- Hero -->
+    <div class="ks-hero">
+      <div class="ks-hero-inner">
+        <p class="ks-hero-label">Deep Dive · KiwiSaver Analysis</p>
+        <h2 class="ks-hero-title">Inside KiwiSaver —<br><em>eighteen years of data</em></h2>
+        <div class="ks-hero-grid">
+          <div>
+            <p class="ks-hero-intro">
+              KiwiSaver launched on 1 July 2007 under Finance Minister Michael Cullen — a deliberate response to New Zealand's chronically low household savings rate and growing anxiety about the long-term cost of NZ Super. The idea was straightforward: auto-enrol workers, attach savings to employment, and let compounding do the rest.
+            </p>
+            <p class="ks-hero-intro">
+              What followed was messier. The scheme survived a change of government in 2008 — despite National's early opposition — but the employer contribution rate stalled at 2% for six years, and the government's own contribution was cut twice. Today, 3.4 million New Zealanders are enrolled, $123 billion sits in KiwiSaver funds, and the scheme faces a defining tension: it is simultaneously a retirement savings vehicle, a first home deposit tool, and — increasingly — a financial hardship lifeline.
+            </p>
+          </div>
+          <div class="ks-hero-meta">
+            <div class="ks-hero-meta-item">
+              <div class="ks-hero-meta-label">Data sources</div>
+              <div class="ks-hero-meta-val">IRD KiwiSaver Annual Statistics · FMA Annual Report 2025 · APRA Superannuation Bulletin · Stats NZ</div>
+            </div>
+            <div class="ks-hero-meta-item">
+              <div class="ks-hero-meta-label">Methods</div>
+              <div class="ks-hero-meta-val">Python data pipeline · IRD Statistics Excel extracts · Compound growth modelling · Plotly interactive charts</div>
+            </div>
+            <div class="ks-hero-meta-item">
+              <div class="ks-hero-meta-label">Coverage</div>
+              <div class="ks-hero-meta-val">2007–2026 · All six major KiwiSaver fund types · Trans-Tasman comparison with Australian superannuation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key stats -->
+    <div class="ks-stats-row">
+      <div class="ks-stats-inner">
+        <div class="ks-stat-card">
+          <div class="ks-stat-number">3.4<span>m</span></div>
+          <div class="ks-stat-sublabel">Members enrolled<br>as at June 2025</div>
+        </div>
+        <div class="ks-stat-card">
+          <div class="ks-stat-number">43<span>,</span>600</div>
+          <div class="ks-stat-sublabel">Used KiwiSaver for a<br>first home in 2025</div>
+        </div>
+        <div class="ks-stat-card">
+          <div class="ks-stat-number">$1.86<span>b</span></div>
+          <div class="ks-stat-sublabel">Withdrawn for first<br>home purchases in 2025</div>
+        </div>
+        <div class="ks-stat-card">
+          <div class="ks-stat-number">47<span>%</span></div>
+          <div class="ks-stat-sublabel">Of members made no<br>contribution in 2025</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 1: Who's enrolled -->
+    <div class="ks-content-section">
+      <div class="ks-content-inner">
+        <p class="ks-content-label">Membership</p>
+        <h3 class="ks-content-title">Who is in KiwiSaver?</h3>
+        <p class="ks-content-body">
+          The 25–34 and 35–44 age bands are the largest cohorts — exactly the groups most likely to be saving for a first home or peak earning years. Membership in the 65+ bracket is growing fastest as the scheme matures and older members choose to stay enrolled. The under-17 cohort is gradually shrinking as fewer children are enrolled by parents.
+        </p>
+        <div class="ks-two-col">
+          <div class="ks-embed-card">
+            <iframe src="ks_age_groups.html" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+          </div>
+          <div class="ks-embed-card">
+            <iframe src="ks_contribution_rates.html" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+          </div>
+        </div>
+        <p class="ks-content-body" style="margin-top:24px; margin-bottom:0;">
+          On contribution rates, <strong>3% dominates</strong> — the legal minimum — with over 1.16 million members contributing at that level. The 6% rate is the only one growing; 4% and 8% are declining. Nearly <strong>1.6 million members made no contribution at all</strong> in 2025, a figure that includes children, retirees, those on savings suspension, and overseas members.
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 2: First home -->
+    <div class="ks-content-section ks-content-section-alt">
+      <div class="ks-content-inner">
+        <p class="ks-content-label">First home buyers</p>
+        <h3 class="ks-content-title">KiwiSaver as a path to home ownership</h3>
+        <p class="ks-content-body">
+          First home withdrawals peaked in 2021 — the height of the housing boom — when 54,520 members used KiwiSaver to help buy their first home, withdrawing $1.6 billion. As the market cooled and interest rates rose, withdrawals dipped. They are now recovering: 43,600 people made a first home withdrawal in 2025, withdrawing a record <strong>$1.86 billion</strong>. The average first home withdrawal is approximately <strong>$43,000</strong> — a meaningful contribution to a deposit, but still a fraction of what most regions require.
+        </p>
+        <div class="ks-two-col">
+          <div class="ks-embed-card">
+            <iframe src="ks_withdrawals_count.html" width="100%" height="390" frameborder="0" scrolling="no"></iframe>
+          </div>
+          <div class="ks-embed-card">
+            <iframe src="ks_withdrawals_amount.html" width="100%" height="390" frameborder="0" scrolling="no"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Caveat: hardship -->
+    <div class="ks-caveat">
+      <div class="ks-caveat-inner">
+        <p class="ks-caveat-label">A note of caution</p>
+        <h3 class="ks-caveat-title">Financial hardship withdrawals are rising</h3>
+        <div class="ks-caveat-grid">
+          <div class="ks-caveat-text">
+            <p>
+              For the first time in KiwiSaver's history, the number of members withdrawing under <em>financial hardship</em> exceeded the number withdrawing for a first home purchase in 2025 — 45,870 versus 43,600.
+            </p>
+            <p>
+              The trend has been building for years. Hardship withdrawals have risen in every single year since 2012, accelerating sharply from 2023 as cost-of-living pressures mounted. The average hardship withdrawal is around $10,000 — a fraction of the first home average, reflecting the crisis-level circumstances that trigger it.
+            </p>
+            <p>
+              The implication is sobering: <em>KiwiSaver is increasingly being drawn upon not as a path to home ownership, but as a last financial resort.</em> For many New Zealanders, the savings intended for retirement or a first home are being consumed by the pressures of today.
+            </p>
+          </div>
+          <div>
+            <div class="ks-caveat-stat">
+              <div class="ks-caveat-stat-num">45,870</div>
+              <div class="ks-caveat-stat-sublabel">Members withdrew under financial hardship in 2025 — the highest number ever recorded, and for the first time exceeding first home withdrawal counts</div>
+            </div>
+            <div class="ks-caveat-stat" style="margin-top:16px;">
+              <div class="ks-caveat-stat-num">$471m</div>
+              <div class="ks-caveat-stat-sublabel">Withdrawn under financial hardship in 2025 — up from $23m in 2012, a 20-fold increase in thirteen years</div>
+            </div>
+            <div class="ks-caveat-stat" style="margin-top:16px;">
+              <div class="ks-caveat-stat-num">81,778</div>
+              <div class="ks-caveat-stat-sublabel">Members currently on savings suspension as of February 2026 — pausing contributions, often due to financial pressure</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Opportunity cost -->
+    <div class="ks-content-section" style="padding-top: 48px; padding-bottom: 48px;">
+      <div class="ks-content-inner">
+        <p class="ks-content-label">The compounding cost</p>
+        <h3 class="ks-content-title">What a $10,000 hardship withdrawal really costs</h3>
+        <p class="ks-content-body">
+          Every dollar withdrawn under hardship is a dollar that stops compounding. At a conservative 6% annual return — typical for a balanced KiwiSaver fund after fees — a $10,000 withdrawal at age 30 doesn't just cost $10,000. It costs the <strong>$77,000</strong> that money would have become by retirement. For a 25 year old, that same withdrawal costs over <strong>$100,000</strong>. The hardship withdrawal scheme exists for good reason, but the long-term retirement penalty is rarely visible to the people making the decision under financial pressure.
+        </p>
+        <div class="ks-embed-card" style="margin-bottom:16px;">
+          <div style="padding:20px 20px 0; font-size:13px; color:#4A5248; font-family:'Inter',sans-serif; font-weight:500;">Total retirement value lost by age of withdrawal</div>
+          <div id="ks-oppcost-bar" style="width:100%; height:360px;"></div>
+        </div>
+        <p class="ks-content-body" style="margin-bottom:40px; font-size:13px; color:#8A8A8A;">
+          Assumes 6% annual return, retirement at age 65, no further contributions on the withdrawn amount. Figures are nominal (not inflation-adjusted). Actual returns vary by fund type and market conditions.
+        </p>
+
+        <!-- Taxpayer cost callout -->
+        <div class="ks-taxpayer-block">
+          <div class="ks-taxpayer-label">The compounding cost of financial precarity</div>
+          <h4 class="ks-taxpayer-title">Economic precarity doesn't end when the immediate crisis passes — it compounds</h4>
+          <p class="ks-taxpayer-body">
+            The 45,870 people who withdrew under hardship in 2025 were not making a financial planning error. They were paying rent. Covering groceries. Keeping the power on. The cost of living crisis doesn't ask permission before it raids tomorrow's retirement savings — and when it does, the cost doesn't end when the crisis passes. It compounds.
+          </p>
+          <p class="ks-taxpayer-body">
+            The Crown contributed roughly 8% of every dollar that went into KiwiSaver — around <strong>$38 million of the $471 million withdrawn under hardship in 2025 was taxpayer money</strong>. It went in as a long-term investment in retirement security. It came out to cover this week's expenses. That is the cost of the cost of living crisis made visible: public money spent twice, on the same person, because the underlying pressure was never addressed.
+          </p>
+          <p class="ks-taxpayer-body" style="margin-bottom:0;">
+            The longer-term fiscal consequence is larger still. NZ Super costs <strong>$18.5 billion a year</strong> — roughly 5% of GDP — and was designed as a foundation, not a full income. KiwiSaver was meant to be the structure built on top of it. When hardship withdrawals hollow out that structure for the people least likely to rebuild it, the Crown is left carrying a retirement income system under greater strain than it should be. A society that allows poverty to persist pays for it twice: once in the crisis, and again in retirement.
+          </p>
+          <div class="ks-taxpayer-stats">
+            <div class="ks-taxpayer-stat">
+              <div class="ks-taxpayer-stat-num">$38m</div>
+              <div class="ks-taxpayer-stat-label">Crown money within 2025 hardship withdrawals — public investment in retirement security, spent on immediate survival</div>
+            </div>
+            <div class="ks-taxpayer-stat">
+              <div class="ks-taxpayer-stat-num">$18.5b</div>
+              <div class="ks-taxpayer-stat-label">Annual NZ Super cost — the foundation KiwiSaver was designed to build on, not replace single-handedly</div>
+            </div>
+            <div class="ks-taxpayer-stat">
+              <div class="ks-taxpayer-stat-num">2×</div>
+              <div class="ks-taxpayer-stat-label">The number of times poverty is paid for — once in the crisis that triggers withdrawal, once in the retirement income gap that follows</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+    (function() {
+      var bg = '#FFFFFF', font = 'Georgia, serif', textCol = '#1A1E1A', gridCol = 'rgba(0,0,0,0.06)';
+      var cfg = { displayModeBar: false, responsive: true, staticPlot: false, scrollZoom: false };
+      var base = {
+        paper_bgcolor: bg, plot_bgcolor: bg,
+        font: { family: font, color: textCol, size: 13 },
+        margin: { l: 75, r: 20, t: 16, b: 75 },
+        dragmode: false,
+        legend: { orientation: 'h', yanchor: 'top', y: -0.22, xanchor: 'left', x: 0,
+                  font: { size: 12 }, bgcolor: 'rgba(0,0,0,0)' },
+      };
+
+      // Chart 1: Retirement cost by current age
+      var ages     = [25, 30, 35, 40, 45, 50, 55];
+      var fvLabels = ['$102,857', '$76,861', '$57,435', '$42,919', '$32,071', '$23,966', '$17,908'];
+      var fvVals   = [102857, 76861, 57435, 42919, 32071, 23966, 17908];
+      var cost     = fvVals.map(function(v){ return v - 10000; });
+
+      Plotly.newPlot('ks-oppcost-bar', [
+        { x: ages, y: Array(7).fill(10000), name: 'Amount withdrawn',
+          type: 'bar', marker: { color: 'rgba(184,136,58,0.25)' }, marker_line_width: 0,
+          hovertemplate: 'Withdrawn: $10,000<extra></extra>' },
+        { x: ages, y: cost, name: 'Lost retirement value',
+          type: 'bar', marker: { color: '#B85C45' }, marker_line_width: 0,
+          hovertemplate: '<b>Age %{x}</b><br>Lost: $%{y:,.0f}<extra></extra>' },
+      ], Object.assign({}, base, {
+        barmode: 'stack',
+        xaxis: { title: { text: 'current age', font: { size: 11, color: 'rgba(26,30,26,0.4)' } },
+                 showgrid: false, zeroline: false, tickfont: { size: 12 },
+                 tickvals: [25, 35, 45, 55], ticktext: ['25', '35', '45', '55'],
+                 range: [21, 59], fixedrange: true },
+        yaxis: { showgrid: true, gridcolor: gridCol, zeroline: false,
+                 tickfont: { size: 11 }, tickprefix: '$', tickformat: ',.0f',
+                 range: [0, 115000], fixedrange: true },
+        annotations: ages.map(function(age, i) {
+          return { x: age, y: fvVals[i] + 2500, text: fvLabels[i],
+                   showarrow: false, font: { size: 11, color: '#B85C45', family: font }, yanchor: 'bottom' };
+        }),
+      }), cfg);
+
+      window.addEventListener('load', function() {
+        Plotly.Plots.resize('ks-oppcost-bar');
+      });
+    })();
+    </script>
+
+    <!-- Section 3: Policy forecast -->
+    <div class="ks-content-section" style="padding-top: 48px;">
+      <div class="ks-content-inner">
+        <p class="ks-content-label">Policy update · Two dates. One direction.</p>
+        <h3 class="ks-content-title">Two changes. One clear shift of cost.</h3>
+        <p class="ks-content-body">
+          The two changes don't arrive together. The government halved its member tax credit on <strong>1 July 2025</strong>. The employer rate increase — from 3% to 3.5% — doesn't kick in until <strong>1 April 2026</strong>. In the nine months between, members absorb the full loss with nothing to offset it. The government saves ~$313 million in that window. KiwiSavers collectively lose ~$294 million.
+        </p>
+        <p class="ks-content-body">
+          From April 2026, the employer increase almost — but not quite — covers the credit loss for most people. The median earner on $69,000 is still <strong>$19 worse off per year</strong> after both changes take effect.
+        </p>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:#EFEDE7; border-radius:12px; overflow:hidden; margin-bottom:40px;">
+          <div style="background:white; padding:28px 20px;">
+            <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#B85C45; line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">~$294m</div>
+            <div style="font-size:12px; color:#4A5248; line-height:1.5;">Lost by KiwiSavers in the<br>9-month gap (Jul 2025–Mar 2026)</div>
+          </div>
+          <div style="background:white; padding:28px 20px;">
+            <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#3A5C45; line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">~$313m</div>
+            <div style="font-size:12px; color:#4A5248; line-height:1.5;">Saved by the government<br>in that same 9 months</div>
+          </div>
+          <div style="background:white; padding:28px 20px;">
+            <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#B85C45; line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">−$19</div>
+            <div style="font-size:12px; color:#4A5248; line-height:1.5;">Net annual loss from Apr 2026<br>for the median earner ($69k)</div>
+          </div>
+        </div>
+        <p class="ks-content-body" style="margin-bottom:0; font-size:13px; color:#8A8A8A;">
+          Assumptions: ~1.5 million members receiving full government credit; median salary $69,000 (Stats NZ); gap-period figures calculated as 9/12 of annual impact. Employer gain subject to ESCT at marginal rates.
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 4: NZ vs Australia -->
+    <div class="ks-content-section ks-content-section-alt">
+      <div class="ks-content-inner">
+        <p class="ks-content-label">Trans-Tasman comparison</p>
+        <h3 class="ks-content-title">Australia's super system puts KiwiSaver in perspective</h3>
+        <p class="ks-content-body">
+          Both countries have mandatory workplace savings schemes, but the similarities end there. Australia's Superannuation Guarantee has been compulsory since 1992 and is currently set at <strong>12%</strong> — more than three times KiwiSaver's employer rate. The result is a retirement savings system that dwarfs KiwiSaver in every measurable way. New Zealand's opt-out system has achieved strong uptake, but the contribution gap compounds over a working lifetime into a stark difference in retirement outcomes.
+        </p>
+
+        <!-- Headline comparison stats -->
+        <div class="ks-comparison-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:#EFEDE7; border-radius:12px; overflow:hidden; margin-bottom:40px;">
+          <div style="background:white; padding:28px 24px;">
+            <div style="font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:#9AA398; margin-bottom:16px; font-weight:500;">Employer contribution rate</div>
+            <div style="display:flex; align-items:flex-end; gap:20px;">
+              <div>
+                <div style="font-family:'Fraunces',serif; font-size:40px; font-weight:300; color:#3A5C45; line-height:1; letter-spacing:-1px;">3.5<span style="font-size:24px;">%</span></div>
+                <div style="font-size:12px; color:#9AA398; margin-top:6px;">New Zealand</div>
+              </div>
+              <div style="font-size:22px; color:#DEDBD3; padding-bottom:8px;">vs</div>
+              <div>
+                <div style="font-family:'Fraunces',serif; font-size:40px; font-weight:300; color:#2B5FA8; line-height:1; letter-spacing:-1px;">12<span style="font-size:24px;">%</span></div>
+                <div style="font-size:12px; color:#9AA398; margin-top:6px;">Australia</div>
+              </div>
+            </div>
+          </div>
+          <div style="background:white; padding:28px 24px;">
+            <div style="font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:#9AA398; margin-bottom:16px; font-weight:500;">Average member balance</div>
+            <div style="display:flex; align-items:flex-start; gap:20px;">
+              <div>
+                <div style="font-family:'Fraunces',serif; font-size:40px; font-weight:300; color:#3A5C45; line-height:1; letter-spacing:-1px;">$36<span style="font-size:24px;">k</span></div>
+                <div style="font-size:12px; color:#9AA398; margin-top:6px;">NZD · New Zealand</div>
+              </div>
+              <div style="font-size:22px; color:#DEDBD3; padding-top:8px;">vs</div>
+              <div>
+                <div style="font-family:'Fraunces',serif; font-size:40px; font-weight:300; color:#2B5FA8; line-height:1; letter-spacing:-1px;">$132<span style="font-size:24px;">k</span></div>
+                <div style="font-size:12px; color:#9AA398; margin-top:6px;">AUD · Australia</div>
+                <div style="font-size:11px; color:#C2BFB8; margin-top:3px;">(~$150k NZD)</div>
+              </div>
+            </div>
+          </div>
+          <div style="background:white; padding:28px 24px;">
+            <div style="font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:#9AA398; margin-bottom:16px; font-weight:500;">Total fund size per capita</div>
+            <div style="display:flex; align-items:flex-start; gap:20px;">
+              <div>
+                <div style="font-family:'Fraunces',serif; font-size:40px; font-weight:300; color:#3A5C45; line-height:1; letter-spacing:-1px;">$23<span style="font-size:24px;">k</span></div>
+                <div style="font-size:12px; color:#9AA398; margin-top:6px;">NZD · New Zealand</div>
+              </div>
+              <div style="font-size:22px; color:#DEDBD3; padding-top:8px;">vs</div>
+              <div>
+                <div style="font-family:'Fraunces',serif; font-size:40px; font-weight:300; color:#2B5FA8; line-height:1; letter-spacing:-1px;">$161<span style="font-size:24px;">k</span></div>
+                <div style="font-size:12px; color:#9AA398; margin-top:6px;">AUD · Australia</div>
+                <div style="font-size:11px; color:#C2BFB8; margin-top:3px;">(~$183k NZD)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Employer rate chart -->
+        <div class="ks-embed-card" style="margin-bottom:40px;">
+          <div style="font-size:11px; color:rgba(26,30,26,0.4); font-family:'Inter',sans-serif; margin-bottom:4px; padding-left:4px;">employer contribution rate (%)</div>
+          <div id="ks-rate-chart" style="width:100%; height:380px;"></div>
+        </div>
+
+        <!-- Scorecard -->
+        <div class="ks-scorecard">
+          <div class="ks-scorecard-header">
+            <div></div>
+            <div style="color:#3A5C45; font-weight:600;">New Zealand</div>
+            <div style="color:#2B5FA8; font-weight:600;">Australia</div>
+            <div></div>
+          </div>
+          <div class="ks-scorecard-row">
+            <div class="ks-scorecard-dim">Employer contribution</div>
+            <div class="ks-scorecard-val nz">3.5%</div>
+            <div class="ks-scorecard-val au">12%</div>
+            <div class="ks-scorecard-winner au-win">AU leads</div>
+          </div>
+          <div class="ks-scorecard-row">
+            <div class="ks-scorecard-dim">Compulsion</div>
+            <div class="ks-scorecard-val nz">Opt-out</div>
+            <div class="ks-scorecard-val au">Mandatory</div>
+            <div class="ks-scorecard-winner au-win">AU leads</div>
+          </div>
+          <div class="ks-scorecard-row">
+            <div class="ks-scorecard-dim">Avg. retirement balance</div>
+            <div class="ks-scorecard-val nz">~$100–150k NZD</div>
+            <div class="ks-scorecard-val au">~$355k AUD (60–64)</div>
+            <div class="ks-scorecard-winner au-win">AU leads</div>
+          </div>
+          <div class="ks-scorecard-row">
+            <div class="ks-scorecard-dim">Government co-contribution</div>
+            <div class="ks-scorecard-val nz">$261/yr</div>
+            <div class="ks-scorecard-val au">Up to $500/yr</div>
+            <div class="ks-scorecard-winner au-win">AU leads</div>
+          </div>
+          <div class="ks-scorecard-row">
+            <div class="ks-scorecard-dim">Total assets (AUD equiv.)</div>
+            <div class="ks-scorecard-val nz">~$108b</div>
+            <div class="ks-scorecard-val au">$4.3 trillion</div>
+            <div class="ks-scorecard-winner au-win">AU leads</div>
+          </div>
+          <div class="ks-scorecard-row">
+            <div class="ks-scorecard-dim">Hardship access</div>
+            <div class="ks-scorecard-val nz">Accessible</div>
+            <div class="ks-scorecard-val au">Very restricted</div>
+            <div class="ks-scorecard-winner nz-win">NZ leads</div>
+          </div>
+          <div class="ks-scorecard-row">
+            <div class="ks-scorecard-dim">First home withdrawal</div>
+            <div class="ks-scorecard-val nz">Straightforward</div>
+            <div class="ks-scorecard-val au">Available (FHSS)</div>
+            <div class="ks-scorecard-winner nz-win">NZ leads</div>
+          </div>
+          <div class="ks-scorecard-row">
+            <div class="ks-scorecard-dim">Scheme simplicity</div>
+            <div class="ks-scorecard-val nz">38 schemes</div>
+            <div class="ks-scorecard-val au">Hundreds of funds</div>
+            <div class="ks-scorecard-winner nz-win">NZ leads</div>
+          </div>
+        </div>
+
+        <!-- Is this comparison fair? -->
+        <div style="margin-top:48px; border-top:1px solid rgba(0,0,0,0.07); padding-top:40px;">
+          <p style="font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:#9AA398; font-weight:500; margin-bottom:12px;">Context</p>
+          <h4 style="font-family:'Fraunces',serif; font-size:26px; font-weight:300; color:var(--ks-dark); letter-spacing:-0.5px; margin-bottom:24px; line-height:1.2;">Is this comparison fair?</h4>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+
+            <!-- FOR -->
+            <div style="background:#F2F7F4; border-radius:10px; padding:28px 28px 24px;">
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+                <div style="width:24px; height:24px; border-radius:50%; background:#3A5C45; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <span style="color:white; font-size:13px; font-weight:600; line-height:1;">✓</span>
+                </div>
+                <div style="font-size:12px; letter-spacing:1.2px; text-transform:uppercase; color:#3A5C45; font-weight:600;">The case for comparison</div>
+              </div>
+              <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px;">
+                <li style="font-size:14px; color:#3A3A3A; line-height:1.65; padding-left:16px; border-left:2px solid #B8D4C0;"><strong>Closest peers.</strong> New Zealand and Australia are each other's most comparable counterparts — both OECD members, English-speaking Pacific economies with similar labour markets and living standards.</li>
+                <li style="font-size:14px; color:#3A3A3A; line-height:1.65; padding-left:16px; border-left:2px solid #B8D4C0;"><strong>Shared conceptions of retirement.</strong> Both countries share broadly the same cultural expectations of what a comfortable retirement looks like — the age at which people stop working, the lifestyle they expect to maintain, and the role of home ownership as a wealth foundation.</li>
+                <li style="font-size:14px; color:#3A3A3A; line-height:1.65; padding-left:16px; border-left:2px solid #B8D4C0;"><strong>Designed in parallel.</strong> KiwiSaver was explicitly modelled with Australia's system in mind. Policymakers have long used Australian superannuation as both an inspiration and a benchmark when debating contribution rate increases.</li>
+                <li style="font-size:14px; color:#3A3A3A; line-height:1.65; padding-left:16px; border-left:2px solid #B8D4C0;"><strong>Free movement of people.</strong> Under the Trans-Tasman Travel Arrangement, New Zealanders can and do live and work in Australia — and vice versa. Retirement savings accumulated in one country directly affects what people have when they retire in the other.</li>
+              </ul>
+            </div>
+
+            <!-- AGAINST -->
+            <div style="background:#FAF6F2; border-radius:10px; padding:28px 28px 24px;">
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+                <div style="width:24px; height:24px; border-radius:50%; background:#B8883A; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <span style="color:white; font-size:13px; font-weight:600; line-height:1;">!</span>
+                </div>
+                <div style="font-size:12px; letter-spacing:1.2px; text-transform:uppercase; color:#B8883A; font-weight:600;">The limits of comparison</div>
+              </div>
+              <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px;">
+                <li style="font-size:14px; color:#3A3A3A; line-height:1.65; padding-left:16px; border-left:2px solid #DFC89A;"><strong>Scale and wage base.</strong> Australia has five times New Zealand's population, significantly higher median wages, and a far larger tax base. Higher salaries mean employer contributions compound faster — KiwiSaver's percentage gap looks even wider in dollar terms.</li>
+                <li style="font-size:14px; color:#3A3A3A; line-height:1.65; padding-left:16px; border-left:2px solid #DFC89A;"><strong>Structural economic advantages.</strong> Australia benefits from vast natural resources, large-scale mining and energy exports, deep capital markets, and a substantial financial services and technology sector. These underpin higher wages and stronger investment returns in super funds.</li>
+                <li style="font-size:14px; color:#3A3A3A; line-height:1.65; padding-left:16px; border-left:2px solid #DFC89A;"><strong>Capital flows out of New Zealand.</strong> Many of New Zealand's largest employers — the major banks, supermarkets, and insurers — are Australian-owned. Profits flow across the Tasman rather than being reinvested domestically, which constrains the wage growth and business investment that would otherwise feed into KiwiSaver balances.</li>
+                <li style="font-size:14px; color:#3A3A3A; line-height:1.65; padding-left:16px; border-left:2px solid #DFC89A;"><strong>Thirty years of compounding.</strong> Australia's system became mandatory in 1992 — KiwiSaver launched in 2007. Much of the gap in total assets reflects fifteen extra years of compounding at higher rates. New Zealand is not behind in ambition; it is behind in time.</li>
+              </ul>
+            </div>
+
+          </div>
+
+          <p style="font-size:14px; color:#6A6A6A; line-height:1.75; margin-top:28px; font-style:italic; border-left:3px solid #DEDBD3; padding-left:16px;">
+            The comparison is most useful not as a verdict but as a direction. Australia shows what a mature, high-contribution retirement system can produce. Whether New Zealand can — or should — close that gap depends on political will, wage growth, and what New Zealanders decide retirement is for.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+    (function() {
+      var years   = [2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026];
+      var auRates = [9.25,9.50,9.50,9.50,9.50,9.50,9.50,9.50,10.00,10.50,11.00,11.50,12.00,12.00];
+      var nzRates = [3.00,3.00,3.00,3.00,3.00,3.00,3.00,3.00,3.00,3.00,3.00,3.00,3.00,3.50];
+      var bg = '#FFFFFF', font = 'Georgia, serif', textCol = '#1A1E1A', gridCol = 'rgba(0,0,0,0.06)';
+      Plotly.newPlot('ks-rate-chart', [
+        { x: years, y: auRates, name: 'Australia (Super Guarantee)', mode: 'lines+markers',
+          line: { color: '#2B5FA8', width: 2.5 }, marker: { size: 6, color: '#2B5FA8' },
+          hovertemplate: '<b>%{x}</b><br>Australia: %{y}%<extra></extra>' },
+        { x: years, y: nzRates, name: 'New Zealand (KiwiSaver)', mode: 'lines+markers',
+          line: { color: '#3A5C45', width: 2.5 }, marker: { size: 6, color: '#3A5C45' },
+          hovertemplate: '<b>%{x}</b><br>New Zealand: %{y}%<extra></extra>' },
+      ], {
+        paper_bgcolor: bg, plot_bgcolor: bg,
+        font: { family: font, color: textCol, size: 13 },
+        margin: { l: 50, r: 20, t: 40, b: 40 },
+        legend: { orientation: 'h', yanchor: 'bottom', y: 1.02, xanchor: 'left', x: 0,
+                  font: { size: 13 }, bgcolor: 'rgba(0,0,0,0)' },
+        xaxis: { showgrid: false, tickfont: { size: 11 }, zeroline: false, dtick: 2 },
+        yaxis: { showgrid: true, gridcolor: gridCol, zeroline: false,
+                 tickfont: { size: 11 }, ticksuffix: '%', range: [0, 14] },
+        shapes: [{ type: 'line', x0: 2025.7, x1: 2025.7, y0: 0, y1: 14,
+                   line: { color: 'rgba(0,0,0,0.1)', width: 1, dash: 'dot' } }],
+        annotations: [{ x: 2025.8, y: 13.5, xref: 'x', yref: 'y', text: '← projected',
+                        showarrow: false, font: { size: 10, color: 'rgba(0,0,0,0.35)' }, xanchor: 'left' }],
+      }, { displayModeBar: false, responsive: true });
+    })();
+    </script>
+
+
+    <!-- Citizens filling the gap -->
+    <div class="ks-content-section">
+      <div class="ks-content-inner">
+        <p class="ks-content-label">Citizens filling the gap</p>
+        <h3 class="ks-content-title">Where policy falls short, organisations are stepping in</h3>
+        <p class="ks-content-body">
+          The hardship data tells one story. But alongside it, a quieter one: a growing ecosystem of not-for-profits, community lenders, and new-model financial platforms working on the same problem from different angles. Some are lowering the cost of saving. Some are providing alternatives to raiding KiwiSaver. Some are simply making sure people understand their options before it's too late. None of them can replace structural policy change — but together they represent a meaningful shift in who takes responsibility for financial wellbeing in New Zealand.
+        </p>
+
+        <!-- Featured: Simplicity + FinCap -->
+        <div class="ks-gap-featured">
+          <div class="ks-gap-card ks-gap-card-featured">
+            <div class="ks-gap-card-tag">Not-for-profit KiwiSaver</div>
+            <h4 class="ks-gap-card-name">Simplicity</h4>
+            <p class="ks-gap-card-body">Founded in 2016 on a single premise: KiwiSaver fees are too high and the people who benefit most from lowering them are the people who can least afford not to. Simplicity is New Zealand's only not-for-profit KiwiSaver provider, charging 0.24% — against an industry average of 1.05%. On a $50,000 balance, that's <strong>$388 saved every year</strong>, compounding. It has cut fees seven times since launch. Fifteen percent of all management fees go directly to New Zealand charities — <strong>$13.3 million donated to date</strong>.</p>
+            <div class="ks-gap-stats">
+              <div class="ks-gap-stat"><span>187,102</span>members</div>
+              <div class="ks-gap-stat"><span>$10.3b</span>funds under management</div>
+              <div class="ks-gap-stat"><span>0.24%</span>fee vs 1.05% industry avg</div>
+            </div>
+          </div>
+          <div class="ks-gap-card ks-gap-card-featured">
+            <div class="ks-gap-card-tag">Free financial mentoring</div>
+            <h4 class="ks-gap-card-name">FinCap · MoneyTalks</h4>
+            <p class="ks-gap-card-body">A network of over 700 free financial mentors operating across 180 services nationwide. FinCap helped <strong>69,807 whānau</strong> in 2023 — a 40.8% increase on the year before. That increase isn't growth for its own sake; it's a measure of how many more people are under financial pressure. The median presenting debt is $14,096. MoneyTalks (0800 345 123) is a free helpline that connects people to a mentor before a KiwiSaver hardship withdrawal starts to look like the only option.</p>
+            <div class="ks-gap-stats">
+              <div class="ks-gap-stat"><span>69,807</span>whānau helped in 2023</div>
+              <div class="ks-gap-stat"><span>+40.8%</span>year-on-year increase</div>
+              <div class="ks-gap-stat"><span>700+</span>mentors nationwide</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Secondary row: Ngā Tāngata, Good Shepherd, Sorted, Sharesies -->
+        <div class="ks-gap-grid">
+          <div class="ks-gap-card">
+            <div class="ks-gap-card-tag">No-interest loans · Māori &amp; Pacific</div>
+            <h4 class="ks-gap-card-name">Ngā Tāngata Microfinance</h4>
+            <p class="ks-gap-card-body">No-interest, fee-free loans for Māori and Pacific communities since 2009 — a direct alternative to financial hardship withdrawal. Over 2,000 New Zealanders supported, $3.5 million lent, and a <strong>95% repayment rate</strong> that quietly dismantles the assumption that low-income borrowers are high-risk.</p>
+            <div class="ks-gap-stats">
+              <div class="ks-gap-stat"><span>95%</span>repayment rate</div>
+              <div class="ks-gap-stat"><span>$3.5m</span>lent since 2009</div>
+            </div>
+          </div>
+          <div class="ks-gap-card">
+            <div class="ks-gap-card-tag">No-interest loans · via BNZ</div>
+            <h4 class="ks-gap-card-name">Good Shepherd NZ</h4>
+            <p class="ks-gap-card-body">Good Loans — delivered in partnership with BNZ — are interest-free and fee-free, targeted at essential purchases like transport and household needs. 487 loans totalling $2.6 million in 2024 alone. For every $1 invested in the programme, <strong>$3.40 of social value</strong> is generated. More than 4,000 families helped since 2014.</p>
+            <div class="ks-gap-stats">
+              <div class="ks-gap-stat"><span>$3.40</span>social return per $1</div>
+              <div class="ks-gap-stat"><span>4,000+</span>families since 2014</div>
+            </div>
+          </div>
+          <div class="ks-gap-card">
+            <div class="ks-gap-card-tag">Financial education</div>
+            <h4 class="ks-gap-card-name">Sorted</h4>
+            <p class="ks-gap-card-body">The Commission for Financial Capability's free tools and calculators reach <strong>2.2 million uses per year</strong>. When the 2025 Budget announced KiwiSaver contribution rate changes, Sorted's KiwiSaver calculator saw a 2,500% spike in users within 48 hours — a telling sign of how many New Zealanders are paying attention but lack the tools to act on it. Over 70% of secondary schools now use Sorted in Schools.</p>
+            <div class="ks-gap-stats">
+              <div class="ks-gap-stat"><span>2.2m</span>tool uses per year</div>
+              <div class="ks-gap-stat"><span>70%+</span>of secondary schools</div>
+            </div>
+          </div>
+          <div class="ks-gap-card">
+            <div class="ks-gap-card-tag">New to KiwiSaver · 2024</div>
+            <h4 class="ks-gap-card-name">Sharesies</h4>
+            <p class="ks-gap-card-body">Best known for democratising retail investing — 650,000 New Zealanders now invest through the platform, with $7 billion traded in 2024. Sharesies entered KiwiSaver in 2024, and while its scheme is still early (~10,000 members, ~$300M FUM), its significance is the audience it brings: younger New Zealanders already engaged with investing who haven't yet taken KiwiSaver seriously. The infrastructure is built; the habits are forming.</p>
+            <div class="ks-gap-stats">
+              <div class="ks-gap-stat"><span>650,000</span>NZ investors</div>
+              <div class="ks-gap-stat"><span>$7b</span>traded in 2024</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Optimistic closing -->
+    <div class="ks-optimism">
+      <div class="ks-optimism-inner">
+        <p class="ks-optimism-label">The case for optimism</p>
+        <h3 class="ks-optimism-title">KiwiSaver is working — and before it,<br><em>there was almost nothing</em></h3>
+        <div class="ks-optimism-grid">
+          <div class="ks-optimism-text">
+            <p>
+              Before KiwiSaver, New Zealand had no meaningful workplace savings infrastructure. Household savings rates were among the lowest in the OECD — negative in some years — and the vast majority of New Zealanders arrived at retirement with NZ Super as their only income. That universal pension, worth around 60% of the average wage, was designed as a floor. For most people, it became the ceiling.
+            </p>
+            <p>
+              KiwiSaver changed that. Launched in 2007 as a voluntary opt-out scheme, it enrolled 3.4 million New Zealanders — 63.5% of the entire population — without compulsion. The scheme has survived three changes of government, two contribution rate cuts, and the worst cost-of-living crisis in a generation. It is still standing, still growing, and still putting money away for people who would otherwise have saved nothing.
+            </p>
+            <p>
+              The trajectory also matters. The employer rate rises to <strong>3.5% in April 2026</strong> and <strong>4% in 2028</strong>. For a 25-year-old on the median wage today, that legislative shift compounds into tens of thousands of extra dollars by retirement. The gap with Australia is real — but it is narrowing, and the direction is set.
+            </p>
+          </div>
+          <div class="ks-optimism-stats">
+            <div class="ks-optimism-stat">
+              <div class="ks-optimism-stat-num">43,600</div>
+              <div class="ks-optimism-stat-label">New Zealanders used KiwiSaver to buy their first home in 2025 — more than any year since the 2021 peak</div>
+            </div>
+            <div class="ks-optimism-stat">
+              <div class="ks-optimism-stat-num">$1.86b</div>
+              <div class="ks-optimism-stat-label">Withdrawn for first home purchases in 2025 — a record, and proof the scheme is delivering on one of its core promises</div>
+            </div>
+            <div class="ks-optimism-stat">
+              <div class="ks-optimism-stat-num">63.5%</div>
+              <div class="ks-optimism-stat-label">Of the entire NZ population enrolled — extraordinary uptake for a scheme that remains technically voluntary</div>
+            </div>
+            <div class="ks-optimism-stat">
+              <div class="ks-optimism-stat-num">4%</div>
+              <div class="ks-optimism-stat-label">Legislated employer rate from 2028 — the compounding benefit of this increase, over a 40-year career, is substantial</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- What this means -->
+    <div style="background:#F7F6F2; padding:80px 48px;">
+      <div style="border-top:2px solid var(--green); padding-top:40px;">
+        <p style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--green); margin-bottom:12px;">What this means</p>
+        <h3 style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:var(--dark); line-height:1.3; letter-spacing:-0.3px; margin-bottom:32px;">Six things the data is telling policymakers</h3>
+        <div style="display:flex; flex-direction:column; gap:0; border:1px solid rgba(0,0,0,0.08); border-radius:12px; overflow:hidden;">
+          <div style="display:grid; grid-template-columns:40px 1fr; gap:20px; padding:24px 28px; background:white; border-bottom:1px solid rgba(0,0,0,0.06); align-items:start;">
+            <div style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:var(--green); line-height:1;">01</div>
+            <div><strong style="font-size:14px; color:var(--dark); display:block; margin-bottom:4px;">KiwiSaver needs to be re-evaluated as a social safety net, not just a retirement vehicle.</strong><span style="font-size:14px; color:#4A5248; line-height:1.7;">Hardship withdrawals now exceed first home withdrawals for the first time. The scheme is being used as a last resort by tens of thousands of New Zealanders. Policy designed around retirement and home ownership is not built for this reality — access rules, contribution design, and hardship criteria all need to reflect both purposes.</span></div>
+          </div>
+          <div style="display:grid; grid-template-columns:40px 1fr; gap:20px; padding:24px 28px; background:white; border-bottom:1px solid rgba(0,0,0,0.06); align-items:start;">
+            <div style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:var(--green); line-height:1;">02</div>
+            <div><strong style="font-size:14px; color:var(--dark); display:block; margin-bottom:4px;">The April 2026 changes disproportionately hurt lower earners and should be offset.</strong><span style="font-size:14px; color:#4A5248; line-height:1.7;">The break-even salary is ~$74,500 — above the median. Anyone earning less is net worse off from the combined employer increase and tax credit cut. An income-indexed member tax credit, rather than a flat cut, would protect the people most reliant on the government contribution.</span></div>
+          </div>
+          <div style="display:grid; grid-template-columns:40px 1fr; gap:20px; padding:24px 28px; background:white; border-bottom:1px solid rgba(0,0,0,0.06); align-items:start;">
+            <div style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:var(--green); line-height:1;">03</div>
+            <div><strong style="font-size:14px; color:var(--dark); display:block; margin-bottom:4px;">Auto-escalation would shift the contribution rate distribution without reducing enrolment.</strong><span style="font-size:14px; color:#4A5248; line-height:1.7;">Over 1.16 million members are contributing at exactly 3% — the minimum. Schemes in the UK and US have demonstrated that automatically increasing contributions by a small percentage each year, unless actively opted out, shifts this distribution significantly while maintaining enrolment rates. New Zealand has not yet implemented this.</span></div>
+          </div>
+          <div style="display:grid; grid-template-columns:40px 1fr; gap:20px; padding:24px 28px; background:white; border-bottom:1px solid rgba(0,0,0,0.06); align-items:start;">
+            <div style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:var(--green); line-height:1;">04</div>
+            <div><strong style="font-size:14px; color:var(--dark); display:block; margin-bottom:4px;">Closing the Trans-Tasman gap has a clear lever — and it is already in motion.</strong><span style="font-size:14px; color:#4A5248; line-height:1.7;">Australia's 12% rate was not legislated overnight — it rose incrementally from 3% over thirty years. New Zealand's rate is now moving in the same direction. The scheduled increase to 4% in 2028 matters less for its immediate dollar impact than for the trajectory it sets. The question is whether future governments maintain the direction.</span></div>
+          </div>
+          <div style="display:grid; grid-template-columns:40px 1fr; gap:20px; padding:24px 28px; background:white; border-bottom:1px solid rgba(0,0,0,0.06); align-items:start;">
+            <div style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:var(--green); line-height:1;">05</div>
+            <div><strong style="font-size:14px; color:var(--dark); display:block; margin-bottom:4px;">Organisations filling the gap point to where structural policy has failed.</strong><span style="font-size:14px; color:#4A5248; line-height:1.7;">The growth of FinCap, Ngā Tāngata, Good Shepherd, and others is not a success story — it is a signal. A 40% year-on-year increase in demand for free financial mentoring reflects the scale of financial stress in New Zealand households. These organisations are doing vital work, but their growth is a measure of a problem, not a solution to it.</span></div>
+          </div>
+          <div style="display:grid; grid-template-columns:40px 1fr; gap:20px; padding:24px 28px; background:white; align-items:start;">
+            <div style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:var(--green); line-height:1;">06</div>
+            <div><strong style="font-size:14px; color:var(--dark); display:block; margin-bottom:4px;">The net effect of both changes is nearly zero — which raises the question of what the policy actually achieved.</strong><span style="font-size:14px; color:#4A5248; line-height:1.7;">For the median earner, cutting the government credit and raising the employer rate produces an annual net change of −$19. One step back, one step forward. The outcome for members is broadly unchanged — but the funding source has shifted permanently from the government to employers. Whether that rebalancing is the right long-term direction is a legitimate debate. What the data makes clear is that it has not been presented as one.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- Housing CTA -->
+  <div style="background:#1A1E1A; padding:60px 48px; border-top:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:760px; display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap;">
+      <div>
+        <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#8FAF8A; margin-bottom:10px;">NZ Housing</p>
+        <h3 style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:#F7F6F2; line-height:1.3; margin-bottom:8px;">NZ's fastest rate cycle in a generation. Did affordability follow?</h3>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.7;">The OCR moved from 0.25% to 5.5% in three years. House prices in some regions barely responded. Others never recovered. The data maps where the gap between rates and reality grew widest.</p>
+      </div>
+      <a href="housing.html" style="display:inline-flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13px; color:#B8883A; text-decoration:none; border:1px solid rgba(184,136,58,0.35); border-radius:40px; padding:12px 24px; white-space:nowrap; transition:all 0.2s; flex-shrink:0;" onmouseover="this.style.background='rgba(184,136,58,0.1)';this.style.borderColor='#B8883A'" onmouseout="this.style.background='';this.style.borderColor='rgba(184,136,58,0.35)'">Explore the housing story →</a>
+    </div>
+  </div>
+
   </section>
 
   <style>
-    .story-block {
-      display: grid;
-      grid-template-columns: 48px 280px 1fr;
-      gap: 40px;
-      align-items: start;
-      margin-bottom: 80px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+    /* ── KiwiSaver section reset ── */
+    #kiwisaver { padding: 0; }
+
+    /* ── KiwiSaver hero ── */
+    .ks-hero {
+      background: var(--dark);
+      padding: 100px 48px 80px;
     }
-    .story-block.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .ks-hero-inner { max-width: 100%; }
+    .ks-hero-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; font-weight: 500; }
+    .ks-hero-title { font-family: 'Fraunces', serif; font-size: clamp(32px, 5vw, 56px); font-weight: 300; color: white; line-height: 1.15; letter-spacing: -1px; margin-bottom: 24px; }
+    .ks-hero-title em { color: var(--gold); font-style: normal; }
+    .ks-hero-intro { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.9; margin-bottom: 16px; }
+    .ks-hero-intro:last-child { margin-bottom: 0; }
+    .ks-hero-grid { display: grid; grid-template-columns: 1fr 340px; gap: 64px; align-items: start; margin-top: 8px; }
+    .ks-hero-meta { display: flex; flex-direction: column; gap: 24px; }
+    .ks-hero-meta-item { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px; }
+    .ks-hero-meta-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 6px; font-weight: 600; }
+    .ks-hero-meta-val { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; }
+
+    /* ── KiwiSaver stats row ── */
+    .ks-stats-row {
+      background: var(--dark);
+      padding: 0 48px 80px;
+      border-top: 1px solid rgba(255,255,255,0.06);
     }
-    .story-label {
-      font-family: 'Fraunces', serif;
-      font-size: 48px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.12);
-      line-height: 1;
-      padding-top: 4px;
-    }
-    .story-title {
-      font-family: 'Fraunces', serif;
-      font-size: 22px;
-      font-weight: 300;
-      color: white;
-      line-height: 1.3;
-      margin-bottom: 16px;
-      letter-spacing: -0.3px;
-    }
-    .story-desc {
-      font-size: 14px;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.8;
-    }
-    .story-chart {
+    .ks-stats-inner { max-width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .ks-stat-card { padding: 36px 24px; }
+    .ks-stat-number { font-family: 'Fraunces', serif; font-size: 42px; font-weight: 300; color: white; line-height: 1; margin-bottom: 8px; letter-spacing: -1px; }
+    .ks-stat-number span { color: var(--gold); }
+    .ks-stat-sublabel { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+    /* ── KiwiSaver content sections ── */
+    .ks-content-section { padding: 80px 48px; }
+    .ks-content-section-alt { background: #EFEDE7; }
+    .ks-content-inner { max-width: 100%; }
+    .ks-content-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; font-weight: 500; }
+    .ks-content-title { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 300; color: var(--dark); line-height: 1.3; letter-spacing: -0.3px; margin-bottom: 16px; }
+    .ks-content-body { font-size: 15px; color: #4A5248; line-height: 1.9; max-width: 680px; margin-bottom: 40px; }
+    .ks-content-body strong { color: var(--dark); font-weight: 500; }
+
+    /* ── KiwiSaver embed card ── */
+    .ks-embed-card {
       background: white;
-      border-radius: var(--radius);
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
     }
+
+    /* ── KiwiSaver two-col ── */
+    .ks-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+    /* ── KiwiSaver caveat ── */
+    .ks-caveat { background: var(--dark); padding: 80px 48px; }
+    .ks-caveat-inner { max-width: 100%; }
+    .ks-caveat-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 12px; font-weight: 500; }
+    .ks-caveat-title { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 300; color: white; line-height: 1.3; letter-spacing: -0.3px; margin-bottom: 24px; }
+    .ks-caveat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .ks-caveat-text p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.9; margin-bottom: 16px; }
+    .ks-caveat-text p:last-child { margin-bottom: 0; }
+    .ks-caveat-text em { color: var(--gold); font-style: normal; }
+    .ks-caveat-stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 32px; }
+    .ks-caveat-stat-num { font-family: 'Fraunces', serif; font-size: 52px; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+    .ks-caveat-stat-sublabel { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+    /* ── Citizens filling the gap ── */
+    .ks-gap-featured { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .ks-gap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .ks-gap-card { background: white; border-radius: 12px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+    .ks-gap-card-tag { font-size: 10px; letter-spacing: 1.4px; text-transform: uppercase; color: #9AA398; font-weight: 600; margin-bottom: 10px; }
+    .ks-gap-card-name { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 300; color: var(--dark); margin-bottom: 14px; letter-spacing: -0.2px; }
+    .ks-gap-card-featured .ks-gap-card-name { font-size: 24px; }
+    .ks-gap-card-body { font-size: 14px; color: #4A5248; line-height: 1.85; flex: 1; margin-bottom: 20px; }
+    .ks-gap-card-body strong { color: var(--dark); font-weight: 500; }
+    .ks-gap-stats { display: flex; flex-wrap: wrap; gap: 16px; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 16px; margin-top: auto; }
+    .ks-gap-stat { font-size: 12px; color: #9AA398; line-height: 1.4; }
+    .ks-gap-stat span { display: block; font-family: 'Fraunces', serif; font-size: 22px; font-weight: 300; color: var(--green); letter-spacing: -0.5px; line-height: 1.1; margin-bottom: 2px; }
+    .ks-gap-card-featured .ks-gap-stat span { font-size: 26px; }
+    .ks-gap-card-featured .ks-gap-stats { flex-direction: column; gap: 20px; }
+
     @media (max-width: 900px) {
-      .story-block { grid-template-columns: 1fr; }
-      .story-label { font-size: 32px; }
+      .ks-gap-featured { grid-template-columns: 1fr; }
+      .ks-gap-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .ks-gap-grid { grid-template-columns: 1fr; }
+      .ks-comparison-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 820px) {
+      .ks-comparison-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+
+    /* ── Optimistic closing ── */
+    .ks-optimism {
+      background: var(--dark);
+      padding: 80px 48px;
+    }
+    .ks-optimism-inner { max-width: 100%; }
+    .ks-optimism-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 500; }
+    .ks-optimism-title { font-family: 'Fraunces', serif; font-size: clamp(26px, 3vw, 40px); font-weight: 300; color: white; line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 48px; }
+    .ks-optimism-title em { color: var(--gold); font-style: normal; }
+    .ks-optimism-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .ks-optimism-text p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.9; margin-bottom: 20px; }
+    .ks-optimism-text p:last-child { margin-bottom: 0; }
+    .ks-optimism-text strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+    .ks-optimism-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(255,255,255,0.04); border-radius: 12px; overflow: hidden; }
+    .ks-optimism-stat { background: rgba(255,255,255,0.03); padding: 28px 24px; border: 1px solid rgba(255,255,255,0.06); }
+    .ks-optimism-stat-num { font-family: 'Fraunces', serif; font-size: 40px; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 10px; letter-spacing: -1px; }
+    .ks-optimism-stat-label { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+    /* ── Taxpayer cost block ── */
+    .ks-taxpayer-block {
+      border-left: 3px solid #B85C45;
+      padding: 32px 36px;
+      background: #FDF8F6;
+      border-radius: 0 12px 12px 0;
+    }
+    .ks-taxpayer-label { font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; color: #B85C45; font-weight: 600; margin-bottom: 10px; }
+    .ks-taxpayer-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 300; color: var(--dark); line-height: 1.3; margin-bottom: 20px; }
+    .ks-taxpayer-body { font-size: 15px; color: #4A5248; line-height: 1.9; margin-bottom: 16px; }
+    .ks-taxpayer-body strong { color: var(--dark); font-weight: 500; }
+    .ks-taxpayer-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #EDE8E4; border-radius: 8px; overflow: hidden; margin-top: 28px; }
+    .ks-taxpayer-stat { background: white; padding: 24px 20px; }
+    .ks-taxpayer-stat-num { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 300; color: #B85C45; line-height: 1; margin-bottom: 8px; letter-spacing: -0.5px; }
+    .ks-taxpayer-stat-label { font-size: 12px; color: #4A5248; line-height: 1.5; }
+
+    /* ── Scorecard ── */
+    .ks-scorecard { border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden; }
+    .ks-scorecard-header {
+      display: grid; grid-template-columns: 1fr 160px 160px 100px;
+      padding: 12px 20px; background: #F7F6F2;
+      font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; font-weight: 600;
+    }
+    .ks-scorecard-row {
+      display: grid; grid-template-columns: 1fr 160px 160px 100px;
+      padding: 14px 20px; border-top: 1px solid rgba(0,0,0,0.06);
+      background: white; align-items: center;
+    }
+    .ks-scorecard-row:hover { background: #FAFAF8; }
+    .ks-scorecard-dim { font-size: 14px; color: #1A1E1A; }
+    .ks-scorecard-val { font-size: 13px; color: #4A5248; }
+    .ks-scorecard-val.nz { color: #3A5C45; font-weight: 500; }
+    .ks-scorecard-val.au { color: #2B5FA8; font-weight: 500; }
+    .ks-scorecard-winner { font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; display: inline-block; }
+    .ks-scorecard-winner.au-win { color: #2B5FA8; background: rgba(43,95,168,0.08); }
+    .ks-scorecard-winner.nz-win { color: #3A5C45; background: rgba(58,92,69,0.1); }
+
+    @media (max-width: 900px) {
+      .ks-hero { padding: 60px 24px; }
+      .ks-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .ks-stats-row { padding: 0 24px 60px; }
+      .ks-stats-inner { grid-template-columns: 1fr 1fr; }
+      .ks-content-section { padding: 60px 24px; }
+      .ks-two-col { grid-template-columns: 1fr; }
+      .ks-caveat { padding: 60px 24px; }
+      .ks-caveat-grid { grid-template-columns: 1fr; gap: 40px; }
+      .ks-optimism { padding: 60px 24px; }
+      .ks-optimism-grid { grid-template-columns: 1fr; gap: 40px; }
+      .ks-optimism-stats { grid-template-columns: 1fr 1fr; }
+      .ks-scorecard-header,
+      .ks-scorecard-row { grid-template-columns: 1fr 1fr; }
+      .ks-scorecard-header div:nth-child(3),
+      .ks-scorecard-header div:nth-child(4),
+      .ks-scorecard-row .ks-scorecard-val.au,
+      .ks-scorecard-row .ks-scorecard-winner { display: none; }
     }
   </style>
 
-  <script>
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.15 });
+    </div><!-- /kiwisaver-body -->
+  </section>
 
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-  </script>
-
+  <!-- HOUSING STORY → housing.html -->
   <!-- PROJECTS -->
   <section id="projects">
     <div class="section-inner">
       <p class="section-label">Selected work</p>
-      <h2 class="section-title">Projects we're proud of</h2>
-      <div class="projects-grid">
-
-        <!-- Project 1: Retail Sales -->
-        <div class="project-card">
-          <div class="dashboard-embed">
-            <!-- TO EMBED: replace the placeholder below with your Power BI iframe.
-                 In Power BI Service: File → Publish to web → copy the <iframe> tag.
-                 Example:
-                 <iframe title="Retail Sales" src="https://app.powerbi.com/reportEmbed?reportId=YOUR_ID&..." allowFullScreen="true"></iframe>
-            -->
-            <div class="embed-placeholder">
-              <div class="embed-placeholder-icon">📊</div>
-              <strong>Retail Sales Performance</strong>
-              Coming soon — Power BI report
-            </div>
-          </div>
-          <div class="project-info">
-            <p class="project-tag">Retail</p>
-            <h3>Retail Sales Performance Dashboard</h3>
-            <p>A multi-page Power BI report consolidating POS, e-commerce, and inventory data — enabling the leadership team to track performance in real time across 12 store locations.</p>
-            <div class="project-pills">
-              <span class="pill">Power BI</span>
-              <span class="pill">DAX</span>
-              <span class="pill">SQL Server</span>
-              <span class="pill">Retail</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 2: Supply Chain -->
-        <div class="project-card">
-          <div class="dashboard-embed">
-            <!-- TO EMBED: replace the placeholder below with your Power BI iframe. -->
-            <div class="embed-placeholder">
-              <div class="embed-placeholder-icon">🚚</div>
-              <strong>Supply Chain &amp; Logistics</strong>
-              Coming soon — Power BI report
-            </div>
-          </div>
-          <div class="project-info">
-            <p class="project-tag">Logistics</p>
-            <h3>Supply Chain &amp; Logistics Analytics</h3>
-            <p>End-to-end visibility across a national distribution network — tracking supplier lead times, warehouse throughput, and on-time delivery performance across 6 depots.</p>
-            <div class="project-pills">
-              <span class="pill">Power BI</span>
-              <span class="pill">Power Query</span>
-              <span class="pill">Azure</span>
-              <span class="pill">Logistics</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3: HR Analytics -->
-        <div class="project-card">
-          <div class="dashboard-embed">
-            <!-- TO EMBED: replace the placeholder below with your Power BI iframe. -->
-            <div class="embed-placeholder">
-              <div class="embed-placeholder-icon">👥</div>
-              <strong>HR Workforce Insights</strong>
-              Coming soon — Power BI report
-            </div>
-          </div>
-          <div class="project-info">
-            <p class="project-tag">HR &amp; People</p>
-            <h3>HR Workforce Insights</h3>
-            <p>A self-serve people analytics platform giving HR and senior leadership a live view of headcount, attrition trends, and employee engagement across departments.</p>
-            <div class="project-pills">
-              <span class="pill">Power BI</span>
-              <span class="pill">DAX</span>
-              <span class="pill">HR Data</span>
-              <span class="pill">People Analytics</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      <h2 class="section-title">Projects I'm proud of</h2>
+      <p style="font-size:16px; color:var(--mid); line-height:1.7; max-width:600px; margin-top:-32px; margin-bottom:48px;">Power BI dashboard projects coming soon. In the meantime, the data stories above show the full range — from Python pipelines and API integration through to interactive visualisation and policy analysis.</p>
     </div>
   </section>
 
   <!-- ABOUT -->
   <section id="about">
     <div class="section-inner">
-      <p class="section-label">About New Harvest</p>
+      <p class="section-label">About me</p>
       <div class="about-grid">
         <div>
-          <h2 class="section-title">Data should be an advantage, not an afterthought</h2>
+          <h2 class="section-title">Hi, I'm Harry Candlish</h2>
           <div class="about-body">
-            <p>New Harvest is an independent data consultancy working with businesses who want to make smarter decisions — faster. We specialise in Power BI, data modelling, and analytics strategy.</p>
-            <p>We believe great dashboards don't just display data — they answer questions. Every engagement starts with understanding what matters to you and your team, and ends with something you'll actually use.</p>
+            <p>I'm a data analyst based in Wellington, New Zealand. I work across the full pipeline — collecting and cleaning data, building models, and presenting findings in a way that actually lands with the people who need to act on them.</p>
+            <p>My background spans Python data pipelines, SQL and relational databases, Power BI dashboards, and interactive web visualisation with Plotly. I'm drawn to projects where the data is messy, the question is genuinely hard, and the answer matters — like the work you can see above.</p>
+            <p>I'm currently open to analyst roles across Wellington and remotely. If you're working on something interesting, I'd love to hear about it.</p>
+          </div>
+          <div style="display:flex; gap:16px; margin-top:32px; flex-wrap:wrap;">
+            <a href="YOUR_LINKEDIN_URL" target="_blank" style="display:inline-flex; align-items:center; gap:8px; font-size:14px; color:var(--white); background:var(--green); padding:10px 20px; border-radius:100px; text-decoration:none; font-weight:500; transition:background 0.2s;" onmouseover="this.style.background='var(--green-lt)'" onmouseout="this.style.background='var(--green)'">LinkedIn</a>
+            <a href="YOUR_GITHUB_URL" target="_blank" style="display:inline-flex; align-items:center; gap:8px; font-size:14px; color:var(--white); background:#24292e; padding:10px 20px; border-radius:100px; text-decoration:none; font-weight:500; transition:opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">GitHub</a>
+            <a href="YOUR_CV_LINK_HERE" target="_blank" style="display:inline-flex; align-items:center; gap:8px; font-size:14px; color:var(--dark); border:1px solid rgba(0,0,0,0.2); padding:10px 20px; border-radius:100px; text-decoration:none; font-weight:500; transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--dark)'" onmouseout="this.style.borderColor='rgba(0,0,0,0.2)'">Download CV</a>
+          </div>
+          <div style="margin-top:36px; padding-top:32px; border-top:1px solid rgba(255,255,255,0.1);">
+            <div style="font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:rgba(255,255,255,0.3); font-weight:500; margin-bottom:14px;">Tools &amp; technologies</div>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+              <span style="font-size:13px; color:rgba(255,255,255,0.75); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); padding:5px 14px; border-radius:100px;">Python</span>
+              <span style="font-size:13px; color:rgba(255,255,255,0.75); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); padding:5px 14px; border-radius:100px;">SQL</span>
+              <span style="font-size:13px; color:rgba(255,255,255,0.75); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); padding:5px 14px; border-radius:100px;">MySQL</span>
+              <span style="font-size:13px; color:rgba(255,255,255,0.75); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); padding:5px 14px; border-radius:100px;">Plotly</span>
+              <span style="font-size:13px; color:rgba(255,255,255,0.75); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); padding:5px 14px; border-radius:100px;">REST APIs</span>
+              <span style="font-size:13px; color:rgba(255,255,255,0.75); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.1); padding:5px 14px; border-radius:100px;">AI</span>
+            </div>
           </div>
         </div>
         <div class="about-stats">
           <div class="stat-item">
-            <div class="stat-num">20<span>+</span></div>
-            <div class="stat-label">Projects delivered across multiple industries</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-num">100<span>%</span></div>
-            <div class="stat-label">Client satisfaction across all engagements</div>
-          </div>
-          <div class="stat-item">
             <div class="stat-num">5<span>+</span></div>
-            <div class="stat-label">Years of Power BI and data experience</div>
+            <div class="stat-label">Years working with data across analytics and business intelligence</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">3<span>x</span></div>
-            <div class="stat-label">Average ROI reported by clients in year one</div>
+            <div class="stat-num">3</div>
+            <div class="stat-label">Core tools: Python · SQL · Power BI</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">NZ</div>
+            <div class="stat-label">Based in Wellington — available for roles locally and remotely</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">Interest in problems where the data is hard and the stakes are real</div>
           </div>
         </div>
       </div>
@@ -856,23 +2246,27 @@
   <!-- CONTACT -->
   <section id="contact">
     <div class="section-inner">
-      <p class="section-label">Work with us</p>
-      <h2 class="section-title">Let's talk about your data</h2>
+      <p class="section-label">Get in touch</p>
+      <h2 class="section-title">Let's talk</h2>
       <div class="contact-grid">
         <div>
-          <p class="contact-intro">Whether you have a specific project in mind or you're just figuring out where to start — we'd love to hear from you. Most projects begin with a free 30-minute discovery call.</p>
+          <p class="contact-intro">Whether you have an analyst role you're hiring for, a project you'd like help with, or just want to connect — feel free to reach out. I'm always happy to have a conversation.</p>
           <div class="contact-detail">
             <div class="contact-item">
               <span class="contact-item-label">Email</span>
-              <a href="mailto:hello@harvestdata.co.uk">hello@harvestdata.co.uk</a>
+              <a href="mailto:hello@harvestdata.co.nz">hello@harvestdata.co.nz</a>
             </div>
             <div class="contact-item">
               <span class="contact-item-label">Based in</span>
-              <span>United Kingdom</span>
+              <span>Wellington, New Zealand</span>
             </div>
             <div class="contact-item">
-              <span class="contact-item-label">Working with clients</span>
-              <span>Across the UK &amp; remotely</span>
+              <span class="contact-item-label">Available for</span>
+              <span>Analyst roles · Wellington &amp; remote</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-item-label">LinkedIn</span>
+              <a href="YOUR_LINKEDIN_URL" target="_blank">Harry Candlish</a>
             </div>
           </div>
         </div>
@@ -939,6 +2333,178 @@
       btn.style.background = '#3A5C45';
       btn.disabled = true;
     }
+  </script>
+
+  <script>
+    (function () {
+      const nav  = document.querySelector('nav');
+      const hero = document.getElementById('hero');
+      function updateNav() {
+        const heroBottom = hero.offsetTop + hero.offsetHeight;
+        const pastHero   = window.scrollY > heroBottom;
+        // Hide nav once scrolled past the hero
+        nav.style.opacity   = pastHero ? '0' : '1';
+        nav.style.pointerEvents = pastHero ? 'none' : 'auto';
+        // Frosted glass once scrolled 20px from top
+        if (window.scrollY > 20) {
+          nav.style.background        = 'rgba(247, 246, 242, 0.88)';
+          nav.style.backdropFilter    = 'blur(12px)';
+          nav.style.borderBottomColor = 'rgba(0,0,0,0.06)';
+        } else {
+          nav.style.background        = 'rgba(247, 246, 242, 0)';
+          nav.style.backdropFilter    = 'blur(0px)';
+          nav.style.borderBottomColor = 'rgba(0,0,0,0)';
+        }
+      }
+      nav.style.transition += ', opacity 0.3s ease';
+      window.addEventListener('scroll', updateNav, { passive: true });
+      updateNav();
+    })();
+  </script>
+  <style>
+    /* ── Section nav ── */
+    #page-section-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: rgba(26,30,26,0.96);
+      backdrop-filter: blur(8px);
+      padding: 0 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    #page-section-nav.visible { transform: translateY(0); }
+    #page-section-nav-inner { display: flex; align-items: center; gap: 16px; }
+    .psnav-label { font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.25); font-weight: 500; margin-right: 4px; }
+    .psnav-pill {
+      font-size: 12px; color: rgba(255,255,255,0.55); text-decoration: none;
+      padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.12);
+      transition: all 0.2s; white-space: nowrap;
+    }
+    .psnav-pill:hover { color: white; border-color: rgba(255,255,255,0.35); }
+    .psnav-pill.active { color: white; border-color: rgba(184,136,58,0.6); background: rgba(184,136,58,0.1); }
+
+    /* ── Toggle bar ── */
+    .section-toggle-bar {
+      background: #EFEDE7;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding: 0 48px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .section-toggle-bar-dark {
+      background: #141714;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .section-toggle-bar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 52px; max-width: 100%;
+    }
+    .section-toggle-title { display: flex; align-items: center; gap: 16px; }
+    .section-toggle-label {
+      font-size: 10px; letter-spacing: 1.4px; text-transform: uppercase;
+      color: rgba(26,30,26,0.35); font-weight: 600;
+    }
+    .section-toggle-bar-dark .section-toggle-label { color: rgba(255,255,255,0.25); }
+    .section-toggle-name {
+      font-size: 14px; font-family: 'Fraunces', serif; font-weight: 300;
+      color: #1A1E1A; letter-spacing: -0.2px;
+    }
+    .section-toggle-bar-dark .section-toggle-name { color: rgba(255,255,255,0.75); }
+    .section-toggle-btn {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; color: rgba(26,30,26,0.45); background: none;
+      border: 1px solid rgba(0,0,0,0.12); border-radius: 20px;
+      padding: 5px 14px; cursor: pointer; transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .section-toggle-bar-dark .section-toggle-btn {
+      color: rgba(255,255,255,0.45); border-color: rgba(255,255,255,0.12);
+    }
+    .section-toggle-btn:hover { color: #1A1E1A; border-color: rgba(0,0,0,0.3); }
+    .section-toggle-bar-dark .section-toggle-btn:hover { color: white; border-color: rgba(255,255,255,0.35); }
+    .toggle-chevron { transition: transform 0.3s ease; }
+    .section-toggle-btn[aria-expanded="false"] .toggle-chevron { transform: rotate(-90deg); }
+
+    /* ── Collapsible body ── */
+    .section-collapsible {
+      overflow: hidden;
+      transition: max-height 0.5s ease, opacity 0.4s ease;
+      max-height: 99999px;
+      opacity: 1;
+    }
+    .section-collapsible.collapsed {
+      max-height: 0;
+      opacity: 0;
+    }
+  </style>
+
+  <script>
+    // ── Section nav show/hide on scroll ──
+    (function() {
+      var nav = document.getElementById('page-section-nav');
+      var hero = document.getElementById('hero');
+      window.addEventListener('scroll', function() {
+        var threshold = hero ? hero.offsetHeight * 0.8 : 400;
+        if (window.scrollY > threshold) {
+          nav.classList.add('visible');
+        } else {
+          nav.classList.remove('visible');
+        }
+        // Active pill
+        var pills = document.querySelectorAll('.psnav-pill');
+        pills.forEach(function(pill) {
+          var id = pill.getAttribute('data-section');
+          var section = document.getElementById(id);
+          if (section) {
+            var rect = section.getBoundingClientRect();
+            if (rect.top <= 80 && rect.bottom > 80) {
+              pill.classList.add('active');
+            } else {
+              pill.classList.remove('active');
+            }
+          }
+        });
+      });
+    })();
+
+    // ── Collapse/expand toggle ──
+    (function() {
+      document.querySelectorAll('.section-toggle-bar').forEach(function(bar) {
+        var targetId = bar.getAttribute('data-target');
+        var body = document.getElementById(targetId);
+        var btn = bar.querySelector('.section-toggle-btn');
+        var btnText = bar.querySelector('.toggle-btn-text');
+
+        // On load: sections start expanded — remove overflow:hidden so sticky works
+        body.style.overflow = 'visible';
+
+        btn.addEventListener('click', function() {
+          var expanded = btn.getAttribute('aria-expanded') === 'true';
+          if (expanded) {
+            // Collapsing: need overflow:hidden for animation
+            body.style.overflow = 'hidden';
+            body.classList.add('collapsed');
+            btn.setAttribute('aria-expanded', 'false');
+            btnText.textContent = 'Show';
+          } else {
+            body.classList.remove('collapsed');
+            btn.setAttribute('aria-expanded', 'true');
+            btnText.textContent = 'Hide';
+            // After transition completes, restore overflow:visible so sticky works
+            body.addEventListener('transitionend', function onEnd() {
+              body.style.overflow = 'visible';
+              body.removeEventListener('transitionend', onEnd);
+            });
+          }
+        });
+      });
+    })();
   </script>
 
 </body>

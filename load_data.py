@@ -104,6 +104,16 @@ house_price_data = [
     ("2024-01-01", "Canterbury",  650000),  ("2024-01-01", "Waikato",     680000),
     ("2024-01-01", "Bay of Plenty", 730000),("2024-01-01", "Otago",       660000),
     ("2024-01-01", "Northland",   580000),  ("2024-01-01", "Hawke's Bay", 540000),
+
+    ("2026-01-01", "Auckland",   1010000),  ("2026-01-01", "Wellington",  748000),
+    ("2026-01-01", "Canterbury",  672000),  ("2026-01-01", "Waikato",     698000),
+    ("2026-01-01", "Bay of Plenty", 732000),("2026-01-01", "Otago",       678000),
+    ("2026-01-01", "Northland",   572000),  ("2026-01-01", "Hawke's Bay", 538000),
+
+    ("2025-01-01", "Auckland",    995000),  ("2025-01-01", "Wellington",  730000),
+    ("2025-01-01", "Canterbury",  660000),  ("2025-01-01", "Waikato",     685000),
+    ("2025-01-01", "Bay of Plenty", 720000),("2025-01-01", "Otago",       665000),
+    ("2025-01-01", "Northland",   565000),  ("2025-01-01", "Hawke's Bay", 530000),
 ]
 
 cursor.executemany("""
@@ -139,6 +149,72 @@ cursor.executemany("""
     ON DUPLICATE KEY UPDATE estimated_people = VALUES(estimated_people), rate_pct = VALUES(rate_pct)
 """, deprivation_data)
 print(f"Loaded {len(deprivation_data)} housing deprivation records.")
+
+# ── 4. Rental Prices by Region ────────────────────────────────────────────────
+# Source: MBIE Tenancy Services bond data via Figure.NZ — median weekly rent (NZD)
+rental_data = [
+    ("2015-01-01", "Auckland",       480), ("2015-01-01", "Wellington",    420),
+    ("2015-01-01", "Canterbury",     395), ("2015-01-01", "Waikato",       350),
+    ("2015-01-01", "Bay of Plenty",  395), ("2015-01-01", "Otago",         290),
+    ("2015-01-01", "Northland",      330), ("2015-01-01", "Hawke's Bay",   300),
+
+    ("2016-01-01", "Auckland",       500), ("2016-01-01", "Wellington",    450),
+    ("2016-01-01", "Canterbury",     380), ("2016-01-01", "Waikato",       370),
+    ("2016-01-01", "Bay of Plenty",  450), ("2016-01-01", "Otago",         303),
+    ("2016-01-01", "Northland",      350), ("2016-01-01", "Hawke's Bay",   320),
+
+    ("2017-01-01", "Auckland",       520), ("2017-01-01", "Wellington",    500),
+    ("2017-01-01", "Canterbury",     380), ("2017-01-01", "Waikato",       390),
+    ("2017-01-01", "Bay of Plenty",  460), ("2017-01-01", "Otago",         320),
+    ("2017-01-01", "Northland",      380), ("2017-01-01", "Hawke's Bay",   350),
+
+    ("2018-01-01", "Auckland",       540), ("2018-01-01", "Wellington",    540),
+    ("2018-01-01", "Canterbury",     390), ("2018-01-01", "Waikato",       410),
+    ("2018-01-01", "Bay of Plenty",  495), ("2018-01-01", "Otago",         333),
+    ("2018-01-01", "Northland",      405), ("2018-01-01", "Hawke's Bay",   385),
+
+    ("2019-01-01", "Auckland",       550), ("2019-01-01", "Wellington",    575),
+    ("2019-01-01", "Canterbury",     400), ("2019-01-01", "Waikato",       440),
+    ("2019-01-01", "Bay of Plenty",  525), ("2019-01-01", "Otago",         395),
+    ("2019-01-01", "Northland",      450), ("2019-01-01", "Hawke's Bay",   420),
+
+    ("2020-01-01", "Auckland",       575), ("2020-01-01", "Wellington",    590),
+    ("2020-01-01", "Canterbury",     410), ("2020-01-01", "Waikato",       470),
+    ("2020-01-01", "Bay of Plenty",  555), ("2020-01-01", "Otago",         408),
+    ("2020-01-01", "Northland",      460), ("2020-01-01", "Hawke's Bay",   450),
+
+    ("2021-01-01", "Auckland",       600), ("2021-01-01", "Wellington",    600),
+    ("2021-01-01", "Canterbury",     480), ("2021-01-01", "Waikato",       510),
+    ("2021-01-01", "Bay of Plenty",  620), ("2021-01-01", "Otago",         450),
+    ("2021-01-01", "Northland",      520), ("2021-01-01", "Hawke's Bay",   525),
+
+    ("2022-01-01", "Auckland",       600), ("2022-01-01", "Wellington",    588),
+    ("2022-01-01", "Canterbury",     510), ("2022-01-01", "Waikato",       530),
+    ("2022-01-01", "Bay of Plenty",  640), ("2022-01-01", "Otago",         470),
+    ("2022-01-01", "Northland",      560), ("2022-01-01", "Hawke's Bay",   560),
+
+    ("2023-01-01", "Auckland",       650), ("2023-01-01", "Wellington",    650),
+    ("2023-01-01", "Canterbury",     555), ("2023-01-01", "Waikato",       560),
+    ("2023-01-01", "Bay of Plenty",  683), ("2023-01-01", "Otago",         480),
+    ("2023-01-01", "Northland",      563), ("2023-01-01", "Hawke's Bay",   590),
+
+    ("2024-01-01", "Auckland",       650), ("2024-01-01", "Wellington",    640),
+    ("2024-01-01", "Canterbury",     580), ("2024-01-01", "Waikato",       570),
+    ("2024-01-01", "Bay of Plenty",  705), ("2024-01-01", "Otago",         550),
+    ("2024-01-01", "Northland",      580), ("2024-01-01", "Hawke's Bay",   600),
+
+    ("2025-01-01", "Auckland",       650), ("2025-01-01", "Wellington",    600),
+    ("2025-01-01", "Canterbury",     590), ("2025-01-01", "Waikato",       570),
+    ("2025-01-01", "Bay of Plenty",  680), ("2025-01-01", "Otago",         550),
+    ("2025-01-01", "Northland",      580), ("2025-01-01", "Hawke's Bay",   610),
+]
+
+cursor.executemany("""
+    INSERT INTO rental_prices (date, region, median_weekly_rent)
+    VALUES (%s, %s, %s)
+    ON DUPLICATE KEY UPDATE median_weekly_rent = VALUES(median_weekly_rent)
+""", rental_data)
+print(f"Loaded {len(rental_data)} rental price records.")
 
 conn.commit()
 cursor.close()

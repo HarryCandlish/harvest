@@ -1,0 +1,100 @@
+{
+  "total_articles": {
+    "National": 110,
+    "Labour": 62,
+    "NZ First": 50,
+    "ACT": 35,
+    "Te P\u0101ti M\u0101ori": 8,
+    "Green": 22
+  },
+  "total_words": {
+    "National": 38352,
+    "Labour": 27652,
+    "NZ First": 17003,
+    "ACT": 12237,
+    "Te P\u0101ti M\u0101ori": 2710,
+    "Green": 8560
+  },
+  "rates": {
+    "National": {
+      "Housing": 2.03,
+      "Economy": 6.05,
+      "Cost of Living": 1.54,
+      "Healthcare": 3.89,
+      "Crime": 1.72,
+      "Environment": 0.44,
+      "Immigration": 1.38,
+      "Education": 2.71
+    },
+    "Labour": {
+      "Housing": 6.83,
+      "Economy": 11.43,
+      "Cost of Living": 2.28,
+      "Healthcare": 9.11,
+      "Crime": 2.28,
+      "Environment": 4.56,
+      "Immigration": 0.0,
+      "Education": 0.04
+    },
+    "NZ First": {
+      "Housing": 0.53,
+      "Economy": 3.94,
+      "Cost of Living": 1.18,
+      "Healthcare": 1.41,
+      "Crime": 1.47,
+      "Environment": 0.47,
+      "Immigration": 1.65,
+      "Education": 0.65
+    },
+    "ACT": {
+      "Housing": 1.06,
+      "Economy": 1.63,
+      "Cost of Living": 2.45,
+      "Healthcare": 1.06,
+      "Crime": 0.82,
+      "Environment": 0.33,
+      "Immigration": 0.16,
+      "Education": 3.68
+    },
+    "Te P\u0101ti M\u0101ori": {
+      "Housing": 7.38,
+      "Economy": 1.85,
+      "Cost of Living": 0.0,
+      "Healthcare": 0.74,
+      "Crime": 4.06,
+      "Environment": 1.11,
+      "Immigration": 0.0,
+      "Education": 3.32
+    },
+    "Green": {
+      "Housing": 0.7,
+      "Economy": 3.5,
+      "Cost of Living": 2.69,
+      "Healthcare": 0.35,
+      "Crime": 0.7,
+      "Environment": 3.39,
+      "Immigration": 0.0,
+      "Education": 0.58
+    }
+  },
+  "gaps": {
+    "Housing": 4.8,
+    "Economy": 5.38,
+    "Cost of Living": 0.74,
+    "Healthcare": 5.22,
+    "Crime": 0.56,
+    "Environment": 4.12,
+    "Immigration": -1.38,
+    "Education": -2.67
+  },
+  "sorted_cats": [
+    "Economy",
+    "Housing",
+    "Healthcare",
+    "Crime",
+    "Education",
+    "Environment",
+    "Cost of Living",
+    "Immigration"
+  ]
+}

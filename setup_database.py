@@ -57,6 +57,18 @@ CREATE TABLE IF NOT EXISTS housing_deprivation (
 """)
 print("Table 'housing_deprivation' ready.")
 
+# ── Table 4: Rental Prices by Region ─────────────────────────────────────────
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS rental_prices (
+    id          INT AUTO_INCREMENT PRIMARY KEY,
+    date        DATE NOT NULL,
+    region      VARCHAR(100) NOT NULL,
+    median_weekly_rent INT NOT NULL,
+    UNIQUE KEY unique_region_date (date, region)
+)
+""")
+print("Table 'rental_prices' ready.")
+
 conn.commit()
 cursor.close()
 conn.close()

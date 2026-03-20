@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Field Notes · Harry Candlish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: #080F0B; color: #F7F6F2; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+    /* Nav */
+    .site-nav {
+      background: #1A1E1A;
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      font-weight: 300;
+      color: #F7F6F2;
+      text-decoration: none;
+      letter-spacing: -0.2px;
+    }
+    .nav-logo span { color: #3A5C45; }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #F7F6F2; }
+    .nav-links a.active { color: #F7F6F2; }
+
+    /* Hero */
+    .page-hero {
+      background: #080F0B;
+      padding: 96px 48px 80px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 60% 50%, rgba(58,92,69,0.18) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .page-hero-inner { max-width: 760px; position: relative; }
+    .page-hero-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #5A8069;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .page-hero-label::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: #5A8069;
+    }
+    .page-hero-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 300;
+      color: #F7F6F2;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      margin-bottom: 24px;
+    }
+    .page-hero-title em {
+      font-style: italic;
+      color: rgba(247,246,242,0.45);
+    }
+    .page-hero-sub {
+      font-size: 15px;
+      color: rgba(247,246,242,0.5);
+      line-height: 1.85;
+      max-width: 580px;
+    }
+    .hero-divider {
+      width: 32px;
+      height: 1px;
+      background: rgba(90,128,105,0.5);
+      margin: 28px 0;
+    }
+    .page-hero-note {
+      font-size: 12px;
+      color: rgba(247,246,242,0.25);
+      line-height: 1.6;
+      max-width: 500px;
+    }
+
+    /* Content */
+    .content-area {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 48px 100px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: rgba(247,246,242,0.3);
+      margin-bottom: 28px;
+    }
+
+    /* Featured card */
+    .featured-scenario {
+      background: #0A130D;
+      border: 1px solid rgba(90,128,105,0.2);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .featured-scenario:hover {
+      border-color: rgba(90,128,105,0.5);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+    .featured-band {
+      height: 3px;
+      background: linear-gradient(90deg, #5A8069 0%, rgba(90,128,105,0.2) 100%);
+    }
+    .featured-inner {
+      padding: 48px 48px 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: start;
+    }
+    .featured-meta {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #5A8069;
+      margin-bottom: 14px;
+    }
+    .featured-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(22px, 2.5vw, 30px);
+      font-weight: 400;
+      color: #F7F6F2;
+      line-height: 1.25;
+      letter-spacing: -0.3px;
+      margin-bottom: 18px;
+    }
+    .featured-desc {
+      font-size: 14px;
+      color: rgba(247,246,242,0.5);
+      line-height: 1.8;
+      max-width: 560px;
+      margin-bottom: 28px;
+    }
+    .featured-stats {
+      display: flex;
+      gap: 32px;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 28px;
+    }
+    .featured-stat-item { display: flex; flex-direction: column; gap: 4px; }
+    .featured-stat-value {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 300;
+      color: #F7F6F2;
+      letter-spacing: -0.3px;
+    }
+    .featured-stat-label {
+      font-size: 11px;
+      color: rgba(247,246,242,0.3);
+      letter-spacing: 0.3px;
+    }
+    .featured-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .featured-tag {
+      font-size: 11px;
+      color: rgba(247,246,242,0.35);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+    .featured-cta-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 16px;
+      padding-top: 8px;
+    }
+    .featured-badge {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #5A8069;
+      background: rgba(90,128,105,0.1);
+      border: 1px solid rgba(90,128,105,0.25);
+      padding: 6px 14px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .featured-cta {
+      font-size: 13px;
+      font-weight: 500;
+      color: #5A8069;
+      white-space: nowrap;
+    }
+
+    /* Secondary grid */
+    .secondary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+      margin-bottom: 64px;
+    }
+    .scenario-card {
+      background: #080F0B;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .scenario-card:hover {
+      border-color: rgba(255,255,255,0.15);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .card-band-top { height: 3px; }
+    .scenario-card-body {
+      padding: 28px 28px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .scenario-card-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .scenario-card-title {
+      font-family: 'Fraunces', serif;
+      font-size: 19px;
+      font-weight: 400;
+      color: #F7F6F2;
+      line-height: 1.3;
+      margin-bottom: 14px;
+      letter-spacing: -0.2px;
+    }
+    .scenario-card-desc {
+      font-size: 13px;
+      color: rgba(247,246,242,0.4);
+      line-height: 1.75;
+      flex: 1;
+    }
+    .scenario-card-footer {
+      padding: 16px 28px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: 20px;
+    }
+    .scenario-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .scenario-tag {
+      font-size: 11px;
+      color: rgba(247,246,242,0.3);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    /* About section */
+    .about-section {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .about-title {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: rgba(247,246,242,0.65);
+      line-height: 1.4;
+      letter-spacing: -0.2px;
+      margin-bottom: 16px;
+    }
+    .about-body {
+      font-size: 13px;
+      color: rgba(247,246,242,0.38);
+      line-height: 1.85;
+    }
+    .about-body p + p { margin-top: 14px; }
+    .stat-list { display: flex; flex-direction: column; gap: 20px; }
+    .stat-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .stat-row:last-child { border-bottom: none; }
+    .stat-val {
+      font-family: 'Fraunces', serif;
+      font-size: 26px;
+      font-weight: 300;
+      color: #5A8069;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
+    }
+    .stat-desc { font-size: 13px; color: rgba(247,246,242,0.38); line-height: 1.6; }
+
+    /* Footer */
+    .site-footer {
+      background: #1A1E1A;
+      padding: 40px 48px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-footer span { font-size: 13px; color: rgba(255,255,255,0.3); }
+    .site-footer a {
+      font-size: 13px;
+      color: #B8883A;
+      text-decoration: none;
+      border: 1px solid rgba(184,136,58,0.35);
+      border-radius: 40px;
+      padding: 10px 20px;
+      transition: all 0.2s;
+    }
+    .site-footer a:hover { background: rgba(184,136,58,0.1); }
+
+    @media (max-width: 860px) {
+      .featured-inner { grid-template-columns: 1fr; gap: 28px; }
+      .about-section { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 640px) {
+      .site-nav { padding: 0 24px; }
+      .page-hero { padding: 56px 24px 48px; }
+      .content-area { padding: 48px 24px 72px; }
+      .featured-inner { padding: 28px 24px 24px; }
+      .featured-stats { flex-wrap: wrap; gap: 20px; }
+      .secondary-grid { grid-template-columns: 1fr; }
+      .site-footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">New <span>Harvest</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="projects.html">Stories</a></li>
+      <li><a href="cabinetroom.html">Cabinet Room</a></li>
+      <li><a href="nature.html" class="active">Field Notes</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Get in touch</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-label">Field Notes · NZ Conservation</p>
+      <h1 class="page-hero-title">What the data says about<br><em>the species we're losing — and saving.</em></h1>
+      <div class="hero-divider"></div>
+      <p class="page-hero-sub">New Zealand's conservation record is genuinely mixed. Some species are recovering — the result of decades of sustained effort and a whaling moratorium that finally held. Others are disappearing faster than the trapping operations can keep up. These data stories try to show both sides honestly.</p>
+      <p class="page-hero-note" style="margin-top:20px;">Sources: GBIF (Global Biodiversity Information Facility), iNaturalist NZ, DOC conservation operations data, Trap.NZ. All sightings are verified Research Grade citizen science records.</p>
+    </div>
+  </div>
+
+  <div class="content-area">
+
+    <p class="section-label">Featured · Conservation success story</p>
+
+    <!-- Humpback — featured -->
+    <a href="humpback.html" class="featured-scenario">
+      <div class="featured-band"></div>
+      <div class="featured-inner">
+        <div>
+          <p class="featured-meta">Marine wildlife · Humpback Whale · GBIF data</p>
+          <h2 class="featured-title">Not all native species are in decline</h2>
+          <p class="featured-desc">The humpback whale was hunted to near-extinction from New Zealand shores. 38 years after the international whaling moratorium, they're back — and the GBIF sighting data shows exactly how the recovery maps across the Pacific. One of conservation's genuine success stories, told through verified citizen science observations.</p>
+          <div class="featured-stats">
+            <div class="featured-stat-item">
+              <span class="featured-stat-value">1986</span>
+              <span class="featured-stat-label">IWC whaling moratorium</span>
+            </div>
+            <div class="featured-stat-item">
+              <span class="featured-stat-value">38 yrs</span>
+              <span class="featured-stat-label">recovery period</span>
+            </div>
+            <div class="featured-stat-item">
+              <span class="featured-stat-value">GBIF</span>
+              <span class="featured-stat-label">verified sightings data</span>
+            </div>
+          </div>
+          <div class="featured-tags">
+            <span class="featured-tag">GBIF API</span>
+            <span class="featured-tag">Python</span>
+            <span class="featured-tag">Plotly</span>
+            <span class="featured-tag">Citizen science</span>
+          </div>
+        </div>
+        <div class="featured-cta-block">
+          <span class="featured-badge">Data story</span>
+          <span class="featured-cta">Explore →</span>
+        </div>
+      </div>
+    </a>
+
+    <p class="section-label" style="margin-top:56px;">Also in Field Notes</p>
+
+    <div class="secondary-grid">
+
+      <!-- Kiwi / Predator -->
+      <a href="index.html#predator-story" class="scenario-card">
+        <div class="card-band-top" style="background:#3A5C45;"></div>
+        <div class="scenario-card-body">
+          <p class="scenario-card-label" style="color:#8FAF8A;">Citizen science · NZ Conservation</p>
+          <h3 class="scenario-card-title">Why kiwi are disappearing — and who's tracking it</h3>
+          <p class="scenario-card-desc">New Zealanders log thousands of wildlife sightings every year. Do those sightings actually shape where conservation operations happen? A cross-reference of GBIF citizen data, DOC operations, and Trap.NZ trapping projects — mapped against predator pressure in real time.</p>
+        </div>
+        <div class="scenario-card-footer">
+          <div class="scenario-tags">
+            <span class="scenario-tag">GBIF API</span>
+            <span class="scenario-tag">DOC data</span>
+            <span class="scenario-tag">Trap.NZ</span>
+            <span class="scenario-tag">Scrollytelling</span>
+          </div>
+          <span style="font-size:12px; font-weight:500; color:#8FAF8A;">Explore →</span>
+        </div>
+      </a>
+
+      <!-- Placeholder -->
+      <div style="background:#080F0B; border:1px dashed rgba(255,255,255,0.07); border-radius:12px; padding:32px 28px; display:flex; flex-direction:column; justify-content:center; min-height:200px;">
+        <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(247,246,242,0.17); margin-bottom:12px;">In development</p>
+        <p style="font-family:'Fraunces',serif; font-size:18px; font-weight:300; font-style:italic; color:rgba(247,246,242,0.2); line-height:1.4;">Predator Free 2050 — tracking progress against New Zealand's most ambitious conservation target.</p>
+      </div>
+
+    </div>
+
+    <!-- About -->
+    <div class="about-section">
+      <div>
+        <h2 class="about-title">The same data pipeline that researchers use</h2>
+        <div class="about-body">
+          <p>Both pieces in Field Notes are built on GBIF — the Global Biodiversity Information Facility — which aggregates verified sightings from iNaturalist NZ, DOC, and museum collections into a freely queryable global database. Every sighting is Research Grade: verified by at least two independent observers before it's included.</p>
+          <p>That means these maps aren't illustrative — they're the same primary source data that DOC and conservation researchers work from. When a citizen scientist logs a kiwi sighting on iNaturalist NZ, it reaches GBIF automatically. This pipeline queries it directly.</p>
+        </div>
+      </div>
+      <div class="stat-list">
+        <div class="stat-row">
+          <span class="stat-val">68%</span>
+          <span class="stat-desc">Decline in kiwi population since European settlement — from an estimated 12 million to under 70,000</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-val">~25K</span>
+          <span class="stat-desc">Kiwi lost per year to stoats, rats, and possums without active predator control</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-val">300%</span>
+          <span class="stat-desc">Increase in verified humpback whale sightings off NZ since 2005, based on GBIF records</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <span>Harry Candlish · Data Analyst · Wellington, NZ</span>
+    <a href="projects.html">← All stories</a>
+  </footer>
+
+</body>
+</html>

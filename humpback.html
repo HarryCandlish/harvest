@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Return of the Humpback — New Harvest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #F7F6F2;
+      --dark:   #1A1E1A;
+      --mid:    #4A5248;
+      --green:  #3A5C45;
+      --gold:   #B8883A;
+      --radius: 12px;
+      --map-bg: #0D1210;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--dark); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 166px; background: var(--bg);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .nav-logo { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 400; color: var(--dark); text-decoration: none; letter-spacing: -0.3px; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--dark); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark);
+      padding: 100px 48px 80px;
+    }
+    .hero-inner { max-width: 1200px; margin: 0 auto; }
+    .hero-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; font-weight: 500; }
+    .hero-title { font-family: 'Fraunces', serif; font-size: clamp(32px, 5vw, 56px); font-weight: 300; color: white; line-height: 1.15; letter-spacing: -1px; margin-bottom: 24px; }
+    .hero-title em { color: var(--gold); font-style: normal; }
+    .hero-intro { font-size: 16px; color: rgba(255,255,255,0.55); max-width: 640px; line-height: 1.9; }
+
+    /* ── SCROLLYTELLING ── */
+    .hw-scroll-section { background: var(--map-bg); }
+    .hw-scroll-inner {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .hw-map-panel {
+      width: 58%;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      flex-shrink: 0;
+    }
+    .hw-map-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ── MAP OVERLAY ── */
+    .hw-overlay {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      z-index: 1000;
+      background: rgba(10, 18, 12, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 16px 20px;
+      pointer-events: none;
+      min-width: 180px;
+    }
+    .hw-overlay-period {
+      font-family: 'Fraunces', serif;
+      font-size: 21px;
+      font-weight: 300;
+      color: white;
+      line-height: 1.2;
+      letter-spacing: -0.3px;
+    }
+    .hw-overlay-label {
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+      margin-top: 6px;
+      line-height: 1.5;
+      max-width: 220px;
+    }
+
+    /* ── MAP SOURCE ── */
+    .hw-map-source {
+      position: absolute;
+      bottom: 28px;
+      left: 16px;
+      z-index: 1000;
+      font-size: 10px;
+      color: rgba(255,255,255,0.3);
+      font-family: Inter, sans-serif;
+      pointer-events: none;
+    }
+
+    /* ── STEPS PANEL ── */
+    .hw-steps-panel {
+      flex: 1;
+      padding: 0 56px 0 64px;
+    }
+    .hw-step {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 0;
+      opacity: 0.28;
+      transition: opacity 0.5s;
+    }
+    .hw-step:first-child { padding-top: 80px; }
+    .hw-step:last-child  { padding-bottom: 100px; }
+    .hw-step.active { opacity: 1; }
+
+    .hw-step-num {
+      font-family: 'Fraunces', serif;
+      font-size: 80px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.05);
+      line-height: 1;
+      display: block;
+      margin-bottom: 20px;
+      letter-spacing: -2px;
+    }
+    .hw-step-era {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .hw-step-title {
+      font-family: 'Fraunces', serif;
+      font-size: 26px;
+      font-weight: 300;
+      color: white;
+      line-height: 1.3;
+      letter-spacing: -0.3px;
+      margin-bottom: 16px;
+    }
+    .hw-step-body {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.9;
+      max-width: 380px;
+    }
+    .hw-step-body strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+    .hw-step-body em { color: var(--gold); font-style: normal; }
+
+    /* ── LEAFLET POPUP STYLES ── */
+    .hw-popup .leaflet-popup-content-wrapper {
+      background: #161E18;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.55);
+      color: white;
+      padding: 0;
+    }
+    .hw-popup .leaflet-popup-content { margin: 0; }
+    .hw-popup .leaflet-popup-tip-container { display: none; }
+    .hw-popup .leaflet-popup-close-button {
+      color: rgba(255,255,255,0.35);
+      font-size: 18px;
+      top: 10px;
+      right: 12px;
+    }
+    .hw-popup .leaflet-popup-close-button:hover { color: white; }
+
+    /* ── CONCLUSION ── */
+    .hw-conclusion {
+      background: var(--dark);
+      padding: 100px 48px 80px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .hw-conclusion-inner { max-width: 1200px; margin: 0 auto; }
+    .hw-conclusion-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 12px; font-weight: 500; }
+    .hw-conclusion-title { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 300; color: white; line-height: 1.3; letter-spacing: -0.5px; margin-bottom: 48px; }
+    .hw-conclusion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .hw-conclusion-text p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.9; margin-bottom: 16px; }
+    .hw-conclusion-text p:last-child { margin-bottom: 0; }
+    .hw-conclusion-text em { color: var(--gold); font-style: normal; }
+    .hw-stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 32px; }
+    .hw-stat + .hw-stat { margin-top: 16px; }
+    .hw-stat-num { font-family: 'Fraunces', serif; font-size: 48px; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 8px; letter-spacing: -1px; }
+    .hw-stat-label { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+    /* ── BACK ── */
+    .back-section { padding: 60px 48px; background: var(--bg); text-align: center; border-top: 1px solid rgba(0,0,0,0.06); }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--mid); text-decoration: none; border: 1px solid rgba(0,0,0,0.12); border-radius: 40px; padding: 12px 24px; transition: all 0.2s; }
+    .back-link:hover { color: var(--dark); border-color: var(--dark); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      nav { padding: 0 24px; height: 120px; }
+      .hero { padding: 60px 24px 60px; }
+      .hw-scroll-inner { flex-direction: column; }
+      .hw-map-panel {
+        width: 100%;
+        height: 55vw;
+        min-height: 300px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .hw-steps-panel { width: 100%; padding: 0 24px; }
+      .hw-step { min-height: 70vh; }
+      .hw-conclusion { padding: 60px 24px; }
+      .hw-conclusion-grid { grid-template-columns: 1fr; gap: 40px; }
+      .back-section { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Default data arrays — overridden by humpback_data.js if present -->
+  <script>
+    var SIGHTINGS_LOGBOOK = [];
+    var SIGHTINGS_EARLY   = [];
+    var SIGHTINGS_MODERN  = [];
+  </script>
+  <script src="humpback_data.js" onerror="console.warn('Run humpback_data.py to load whale sighting data.')"></script>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="Minimalist Logo with Curved Leaves (1).png" alt="New Harvest" style="height:150px;width:auto;vertical-align:middle;">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Portfolio</a></li>
+      <li><a href="projects.html">Stories</a></li>
+      <li><a href="humpback.html">Humpback</a></li>
+      <li><a href="housing.html">Housing</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <p class="hero-label">Marine Wildlife · New Zealand</p>
+      <h1 class="hero-title">The return of the<br><em>humpback whale</em></h1>
+      <p class="hero-intro">
+        For 137 years, New Zealand shore stations hunted humpback whales on their annual migration through Cook Strait and along the North Island coast. By the 1960s, the Oceania population had collapsed to fewer than 200 animals. This is the story of what happened next.
+      </p>
+    </div>
+  </div>
+
+  <!-- SCROLLYTELLING -->
+  <section class="hw-scroll-section">
+    <div class="hw-scroll-inner">
+
+      <!-- Sticky map panel -->
+      <div class="hw-map-panel">
+        <div class="hw-map-inner">
+          <div id="map"></div>
+          <div class="hw-overlay" id="hw-overlay">
+            <div class="hw-overlay-period" id="overlay-period">1827 – 1964</div>
+            <div class="hw-overlay-label" id="overlay-label">137 years of shore whaling in NZ</div>
+          </div>
+          <div class="hw-map-source">
+            Sighting data: GBIF / Happywhale / iNaturalist &nbsp;·&nbsp; Whaling history: IWC / NZ History
+          </div>
+        </div>
+      </div>
+
+      <!-- Scrolling steps -->
+      <div class="hw-steps-panel" id="hw-steps">
+
+        <div class="hw-step active" data-step="1">
+          <span class="hw-step-num">01</span>
+          <p class="hw-step-era">1827 – 1964</p>
+          <h2 class="hw-step-title">Hunted to the edge of extinction</h2>
+          <p class="hw-step-body">
+            New Zealand's first shore whaling station opened at Te Awaiti in Tory Channel in 1827 — one of the country's earliest European settlements. Whangamumu in the Bay of Islands followed in 1898. For 137 years, humpbacks were hunted on their winter migration through Cook Strait and along the North Island coast.
+          </p>
+          <p class="hw-step-body" style="margin-top:14px;">
+            The broader Pacific fleet — American, British, Norwegian, and Soviet — compounded the damage across the entire Oceania stock. <em>Click the red station markers</em> to explore each site's history.
+          </p>
+        </div>
+
+        <div class="hw-step" data-step="2">
+          <span class="hw-step-num">02</span>
+          <p class="hw-step-era">By the 1960s</p>
+          <h2 class="hw-step-title">A sea emptied of whales</h2>
+          <p class="hw-step-body">
+            By the time New Zealand's last shore station at Tory Channel closed in 1964 — not by law, but because the whales had run out — the Oceania humpback population had collapsed to an estimated <strong>200–400 animals</strong>. Down from tens of thousands before commercial whaling began.
+          </p>
+          <p class="hw-step-body" style="margin-top:14px;">
+            Cook Strait, once a reliable migration corridor where shore boats could reliably find humpbacks each winter, fell nearly silent.
+          </p>
+        </div>
+
+        <div class="hw-step" data-step="3">
+          <span class="hw-step-num">03</span>
+          <p class="hw-step-era">1986</p>
+          <h2 class="hw-step-title">The turning point</h2>
+          <p class="hw-step-body">
+            In 1986, the International Whaling Commission enacted a global moratorium on commercial whaling. For the first time in 160 years, humpbacks in the South Pacific could complete their migration without being hunted.
+          </p>
+          <p class="hw-step-body" style="margin-top:14px;">
+            Recovery would not be fast — a population depleted over generations cannot rebound overnight. But the moratorium was the turning point. The hunting stopped. The counting began.
+          </p>
+        </div>
+
+        <div class="hw-step" data-step="4">
+          <span class="hw-step-num">04</span>
+          <p class="hw-step-era">1970 – 1999</p>
+          <h2 class="hw-step-title">Scientists start listening again</h2>
+          <p class="hw-step-body">
+            Survey teams began recording humpback sightings in New Zealand waters from the early 1970s — tentative at first, a handful of confirmed encounters each year. These dots represent real survey records compiled from DOC and NZ university research programmes.
+          </p>
+          <p class="hw-step-body" style="margin-top:14px;">
+            Sparse compared to what was once here. But growing.
+          </p>
+        </div>
+
+        <div class="hw-step" data-step="5">
+          <span class="hw-step-num">05</span>
+          <p class="hw-step-era">Annual migration</p>
+          <h2 class="hw-step-title">6,000 km each way</h2>
+          <p class="hw-step-body">
+            Each winter, humpbacks leave their Antarctic feeding grounds and travel north — through New Zealand's coastal waters, past the Kermadec Islands, to the warm breeding lagoons of Tonga and the Cook Islands. The return journey south, in spring, follows the same corridors.
+          </p>
+          <p class="hw-step-body" style="margin-top:14px;">
+            It is one of the longest migrations of any mammal on Earth. NZ sits at the heart of it — the same geography that made these waters so productive for whalers is what makes them so important for recovery.
+          </p>
+        </div>
+
+        <div class="hw-step" data-step="6">
+          <span class="hw-step-num">06</span>
+          <p class="hw-step-era">2000 – Present</p>
+          <h2 class="hw-step-title">They're back</h2>
+          <p class="hw-step-body">
+            Today, humpback sightings in New Zealand waters are no longer rare. Records from Happywhale, iNaturalist, and citizen science surveys cluster along the Kaikōura coast, in Cook Strait, and off the Bay of Islands — the same corridors where they were once hunted.
+          </p>
+          <p class="hw-step-body" style="margin-top:14px;">
+            <strong>The Oceania population has grown from ~200 animals in 1986 to an estimated 4,000–5,000 today</strong>, and is still climbing. In 2016, the population was reclassified from endangered to <em>recovering</em>.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCLUSION -->
+  <div class="hw-conclusion">
+    <div class="hw-conclusion-inner">
+      <p class="hw-conclusion-label">Conservation</p>
+      <h2 class="hw-conclusion-title">One of conservation's genuine success stories</h2>
+      <div class="hw-conclusion-grid">
+        <div class="hw-conclusion-text">
+          <p>
+            The Oceania humpback was reclassified from "endangered" to "recovering" in 2016 — a milestone that took 30 years of protection and patient population monitoring to achieve. No single intervention produced the recovery. The moratorium held. The whales returned.
+          </p>
+          <p>
+            The recovery is not complete. Some sub-stocks within Oceania remain at lower levels. Threats from ship strike, fishing gear entanglement, and climate change affecting Antarctic krill abundance remain real. But the trajectory is clear.
+          </p>
+          <p>
+            A species that was commercially hunted to near-extinction has returned to New Zealand waters <em>within a single human lifetime.</em> That matters — not just for the whales, but as evidence that collapse is not always irreversible, and that protection, given time, works.
+          </p>
+        </div>
+        <div>
+          <div class="hw-stat">
+            <div class="hw-stat-num">~200</div>
+            <div class="hw-stat-label">Oceania humpbacks estimated remaining in 1986, when the IWC moratorium came into force — near the lowest point of the population's recorded history</div>
+          </div>
+          <div class="hw-stat">
+            <div class="hw-stat-num">~4,500</div>
+            <div class="hw-stat-label">Estimated Oceania humpback population today — a 22-fold recovery over 38 years of protection, and still growing</div>
+          </div>
+          <div class="hw-stat">
+            <div class="hw-stat-num">2016</div>
+            <div class="hw-stat-label">Year the Oceania humpback was reclassified from "endangered" to "recovering" by the IUCN — 30 years after the moratorium</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACK -->
+  <div class="back-section">
+    <a href="index.html#nz-birds" class="back-link">← Back to NZ birds</a>
+  </div>
+
+  <!-- LEAFLET + MAP INIT (load Leaflet before the inline script) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+  (function () {
+
+    // ── Map init ───────────────────────────────────────────────────────────────
+    var map = L.map('map', {
+      center: [-40, 174],
+      zoom: 5.2,
+      zoomControl: false,
+      attributionControl: false,
+      worldCopyJump: false,
+      dragging: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      touchZoom: false,
+      boxZoom: false,
+      keyboard: false,
+    });
+
+    // Prevent any residual touch/pointer interaction
+    map.getContainer().style.pointerEvents = 'none';
+    // Re-enable pointer events only for popups
+    map.on('popupopen', function() {
+      map.getContainer().style.pointerEvents = 'auto';
+    });
+    map.on('popupclose', function() {
+      map.getContainer().style.pointerEvents = 'none';
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      subdomains: 'abcd',
+      maxZoom: 19,
+    }).addTo(map);
+
+    // ── Layer groups ───────────────────────────────────────────────────────────
+    var gStations    = L.layerGroup();
+    var gHunting     = L.layerGroup();
+    var gMoratorium  = L.layerGroup();
+    var gEarly       = L.layerGroup();
+    var gMigration   = L.layerGroup();
+    var gModern      = L.layerGroup();
+    var allGroups    = [gStations, gHunting, gMoratorium, gEarly, gMigration, gModern];
+
+    function clearLayers() {
+      allGroups.forEach(function(g) { if (map.hasLayer(g)) map.removeLayer(g); });
+    }
+
+    // ── Whaling station markers ────────────────────────────────────────────────
+    var STATIONS = [
+      {
+        lat: -35.248, lon: 174.280,
+        name: "Whangamumu",
+        sub: "Bay of Islands, North Island",
+        years: "Active 1898–1931",
+        desc: "One of NZ's last shore-based whaling stations. Steam catcher boats targeted humpbacks on their winter migration north. Now a DOC heritage site — among the best-preserved whaling ruins in the Southern Hemisphere.",
+        autoOpen: false,
+      },
+      {
+        lat: -41.217, lon: 174.283,
+        name: "Te Awaiti / Tory Channel",
+        sub: "Marlborough Sounds, South Island",
+        years: "Active 1827–1964",
+        desc: "New Zealand's longest-running shore station. The Perano family operated here from 1911 until 1964, when NZ's last whaling station closed — not because of any law, but because humpbacks had been hunted to near-collapse. Cook Strait was a prime winter migration corridor.",
+        autoOpen: true,
+      },
+      {
+        lat: -50.867, lon: 166.167,
+        name: "Carnley Harbour",
+        sub: "Auckland Islands (Subantarctic)",
+        years: "Active 1840s–1850s",
+        desc: "Remote subantarctic anchorage used by American and British whalers as a resupply base. Southern right whales and humpbacks were targeted in the surrounding waters.",
+        autoOpen: false,
+      },
+    ];
+
+    var stationIcon = L.divIcon({
+      html: '<div style="width:13px;height:13px;background:#C0392B;border:2.5px solid rgba(255,255,255,0.85);border-radius:50%;box-shadow:0 2px 10px rgba(0,0,0,0.6);"></div>',
+      className: '',
+      iconSize: [13, 13],
+      iconAnchor: [6, 6],
+      popupAnchor: [0, -10],
+    });
+
+    var stationIconFaded = L.divIcon({
+      html: '<div style="width:10px;height:10px;background:#555;border:2px solid rgba(255,255,255,0.25);border-radius:50%;opacity:0.45;"></div>',
+      className: '',
+      iconSize: [10, 10],
+      iconAnchor: [5, 5],
+      popupAnchor: [0, -8],
+    });
+
+    var autoOpenMarker = null;
+    var stationMarkers = [];
+
+    STATIONS.forEach(function(s) {
+      var popup = L.popup({ maxWidth: 280, className: 'hw-popup' }).setContent(
+        '<div style="font-family:Inter,sans-serif;padding:18px 20px;">' +
+          '<div style="font-size:15px;font-weight:600;color:#fff;margin-bottom:3px;">' + s.name + '</div>' +
+          '<div style="font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:10px;">' + s.sub + '</div>' +
+          '<div style="font-size:12px;color:#B8883A;font-weight:500;margin-bottom:10px;">' + s.years + '</div>' +
+          '<div style="font-size:12px;color:rgba(255,255,255,0.72);line-height:1.65;">' + s.desc + '</div>' +
+        '</div>'
+      );
+      var marker = L.marker([s.lat, s.lon], { icon: stationIcon }).bindPopup(popup);
+      gStations.addLayer(marker);
+      stationMarkers.push({ marker: marker, faded: false });
+      if (s.autoOpen) autoOpenMarker = marker;
+    });
+
+    // ── Hunting ground circles (step 2) ───────────────────────────────────────
+    [
+      { lat: -41.0, lon: 174.0, r: 85000, label: 'Cook Strait hunting grounds' },
+      { lat: -35.3, lon: 174.5, r: 60000, label: 'Bay of Islands hunting grounds' },
+    ].forEach(function(c) {
+      L.circle([c.lat, c.lon], {
+        radius: c.r,
+        color: '#C0392B',
+        fillColor: '#C0392B',
+        fillOpacity: 0.07,
+        weight: 1.5,
+        dashArray: '6 4',
+      })
+      .bindPopup('<span style="font-family:Inter,sans-serif;font-size:12px;color:#fff;padding:6px 8px;display:block;">' + c.label + '</span>', { className: 'hw-popup' })
+      .addTo(gHunting);
+    });
+
+    // ── Moratorium marker (step 3) ─────────────────────────────────────────────
+    var moratoriumIcon = L.divIcon({
+      html: '<div style="font-family:Fraunces,serif;font-size:13px;font-weight:300;color:#fff;background:rgba(12,26,16,0.94);border:1px solid #3A5C45;border-radius:8px;padding:10px 16px;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,0.5);letter-spacing:-0.2px;text-align:center;">1986 · IWC Commercial Whaling Moratorium</div>',
+      className: '',
+      iconSize: [340, 42],
+      iconAnchor: [170, 21],
+    });
+    L.marker([-38, 173.5], { icon: moratoriumIcon }).addTo(gMoratorium);
+
+    // ── Migration route lines (step 5) ────────────────────────────────────────
+    // NZ → Tonga: use lon 186 (= 174°W) to draw correctly across the antimeridian
+    var routeToTonga = L.polyline([
+      [-46, 168], [-42, 171], [-36, 174], [-28, 179], [-22, 183], [-18.5, 186],
+    ], { color: '#B8883A', weight: 2.5, opacity: 0.9, dashArray: '10 6' });
+
+    // NZ → Southern Ocean
+    var routeToSouth = L.polyline([
+      [-45, 170], [-52, 166], [-61, 163],
+    ], { color: '#5A8A70', weight: 2, opacity: 0.8, dashArray: '7 5' });
+
+    // Labels
+    var tongaLabel = L.divIcon({
+      html: '<div style="font-family:Inter,sans-serif;font-size:11px;color:rgba(255,255,255,0.75);background:rgba(12,20,14,0.8);border-radius:5px;padding:5px 10px;white-space:nowrap;border:1px solid rgba(255,255,255,0.1);">Tonga — breeding grounds</div>',
+      className: '',
+      iconSize: [160, 30],
+      iconAnchor: [80, 15],
+    });
+    var southLabel = L.divIcon({
+      html: '<div style="font-family:Inter,sans-serif;font-size:11px;color:rgba(255,255,255,0.65);background:rgba(12,20,14,0.8);border-radius:5px;padding:5px 10px;white-space:nowrap;border:1px solid rgba(255,255,255,0.1);">Southern Ocean — feeding grounds</div>',
+      className: '',
+      iconSize: [195, 30],
+      iconAnchor: [97, 15],
+    });
+
+    gMigration.addLayer(routeToTonga);
+    gMigration.addLayer(routeToSouth);
+    gMigration.addLayer(L.marker([-18.5, 186], { icon: tongaLabel }));
+    gMigration.addLayer(L.marker([-62, 163], { icon: southLabel }));
+
+    // ── Sighting dots ──────────────────────────────────────────────────────────
+    function addDots(records, color, radius, group) {
+      records.forEach(function(r) {
+        L.circleMarker([r.lat, r.lon], {
+          radius: radius,
+          fillColor: color,
+          color: 'transparent',
+          fillOpacity: 0.7,
+          weight: 0,
+        })
+        .bindPopup(
+          '<span style="font-family:Inter,sans-serif;font-size:12px;color:#fff;padding:8px 12px;display:block;">' +
+          (r.year ? r.year : 'Historical record') +
+          (r.month ? ' · month ' + r.month : '') +
+          '</span>',
+          { className: 'hw-popup' }
+        )
+        .addTo(group);
+      });
+    }
+
+    addDots(window.SIGHTINGS_LOGBOOK || [], '#B8883A', 4, gHunting);
+    addDots(window.SIGHTINGS_EARLY   || [], '#4FA89A', 5, gEarly);
+    addDots(window.SIGHTINGS_MODERN  || [], '#3A8A5C', 5, gModern);
+
+    // ── Overlay text ───────────────────────────────────────────────────────────
+    var OVERLAY = {
+      1: { period: '1827 – 1964',     label: '137 years of shore whaling in NZ' },
+      2: { period: '~200 animals',    label: 'Estimated survivors in Oceania by the 1960s' },
+      3: { period: '1986',            label: 'IWC commercial whaling moratorium' },
+      4: { period: '1970 – 1999',     label: 'First systematic survey records in NZ waters' },
+      5: { period: '6,000 km',        label: 'NZ → Tonga → Southern Ocean, each year' },
+      6: { period: '~4,500 today',    label: 'Oceania humpbacks — population still climbing' },
+    };
+
+    function setOverlay(n) {
+      var o = OVERLAY[n];
+      if (!o) return;
+      document.getElementById('overlay-period').textContent = o.period;
+      document.getElementById('overlay-label').textContent  = o.label;
+    }
+
+    // ── Show step ──────────────────────────────────────────────────────────────
+    function showStep(n) {
+      clearLayers();
+      map.closePopup();
+
+      switch (n) {
+        case 1:
+          gStations.addTo(map);
+          map.flyTo([-40, 174], 5.2, { duration: 1.2 });
+          if (autoOpenMarker) {
+            map.once('moveend', function() { autoOpenMarker.openPopup(); });
+          }
+          break;
+
+        case 2:
+          gStations.addTo(map);
+          gHunting.addTo(map);
+          map.flyTo([-39.5, 174.2], 5, { duration: 1 });
+          break;
+
+        case 3:
+          gMoratorium.addTo(map);
+          map.flyTo([-36.5, 173.5], 5.2, { duration: 1.2 });
+          break;
+
+        case 4:
+          gEarly.addTo(map);
+          map.flyTo([-41, 173], 5.5, { duration: 1 });
+          break;
+
+        case 5:
+          // Centre on antimeridian so both NZ (+174) and Tonga (+186 = 174°W) are visible
+          gMigration.addTo(map);
+          gEarly.addTo(map);
+          map.flyTo([-32, 179], 3.6, { duration: 1.5 });
+          break;
+
+        case 6:
+          gModern.addTo(map);
+          map.flyTo([-40.5, 173.5], 5.5, { duration: 1 });
+          break;
+      }
+
+      setOverlay(n);
+    }
+
+    // ── Scroll handler ─────────────────────────────────────────────────────────
+    var steps    = document.querySelectorAll('.hw-step');
+    var lastStep = null;
+
+    function update() {
+      var mid = window.innerHeight / 2;
+      var closest = null;
+      var minDist = Infinity;
+
+      steps.forEach(function(step) {
+        var rect = step.getBoundingClientRect();
+        var stepMid = (rect.top + rect.bottom) / 2;
+        var dist = Math.abs(stepMid - mid);
+        if (dist < minDist) { minDist = dist; closest = step; }
+      });
+
+      if (closest && closest !== lastStep) {
+        steps.forEach(function(s) { s.classList.remove('active'); });
+        closest.classList.add('active');
+        showStep(parseInt(closest.dataset.step, 10));
+        lastStep = closest;
+      }
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+
+    // Initial state
+    showStep(1);
+    if (steps.length) steps[0].classList.add('active');
+
+  })();
+  </script>
+
+</body>
+</html>

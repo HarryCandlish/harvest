@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cabinet Room · Harry Candlish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: #0D1117; color: #F7F6F2; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+    /* Nav */
+    .site-nav {
+      background: #1A1E1A;
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      font-weight: 300;
+      color: #F7F6F2;
+      text-decoration: none;
+      letter-spacing: -0.2px;
+    }
+    .nav-logo span { color: #3A5C45; }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #F7F6F2; }
+    .nav-links a.active { color: #F7F6F2; }
+
+    /* Hero */
+    .page-hero {
+      background: #0D1117;
+      padding: 96px 48px 80px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(44,95,138,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .page-hero-inner { max-width: 760px; position: relative; }
+    .page-hero-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #2C5F8A;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .page-hero-label::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: #2C5F8A;
+    }
+    .page-hero-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 300;
+      color: #F7F6F2;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      margin-bottom: 24px;
+    }
+    .page-hero-title em {
+      font-style: italic;
+      color: rgba(247,246,242,0.6);
+    }
+    .page-hero-sub {
+      font-size: 15px;
+      color: rgba(247,246,242,0.55);
+      line-height: 1.85;
+      max-width: 580px;
+    }
+    .hero-divider {
+      width: 32px;
+      height: 1px;
+      background: rgba(44,95,138,0.6);
+      margin: 28px 0;
+    }
+    .page-hero-note {
+      font-size: 12px;
+      color: rgba(247,246,242,0.3);
+      line-height: 1.6;
+      max-width: 500px;
+    }
+
+    /* Content area */
+    .content-area {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 48px 100px;
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: rgba(247,246,242,0.3);
+      margin-bottom: 28px;
+    }
+
+    /* Featured scenario */
+    .featured-scenario {
+      background: #131B27;
+      border: 1px solid rgba(44,95,138,0.25);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .featured-scenario:hover {
+      border-color: rgba(44,95,138,0.55);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+    .featured-band {
+      height: 3px;
+      background: linear-gradient(90deg, #2C5F8A 0%, rgba(44,95,138,0.3) 100%);
+    }
+    .featured-inner {
+      padding: 48px 48px 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: start;
+    }
+    .featured-meta {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: #2C5F8A;
+      margin-bottom: 14px;
+    }
+    .featured-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(22px, 2.5vw, 30px);
+      font-weight: 400;
+      color: #F7F6F2;
+      line-height: 1.25;
+      letter-spacing: -0.3px;
+      margin-bottom: 18px;
+    }
+    .featured-desc {
+      font-size: 14px;
+      color: rgba(247,246,242,0.55);
+      line-height: 1.8;
+      max-width: 560px;
+      margin-bottom: 28px;
+    }
+    .featured-stats {
+      display: flex;
+      gap: 32px;
+      padding: 20px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 28px;
+    }
+    .featured-stat-item { display: flex; flex-direction: column; gap: 4px; }
+    .featured-stat-value {
+      font-family: 'Fraunces', serif;
+      font-size: 20px;
+      font-weight: 300;
+      color: #F7F6F2;
+      letter-spacing: -0.3px;
+    }
+    .featured-stat-label {
+      font-size: 11px;
+      color: rgba(247,246,242,0.35);
+      letter-spacing: 0.3px;
+    }
+    .featured-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .featured-tag {
+      font-size: 11px;
+      color: rgba(247,246,242,0.4);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+    .featured-cta-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 16px;
+      padding-top: 8px;
+    }
+    .featured-badge {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #2C5F8A;
+      background: rgba(44,95,138,0.1);
+      border: 1px solid rgba(44,95,138,0.25);
+      padding: 6px 14px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .featured-cta {
+      font-size: 13px;
+      font-weight: 500;
+      color: #2C5F8A;
+      white-space: nowrap;
+    }
+    .featured-decision-count {
+      font-size: 24px;
+      font-weight: 300;
+      font-family: 'Fraunces', serif;
+      color: rgba(44,95,138,0.5);
+      text-align: right;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+    .featured-decision-label {
+      font-size: 10px;
+      color: rgba(247,246,242,0.2);
+      text-align: right;
+      letter-spacing: 0.5px;
+    }
+
+    /* Secondary grid */
+    .secondary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+      margin-bottom: 64px;
+    }
+
+    .scenario-card {
+      background: #111519;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .scenario-card:hover {
+      border-color: rgba(255,255,255,0.15);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .card-band-top {
+      height: 3px;
+    }
+    .scenario-card-body {
+      padding: 28px 28px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .scenario-card-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .scenario-card-title {
+      font-family: 'Fraunces', serif;
+      font-size: 19px;
+      font-weight: 400;
+      color: #F7F6F2;
+      line-height: 1.3;
+      margin-bottom: 14px;
+      letter-spacing: -0.2px;
+    }
+    .scenario-card-desc {
+      font-size: 13px;
+      color: rgba(247,246,242,0.45);
+      line-height: 1.75;
+      flex: 1;
+    }
+    .scenario-card-footer {
+      padding: 16px 28px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      margin-top: 20px;
+    }
+    .scenario-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .scenario-tag {
+      font-size: 11px;
+      color: rgba(247,246,242,0.3);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+    .scenario-cta {
+      font-size: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* Coming soon card */
+    .coming-soon-card {
+      background: #0D1117;
+      border: 1px dashed rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 200px;
+    }
+    .coming-soon-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      color: rgba(247,246,242,0.2);
+      margin-bottom: 12px;
+    }
+    .coming-soon-title {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(247,246,242,0.25);
+      line-height: 1.4;
+    }
+
+    /* About section */
+    .about-section {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .about-title {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: rgba(247,246,242,0.7);
+      line-height: 1.4;
+      letter-spacing: -0.2px;
+      margin-bottom: 16px;
+    }
+    .about-body {
+      font-size: 13px;
+      color: rgba(247,246,242,0.4);
+      line-height: 1.85;
+    }
+    .about-body p + p { margin-top: 14px; }
+    .method-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .method-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .method-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 1px;
+    }
+    .method-text { font-size: 13px; color: rgba(247,246,242,0.45); line-height: 1.65; }
+    .method-text strong { color: rgba(247,246,242,0.7); font-weight: 500; }
+
+    /* Footer */
+    .site-footer {
+      background: #1A1E1A;
+      padding: 40px 48px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-footer span {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
+    .site-footer a {
+      font-size: 13px;
+      color: #B8883A;
+      text-decoration: none;
+      border: 1px solid rgba(184,136,58,0.35);
+      border-radius: 40px;
+      padding: 10px 20px;
+      transition: all 0.2s;
+    }
+    .site-footer a:hover { background: rgba(184,136,58,0.1); }
+
+    @media (max-width: 860px) {
+      .featured-inner { grid-template-columns: 1fr; gap: 28px; }
+      .featured-cta-block { flex-direction: row; align-items: center; }
+      .about-section { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 640px) {
+      .site-nav { padding: 0 24px; }
+      .page-hero { padding: 56px 24px 48px; }
+      .content-area { padding: 48px 24px 72px; }
+      .featured-inner { padding: 28px 24px 24px; }
+      .featured-stats { flex-wrap: wrap; gap: 20px; }
+      .secondary-grid { grid-template-columns: 1fr; }
+      .site-footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">New <span>Harvest</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="projects.html">Stories</a></li>
+      <li><a href="cabinetroom.html" class="active">Cabinet Room</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Get in touch</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-label">Cabinet Room · Geopolitical scenarios</p>
+      <h1 class="page-hero-title">The decisions governments<br><em>hope they never have to make.</em></h1>
+      <div class="hero-divider"></div>
+      <p class="page-hero-sub">Some risks don't fit neatly into a quarterly forecast. These scenario models use real trade data, real alliance structures, and real economic dependencies to explore what happens when the world changes faster than policy can follow.</p>
+      <p class="page-hero-note" style="margin-top:20px;">Each piece is built from primary sources — Stats NZ, MBIE, GBIF, Hansard. The scenarios are hypothetical. The numbers are not.</p>
+    </div>
+  </div>
+
+  <div class="content-area">
+
+    <p class="section-label">Featured · Interactive scenario model</p>
+
+    <!-- Taiwan — featured card -->
+    <a href="taiwan.html" class="featured-scenario">
+      <div class="featured-band"></div>
+      <div class="featured-inner">
+        <div>
+          <p class="featured-meta">Taiwan Strait · NZ-China Trade · Hypothetical 2027</p>
+          <h2 class="featured-title">If China moved on Taiwan — what would it mean for New Zealand?</h2>
+          <p class="featured-desc">$20.4 billion in annual exports. A Five Eyes intelligence alliance. And a decision the Prime Minister would have 90 minutes to make. This interactive scenario model uses real trade data — you choose New Zealand's response at each decision point, the data shows what follows.</p>
+          <div class="featured-stats">
+            <div class="featured-stat-item">
+              <span class="featured-stat-value">$20.4B</span>
+              <span class="featured-stat-label">NZ exports to China</span>
+            </div>
+            <div class="featured-stat-item">
+              <span class="featured-stat-value">28%</span>
+              <span class="featured-stat-label">of all NZ exports</span>
+            </div>
+            <div class="featured-stat-item">
+              <span class="featured-stat-value">5–8%</span>
+              <span class="featured-stat-label">GDP impact, central case</span>
+            </div>
+            <div class="featured-stat-item">
+              <span class="featured-stat-value">4</span>
+              <span class="featured-stat-label">decision points</span>
+            </div>
+          </div>
+          <div class="featured-tags">
+            <span class="featured-tag">Python</span>
+            <span class="featured-tag">Scenario model</span>
+            <span class="featured-tag">Interactive</span>
+            <span class="featured-tag">Trade data</span>
+            <span class="featured-tag">Stats NZ</span>
+            <span class="featured-tag">Scrollytelling</span>
+          </div>
+        </div>
+        <div class="featured-cta-block">
+          <span class="featured-badge">Interactive</span>
+          <div>
+            <div class="featured-decision-count">4</div>
+            <div class="featured-decision-label">decision points</div>
+          </div>
+          <span class="featured-cta">Explore scenario →</span>
+        </div>
+      </div>
+    </a>
+
+    <p class="section-label" style="margin-top:56px;">Also in the Cabinet Room</p>
+
+    <div class="secondary-grid">
+
+      <!-- Iran War / Fuel Prices -->
+      <a href="fuel_prices.html" class="scenario-card">
+        <div class="card-band-top" style="background:#B85C45;"></div>
+        <div class="scenario-card-body">
+          <p class="scenario-card-label" style="color:#B85C45;">Iran War · Strait of Hormuz · Live data</p>
+          <h3 class="scenario-card-title">The war that hit every petrol station in New Zealand</h3>
+          <p class="scenario-card-desc">Dubai crude up 62% in three weeks. The Strait of Hormuz closed on 1 March. NZ pump prices are rising — but the full impact hasn't fed through yet. Live data from MBIE, updated each Wednesday.</p>
+        </div>
+        <div class="scenario-card-footer">
+          <div class="scenario-tags">
+            <span class="scenario-tag">Python</span>
+            <span class="scenario-tag">MBIE API</span>
+            <span class="scenario-tag">Plotly</span>
+            <span class="scenario-tag">Live data</span>
+          </div>
+          <span class="scenario-cta" style="color:#B85C45;">Explore →</span>
+        </div>
+      </a>
+
+      <!-- Beans / Dark Comedy -->
+      <a href="beans.html" class="scenario-card">
+        <div class="card-band-top" style="background:#B8883A;"></div>
+        <div class="scenario-card-body">
+          <p class="scenario-card-label" style="color:#B8883A;">A Dark Comedy · Self-criticism · Essay</p>
+          <h3 class="scenario-card-title">Can we predict China's war in Taiwan with beans?</h3>
+          <p class="scenario-card-desc">Pigs eat soybeans. Soldiers eat pork. A data journalist tracks CBOT soybean futures and annotates them with geopolitical events — then asks whether this is a reasonable thing to be doing.</p>
+        </div>
+        <div class="scenario-card-footer">
+          <div class="scenario-tags">
+            <span class="scenario-tag">Essay</span>
+            <span class="scenario-tag">CBOT data</span>
+            <span class="scenario-tag">Self-criticism</span>
+          </div>
+          <span class="scenario-cta" style="color:#B8883A;">Read →</span>
+        </div>
+      </a>
+
+      <!-- Coming soon -->
+      <div class="coming-soon-card">
+        <p class="coming-soon-label">In development</p>
+        <p class="coming-soon-title">Russia cuts undersea internet cables.<br>What happens to New Zealand's connectivity?</p>
+      </div>
+
+      <div class="coming-soon-card">
+        <p class="coming-soon-label">In development</p>
+        <p class="coming-soon-title">A pandemic worse than COVID.<br>What does NZ's border policy cost this time?</p>
+      </div>
+
+    </div>
+
+    <!-- About the method -->
+    <div class="about-section">
+      <div>
+        <h2 class="about-title">How these scenarios are built</h2>
+        <div class="about-body">
+          <p>Cabinet Room scenarios start from a real event or plausible trigger — then model what follows using publicly available economic data. The goal isn't prediction. It's structured thinking about decisions that are easy to defer until they can't be.</p>
+          <p>Every figure is sourced. Every assumption is stated. Where uncertainty is wide, ranges are used. Where the data doesn't exist, that gap is acknowledged rather than papered over.</p>
+        </div>
+      </div>
+      <ul class="method-list">
+        <li class="method-item">
+          <div class="method-icon" style="background:rgba(44,95,138,0.15); color:#2C5F8A;">1</div>
+          <p class="method-text"><strong>Primary source data only.</strong> Stats NZ, MBIE, Reserve Bank, GBIF, UN Comtrade, Hansard. No commentary sites, no aggregated forecasts.</p>
+        </li>
+        <li class="method-item">
+          <div class="method-icon" style="background:rgba(44,95,138,0.15); color:#2C5F8A;">2</div>
+          <p class="method-text"><strong>Explicit scenario structure.</strong> Each decision point has defined options with stated economic consequences — not narrative hand-waving.</p>
+        </li>
+        <li class="method-item">
+          <div class="method-icon" style="background:rgba(44,95,138,0.15); color:#2C5F8A;">3</div>
+          <p class="method-text"><strong>Ranges, not point estimates.</strong> Central cases and tail risks are separated. Uncertainty is a feature, not a bug.</p>
+        </li>
+        <li class="method-item">
+          <div class="method-icon" style="background:rgba(44,95,138,0.15); color:#2C5F8A;">4</div>
+          <p class="method-text"><strong>Interactive where it matters.</strong> Scrollytelling and decision-tree mechanics are used only when they genuinely add to the analysis.</p>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <span>Harry Candlish · Data Analyst · Wellington, NZ</span>
+    <a href="projects.html">← All stories</a>
+  </footer>
+
+</body>
+</html>
