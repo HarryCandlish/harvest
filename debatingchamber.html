@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Ledger · Harry Candlish</title>
+  <title>The Debating Chamber · Harry Candlish</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { background: #0F0D0A; color: #F7F6F2; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+    body { background: #0F0D14; color: #F7F6F2; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
 
     /* Nav */
     .site-nav {
@@ -33,11 +33,7 @@
       letter-spacing: -0.2px;
     }
     .nav-logo span { color: #3A5C45; }
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
       font-size: 13px;
       color: rgba(255,255,255,0.5);
@@ -49,7 +45,7 @@
 
     /* Hero */
     .page-hero {
-      background: #0F0D0A;
+      background: #0F0D14;
       padding: 96px 48px 80px;
       border-bottom: 1px solid rgba(255,255,255,0.06);
       position: relative;
@@ -59,7 +55,7 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse at 65% 40%, rgba(184,136,58,0.1) 0%, transparent 60%);
+      background: radial-gradient(ellipse at 65% 40%, rgba(92,74,138,0.12) 0%, transparent 60%);
       pointer-events: none;
     }
     .page-hero-inner { max-width: 760px; position: relative; }
@@ -68,7 +64,7 @@
       font-weight: 600;
       letter-spacing: 1.4px;
       text-transform: uppercase;
-      color: #B8883A;
+      color: #5C4A8A;
       margin-bottom: 16px;
       display: flex;
       align-items: center;
@@ -79,7 +75,7 @@
       display: inline-block;
       width: 20px;
       height: 1px;
-      background: #B8883A;
+      background: #5C4A8A;
     }
     .page-hero-title {
       font-family: 'Fraunces', serif;
@@ -103,7 +99,7 @@
     .hero-divider {
       width: 32px;
       height: 1px;
-      background: rgba(184,136,58,0.5);
+      background: rgba(92,74,138,0.5);
       margin: 28px 0;
     }
     .page-hero-note {
@@ -131,8 +127,8 @@
 
     /* Featured card */
     .featured-scenario {
-      background: #1A1408;
-      border: 1px solid rgba(184,136,58,0.2);
+      background: #120F1C;
+      border: 1px solid rgba(92,74,138,0.2);
       border-radius: 16px;
       overflow: hidden;
       margin-bottom: 24px;
@@ -142,12 +138,12 @@
       transition: border-color 0.25s, box-shadow 0.25s;
     }
     .featured-scenario:hover {
-      border-color: rgba(184,136,58,0.5);
+      border-color: rgba(92,74,138,0.5);
       box-shadow: 0 16px 48px rgba(0,0,0,0.4);
     }
     .featured-band {
       height: 3px;
-      background: linear-gradient(90deg, #B8883A 0%, rgba(184,136,58,0.2) 100%);
+      background: linear-gradient(90deg, #5C4A8A 0%, rgba(92,74,138,0.2) 100%);
     }
     .featured-inner {
       padding: 48px 48px 40px;
@@ -161,7 +157,7 @@
       font-weight: 600;
       letter-spacing: 1.4px;
       text-transform: uppercase;
-      color: #B8883A;
+      color: #5C4A8A;
       margin-bottom: 14px;
     }
     .featured-title {
@@ -222,9 +218,9 @@
       font-weight: 600;
       letter-spacing: 1.2px;
       text-transform: uppercase;
-      color: #B8883A;
-      background: rgba(184,136,58,0.1);
-      border: 1px solid rgba(184,136,58,0.25);
+      color: #5C4A8A;
+      background: rgba(92,74,138,0.1);
+      border: 1px solid rgba(92,74,138,0.25);
       padding: 6px 14px;
       border-radius: 100px;
       white-space: nowrap;
@@ -232,7 +228,7 @@
     .featured-cta {
       font-size: 13px;
       font-weight: 500;
-      color: #B8883A;
+      color: #5C4A8A;
       white-space: nowrap;
     }
 
@@ -244,7 +240,7 @@
       margin-bottom: 64px;
     }
     .scenario-card {
-      background: #111009;
+      background: #100E19;
       border: 1px solid rgba(255,255,255,0.07);
       border-radius: 12px;
       overflow: hidden;
@@ -342,7 +338,7 @@
       font-family: 'Fraunces', serif;
       font-size: 26px;
       font-weight: 300;
-      color: #B8883A;
+      color: #5C4A8A;
       letter-spacing: -0.5px;
       white-space: nowrap;
     }
@@ -389,10 +385,9 @@
   <nav class="site-nav">
     <a href="index.html" class="nav-logo">New <span>Harvest</span></a>
     <ul class="nav-links">
-      <li><a href="index.html#services">Services</a></li>
       <li><a href="projects.html">Stories</a></li>
-      <li><a href="cabinetroom.html">The Cabinet Room</a></li>
-      <li><a href="economy.html" class="active">The Ledger</a></li>
+      <li><a href="catalogue.html">Collections</a></li>
+      <li><a href="debatingchamber.html" class="active">The Debating Chamber</a></li>
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#contact">Get in touch</a></li>
     </ul>
@@ -400,86 +395,72 @@
 
   <div class="page-hero">
     <div class="page-hero-inner">
-      <p class="page-hero-label">The Ledger · NZ Economics</p>
-      <h1 class="page-hero-title">Where New Zealand's<br><em>wealth is going — and why.</em></h1>
+      <p class="page-hero-label">The Debating Chamber · NZ Politics</p>
+      <h1 class="page-hero-title">What they say.<br><em>What they mean.</em></h1>
       <div class="hero-divider"></div>
-      <p class="page-hero-sub">Two of the most consequential financial decisions ordinary New Zealanders face: whether they can afford a home, and whether they'll have enough when they stop working. Both have been shaped by policy choices made in Wellington — and both leave traces in the data.</p>
-      <p class="page-hero-note" style="margin-top:20px;">Sources: REINZ, Reserve Bank of New Zealand, Stats NZ, IRD, Financial Markets Authority. All figures current to the data release dates stated in each piece.</p>
+      <p class="page-hero-sub">New Zealand's political parties produce thousands of words a year — press releases, Hansard transcripts, policy documents. This collection applies NLP analysis to that output, asking what the language actually reveals about priorities, evasions, and the gap between rhetoric and record ahead of the 2026 election.</p>
+      <p class="page-hero-note" style="margin-top:20px;">Sources: NZ Parliament Hansard, party press releases, FYI.org.nz OIA responses. Analysis current to March 2026.</p>
     </div>
   </div>
 
   <div class="content-area">
 
-    <p class="section-label">Featured · Deep dive</p>
+    <p class="section-label">Featured · NLP analysis</p>
 
-    <!-- KiwiSaver — featured -->
-    <a href="kiwisaver.html" class="featured-scenario">
+    <!-- Finding Signal — featured -->
+    <a href="election.html" class="featured-scenario">
       <div class="featured-band"></div>
       <div class="featured-inner">
         <div>
-          <p class="featured-meta">KiwiSaver · IRD data · 18 years</p>
-          <h2 class="featured-title">Inside KiwiSaver — eighteen years of data</h2>
-          <p class="featured-desc">3.4 million enrolled. Hardship withdrawals now exceed first home withdrawals. The employer contribution rate is rising for the first time in a decade. This deep-dive tracks contribution rates, withdrawal trends, the trans-Tasman gap, and what the 2025–26 policy changes actually mean for members.</p>
+          <p class="featured-meta">2026 Election · Press release analysis · Six parties</p>
+          <h2 class="featured-title">Finding signal in the noise</h2>
+          <p class="featured-desc">287 press releases, six parties, eight topics. Keyword-normalised NLP analysis revealing what NZ's parties are actually emphasising — housing, crime, climate, economy — and the topics each is quietly avoiding. The gap between what they publish and what they promise.</p>
           <div class="featured-stats">
             <div class="featured-stat-item">
-              <span class="featured-stat-value">3.4M</span>
-              <span class="featured-stat-label">members enrolled</span>
+              <span class="featured-stat-value">287</span>
+              <span class="featured-stat-label">press releases analysed</span>
             </div>
             <div class="featured-stat-item">
-              <span class="featured-stat-value">$1.86B</span>
-              <span class="featured-stat-label">hardship withdrawals, 2024</span>
+              <span class="featured-stat-value">6</span>
+              <span class="featured-stat-label">parties</span>
             </div>
             <div class="featured-stat-item">
-              <span class="featured-stat-value">3%→4%</span>
-              <span class="featured-stat-label">employer rate by 2026</span>
+              <span class="featured-stat-value">8</span>
+              <span class="featured-stat-label">topic categories</span>
             </div>
             <div class="featured-stat-item">
-              <span class="featured-stat-value">18 yrs</span>
-              <span class="featured-stat-label">of IRD data</span>
+              <span class="featured-stat-value">2026</span>
+              <span class="featured-stat-label">election year</span>
             </div>
           </div>
           <div class="featured-tags">
-            <span class="featured-tag">Python</span>
+            <span class="featured-tag">Python NLP</span>
+            <span class="featured-tag">AI</span>
+            <span class="featured-tag">Hansard</span>
             <span class="featured-tag">Plotly</span>
-            <span class="featured-tag">IRD data</span>
-            <span class="featured-tag">Policy analysis</span>
-            <span class="featured-tag">Trans-Tasman</span>
+            <span class="featured-tag">Keyword analysis</span>
           </div>
         </div>
         <div class="featured-cta-block">
-          <span class="featured-badge">Deep Dive</span>
+          <span class="featured-badge">NLP Analysis</span>
           <span class="featured-cta">Explore →</span>
         </div>
       </div>
     </a>
 
-    <p class="section-label" style="margin-top:56px;">Also in The Ledger</p>
+    <p class="section-label" style="margin-top:56px;">Also in The Debating Chamber</p>
 
     <div class="secondary-grid">
 
-      <!-- NZ Housing -->
-      <a href="housing.html" class="scenario-card">
-        <div class="card-band-top" style="background:#B8883A;"></div>
-        <div class="scenario-card-body">
-          <p class="scenario-card-label" style="color:#B8883A;">NZ Housing · REINZ & RBNZ data · 2015–2026</p>
-          <h3 class="scenario-card-title">The decade that priced out a generation</h3>
-          <p class="scenario-card-desc">The OCR moved from 0.25% to 5.5% in three years. Prices in some regions doubled, then fell — but never returned. A scrollytelling map traces the surge, the correction, and what neither fixed.</p>
-        </div>
-        <div class="scenario-card-footer">
-          <div class="scenario-tags">
-            <span class="scenario-tag">Plotly map</span>
-            <span class="scenario-tag">Scrollama</span>
-            <span class="scenario-tag">REINZ</span>
-            <span class="scenario-tag">RBNZ</span>
-          </div>
-          <span style="font-size:12px; font-weight:500; color:#B8883A;">Explore →</span>
-        </div>
-      </a>
-
       <!-- Placeholder -->
-      <div style="background:#0F0D0A; border:1px dashed rgba(255,255,255,0.07); border-radius:12px; padding:32px 28px; display:flex; flex-direction:column; justify-content:center; min-height:200px;">
+      <div style="background:#100E19; border:1px dashed rgba(255,255,255,0.07); border-radius:12px; padding:32px 28px; display:flex; flex-direction:column; justify-content:center; min-height:200px;">
         <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(247,246,242,0.18); margin-bottom:12px;">In development</p>
-        <p style="font-family:'Fraunces',serif; font-size:18px; font-weight:300; font-style:italic; color:rgba(247,246,242,0.22); line-height:1.4;">Cost of living vs wages in New Zealand — who's actually keeping up?</p>
+        <p style="font-family:'Fraunces',serif; font-size:18px; font-weight:300; font-style:italic; color:rgba(247,246,242,0.22); line-height:1.4;">Hansard deep-dive — what parliament actually debated vs. what made the news</p>
+      </div>
+
+      <div style="background:#100E19; border:1px dashed rgba(255,255,255,0.07); border-radius:12px; padding:32px 28px; display:flex; flex-direction:column; justify-content:center; min-height:200px;">
+        <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(247,246,242,0.18); margin-bottom:12px;">In development</p>
+        <p style="font-family:'Fraunces',serif; font-size:18px; font-weight:300; font-style:italic; color:rgba(247,246,242,0.22); line-height:1.4;">Policy costing — what the numbers behind the promises actually say</p>
       </div>
 
     </div>
@@ -487,24 +468,24 @@
     <!-- About -->
     <div class="about-section">
       <div>
-        <h2 class="about-title">Two numbers that define a generation's financial life</h2>
+        <h2 class="about-title">Why language is data</h2>
         <div class="about-body">
-          <p>Housing affordability and retirement savings aren't separate policy problems — they're the same squeeze from two directions. High house prices require larger mortgages, which crowd out KiwiSaver contributions. Lower contributions compound into smaller retirement balances. The data tells both halves of that story.</p>
-          <p>Both pieces are built from primary government and financial datasets. No secondary aggregators, no advocacy group numbers. The figures are what the Reserve Bank, REINZ, and IRD actually report.</p>
+          <p>Political parties make thousands of decisions about what to say and what to avoid. Press releases aren't incidental — they're deliberate signals about what a party wants voters to associate them with. NLP analysis turns that signal into something measurable.</p>
+          <p>The analysis in this collection uses keyword normalisation rather than raw counts, so a party that publishes more releases doesn't automatically dominate. It's about proportion: what share of a party's output is devoted to each topic, and how that compares across the spectrum.</p>
         </div>
       </div>
       <div class="stat-list">
         <div class="stat-row">
-          <span class="stat-val">$820K</span>
-          <span class="stat-desc">Median Auckland house price at the 2021 peak — up from $520K in 2015</span>
+          <span class="stat-val">6</span>
+          <span class="stat-desc">Parliamentary parties analysed — ACT, Green, Labour, National, NZ First, Te Pāti Māori</span>
         </div>
         <div class="stat-row">
-          <span class="stat-val">3.2M</span>
-          <span class="stat-desc">KiwiSaver members enrolled since 2007 — 60% of the working-age population</span>
+          <span class="stat-val">8</span>
+          <span class="stat-desc">Topic categories — housing, crime, climate, economy, health, education, foreign policy, social policy</span>
         </div>
         <div class="stat-row">
-          <span class="stat-val">2025</span>
-          <span class="stat-desc">Year the government changed employer contribution rates — the first structural shift in 8 years</span>
+          <span class="stat-val">2026</span>
+          <span class="stat-desc">New Zealand general election — the dataset will be updated as the campaign develops</span>
         </div>
       </div>
     </div>
@@ -513,7 +494,7 @@
 
   <footer class="site-footer">
     <span>Harry Candlish · Data Analyst · Wellington, NZ</span>
-    <a href="projects.html">← All stories</a>
+    <a href="catalogue.html">← All collections</a>
   </footer>
 
 </body>

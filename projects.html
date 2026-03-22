@@ -199,10 +199,7 @@
   <nav class="site-nav">
     <a href="index.html" class="nav-logo">New <span>Harvest</span></a>
     <ul class="nav-links">
-      <li><a href="index.html#services">Services</a></li>
       <li><a href="projects.html" class="active">Stories</a></li>
-      <li><a href="humpback.html">Humpback</a></li>
-      <li><a href="housing.html">Housing</a></li>
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#contact">Get in touch</a></li>
     </ul>
@@ -211,78 +208,129 @@
   <div class="page-hero">
     <div class="page-hero-inner">
       <p class="page-hero-label">Data stories · Harry Candlish</p>
-      <h1 class="page-hero-title">Three collections.<br>Real data. Real questions.</h1>
-      <p class="page-hero-sub">Each story starts with a question worth asking, runs through a full pipeline — API, SQL, Python, Plotly — and ends with something you can actually read. No synthetic data, no toy examples.</p>
+      <h1 class="page-hero-title">Every story,<br>in one place.</h1>
+      <p class="page-hero-sub">Geopolitics, housing, retirement, conservation, politics. Each piece starts with a question worth asking and ends with something you can actually read — built on real APIs, real datasets, and full pipelines from source to page.</p>
     </div>
   </div>
 
   <div class="projects-grid">
 
-    <!-- Cabinet Room -->
-    <a href="cabinetroom.html" class="project-card">
-      <div class="card-band" style="background:#2C5F8A;"></div>
+    <!-- Taiwan -->
+    <a href="taiwan.html" class="project-card">
+      <div class="card-band" style="background:#C0392B;"></div>
       <div class="card-body">
-        <p class="card-label" style="color:#2C5F8A;">Geopolitics · Conflict · Scenario models</p>
-        <h2 class="card-title">Cabinet Room</h2>
-        <p class="card-desc">The decisions governments hope they never have to make. Interactive scenario models built on real trade data, alliance structures, and economic dependencies — Taiwan, Iran, and what comes next.</p>
-        <div style="margin-top:20px; display:flex; flex-direction:column; gap:8px;">
-          <div style="font-size:12px; color:#9AA398;">Includes:</div>
-          <div style="font-size:13px; color:#4A5248; display:flex; flex-direction:column; gap:5px;">
-            <span>→ If China moved on Taiwan</span>
-            <span>→ Iran War &amp; NZ fuel prices</span>
-            <span>→ The Age of Impunity — war begets war</span>
-          </div>
-        </div>
+        <p class="card-label" style="color:#C0392B;">Geopolitics · Scenario model · 2026</p>
+        <h2 class="card-title">If China moved on Taiwan — what would it mean for New Zealand?</h2>
+        <p class="card-desc">A scrollable scenario model walking through nine economic channels: trade, tourism, education, housing, KiwiSaver, supply chains, inflation, military calculus, and the moment the decision lands. Built from real MFAT and RBNZ data.</p>
       </div>
       <div class="card-footer">
         <div class="card-tags">
-          <span class="card-tag">Interactive</span>
-          <span class="card-tag">Trade data</span>
+          <span class="card-tag">MFAT data</span>
           <span class="card-tag">Scrollytelling</span>
+          <span class="card-tag">Interactive</span>
         </div>
         <span class="card-cta">Explore →</span>
       </div>
     </a>
 
-    <!-- The Ledger -->
-    <a href="economy.html" class="project-card">
+    <!-- Iran / Fuel Prices -->
+    <a href="fuel_prices.html" class="project-card">
+      <div class="card-band" style="background:#C0392B;"></div>
+      <div class="card-body">
+        <p class="card-label" style="color:#C0392B;">Geopolitics · Energy · NZ economy</p>
+        <h2 class="card-title">Iran War &amp; NZ fuel prices</h2>
+        <p class="card-desc">If conflict closes the Strait of Hormuz, what happens to petrol prices in New Zealand? A data model tracing the supply chain from Persian Gulf crude to pump prices in Wellington.</p>
+      </div>
+      <div class="card-footer">
+        <div class="card-tags">
+          <span class="card-tag">MBIE API</span>
+          <span class="card-tag">Plotly</span>
+          <span class="card-tag">Live data</span>
+        </div>
+        <span class="card-cta">Explore →</span>
+      </div>
+    </a>
+
+    <!-- Age of Impunity -->
+    <a href="war.html" class="project-card">
+      <div class="card-band" style="background:#C0392B;"></div>
+      <div class="card-body">
+        <p class="card-label" style="color:#C0392B;">Conflict · Data analysis · UCDP / ACLED</p>
+        <h2 class="card-title">The Age of Impunity</h2>
+        <p class="card-desc">Are we living through a structural shift in how conflict unfolds — and how little it costs aggressors? An analytical framework built from UCDP, IMF, and ACLED data on the relationship between war, economic consequence, and norm erosion.</p>
+      </div>
+      <div class="card-footer">
+        <div class="card-tags">
+          <span class="card-tag">UCDP</span>
+          <span class="card-tag">ACLED</span>
+          <span class="card-tag">IMF data</span>
+        </div>
+        <span class="card-cta">Explore →</span>
+      </div>
+    </a>
+
+    <!-- Housing -->
+    <a href="housing.html" class="project-card">
       <div class="card-band" style="background:#B8883A;"></div>
       <div class="card-body">
-        <p class="card-label" style="color:#B8883A;">Housing · Retirement · Economic data</p>
-        <h2 class="card-title">The Ledger</h2>
-        <p class="card-desc">Where New Zealand's wealth is going — and why. Two stories tracing the most consequential financial decisions ordinary New Zealanders face: whether they can afford a home, and whether they'll have enough when they stop working.</p>
-        <div style="margin-top:20px; display:flex; flex-direction:column; gap:8px;">
-          <div style="font-size:12px; color:#9AA398;">Includes:</div>
-          <div style="font-size:13px; color:#4A5248; display:flex; flex-direction:column; gap:5px;">
-            <span>→ The decade that priced out a generation</span>
-            <span>→ Inside KiwiSaver — 18 years of data</span>
-          </div>
-        </div>
+        <p class="card-label" style="color:#B8883A;">Housing · REINZ &amp; RBNZ · 2015–2026</p>
+        <h2 class="card-title">The decade that priced out a generation</h2>
+        <p class="card-desc">The OCR moved from 0.25% to 5.5% in three years. Prices in some regions doubled, then fell — but never returned. A scrollytelling map traces the surge, the correction, and what neither fixed.</p>
       </div>
       <div class="card-footer">
         <div class="card-tags">
           <span class="card-tag">REINZ</span>
           <span class="card-tag">RBNZ</span>
           <span class="card-tag">Plotly map</span>
+          <span class="card-tag">Scrollama</span>
         </div>
         <span class="card-cta">Explore →</span>
       </div>
     </a>
 
-    <!-- Field Notes -->
+    <!-- KiwiSaver -->
+    <a href="kiwisaver.html" class="project-card">
+      <div class="card-band" style="background:#B8883A;"></div>
+      <div class="card-body">
+        <p class="card-label" style="color:#B8883A;">Retirement · Policy · IRD data</p>
+        <h2 class="card-title">Inside KiwiSaver — eighteen years of data</h2>
+        <p class="card-desc">3.4 million enrolled. Hardship withdrawals now exceed first home withdrawals. The employer contribution rate is rising for the first time in a decade. What 18 years of IRD data actually shows about New Zealand's retirement savings experiment.</p>
+      </div>
+      <div class="card-footer">
+        <div class="card-tags">
+          <span class="card-tag">IRD data</span>
+          <span class="card-tag">Plotly</span>
+          <span class="card-tag">Policy analysis</span>
+        </div>
+        <span class="card-cta">Explore →</span>
+      </div>
+    </a>
+
+    <!-- Election -->
+    <a href="election.html" class="project-card">
+      <div class="card-band" style="background:#B8883A;"></div>
+      <div class="card-body">
+        <p class="card-label" style="color:#B8883A;">2026 Election · NLP analysis</p>
+        <h2 class="card-title">Finding signal in the noise</h2>
+        <p class="card-desc">287 press releases, six parties, eight topics. Keyword-normalised NLP analysis revealing what NZ's parties are actually saying — and what they're avoiding — ahead of the 2026 election.</p>
+      </div>
+      <div class="card-footer">
+        <div class="card-tags">
+          <span class="card-tag">Python NLP</span>
+          <span class="card-tag">AI</span>
+          <span class="card-tag">Hansard</span>
+        </div>
+        <span class="card-cta">Explore →</span>
+      </div>
+    </a>
+
+    <!-- Not all native species -->
     <a href="nature.html" class="project-card">
       <div class="card-band" style="background:#3A5C45;"></div>
       <div class="card-body">
-        <p class="card-label" style="color:#3A5C45;">Wildlife · Conservation · Citizen science</p>
-        <h2 class="card-title">Field Notes</h2>
-        <p class="card-desc">What the data says about the species New Zealand is losing — and saving. Conservation stories built from verified GBIF sightings: a genuine recovery, and a crisis that citizen science is helping to map.</p>
-        <div style="margin-top:20px; display:flex; flex-direction:column; gap:8px;">
-          <div style="font-size:12px; color:#9AA398;">Includes:</div>
-          <div style="font-size:13px; color:#4A5248; display:flex; flex-direction:column; gap:5px;">
-            <span>→ Not all native species are in decline</span>
-            <span>→ Why kiwi are disappearing — and who's tracking it</span>
-          </div>
-        </div>
+        <p class="card-label" style="color:#3A5C45;">Conservation · GBIF · Citizen science</p>
+        <h2 class="card-title">Not all native species are in decline</h2>
+        <p class="card-desc">Five of New Zealand's rarest species, mapped from verified GBIF sightings. One story of genuine recovery — and what it tells us about where conservation effort is actually working.</p>
       </div>
       <div class="card-footer">
         <div class="card-tags">
@@ -294,20 +342,37 @@
       </div>
     </a>
 
-    <!-- Election / Hansard — standalone -->
-    <a href="index.html#signal-story" class="project-card">
-      <div class="card-band" style="background:#B8883A;"></div>
+    <!-- Kiwi -->
+    <a href="kiwi.html" class="project-card">
+      <div class="card-band" style="background:#3A5C45;"></div>
       <div class="card-body">
-        <p class="card-label" style="color:#B8883A;">2026 Election Analysis · AI-guided insight</p>
-        <h2 class="card-title">Finding signal in the noise</h2>
-        <p class="card-desc">What are NZ's political parties actually saying — versus what they're promising? An NLP analysis of Hansard debate transcripts and party policy documents, surfacing the gaps between rhetoric and record.</p>
+        <p class="card-label" style="color:#3A5C45;">Conservation · Scrollytelling · DOC data</p>
+        <h2 class="card-title">Why kiwi are disappearing — and who's tracking it</h2>
+        <p class="card-desc">A predator-by-predator scrollytelling map built from GBIF data, cross-referenced against DOC operations. Possum, rat, stoat — and one genuinely alarming regional gap in the data.</p>
       </div>
       <div class="card-footer">
         <div class="card-tags">
-          <span class="card-tag">Python</span>
-          <span class="card-tag">NLP</span>
-          <span class="card-tag">Hansard</span>
-          <span class="card-tag">AI</span>
+          <span class="card-tag">GBIF API</span>
+          <span class="card-tag">Scrollama</span>
+          <span class="card-tag">Plotly map</span>
+        </div>
+        <span class="card-cta">Explore →</span>
+      </div>
+    </a>
+
+    <!-- Humpback -->
+    <a href="humpback.html" class="project-card">
+      <div class="card-band" style="background:#3A5C45;"></div>
+      <div class="card-body">
+        <p class="card-label" style="color:#3A5C45;">Marine biology · Citizen science · Recovery</p>
+        <h2 class="card-title">The return of the humpback</h2>
+        <p class="card-desc">Humpback whale sightings in New Zealand waters have been rising for two decades. A data story tracing the recovery — and what citizen science observations reveal about where and when they're returning.</p>
+      </div>
+      <div class="card-footer">
+        <div class="card-tags">
+          <span class="card-tag">GBIF API</span>
+          <span class="card-tag">iNaturalist</span>
+          <span class="card-tag">Marine data</span>
         </div>
         <span class="card-cta">Explore →</span>
       </div>
