@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Return of the Humpback — New Harvest</title>
+  <title>The Return of the Humpback — Harry Candlish</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
@@ -27,13 +27,15 @@
     /* ── NAV ── */
     nav {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px; height: 166px; background: var(--bg);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 0 48px; height: 64px; background: #1A1E1A;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: sticky; top: 0; z-index: 100;
     }
-    .nav-logo { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 400; color: var(--dark); text-decoration: none; letter-spacing: -0.3px; }
+    .nav-logo { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 300; color: #F7F6F2; text-decoration: none; letter-spacing: -0.2px; }
     .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { font-size: 13px; color: var(--mid); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--dark); }
+    .nav-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #F7F6F2; }
+    .nav-links a.active { color: #F7F6F2; }
 
     /* ── HERO ── */
     .hero {
@@ -242,14 +244,12 @@
 
   <!-- NAV -->
   <nav>
-    <a href="index.html" class="nav-logo">
-      <img src="Minimalist Logo with Curved Leaves (1).png" alt="New Harvest" style="height:150px;width:auto;vertical-align:middle;">
-    </a>
+    <a href="index.html" class="nav-logo">Harry Candlish</a>
     <ul class="nav-links">
-      <li><a href="index.html">Portfolio</a></li>
       <li><a href="projects.html">Stories</a></li>
-      <li><a href="humpback.html">Humpback</a></li>
-      <li><a href="housing.html">Housing</a></li>
+      <li><a href="catalogue.html">Collections</a></li>
+      <li><a href="humpback.html" class="active">Humpback</a></li>
+      <li><a href="index.html#contact">Get in touch</a></li>
     </ul>
   </nav>
 
