@@ -1,279 +1,727 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KiwiSaver & First Home Buyers — New Harvest</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inside KiwiSaver — Eighteen Years of Data · Harry Candlish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     :root {
-      --bg:     #F7F6F2;
-      --dark:   #1A1E1A;
-      --mid:    #4A5248;
-      --green:  #3A5C45;
-      --gold:   #B8883A;
-      --radius: 12px;
+      --dark:    #1A1E1A;
+      --ks-dark: #1A1E1A;
+      --mid:     #4A5248;
+      --green:   #3A5C45;
+      --gold:    #B8883A;
+      --white:   #FFFFFF;
+      --bg:      #F7F6F2;
     }
 
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--dark); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--dark); -webkit-font-smoothing: antialiased; }
 
-    /* ── NAV ── */
-    nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px; height: 166px; background: var(--bg);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+    /* ── Nav ── */
+    .site-nav {
+      background: #1A1E1A;
+      padding: 0 48px;
+      height: 57px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .nav-logo { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 400; color: var(--dark); text-decoration: none; letter-spacing: -0.3px; }
-    .nav-back { font-size: 13px; color: var(--mid); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
-    .nav-back:hover { color: var(--dark); }
-    .nav-back::before { content: "←"; font-size: 14px; }
+    .nav-logo { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 300; color: #F7F6F2; text-decoration: none; letter-spacing: -0.2px; }
+    .nav-logo span { color: #3A5C45; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #F7F6F2; }
+    .nav-links a.active { color: #F7F6F2; }
 
-    /* ── HERO ── */
-    .hero {
-      background: var(--dark);
-      padding: 100px 48px 80px;
-    }
-    .hero-inner { max-width: 1200px; margin: 0 auto; }
-    .hero-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; font-weight: 500; }
-    .hero-title { font-family: 'Fraunces', serif; font-size: clamp(32px, 5vw, 56px); font-weight: 300; color: white; line-height: 1.15; letter-spacing: -1px; margin-bottom: 24px; }
-    .hero-title em { color: var(--gold); font-style: normal; }
-    .hero-intro { font-size: 16px; color: rgba(255,255,255,0.55); max-width: 640px; line-height: 1.9; }
+    /* ── Footer ── */
+    .site-footer { background: #1A1E1A; padding: 40px 48px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; }
+    .site-footer span { font-size: 13px; color: rgba(255,255,255,0.3); }
+    .site-footer a { font-size: 13px; color: #B8883A; text-decoration: none; border: 1px solid rgba(184,136,58,0.35); border-radius: 40px; padding: 10px 20px; transition: all 0.2s; }
+    .site-footer a:hover { background: rgba(184,136,58,0.1); }
 
-    /* ── STATS ROW ── */
-    .stats-row {
-      background: var(--dark);
-      padding: 0 48px 80px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
-    .stat-card { padding: 36px 24px; }
-    .stat-number { font-family: 'Fraunces', serif; font-size: 42px; font-weight: 300; color: white; line-height: 1; margin-bottom: 8px; letter-spacing: -1px; }
-    .stat-number span { color: var(--gold); }
-    .stat-label { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.5; }
-
-    /* ── SECTION ── */
-    .ks-section { padding: 80px 48px; }
-    .ks-section.alt { background: #EFEDE7; }
-    .ks-inner { max-width: 1200px; margin: 0 auto; }
-
-    .ks-section-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; font-weight: 500; }
-    .ks-section-title { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 300; color: var(--dark); line-height: 1.3; letter-spacing: -0.3px; margin-bottom: 16px; }
-    .ks-section-body { font-size: 15px; color: var(--mid); line-height: 1.9; max-width: 680px; margin-bottom: 40px; }
-    .ks-section-body strong { color: var(--dark); font-weight: 500; }
-
-    /* ── CHART CARD ── */
-    .chart-card {
-      background: white;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    @media (max-width: 640px) {
+      .site-nav { padding: 0 20px; }
+      .nav-links { gap: 16px; }
+      .site-footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
     }
 
-    /* ── TWO-COL ── */
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    /* ── KiwiSaver ── */
+    #kiwisaver { padding: 0; }
 
-    /* ── CAVEAT ── */
-    .caveat {
-      background: var(--dark);
-      padding: 80px 48px;
-    }
-    .caveat-inner { max-width: 1200px; margin: 0 auto; }
-    .caveat-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 12px; font-weight: 500; }
-    .caveat-title { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 300; color: white; line-height: 1.3; letter-spacing: -0.3px; margin-bottom: 24px; }
-    .caveat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-    .caveat-text p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.9; margin-bottom: 16px; }
-    .caveat-text p:last-child { margin-bottom: 0; }
-    .caveat-text em { color: var(--gold); font-style: normal; }
-    .caveat-stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); padding: 32px; }
-    .caveat-stat-num { font-family: 'Fraunces', serif; font-size: 52px; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 8px; }
-    .caveat-stat-label { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; }
-    .caveat-stat + .caveat-stat { margin-top: 16px; }
+    .ks-hero { background: var(--dark); padding: 100px 48px 80px; }
+    .ks-hero-inner { max-width: 100%; }
+    .ks-hero-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; font-weight: 500; }
+    .ks-hero-title { font-family: 'Fraunces', serif; font-size: clamp(32px, 5vw, 56px); font-weight: 300; color: white; line-height: 1.15; letter-spacing: -1px; margin-bottom: 24px; }
+    .ks-hero-title em { color: var(--gold); font-style: normal; }
+    .ks-hero-intro { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.9; margin-bottom: 16px; }
+    .ks-hero-intro:last-child { margin-bottom: 0; }
+    .ks-hero-grid { display: grid; grid-template-columns: 1fr 340px; gap: 64px; align-items: start; margin-top: 8px; }
+    .ks-hero-meta { display: flex; flex-direction: column; gap: 24px; }
+    .ks-hero-meta-item { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px; }
+    .ks-hero-meta-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 6px; font-weight: 600; }
+    .ks-hero-meta-val { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; }
 
-    /* ── BACK LINK ── */
-    .back-section { padding: 60px 48px; background: var(--bg); text-align: center; border-top: 1px solid rgba(0,0,0,0.06); }
-    .back-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--mid); text-decoration: none; border: 1px solid rgba(0,0,0,0.12); border-radius: 40px; padding: 12px 24px; transition: all 0.2s; }
-    .back-link:hover { color: var(--dark); border-color: var(--dark); }
+    .ks-stats-row { background: var(--dark); padding: 0 48px 80px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .ks-stats-inner { max-width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .ks-stat-card { padding: 36px 24px; }
+    .ks-stat-number { font-family: 'Fraunces', serif; font-size: 42px; font-weight: 300; color: white; line-height: 1; margin-bottom: 8px; letter-spacing: -1px; }
+    .ks-stat-number span { color: var(--gold); }
+    .ks-stat-sublabel { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+
+    .ks-content-section { padding: 80px 48px; }
+    .ks-content-section-alt { background: #EFEDE7; }
+    .ks-content-inner { max-width: 100%; }
+    .ks-content-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; font-weight: 500; }
+    .ks-content-title { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 300; color: var(--dark); line-height: 1.3; letter-spacing: -0.3px; margin-bottom: 16px; }
+    .ks-content-body { font-size: 15px; color: #4A5248; line-height: 1.9; max-width: 680px; margin-bottom: 40px; }
+    .ks-content-body strong { color: var(--dark); font-weight: 500; }
+
+    .ks-embed-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+    .ks-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+    .ks-caveat { background: var(--dark); padding: 80px 48px; }
+    .ks-caveat-inner { max-width: 100%; }
+    .ks-caveat-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 12px; font-weight: 500; }
+    .ks-caveat-title { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 300; color: white; line-height: 1.3; letter-spacing: -0.3px; margin-bottom: 24px; }
+    .ks-caveat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .ks-caveat-text p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.9; margin-bottom: 16px; }
+    .ks-caveat-text p:last-child { margin-bottom: 0; }
+    .ks-caveat-text em { color: var(--gold); font-style: normal; }
+    .ks-caveat-stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 32px; }
+    .ks-caveat-stat-num { font-family: 'Fraunces', serif; font-size: 52px; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 8px; }
+    .ks-caveat-stat-sublabel { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+    .ks-gap-featured { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+    .ks-gap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .ks-gap-card { background: white; border-radius: 12px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+    .ks-gap-card-tag { font-size: 10px; letter-spacing: 1.4px; text-transform: uppercase; color: #9AA398; font-weight: 600; margin-bottom: 10px; }
+    .ks-gap-card-name { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 300; color: var(--dark); margin-bottom: 14px; letter-spacing: -0.2px; }
+    .ks-gap-card-featured .ks-gap-card-name { font-size: 24px; }
+    .ks-gap-card-body { font-size: 14px; color: #4A5248; line-height: 1.85; flex: 1; margin-bottom: 20px; }
+    .ks-gap-card-body strong { color: var(--dark); font-weight: 500; }
+    .ks-gap-stats { display: flex; flex-wrap: wrap; gap: 16px; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 16px; margin-top: auto; }
+    .ks-gap-stat { font-size: 12px; color: #9AA398; line-height: 1.4; }
+    .ks-gap-stat span { display: block; font-family: 'Fraunces', serif; font-size: 22px; font-weight: 300; color: var(--green); letter-spacing: -0.5px; line-height: 1.1; margin-bottom: 2px; }
+    .ks-gap-card-featured .ks-gap-stat span { font-size: 26px; }
+    .ks-gap-card-featured .ks-gap-stats { flex-direction: column; gap: 20px; }
+
+    .ks-optimism { background: var(--dark); padding: 80px 48px; }
+    .ks-optimism-inner { max-width: 100%; }
+    .ks-optimism-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-weight: 500; }
+    .ks-optimism-title { font-family: 'Fraunces', serif; font-size: clamp(26px, 3vw, 40px); font-weight: 300; color: white; line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 48px; }
+    .ks-optimism-title em { color: var(--gold); font-style: normal; }
+    .ks-optimism-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .ks-optimism-text p { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.9; margin-bottom: 20px; }
+    .ks-optimism-text p:last-child { margin-bottom: 0; }
+    .ks-optimism-text strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+    .ks-optimism-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(255,255,255,0.04); border-radius: 12px; overflow: hidden; }
+    .ks-optimism-stat { background: rgba(255,255,255,0.03); padding: 28px 24px; border: 1px solid rgba(255,255,255,0.06); }
+    .ks-optimism-stat-num { font-family: 'Fraunces', serif; font-size: 40px; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 10px; letter-spacing: -1px; }
+    .ks-optimism-stat-label { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+    .ks-taxpayer-block { border-left: 3px solid #B85C45; padding: 32px 36px; background: #FDF8F6; border-radius: 0 12px 12px 0; }
+    .ks-taxpayer-label { font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; color: #B85C45; font-weight: 600; margin-bottom: 10px; }
+    .ks-taxpayer-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 300; color: var(--dark); line-height: 1.3; margin-bottom: 20px; }
+    .ks-taxpayer-body { font-size: 15px; color: #4A5248; line-height: 1.9; margin-bottom: 16px; }
+    .ks-taxpayer-body strong { color: var(--dark); font-weight: 500; }
+    .ks-taxpayer-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: #EDE8E4; border-radius: 8px; overflow: hidden; margin-top: 28px; }
+    .ks-taxpayer-stat { background: white; padding: 24px 20px; }
+    .ks-taxpayer-stat-num { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 300; color: #B85C45; line-height: 1; margin-bottom: 8px; letter-spacing: -0.5px; }
+    .ks-taxpayer-stat-label { font-size: 12px; color: #4A5248; line-height: 1.5; }
+
+    .ks-scorecard { border: 1px solid rgba(0,0,0,0.08); border-radius: 12px; overflow: hidden; }
+    .ks-scorecard-header { display: grid; grid-template-columns: 1fr 160px 160px 100px; padding: 12px 20px; background: #F7F6F2; font-size: 11px; letter-spacing: 1.2px; text-transform: uppercase; font-weight: 600; }
+    .ks-scorecard-row { display: grid; grid-template-columns: 1fr 160px 160px 100px; padding: 14px 20px; border-top: 1px solid rgba(0,0,0,0.06); background: white; align-items: center; }
+    .ks-scorecard-row:hover { background: #FAFAF8; }
+    .ks-scorecard-dim { font-size: 14px; color: #1A1E1A; }
+    .ks-scorecard-val { font-size: 13px; color: #4A5248; }
+    .ks-scorecard-val.nz { color: #3A5C45; font-weight: 500; }
+    .ks-scorecard-val.au { color: #2B5FA8; font-weight: 500; }
+    .ks-scorecard-winner { font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; display: inline-block; }
+    .ks-scorecard-winner.au-win { color: #2B5FA8; background: rgba(43,95,168,0.08); }
+    .ks-scorecard-winner.nz-win { color: #3A5C45; background: rgba(58,92,69,0.1); }
 
     @media (max-width: 900px) {
-      nav { padding: 0 24px; height: 120px; }
-      .hero { padding: 60px 24px 60px; }
-      .stats-row { padding: 0 24px 60px; }
-      .stats-inner { grid-template-columns: 1fr 1fr; }
-      .ks-section { padding: 60px 24px; }
-      .two-col { grid-template-columns: 1fr; }
-      .caveat { padding: 60px 24px; }
-      .caveat-grid { grid-template-columns: 1fr; gap: 40px; }
-      .back-section { padding: 40px 24px; }
+      .ks-hero { padding: 60px 24px; }
+      .ks-hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .ks-stats-row { padding: 0 24px 60px; }
+      .ks-stats-inner { grid-template-columns: 1fr 1fr; }
+      .ks-content-section { padding: 60px 24px; }
+      .ks-two-col { grid-template-columns: 1fr; }
+      .ks-caveat { padding: 60px 24px; }
+      .ks-caveat-grid { grid-template-columns: 1fr; gap: 40px; }
+      .ks-optimism { padding: 60px 24px; }
+      .ks-optimism-grid { grid-template-columns: 1fr; gap: 40px; }
+      .ks-optimism-stats { grid-template-columns: 1fr 1fr; }
+      .ks-gap-featured { grid-template-columns: 1fr; }
+      .ks-gap-grid { grid-template-columns: 1fr 1fr; }
+      .ks-scorecard-header, .ks-scorecard-row { grid-template-columns: 1fr 1fr; }
+      .ks-scorecard-header div:nth-child(3), .ks-scorecard-header div:nth-child(4),
+      .ks-scorecard-row .ks-scorecard-val.au, .ks-scorecard-row .ks-scorecard-winner { display: none; }
+    }
+    @media (max-width: 600px) {
+      .ks-gap-grid { grid-template-columns: 1fr; }
+      .ks-comparison-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 820px) {
+      .ks-comparison-grid { grid-template-columns: 1fr 1fr !important; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="index.html" class="nav-logo"><img src="Minimalist Logo with Curved Leaves (1).png" alt="New Harvest" style="height:150px; width:auto; vertical-align:middle;"></a>
-    <a href="index.html#housing-story" class="nav-back">Back to housing story</a>
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">New <span>Harvest</span></a>
+    <ul class="nav-links">
+      <li><a href="projects.html">Stories</a></li>
+      <li><a href="kiwi.html">Kiwi</a></li>
+      <li><a href="election.html">Election 2026</a></li>
+      <li><a href="kiwisaver.html" class="active">KiwiSaver</a></li>
+      <li><a href="housing.html">Housing</a></li>
+      <li><a href="index.html#contact">Get in touch</a></li>
+    </ul>
   </nav>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-inner">
-      <p class="hero-label">KiwiSaver Analysis</p>
-      <h1 class="hero-title">KiwiSaver & the<br><em>path to home ownership</em></h1>
-      <p class="hero-intro">
-        Since launching in 2007, KiwiSaver has enrolled 3.4 million New Zealanders and become a key tool for first home buyers. But the same data that tells an optimistic story about home ownership also reveals a growing number of people withdrawing under financial hardship — a counterweight worth understanding.
-      </p>
-    </div>
-  </div>
+  <section id="kiwisaver">
 
-  <!-- KEY STATS -->
-  <div class="stats-row">
-    <div class="stats-inner">
-      <div class="stat-card">
-        <div class="stat-number">3.4<span>m</span></div>
-        <div class="stat-label">Members enrolled<br>as at June 2025</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">43<span>,</span>600</div>
-        <div class="stat-label">Used KiwiSaver for a<br>first home in 2025</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">$1.86<span>b</span></div>
-        <div class="stat-label">Withdrawn for first<br>home purchases in 2025</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">47<span>%</span></div>
-        <div class="stat-label">Of members made no<br>contribution in 2025</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SECTION 1: WHO'S ENROLLED -->
-  <section class="ks-section">
-    <div class="ks-inner">
-      <p class="ks-section-label">Membership</p>
-      <h2 class="ks-section-title">Who is in KiwiSaver?</h2>
-      <p class="ks-section-body">
-        The 25–34 and 35–44 age bands are the largest cohorts — exactly the groups most likely to be saving for a first home or peak earning years. Membership in the 65+ bracket is growing fastest as the scheme matures and older members choose to stay enrolled. The under-17 cohort is gradually shrinking as fewer children are enrolled by parents.
-      </p>
-      <div class="two-col">
-        <div class="chart-card">
-          <iframe src="ks_age_groups.html" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
-        </div>
-        <div class="chart-card">
-          <iframe src="ks_contribution_rates.html" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
-        </div>
-      </div>
-      <p class="ks-section-body" style="margin-top:24px; margin-bottom:0;">
-        On contribution rates, <strong>3% dominates</strong> — the legal minimum — with over 1.16 million members contributing at that level. The 6% rate is the only one growing; 4% and 8% are declining. Nearly <strong>1.6 million members made no contribution at all</strong> in 2025, a figure that includes children, retirees, those on savings suspension, and overseas members.
-      </p>
-    </div>
-  </section>
-
-  <!-- SECTION 2: FIRST HOME -->
-  <section class="ks-section alt">
-    <div class="ks-inner">
-      <p class="ks-section-label">First home buyers</p>
-      <h2 class="ks-section-title">KiwiSaver as a path to home ownership</h2>
-      <p class="ks-section-body">
-        First home withdrawals peaked in 2021 — the height of the housing boom — when 54,520 members used KiwiSaver to help buy their first home, withdrawing $1.6 billion. As the market cooled and interest rates rose, withdrawals dipped. They are now recovering: 43,600 people made a first home withdrawal in 2025, withdrawing a record <strong>$1.86 billion</strong>. The average first home withdrawal is approximately <strong>$43,000</strong> — a meaningful contribution to a deposit, but still a fraction of what most regions require.
-      </p>
-      <div class="two-col">
-        <div class="chart-card">
-          <iframe src="ks_withdrawals_count.html" width="100%" height="390" frameborder="0" scrolling="no"></iframe>
-        </div>
-        <div class="chart-card">
-          <iframe src="ks_withdrawals_amount.html" width="100%" height="390" frameborder="0" scrolling="no"></iframe>
+    <!-- Hero -->
+    <div class="ks-hero">
+      <div class="ks-hero-inner">
+        <p class="ks-hero-label">Deep Dive · KiwiSaver Analysis</p>
+        <h2 class="ks-hero-title">Inside KiwiSaver &#8212;<br><em>eighteen years of data</em></h2>
+        <div class="ks-hero-grid">
+          <div>
+            <p class="ks-hero-intro">
+              KiwiSaver launched on 1 July 2007 under Finance Minister Michael Cullen &#8212; a deliberate response to New Zealand&#8217;s chronically low household savings rate and growing anxiety about the long-term cost of NZ Super. The idea was straightforward: auto-enrol workers, attach savings to employment, and let compounding do the rest.
+            </p>
+            <p class="ks-hero-intro">
+              What followed was messier. The scheme survived a change of government in 2008 &#8212; despite National&#8217;s early opposition &#8212; but the employer contribution rate stalled at 2% for six years, and the government&#8217;s own contribution was cut twice. Today, 3.4 million New Zealanders are enrolled, $123 billion sits in KiwiSaver funds, and the scheme faces a defining tension: it is simultaneously a retirement savings vehicle, a first home deposit tool, and &#8212; increasingly &#8212; a financial hardship lifeline.
+            </p>
+          </div>
+          <div class="ks-hero-meta">
+            <div class="ks-hero-meta-item">
+              <div class="ks-hero-meta-label">Data sources</div>
+              <div class="ks-hero-meta-val">IRD KiwiSaver Annual Statistics &middot; FMA Annual Report 2025 &middot; APRA Superannuation Bulletin &middot; Stats NZ</div>
+            </div>
+            <div class="ks-hero-meta-item">
+              <div class="ks-hero-meta-label">Methods</div>
+              <div class="ks-hero-meta-val">Python data pipeline &middot; IRD Statistics Excel extracts &middot; Compound growth modelling &middot; Plotly interactive charts</div>
+            </div>
+            <div class="ks-hero-meta-item">
+              <div class="ks-hero-meta-label">Coverage</div>
+              <div class="ks-hero-meta-val">2007&#8211;2026 &middot; All six major KiwiSaver fund types &middot; Trans-Tasman comparison with Australian superannuation</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- SECTION 3: FORECAST -->
-  <section class="ks-section">
-    <div class="ks-inner">
-      <p class="ks-section-label">Policy update · 1 April 2026</p>
-      <h2 class="ks-section-title">Two changes. One clear shift of cost.</h2>
-      <p class="ks-section-body">
-        From 1 April 2026, employers must contribute a minimum of <strong>3.5%</strong> of an employee's salary into KiwiSaver — up from 3%, and now applying to <strong>16 and 17 year olds</strong> for the first time. Simultaneously, the government has halved its own member tax credit: the maximum annual government contribution drops from <strong>$521.43 to $260.72</strong>. The government saves approximately <strong>$417 million per year</strong> — and passes the obligation to employers.
-      </p>
-      <p class="ks-section-body">
-        The net effect depends heavily on what you earn. The employer gain (a fixed percentage of salary) grows with income, while the government credit loss ($260.71) is the same for almost everyone who contributes enough. The break-even point is <strong>~$74,500</strong> — earners below that threshold are net worse off from the combined changes.
-      </p>
-
-      <!-- Forecast stats row -->
-      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:#EFEDE7; border-radius:var(--radius); overflow:hidden; margin-bottom:40px;">
-        <div style="background:white; padding:28px 20px;">
-          <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#B85C45; line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">−$19</div>
-          <div style="font-size:12px; color:var(--mid); line-height:1.5;">Net annual change for the<br>median earner ($69k salary)</div>
+    <!-- Key stats -->
+    <div class="ks-stats-row">
+      <div class="ks-stats-inner">
+        <div class="ks-stat-card">
+          <div class="ks-stat-number">3.4<span>m</span></div>
+          <div class="ks-stat-sublabel">Members enrolled<br>as at June 2025</div>
         </div>
-        <div style="background:white; padding:28px 20px;">
-          <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:var(--dark); line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">~$74.5k</div>
-          <div style="font-size:12px; color:var(--mid); line-height:1.5;">Break-even salary — earners<br>below this are net worse off</div>
+        <div class="ks-stat-card">
+          <div class="ks-stat-number">43<span>,</span>600</div>
+          <div class="ks-stat-sublabel">Used KiwiSaver for a<br>first home in 2025</div>
         </div>
-        <div style="background:white; padding:28px 20px;">
-          <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:var(--dark); line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">$480m</div>
-          <div style="font-size:12px; color:var(--mid); line-height:1.5;">Extra employer contributions<br>into accounts per year (net)</div>
+        <div class="ks-stat-card">
+          <div class="ks-stat-number">$1.86<span>b</span></div>
+          <div class="ks-stat-sublabel">Withdrawn for first<br>home purchases in 2025</div>
         </div>
-        <div style="background:white; padding:28px 20px;">
-          <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#B85C45; line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">$417m</div>
-          <div style="font-size:12px; color:var(--mid); line-height:1.5;">Government saves annually<br>by halving the tax credit</div>
+        <div class="ks-stat-card">
+          <div class="ks-stat-number">47<span>%</span></div>
+          <div class="ks-stat-sublabel">Of members made no<br>contribution in 2025</div>
         </div>
       </div>
-
-      <p class="ks-section-body" style="margin-bottom:0; font-size:13px; color:#8A8A8A;">
-        Forecast assumptions: median salary $69,000, mean salary $76,000 (Stats NZ); 1.62 million employer-matched members; ~1.5 million receiving full government credit; blended ESCT 22%. All per-person figures use marginal ESCT rates. Actual government spend sourced from IRD may differ.
-      </p>
     </div>
-  </section>
 
-  <!-- CAVEAT: HARDSHIP -->
-  <div class="caveat">
-    <div class="caveat-inner">
-      <p class="caveat-label">A note of caution</p>
-      <h2 class="caveat-title">Financial hardship withdrawals are rising</h2>
-      <div class="caveat-grid">
-        <div class="caveat-text">
-          <p>
-            For the first time in KiwiSaver's history, the number of members withdrawing under <em>financial hardship</em> exceeded the number withdrawing for a first home purchase in 2025 — 45,870 versus 43,600.
+    <!-- Section 1: Who's enrolled -->
+    <div class="ks-content-section">
+      <div class="ks-content-inner">
+        <p class="ks-content-label">Membership</p>
+        <h3 class="ks-content-title">Who is in KiwiSaver?</h3>
+        <p class="ks-content-body">
+          The 25&#8211;34 and 35&#8211;44 age bands are the largest cohorts &#8212; exactly the groups most likely to be saving for a first home or peak earning years. Membership in the 65+ bracket is growing fastest as the scheme matures and older members choose to stay enrolled. The under-17 cohort is gradually shrinking as fewer children are enrolled by parents.
+        </p>
+        <div class="ks-two-col">
+          <div class="ks-embed-card">
+            <iframe src="ks_age_groups.html" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+          </div>
+          <div class="ks-embed-card">
+            <iframe src="ks_contribution_rates.html" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+          </div>
+        </div>
+        <p class="ks-content-body" style="margin-top:24px; margin-bottom:0;">
+          On contribution rates, <strong>3% dominates</strong> &#8212; the legal minimum &#8212; with over 1.16 million members contributing at that level. The 6% rate is the only one growing; 4% and 8% are declining. Nearly <strong>1.6 million members made no contribution at all</strong> in 2025, a figure that includes children, retirees, those on savings suspension, and overseas members.
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 2: First home -->
+    <div class="ks-content-section ks-content-section-alt">
+      <div class="ks-content-inner">
+        <p class="ks-content-label">First home buyers</p>
+        <h3 class="ks-content-title">KiwiSaver as a path to home ownership</h3>
+        <p class="ks-content-body">
+          First home withdrawals peaked in 2021 &#8212; the height of the housing boom &#8212; when 54,520 members used KiwiSaver to help buy their first home, withdrawing $1.6 billion. As the market cooled and interest rates rose, withdrawals dipped. They are now recovering: 43,600 people made a first home withdrawal in 2025, withdrawing a record <strong>$1.86 billion</strong>. The average first home withdrawal is approximately <strong>$43,000</strong> &#8212; a meaningful contribution to a deposit, but still a fraction of what most regions require.
+        </p>
+        <div class="ks-two-col">
+          <div class="ks-embed-card">
+            <iframe src="ks_withdrawals_count.html" width="100%" height="390" frameborder="0" scrolling="no"></iframe>
+          </div>
+          <div class="ks-embed-card">
+            <iframe src="ks_withdrawals_amount.html" width="100%" height="390" frameborder="0" scrolling="no"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Caveat: hardship -->
+    <div class="ks-caveat">
+      <div class="ks-caveat-inner">
+        <p class="ks-caveat-label">A note of caution</p>
+        <h3 class="ks-caveat-title">Financial hardship withdrawals are rising</h3>
+        <div class="ks-caveat-grid">
+          <div class="ks-caveat-text">
+            <p>For the first time in KiwiSaver&#8217;s history, the number of members withdrawing under <em>financial hardship</em> exceeded the number withdrawing for a first home purchase in 2025 &#8212; 45,870 versus 43,600.</p>
+            <p>The trend has been building for years. Hardship withdrawals have risen in every single year since 2012, accelerating sharply from 2023 as cost-of-living pressures mounted. The average hardship withdrawal is around $10,000 &#8212; a fraction of the first home average, reflecting the crisis-level circumstances that trigger it.</p>
+            <p>The implication is sobering: <em>KiwiSaver is increasingly being drawn upon not as a path to home ownership, but as a last financial resort.</em> For many New Zealanders, the savings intended for retirement or a first home are being consumed by the pressures of today.</p>
+          </div>
+          <div>
+            <div class="ks-caveat-stat">
+              <div class="ks-caveat-stat-num">45,870</div>
+              <div class="ks-caveat-stat-sublabel">Members withdrew under financial hardship in 2025 &#8212; the highest number ever recorded, and for the first time exceeding first home withdrawal counts</div>
+            </div>
+            <div class="ks-caveat-stat" style="margin-top:16px;">
+              <div class="ks-caveat-stat-num">$471m</div>
+              <div class="ks-caveat-stat-sublabel">Withdrawn under financial hardship in 2025 &#8212; up from $23m in 2012, a 20-fold increase in thirteen years</div>
+            </div>
+            <div class="ks-caveat-stat" style="margin-top:16px;">
+              <div class="ks-caveat-stat-num">81,778</div>
+              <div class="ks-caveat-stat-sublabel">Members currently on savings suspension as of February 2026 &#8212; pausing contributions, often due to financial pressure</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Opportunity cost -->
+    <div class="ks-content-section" style="padding-top:48px; padding-bottom:48px;">
+      <div class="ks-content-inner">
+        <p class="ks-content-label">The compounding cost</p>
+        <h3 class="ks-content-title">What a $10,000 hardship withdrawal really costs</h3>
+        <p class="ks-content-body">
+          Every dollar withdrawn under hardship is a dollar that stops compounding. At a conservative 6% annual return &#8212; typical for a balanced KiwiSaver fund after fees &#8212; a $10,000 withdrawal at age 30 doesn&#8217;t just cost $10,000. It costs the <strong>$77,000</strong> that money would have become by retirement. For a 25 year old, that same withdrawal costs over <strong>$100,000</strong>. The hardship withdrawal scheme exists for good reason, but the long-term retirement penalty is rarely visible to the people making the decision under financial pressure.
+        </p>
+        <div class="ks-embed-card" style="margin-bottom:16px;">
+          <div style="padding:20px 20px 0; font-size:13px; color:#4A5248; font-family:'Inter',sans-serif; font-weight:500;">Total retirement value lost by age of withdrawal</div>
+          <div id="ks-oppcost-bar" style="width:100%; height:360px;"></div>
+        </div>
+        <p class="ks-content-body" style="margin-bottom:40px; font-size:13px; color:#8A8A8A;">
+          Assumes 6% annual return, retirement at age 65, no further contributions on the withdrawn amount. Figures are nominal (not inflation-adjusted). Actual returns vary by fund type and market conditions.
+        </p>
+
+        <div class="ks-taxpayer-block">
+          <div class="ks-taxpayer-label">The compounding cost of financial precarity</div>
+          <h4 class="ks-taxpayer-title">Economic precarity doesn&#8217;t end when the immediate crisis passes &#8212; it compounds</h4>
+          <p class="ks-taxpayer-body">The 45,870 people who withdrew under hardship in 2025 were not making a financial planning error. They were paying rent. Covering groceries. Keeping the power on. The cost of living crisis doesn&#8217;t ask permission before it raids tomorrow&#8217;s retirement savings &#8212; and when it does, the cost doesn&#8217;t end when the crisis passes. It compounds.</p>
+          <p class="ks-taxpayer-body">The Crown contributed roughly 8% of every dollar that went into KiwiSaver &#8212; around <strong>$38 million of the $471 million withdrawn under hardship in 2025 was taxpayer money</strong>. It went in as a long-term investment in retirement security. It came out to cover this week&#8217;s expenses. That is the cost of the cost of living crisis made visible: public money spent twice, on the same person, because the underlying pressure was never addressed.</p>
+          <p class="ks-taxpayer-body" style="margin-bottom:0;">The longer-term fiscal consequence is larger still. NZ Super costs <strong>$18.5 billion a year</strong> &#8212; roughly 5% of GDP &#8212; and was designed as a foundation, not a full income. KiwiSaver was meant to be the structure built on top of it. When hardship withdrawals hollow out that structure for the people least likely to rebuild it, the Crown is left carrying a retirement income system under greater strain than it should be. A society that allows poverty to persist pays for it twice: once in the crisis, and again in retirement.</p>
+          <div class="ks-taxpayer-stats">
+            <div class="ks-taxpayer-stat">
+              <div class="ks-taxpayer-stat-num">$38m</div>
+              <div class="ks-taxpayer-stat-label">Crown money within 2025 hardship withdrawals &#8212; public investment in retirement security, spent on immediate survival</div>
+            </div>
+            <div class="ks-taxpayer-stat">
+              <div class="ks-taxpayer-stat-num">$18.5b</div>
+              <div class="ks-taxpayer-stat-label">Annual NZ Super cost &#8212; the foundation KiwiSaver was designed to build on, not replace single-handedly</div>
+            </div>
+            <div class="ks-taxpayer-stat">
+              <div class="ks-taxpayer-stat-num">2&times;</div>
+              <div class="ks-taxpayer-stat-label">The number of times poverty is paid for &#8212; once in the crisis that triggers withdrawal, once in the retirement income gap that follows</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Policy update -->
+    <div class="ks-content-section" style="padding-top:48px;">
+      <div class="ks-content-inner">
+        <p class="ks-content-label">Policy update &middot; Two dates. One direction.</p>
+        <h3 class="ks-content-title">Two changes. One clear shift of cost.</h3>
+        <p class="ks-content-body">
+          The two changes don&#8217;t arrive together. The government halved its member tax credit on <strong>1 July 2025</strong>. The employer rate increase &#8212; from 3% to 3.5% &#8212; doesn&#8217;t kick in until <strong>1 April 2026</strong>. In the nine months between, members absorb the full loss with nothing to offset it. The government saves ~$313 million in that window. KiwiSavers collectively lose ~$294 million.
+        </p>
+        <p class="ks-content-body">
+          From April 2026, the employer increase almost &#8212; but not quite &#8212; covers the credit loss for most people. The median earner on $69,000 is still <strong>$19 worse off per year</strong> after both changes take effect.
+        </p>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:#EFEDE7; border-radius:12px; overflow:hidden; margin-bottom:40px;">
+          <div style="background:white; padding:28px 20px;">
+            <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#B85C45; line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">~$294m</div>
+            <div style="font-size:12px; color:#4A5248; line-height:1.5;">Lost by KiwiSavers in the<br>9-month gap (Jul 2025&#8211;Mar 2026)</div>
+          </div>
+          <div style="background:white; padding:28px 20px;">
+            <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#3A5C45; line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">~$313m</div>
+            <div style="font-size:12px; color:#4A5248; line-height:1.5;">Saved by the government<br>in that same 9 months</div>
+          </div>
+          <div style="background:white; padding:28px 20px;">
+            <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#B85C45; line-height:1; margin-bottom:8px; letter-spacing:-0.5px;">&#8722;$19</div>
+            <div style="font-size:12px; color:#4A5248; line-height:1.5;">Net annual loss from Apr 2026<br>for the median earner ($69k)</div>
+          </div>
+        </div>
+        <p class="ks-content-body" style="margin-bottom:0; font-size:13px; color:#8A8A8A;">
+          Assumptions: ~1.5 million members receiving full government credit; median salary $69,000 (Stats NZ); gap-period figures calculated as 9/12 of annual impact. Employer gain subject to ESCT at marginal rates.
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 4: NZ vs Australia -->
+    <div class="ks-content-section ks-content-section-alt">
+      <div class="ks-content-inner">
+        <p class="ks-content-label">Trans-Tasman comparison</p>
+        <h3 class="ks-content-title">Australia&#8217;s super system puts KiwiSaver in perspective</h3>
+        <p class="ks-content-body">
+          Both countries have mandatory workplace savings schemes, but the similarities end there. Australia&#8217;s Superannuation Guarantee has been compulsory since 1992 and is currently set at <strong>12%</strong> &#8212; more than three times KiwiSaver&#8217;s employer rate. The result is a retirement savings system that dwarfs KiwiSaver in every measurable way. New Zealand&#8217;s opt-out system has achieved strong uptake, but the contribution gap compounds over a working lifetime into a stark difference in retirement outcomes.
+        </p>
+
+        <div class="ks-comparison-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:#EFEDE7; border-radius:12px; overflow:hidden; margin-bottom:40px;">
+          <div style="background:white; padding:28px 24px;">
+            <div style="font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:#9AA398; margin-bottom:16px; font-weight:500;">Employer contribution rate</div>
+            <div style="display:flex; align-items:flex-end; gap:20px;">
+              <div>
+                <div style="font-family:'Fraunces',serif; font-size:40px; font-weight:300; color:#3A5C45; line-height:1; letter-spacing:-1px;">3.5<span style="font-size:24px;">%</span></div>
+                <div style="font-size:12px; color:#9AA398; margin-top:6px;">New Zealand</div>
+              </div>
+              <div style="font-size:22px; color:#DEDBD3; padding-bottom:8px;">vs</div>
+              <div>
+                <div style="font-family:'Fraunces',serif; font-size:40px; font-weight:300; color:#2B5FA8; line-height:1; letter-spacing:-1px;">12<span style="font-size:24px;">%</span></div>
+                <div style="font-size:12px; color:#9AA398; margin-top:6px;">Australia</div>
+              </div>
+            </div>
+          </div>
+          <div style="background:white; padding:28px 24px;">
+            <div style="font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:#9AA398; margin-bottom:16px; font-weight:500;">Average member balance</div>
+            <div style="display:flex; align-items:flex-start; gap:20px;">
+              <div>
+                <div style="font-family:'Fraunces',serif; font-size:40px; font-weight:300; color:#3A5C45; line-height:1; letter-spacing:-1px;">$36<span style="font-size:24px;">k</span></div>
+                <div style="font-size:12px; color:#9AA398; margin-top:6px;">NZD &middot; New Zealand</div>
+              </div>
+              <div style="font-size:22px; color:#DEDBD3; padding-top:8px;">vs</div>
+              <div>
+                <div style="font-family:'Fraunces',serif; font-size:40px; font-weight:300; color:#2B5FA8; line-height:1; letter-spacing:-1px;">$132<span style="font-size:24px;">k</span></div>
+                <div style="font-size:12px; color:#9AA398; margin-top:6px;">AUD &middot; Australia</div>
+                <div style="font-size:11px; color:#C2BFB8; margin-top:3px;">(~$150k NZD)</div>
+              </div>
+            </div>
+          </div>
+          <div style="background:white; padding:28px 24px;">
+            <div style="font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:#9AA398; margin-bottom:16px; font-weight:500;">Total fund size per capita</div>
+            <div style="display:flex; align-items:flex-start; gap:20px;">
+              <div>
+                <div style="font-family:'Fraunces',serif; font-size:40px; font-weight:300; color:#3A5C45; line-height:1; letter-spacing:-1px;">$23<span style="font-size:24px;">k</span></div>
+                <div style="font-size:12px; color:#9AA398; margin-top:6px;">NZD &middot; New Zealand</div>
+              </div>
+              <div style="font-size:22px; color:#DEDBD3; padding-top:8px;">vs</div>
+              <div>
+                <div style="font-family:'Fraunces',serif; font-size:40px; font-weight:300; color:#2B5FA8; line-height:1; letter-spacing:-1px;">$161<span style="font-size:24px;">k</span></div>
+                <div style="font-size:12px; color:#9AA398; margin-top:6px;">AUD &middot; Australia</div>
+                <div style="font-size:11px; color:#C2BFB8; margin-top:3px;">(~$183k NZD)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ks-embed-card" style="margin-bottom:40px;">
+          <div style="font-size:11px; color:rgba(26,30,26,0.4); font-family:'Inter',sans-serif; margin-bottom:4px; padding-left:4px; padding-top:16px;">employer contribution rate (%)</div>
+          <div id="ks-rate-chart" style="width:100%; height:380px;"></div>
+        </div>
+
+        <div class="ks-scorecard">
+          <div class="ks-scorecard-header">
+            <div></div>
+            <div style="color:#3A5C45; font-weight:600;">New Zealand</div>
+            <div style="color:#2B5FA8; font-weight:600;">Australia</div>
+            <div></div>
+          </div>
+          <div class="ks-scorecard-row"><div class="ks-scorecard-dim">Employer contribution</div><div class="ks-scorecard-val nz">3.5%</div><div class="ks-scorecard-val au">12%</div><div class="ks-scorecard-winner au-win">AU leads</div></div>
+          <div class="ks-scorecard-row"><div class="ks-scorecard-dim">Compulsion</div><div class="ks-scorecard-val nz">Opt-out</div><div class="ks-scorecard-val au">Mandatory</div><div class="ks-scorecard-winner au-win">AU leads</div></div>
+          <div class="ks-scorecard-row"><div class="ks-scorecard-dim">Avg. retirement balance</div><div class="ks-scorecard-val nz">~$100&#8211;150k NZD</div><div class="ks-scorecard-val au">~$355k AUD (60&#8211;64)</div><div class="ks-scorecard-winner au-win">AU leads</div></div>
+          <div class="ks-scorecard-row"><div class="ks-scorecard-dim">Government co-contribution</div><div class="ks-scorecard-val nz">$261/yr</div><div class="ks-scorecard-val au">Up to $500/yr</div><div class="ks-scorecard-winner au-win">AU leads</div></div>
+          <div class="ks-scorecard-row"><div class="ks-scorecard-dim">Total assets (AUD equiv.)</div><div class="ks-scorecard-val nz">~$108b</div><div class="ks-scorecard-val au">$4.3 trillion</div><div class="ks-scorecard-winner au-win">AU leads</div></div>
+          <div class="ks-scorecard-row"><div class="ks-scorecard-dim">Hardship access</div><div class="ks-scorecard-val nz">Accessible</div><div class="ks-scorecard-val au">Very restricted</div><div class="ks-scorecard-winner nz-win">NZ leads</div></div>
+          <div class="ks-scorecard-row"><div class="ks-scorecard-dim">First home withdrawal</div><div class="ks-scorecard-val nz">Straightforward</div><div class="ks-scorecard-val au">Available (FHSS)</div><div class="ks-scorecard-winner nz-win">NZ leads</div></div>
+          <div class="ks-scorecard-row"><div class="ks-scorecard-dim">Scheme simplicity</div><div class="ks-scorecard-val nz">38 schemes</div><div class="ks-scorecard-val au">Hundreds of funds</div><div class="ks-scorecard-winner nz-win">NZ leads</div></div>
+        </div>
+
+        <div style="margin-top:48px; border-top:1px solid rgba(0,0,0,0.07); padding-top:40px;">
+          <p style="font-size:11px; letter-spacing:1.4px; text-transform:uppercase; color:#9AA398; font-weight:500; margin-bottom:12px;">Context</p>
+          <h4 style="font-family:'Fraunces',serif; font-size:26px; font-weight:300; color:var(--ks-dark); letter-spacing:-0.5px; margin-bottom:24px; line-height:1.2;">Is this comparison fair?</h4>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+            <div style="background:#F2F7F4; border-radius:10px; padding:28px 28px 24px;">
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+                <div style="width:24px; height:24px; border-radius:50%; background:#3A5C45; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><span style="color:white; font-size:13px; font-weight:600; line-height:1;">&#10003;</span></div>
+                <div style="font-size:12px; letter-spacing:1.2px; text-transform:uppercase; color:#3A5C45; font-weight:600;">The case for comparison</div>
+              </div>
+              <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px;">
+                <li style="font-size:14px; color:#3A3A3A; line-height:1.65; padding-left:16px; border-left:2px solid #B8D4C0;"><strong>Closest peers.</strong> New Zealand and Australia are each other&#8217;s most comparable counterparts &#8212; both OECD members, English-speaking Pacific economies with similar labour markets and living standards.</li>
+                <li style="font-size:14px; color:#3A3A3A; line-height:1.65; padding-left:16px; border-left:2px solid #B8D4C0;"><strong>Shared conceptions of retirement.</strong> Both countries share broadly the same cultural expectations of what a comfortable retirement looks like &#8212; the age at which people stop working, the lifestyle they expect to maintain, and the role of home ownership as a wealth foundation.</li>
+                <li style="font-size:14px; color:#3A3A3A; line-height:1.65; padding-left:16px; border-left:2px solid #B8D4C0;"><strong>Designed in parallel.</strong> KiwiSaver was explicitly modelled with Australia&#8217;s system in mind. Policymakers have long used Australian superannuation as both an inspiration and a benchmark when debating contribution rate increases.</li>
+                <li style="font-size:14px; color:#3A3A3A; line-height:1.65; padding-left:16px; border-left:2px solid #B8D4C0;"><strong>Free movement of people.</strong> Under the Trans-Tasman Travel Arrangement, New Zealanders can and do live and work in Australia &#8212; and vice versa. Retirement savings accumulated in one country directly affects what people have when they retire in the other.</li>
+              </ul>
+            </div>
+            <div style="background:#FAF6F2; border-radius:10px; padding:28px 28px 24px;">
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+                <div style="width:24px; height:24px; border-radius:50%; background:#B8883A; display:flex; align-items:center; justify-content:center; flex-shrink:0;"><span style="color:white; font-size:13px; font-weight:600; line-height:1;">!</span></div>
+                <div style="font-size:12px; letter-spacing:1.2px; text-transform:uppercase; color:#B8883A; font-weight:600;">The limits of comparison</div>
+              </div>
+              <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px;">
+                <li style="font-size:14px; color:#3A3A3A; line-height:1.65; padding-left:16px; border-left:2px solid #DFC89A;"><strong>Scale and wage base.</strong> Australia has five times New Zealand&#8217;s population, significantly higher median wages, and a far larger tax base. Higher salaries mean employer contributions compound faster &#8212; KiwiSaver&#8217;s percentage gap looks even wider in dollar terms.</li>
+                <li style="font-size:14px; color:#3A3A3A; line-height:1.65; padding-left:16px; border-left:2px solid #DFC89A;"><strong>Structural economic advantages.</strong> Australia benefits from vast natural resources, large-scale mining and energy exports, deep capital markets, and a substantial financial services and technology sector. These underpin higher wages and stronger investment returns in super funds.</li>
+                <li style="font-size:14px; color:#3A3A3A; line-height:1.65; padding-left:16px; border-left:2px solid #DFC89A;"><strong>Capital flows out of New Zealand.</strong> Many of New Zealand&#8217;s largest employers &#8212; the major banks, supermarkets, and insurers &#8212; are Australian-owned. Profits flow across the Tasman rather than being reinvested domestically, which constrains the wage growth and business investment that would otherwise feed into KiwiSaver balances.</li>
+                <li style="font-size:14px; color:#3A3A3A; line-height:1.65; padding-left:16px; border-left:2px solid #DFC89A;"><strong>Thirty years of compounding.</strong> Australia&#8217;s system became mandatory in 1992 &#8212; KiwiSaver launched in 2007. Much of the gap in total assets reflects fifteen extra years of compounding at higher rates. New Zealand is not behind in ambition; it is behind in time.</li>
+              </ul>
+            </div>
+          </div>
+          <p style="font-size:14px; color:#6A6A6A; line-height:1.75; margin-top:28px; font-style:italic; border-left:3px solid #DEDBD3; padding-left:16px;">
+            The comparison is most useful not as a verdict but as a direction. Australia shows what a mature, high-contribution retirement system can produce. Whether New Zealand can &#8212; or should &#8212; close that gap depends on political will, wage growth, and what New Zealanders decide retirement is for.
           </p>
-          <p>
-            The trend has been building for years. Hardship withdrawals have risen in every single year since 2012, accelerating sharply from 2023 as cost-of-living pressures mounted. The average hardship withdrawal is around $10,000 — a fraction of the first home average, reflecting the crisis-level circumstances that trigger it.
-          </p>
-          <p>
-            The implication is sobering: <em>KiwiSaver is increasingly being drawn upon not as a path to home ownership, but as a last financial resort.</em> For many New Zealanders, the savings intended for retirement or a first home are being consumed by the pressures of today.
-          </p>
-          <p>
-            This data should be read alongside the housing deprivation and rental figures in the main story. The people most likely to be withdrawing under hardship are the same people least likely to ever reach the deposit threshold for home ownership.
-          </p>
         </div>
+      </div>
+    </div>
+
+    <!-- Citizens filling the gap -->
+    <div class="ks-content-section">
+      <div class="ks-content-inner">
+        <p class="ks-content-label">Citizens filling the gap</p>
+        <h3 class="ks-content-title">Where policy falls short, organisations are stepping in</h3>
+        <p class="ks-content-body">
+          The hardship data tells one story. But alongside it, a quieter one: a growing ecosystem of not-for-profits, community lenders, and new-model financial platforms working on the same problem from different angles. Some are lowering the cost of saving. Some are providing alternatives to raiding KiwiSaver. Some are simply making sure people understand their options before it&#8217;s too late. None of them can replace structural policy change &#8212; but together they represent a meaningful shift in who takes responsibility for financial wellbeing in New Zealand.
+        </p>
+        <div class="ks-gap-featured">
+          <div class="ks-gap-card ks-gap-card-featured">
+            <div class="ks-gap-card-tag">Not-for-profit KiwiSaver</div>
+            <h4 class="ks-gap-card-name">Simplicity</h4>
+            <p class="ks-gap-card-body">Founded in 2016 on a single premise: KiwiSaver fees are too high and the people who benefit most from lowering them are the people who can least afford not to. Simplicity is New Zealand&#8217;s only not-for-profit KiwiSaver provider, charging 0.24% &#8212; against an industry average of 1.05%. On a $50,000 balance, that&#8217;s <strong>$388 saved every year</strong>, compounding. It has cut fees seven times since launch. Fifteen percent of all management fees go directly to New Zealand charities &#8212; <strong>$13.3 million donated to date</strong>.</p>
+            <div class="ks-gap-stats">
+              <div class="ks-gap-stat"><span>187,102</span>members</div>
+              <div class="ks-gap-stat"><span>$10.3b</span>funds under management</div>
+              <div class="ks-gap-stat"><span>0.24%</span>fee vs 1.05% industry avg</div>
+            </div>
+          </div>
+          <div class="ks-gap-card ks-gap-card-featured">
+            <div class="ks-gap-card-tag">Free financial mentoring</div>
+            <h4 class="ks-gap-card-name">FinCap &middot; MoneyTalks</h4>
+            <p class="ks-gap-card-body">A network of over 700 free financial mentors operating across 180 services nationwide. FinCap helped <strong>69,807 wh&#257;nau</strong> in 2023 &#8212; a 40.8% increase on the year before. That increase isn&#8217;t growth for its own sake; it&#8217;s a measure of how many more people are under financial pressure. The median presenting debt is $14,096. MoneyTalks (0800 345 123) is a free helpline that connects people to a mentor before a KiwiSaver hardship withdrawal starts to look like the only option.</p>
+            <div class="ks-gap-stats">
+              <div class="ks-gap-stat"><span>69,807</span>wh&#257;nau helped in 2023</div>
+              <div class="ks-gap-stat"><span>+40.8%</span>year-on-year increase</div>
+              <div class="ks-gap-stat"><span>700+</span>mentors nationwide</div>
+            </div>
+          </div>
+        </div>
+        <div class="ks-gap-grid">
+          <div class="ks-gap-card">
+            <div class="ks-gap-card-tag">No-interest loans &middot; M&#257;ori &amp; Pacific</div>
+            <h4 class="ks-gap-card-name">Ng&#257; T&#257;ngata Microfinance</h4>
+            <p class="ks-gap-card-body">No-interest, fee-free loans for M&#257;ori and Pacific communities since 2009 &#8212; a direct alternative to financial hardship withdrawal. Over 2,000 New Zealanders supported, $3.5 million lent, and a <strong>95% repayment rate</strong> that quietly dismantles the assumption that low-income borrowers are high-risk.</p>
+            <div class="ks-gap-stats">
+              <div class="ks-gap-stat"><span>95%</span>repayment rate</div>
+              <div class="ks-gap-stat"><span>$3.5m</span>lent since 2009</div>
+            </div>
+          </div>
+          <div class="ks-gap-card">
+            <div class="ks-gap-card-tag">No-interest loans &middot; via BNZ</div>
+            <h4 class="ks-gap-card-name">Good Shepherd NZ</h4>
+            <p class="ks-gap-card-body">Good Loans &#8212; delivered in partnership with BNZ &#8212; are interest-free and fee-free, targeted at essential purchases like transport and household needs. 487 loans totalling $2.6 million in 2024 alone. For every $1 invested in the programme, <strong>$3.40 of social value</strong> is generated. More than 4,000 families helped since 2014.</p>
+            <div class="ks-gap-stats">
+              <div class="ks-gap-stat"><span>$3.40</span>social return per $1</div>
+              <div class="ks-gap-stat"><span>4,000+</span>families since 2014</div>
+            </div>
+          </div>
+          <div class="ks-gap-card">
+            <div class="ks-gap-card-tag">Financial education</div>
+            <h4 class="ks-gap-card-name">Sorted</h4>
+            <p class="ks-gap-card-body">The Commission for Financial Capability&#8217;s free tools and calculators reach <strong>2.2 million uses per year</strong>. When the 2025 Budget announced KiwiSaver contribution rate changes, Sorted&#8217;s KiwiSaver calculator saw a 2,500% spike in users within 48 hours &#8212; a telling sign of how many New Zealanders are paying attention but lack the tools to act on it. Over 70% of secondary schools now use Sorted in Schools.</p>
+            <div class="ks-gap-stats">
+              <div class="ks-gap-stat"><span>2.2m</span>tool uses per year</div>
+              <div class="ks-gap-stat"><span>70%+</span>of secondary schools</div>
+            </div>
+          </div>
+          <div class="ks-gap-card">
+            <div class="ks-gap-card-tag">New to KiwiSaver &middot; 2024</div>
+            <h4 class="ks-gap-card-name">Sharesies</h4>
+            <p class="ks-gap-card-body">Best known for democratising retail investing &#8212; 650,000 New Zealanders now invest through the platform, with $7 billion traded in 2024. Sharesies entered KiwiSaver in 2024, and while its scheme is still early (~10,000 members, ~$300M FUM), its significance is the audience it brings: younger New Zealanders already engaged with investing who haven&#8217;t yet taken KiwiSaver seriously. The infrastructure is built; the habits are forming.</p>
+            <div class="ks-gap-stats">
+              <div class="ks-gap-stat"><span>650,000</span>NZ investors</div>
+              <div class="ks-gap-stat"><span>$7b</span>traded in 2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optimistic closing -->
+    <div class="ks-optimism">
+      <div class="ks-optimism-inner">
+        <p class="ks-optimism-label">The case for optimism</p>
+        <h3 class="ks-optimism-title">KiwiSaver is working &#8212; and before it,<br><em>there was almost nothing</em></h3>
+        <div class="ks-optimism-grid">
+          <div class="ks-optimism-text">
+            <p>Before KiwiSaver, New Zealand had no meaningful workplace savings infrastructure. Household savings rates were among the lowest in the OECD &#8212; negative in some years &#8212; and the vast majority of New Zealanders arrived at retirement with NZ Super as their only income. That universal pension, worth around 60% of the average wage, was designed as a floor. For most people, it became the ceiling.</p>
+            <p>KiwiSaver changed that. Launched in 2007 as a voluntary opt-out scheme, it enrolled 3.4 million New Zealanders &#8212; 63.5% of the entire population &#8212; without compulsion. The scheme has survived three changes of government, two contribution rate cuts, and the worst cost-of-living crisis in a generation. It is still standing, still growing, and still putting money away for people who would otherwise have saved nothing.</p>
+            <p>The trajectory also matters. The employer rate rises to <strong>3.5% in April 2026</strong> and <strong>4% in 2028</strong>. For a 25-year-old on the median wage today, that legislative shift compounds into tens of thousands of extra dollars by retirement. The gap with Australia is real &#8212; but it is narrowing, and the direction is set.</p>
+          </div>
+          <div class="ks-optimism-stats">
+            <div class="ks-optimism-stat">
+              <div class="ks-optimism-stat-num">43,600</div>
+              <div class="ks-optimism-stat-label">New Zealanders used KiwiSaver to buy their first home in 2025 &#8212; more than any year since the 2021 peak</div>
+            </div>
+            <div class="ks-optimism-stat">
+              <div class="ks-optimism-stat-num">$1.86b</div>
+              <div class="ks-optimism-stat-label">Withdrawn for first home purchases in 2025 &#8212; a record, and proof the scheme is delivering on one of its core promises</div>
+            </div>
+            <div class="ks-optimism-stat">
+              <div class="ks-optimism-stat-num">63.5%</div>
+              <div class="ks-optimism-stat-label">Of the entire NZ population enrolled &#8212; extraordinary uptake for a scheme that remains technically voluntary</div>
+            </div>
+            <div class="ks-optimism-stat">
+              <div class="ks-optimism-stat-num">4%</div>
+              <div class="ks-optimism-stat-label">Legislated employer rate from 2028 &#8212; the compounding benefit of this increase, over a 40-year career, is substantial</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- What this means -->
+    <div style="background:#F7F6F2; padding:80px 48px;">
+      <div style="border-top:2px solid var(--green); padding-top:40px;">
+        <p style="font-size:11px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--green); margin-bottom:12px;">What this means</p>
+        <h3 style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:var(--dark); line-height:1.3; letter-spacing:-0.3px; margin-bottom:32px;">Six things the data is telling policymakers</h3>
+        <div style="display:flex; flex-direction:column; gap:0; border:1px solid rgba(0,0,0,0.08); border-radius:12px; overflow:hidden;">
+          <div style="display:grid; grid-template-columns:40px 1fr; gap:20px; padding:24px 28px; background:white; border-bottom:1px solid rgba(0,0,0,0.06); align-items:start;">
+            <div style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:var(--green); line-height:1;">01</div>
+            <div><strong style="font-size:14px; color:var(--dark); display:block; margin-bottom:4px;">KiwiSaver needs to be re-evaluated as a social safety net, not just a retirement vehicle.</strong><span style="font-size:14px; color:#4A5248; line-height:1.7;">Hardship withdrawals now exceed first home withdrawals for the first time. The scheme is being used as a last resort by tens of thousands of New Zealanders. Policy designed around retirement and home ownership is not built for this reality &#8212; access rules, contribution design, and hardship criteria all need to reflect both purposes.</span></div>
+          </div>
+          <div style="display:grid; grid-template-columns:40px 1fr; gap:20px; padding:24px 28px; background:white; border-bottom:1px solid rgba(0,0,0,0.06); align-items:start;">
+            <div style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:var(--green); line-height:1;">02</div>
+            <div><strong style="font-size:14px; color:var(--dark); display:block; margin-bottom:4px;">The April 2026 changes disproportionately hurt lower earners and should be offset.</strong><span style="font-size:14px; color:#4A5248; line-height:1.7;">The break-even salary is ~$74,500 &#8212; above the median. Anyone earning less is net worse off from the combined employer increase and tax credit cut. An income-indexed member tax credit, rather than a flat cut, would protect the people most reliant on the government contribution.</span></div>
+          </div>
+          <div style="display:grid; grid-template-columns:40px 1fr; gap:20px; padding:24px 28px; background:white; border-bottom:1px solid rgba(0,0,0,0.06); align-items:start;">
+            <div style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:var(--green); line-height:1;">03</div>
+            <div><strong style="font-size:14px; color:var(--dark); display:block; margin-bottom:4px;">Auto-escalation would shift the contribution rate distribution without reducing enrolment.</strong><span style="font-size:14px; color:#4A5248; line-height:1.7;">Over 1.16 million members are contributing at exactly 3% &#8212; the minimum. Schemes in the UK and US have demonstrated that automatically increasing contributions by a small percentage each year, unless actively opted out, shifts this distribution significantly while maintaining enrolment rates. New Zealand has not yet implemented this.</span></div>
+          </div>
+          <div style="display:grid; grid-template-columns:40px 1fr; gap:20px; padding:24px 28px; background:white; border-bottom:1px solid rgba(0,0,0,0.06); align-items:start;">
+            <div style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:var(--green); line-height:1;">04</div>
+            <div><strong style="font-size:14px; color:var(--dark); display:block; margin-bottom:4px;">Closing the Trans-Tasman gap has a clear lever &#8212; and it is already in motion.</strong><span style="font-size:14px; color:#4A5248; line-height:1.7;">Australia&#8217;s 12% rate was not legislated overnight &#8212; it rose incrementally from 3% over thirty years. New Zealand&#8217;s rate is now moving in the same direction. The scheduled increase to 4% in 2028 matters less for its immediate dollar impact than for the trajectory it sets. The question is whether future governments maintain the direction.</span></div>
+          </div>
+          <div style="display:grid; grid-template-columns:40px 1fr; gap:20px; padding:24px 28px; background:white; border-bottom:1px solid rgba(0,0,0,0.06); align-items:start;">
+            <div style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:var(--green); line-height:1;">05</div>
+            <div><strong style="font-size:14px; color:var(--dark); display:block; margin-bottom:4px;">Organisations filling the gap point to where structural policy has failed.</strong><span style="font-size:14px; color:#4A5248; line-height:1.7;">The growth of FinCap, Ng&#257; T&#257;ngata, Good Shepherd, and others is not a success story &#8212; it is a signal. A 40% year-on-year increase in demand for free financial mentoring reflects the scale of financial stress in New Zealand households. These organisations are doing vital work, but their growth is a measure of a problem, not a solution to it.</span></div>
+          </div>
+          <div style="display:grid; grid-template-columns:40px 1fr; gap:20px; padding:24px 28px; background:white; align-items:start;">
+            <div style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:var(--green); line-height:1;">06</div>
+            <div><strong style="font-size:14px; color:var(--dark); display:block; margin-bottom:4px;">The net effect of both changes is nearly zero &#8212; which raises the question of what the policy actually achieved.</strong><span style="font-size:14px; color:#4A5248; line-height:1.7;">For the median earner, cutting the government credit and raising the employer rate produces an annual net change of &#8722;$19. One step back, one step forward. The outcome for members is broadly unchanged &#8212; but the funding source has shifted permanently from the government to employers. Whether that rebalancing is the right long-term direction is a legitimate debate. What the data makes clear is that it has not been presented as one.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Housing CTA -->
+    <div style="background:#1A1E1A; padding:60px 48px; border-top:1px solid rgba(255,255,255,0.06);">
+      <div style="max-width:760px; display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap;">
         <div>
-          <div class="caveat-stat">
-            <div class="caveat-stat-num">45,870</div>
-            <div class="caveat-stat-label">Members withdrew under financial hardship in 2025 — the highest number ever recorded, and for the first time exceeding first home withdrawal counts</div>
-          </div>
-          <div class="caveat-stat" style="margin-top:16px;">
-            <div class="caveat-stat-num">$471m</div>
-            <div class="caveat-stat-label">Withdrawn under financial hardship in 2025 — up from $23m in 2012, a 20-fold increase in thirteen years</div>
-          </div>
-          <div class="caveat-stat" style="margin-top:16px;">
-            <div class="caveat-stat-num">81,778</div>
-            <div class="caveat-stat-label">Members currently on savings suspension as of February 2026 — pausing contributions, often due to financial pressure</div>
-          </div>
+          <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#8FAF8A; margin-bottom:10px;">NZ Housing</p>
+          <h3 style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:#F7F6F2; line-height:1.3; margin-bottom:8px;">NZ&#8217;s fastest rate cycle in a generation. Did affordability follow?</h3>
+          <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.7;">The OCR moved from 0.25% to 5.5% in three years. House prices in some regions barely responded. Others never recovered. The data maps where the gap between rates and reality grew widest.</p>
         </div>
+        <a href="housing.html" style="display:inline-flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13px; color:#B8883A; text-decoration:none; border:1px solid rgba(184,136,58,0.35); border-radius:40px; padding:12px 24px; white-space:nowrap; transition:all 0.2s; flex-shrink:0;" onmouseover="this.style.background='rgba(184,136,58,0.1)';this.style.borderColor='#B8883A'" onmouseout="this.style.background='';this.style.borderColor='rgba(184,136,58,0.35)'">Explore the housing story &#8594;</a>
       </div>
     </div>
-  </div>
 
-  <!-- BACK -->
-  <div class="back-section">
-    <a href="index.html#housing-story" class="back-link">← Back to the housing story</a>
-  </div>
+  </section>
+
+  <footer class="site-footer">
+    <span>Harry Candlish &middot; Data Analyst &middot; Wellington, NZ</span>
+    <a href="projects.html">&#8592; All stories</a>
+  </footer>
+
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script>
+  (function() {
+    var bg = '#FFFFFF', font = 'Georgia, serif', textCol = '#1A1E1A', gridCol = 'rgba(0,0,0,0.06)';
+    var cfg = { displayModeBar: false, responsive: true, staticPlot: false, scrollZoom: false };
+    var ages     = [25, 30, 35, 40, 45, 50, 55];
+    var fvLabels = ['$102,857', '$76,861', '$57,435', '$42,919', '$32,071', '$23,966', '$17,908'];
+    var fvVals   = [102857, 76861, 57435, 42919, 32071, 23966, 17908];
+    var cost     = fvVals.map(function(v){ return v - 10000; });
+    Plotly.newPlot('ks-oppcost-bar', [
+      { x: ages, y: Array(7).fill(10000), name: 'Amount withdrawn',
+        type: 'bar', marker: { color: 'rgba(184,136,58,0.25)' },
+        hovertemplate: 'Withdrawn: $10,000<extra></extra>' },
+      { x: ages, y: cost, name: 'Lost retirement value',
+        type: 'bar', marker: { color: '#B85C45' },
+        hovertemplate: '<b>Age %{x}</b><br>Lost: $%{y:,.0f}<extra></extra>' },
+    ], {
+      paper_bgcolor: bg, plot_bgcolor: bg,
+      font: { family: font, color: textCol, size: 13 },
+      margin: { l: 75, r: 20, t: 16, b: 75 },
+      dragmode: false,
+      barmode: 'stack',
+      legend: { orientation: 'h', yanchor: 'top', y: -0.22, xanchor: 'left', x: 0, font: { size: 12 }, bgcolor: 'rgba(0,0,0,0)' },
+      xaxis: { title: { text: 'current age', font: { size: 11, color: 'rgba(26,30,26,0.4)' } },
+               showgrid: false, zeroline: false, tickfont: { size: 12 },
+               tickvals: [25, 35, 45, 55], ticktext: ['25', '35', '45', '55'],
+               range: [21, 59], fixedrange: true },
+      yaxis: { showgrid: true, gridcolor: gridCol, zeroline: false,
+               tickfont: { size: 11 }, tickprefix: '$', tickformat: ',.0f',
+               range: [0, 115000], fixedrange: true },
+      annotations: ages.map(function(age, i) {
+        return { x: age, y: fvVals[i] + 2500, text: fvLabels[i],
+                 showarrow: false, font: { size: 11, color: '#B85C45', family: font }, yanchor: 'bottom' };
+      }),
+    }, cfg);
+  })();
+  </script>
+  <script>
+  (function() {
+    var years   = [2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026];
+    var auRates = [9.25,9.50,9.50,9.50,9.50,9.50,9.50,9.50,10.00,10.50,11.00,11.50,12.00,12.00];
+    var nzRates = [3.00,3.00,3.00,3.00,3.00,3.00,3.00,3.00,3.00,3.00,3.00,3.00,3.00,3.50];
+    var bg = '#FFFFFF', font = 'Georgia, serif', gridCol = 'rgba(0,0,0,0.06)';
+    Plotly.newPlot('ks-rate-chart', [
+      { x: years, y: auRates, name: 'Australia (Super Guarantee)', mode: 'lines+markers',
+        line: { color: '#2B5FA8', width: 2.5 }, marker: { size: 6, color: '#2B5FA8' },
+        hovertemplate: '<b>%{x}</b><br>Australia: %{y}%<extra></extra>' },
+      { x: years, y: nzRates, name: 'New Zealand (KiwiSaver)', mode: 'lines+markers',
+        line: { color: '#3A5C45', width: 2.5 }, marker: { size: 6, color: '#3A5C45' },
+        hovertemplate: '<b>%{x}</b><br>New Zealand: %{y}%<extra></extra>' },
+    ], {
+      paper_bgcolor: bg, plot_bgcolor: bg,
+      font: { family: font, color: '#1A1E1A', size: 13 },
+      margin: { l: 50, r: 20, t: 40, b: 40 },
+      legend: { orientation: 'h', yanchor: 'bottom', y: 1.02, xanchor: 'left', x: 0, font: { size: 13 }, bgcolor: 'rgba(0,0,0,0)' },
+      xaxis: { showgrid: false, tickfont: { size: 11 }, zeroline: false, dtick: 2 },
+      yaxis: { showgrid: true, gridcolor: gridCol, zeroline: false, tickfont: { size: 11 }, ticksuffix: '%', range: [0, 14] },
+      shapes: [{ type: 'line', x0: 2025.7, x1: 2025.7, y0: 0, y1: 14, line: { color: 'rgba(0,0,0,0.1)', width: 1, dash: 'dot' } }],
+      annotations: [{ x: 2025.8, y: 13.5, xref: 'x', yref: 'y', text: '\u2190 projected', showarrow: false, font: { size: 10, color: 'rgba(0,0,0,0.35)' }, xanchor: 'left' }],
+    }, { displayModeBar: false, responsive: true });
+  })();
+  </script>
 
 </body>
 </html>

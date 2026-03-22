@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Kiwi Are Disappearing &#8212; and Who&#8217;s Tracking It · Harry Candlish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #1A1E1A; color: #F7F6F2; -webkit-font-smoothing: antialiased; }
+
+    /* ── Nav ── */
+    .site-nav {
+      background: #1A1E1A;
+      padding: 0 48px;
+      height: 57px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 300; color: #F7F6F2; text-decoration: none; letter-spacing: -0.2px; }
+    .nav-logo span { color: #3A5C45; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #F7F6F2; }
+    .nav-links a.active { color: #F7F6F2; }
+
+    /* ── Footer ── */
+    .site-footer { background: #1A1E1A; padding: 40px 48px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; }
+    .site-footer span { font-size: 13px; color: rgba(255,255,255,0.3); }
+    .site-footer a { font-size: 13px; color: #B8883A; text-decoration: none; border: 1px solid rgba(184,136,58,0.35); border-radius: 40px; padding: 10px 20px; transition: all 0.2s; }
+    .site-footer a:hover { background: rgba(184,136,58,0.1); }
+
+    /* ── Scroll step ── */
+    .scroll-step { transition: opacity 0.4s; }
+
+    @media (max-width: 640px) {
+      .site-nav { padding: 0 20px; }
+      .nav-links { gap: 16px; }
+      .site-footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">New <span>Harvest</span></a>
+    <ul class="nav-links">
+      <li><a href="projects.html">Stories</a></li>
+      <li><a href="kiwi.html" class="active">Kiwi</a></li>
+      <li><a href="election.html">Election 2026</a></li>
+      <li><a href="kiwisaver.html">KiwiSaver</a></li>
+      <li><a href="housing.html">Housing</a></li>
+      <li><a href="index.html#contact">Get in touch</a></li>
+    </ul>
+  </nav>
+
+  <!-- Section header -->
+  <div style="padding:80px 48px 0; max-width:760px;">
+    <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#8FAF8A; margin-bottom:14px;">Citizen science &amp; conservation &middot; NZ</p>
+    <h1 style="font-family:'Fraunces',serif; font-size:clamp(28px,4vw,44px); font-weight:300; color:#F7F6F2; line-height:1.2; margin-bottom:20px;">Why kiwi are disappearing &#8212; and who&#8217;s tracking it</h1>
+    <p style="font-family:'Inter',sans-serif; font-size:16px; color:#9AA398; line-height:1.8; margin-bottom:20px;">New Zealanders are logging thousands of wildlife sightings every year through citizen science platforms. The question this project set out to answer: <strong style="color:#F7F6F2;">do those sightings actually impact conservation efforts?</strong> Scroll through the story to see what the data reveals &#8212; then see how it compares to where DOC and community groups are actually operating.</p>
+    <p style="font-family:'Inter',sans-serif; font-size:15px; color:#6B7B6B; line-height:1.8; margin-bottom:12px;">When someone spots a kiwi &#8212; or a stoat, a rat, a possum &#8212; and logs it on <strong style="color:#8FAF8A;">iNaturalist NZ (M&#257;taki Taiao)</strong>, DOC&#8217;s recommended recording platform, that observation goes through a community verification process. Once enough people agree on the species ID, it reaches &#8220;Research Grade&#8221; and is automatically shared to <strong style="color:#8FAF8A;">GBIF</strong> &#8212; the Global Biodiversity Information Facility &#8212; a worldwide database that aggregates verified sightings from citizen scientists, researchers, and museum collections into a single, freely queryable system. The pipeline from public observation to global database is one-way and automatic.</p>
+    <p style="font-family:'Inter',sans-serif; font-size:15px; color:#6B7B6B; line-height:1.8; margin-bottom:12px;">This map was built by calling the GBIF API directly &#8212; the same data pipeline any researcher or agency could connect to. Every dot represents a real, verified sighting. Scroll to layer in the predators that share &#8212; and threaten &#8212; the kiwi&#8217;s habitat, and see what the data reveals about where the pressure is greatest.</p>
+    <p style="font-family:'Inter',sans-serif; font-size:12px; color:#3A4A3A; line-height:1.7; font-style:italic;">Note: kiwi sightings in Auckland and Wellington are likely concentrated at sanctuaries and zoos &#8212; Zealandia (Wellington) and Auckland Zoo in particular &#8212; and may not reflect wild population distribution in those regions.</p>
+  </div>
+
+  <!-- Scrollytelling layout -->
+  <div id="scrolly" style="position:relative; display:flex; align-items:flex-start;">
+
+    <!-- Sticky map -->
+    <div style="position:sticky; top:0; height:100vh; width:58%; flex-shrink:0; display:flex; align-items:center;">
+      <div id="predator-map" style="width:100%; height:100%;"></div>
+    </div>
+
+    <!-- Scroll steps -->
+    <div id="scroll-steps" style="width:42%; padding:0 48px 0 32px;">
+      <div style="height:40vh;"></div>
+
+      <div class="scroll-step" data-step="0" style="min-height:60vh; display:flex; align-items:center;">
+        <div style="background:rgba(255,255,255,0.05); border-left:3px solid #3A5C45; border-radius:0 12px 12px 0; padding:28px 28px 28px 24px;">
+          <h3 style="font-family:'Fraunces',serif; font-size:22px; font-weight:400; color:#F7F6F2; margin-bottom:12px;">70 million years of isolation</h3>
+          <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.8; margin-bottom:12px;">Kiwi evolved in complete isolation from land predators. Over millions of years they lost the ability to fly, began nesting on the ground, and developed nostrils at the tip of their beak &#8212; the only bird in the world to do so &#8212; to sniff out invertebrates in the soil at night. Roughly the size of a domestic cat, they are more closely related to ostriches and emus than to any other New Zealand bird. They had no reason to fear what lived beside them, because for 70 million years, nothing threatened them.</p>
+          <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5A4A; line-height:1.7; margin-bottom:14px;">Each dot on the map is a verified sighting recorded by a member of the public, a researcher, or a conservation worker &#8212; logged on iNaturalist NZ and shared automatically to GBIF. The green and yellow dots below are kiwi. Everything that follows is what arrived after.</p>
+          <div style="display:flex; gap:24px;">
+            <div>
+              <div style="font-family:'Fraunces',serif; font-size:32px; font-weight:300; color:#5A7D66;">2,805<span style="font-size:13px; font-family:'Inter',sans-serif; color:#9AA398; margin-left:8px;">sightings</span></div>
+              <div style="font-size:11px; color:#9AA398; margin-top:4px;">North Island Brown Kiwi</div>
+            </div>
+            <div>
+              <div style="font-family:'Fraunces',serif; font-size:32px; font-weight:300; color:#8B6914;">2,719<span style="font-size:13px; font-family:'Inter',sans-serif; color:#9AA398; margin-left:8px;">sightings</span></div>
+              <div style="font-size:11px; color:#9AA398; margin-top:4px;">Southern Brown Kiwi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-step" data-step="1" style="min-height:60vh; display:flex; align-items:center; opacity:0.3;">
+        <div style="background:rgba(255,255,255,0.05); border-left:3px solid #8B4513; border-radius:0 12px 12px 0; padding:28px 28px 28px 24px;">
+          <h3 style="font-family:'Fraunces',serif; font-size:22px; font-weight:400; color:#F7F6F2; margin-bottom:12px;">Then came the possum</h3>
+          <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.8; margin-bottom:16px;">Brought from Australia in 1837 for the fur trade, possums spread across the motu. They strip the forest canopy kiwi depend on for shelter and food.</p>
+          <div style="font-family:'Fraunces',serif; font-size:32px; font-weight:300; color:#8B4513;">3,500+<span style="font-size:13px; font-family:'Inter',sans-serif; color:#9AA398; margin-left:8px;">possum sightings recorded</span></div>
+        </div>
+      </div>
+
+      <div class="scroll-step" data-step="2" style="min-height:60vh; display:flex; align-items:center; opacity:0.3;">
+        <div style="background:rgba(255,255,255,0.05); border-left:3px solid #CC4400; border-radius:0 12px 12px 0; padding:28px 28px 28px 24px;">
+          <h3 style="font-family:'Fraunces',serif; font-size:22px; font-weight:400; color:#F7F6F2; margin-bottom:12px;">Rats colonised every corner</h3>
+          <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.8; margin-bottom:16px;">Ship rats and Norway rats arrived with European settlers. They raid kiwi nests &#8212; eating eggs and killing newly hatched chicks before they have a chance to run.</p>
+          <div style="font-family:'Fraunces',serif; font-size:32px; font-weight:300; color:#CC4400;">4,500+<span style="font-size:13px; font-family:'Inter',sans-serif; color:#9AA398; margin-left:8px;">rat sightings recorded</span></div>
+        </div>
+      </div>
+
+      <div class="scroll-step" data-step="3" style="min-height:60vh; display:flex; align-items:center; opacity:0.3;">
+        <div style="background:rgba(255,255,255,0.05); border-left:3px solid #9B2335; border-radius:0 12px 12px 0; padding:28px 28px 28px 24px;">
+          <h3 style="font-family:'Fraunces',serif; font-size:22px; font-weight:400; color:#F7F6F2; margin-bottom:12px;">The stoat: kiwi&#8217;s deadliest predator</h3>
+          <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.8; margin-bottom:16px;">In mast years &#8212; when forests seed heavily &#8212; stoat populations explode. A single stoat can kill 95% of kiwi chicks in a nesting area within one season.</p>
+          <div style="font-family:'Fraunces',serif; font-size:32px; font-weight:300; color:#9B2335;">95%<span style="font-size:13px; font-family:'Inter',sans-serif; color:#9AA398; margin-left:8px;">of kiwi chicks killed in bad years</span></div>
+        </div>
+      </div>
+
+      <div class="scroll-step" data-step="4" style="min-height:60vh; display:flex; align-items:center; opacity:0.3;">
+        <div style="background:rgba(255,255,255,0.05); border-left:3px solid #B8883A; border-radius:0 12px 12px 0; padding:28px 28px 28px 24px;">
+          <h3 style="font-family:'Fraunces',serif; font-size:22px; font-weight:400; color:#F7F6F2; margin-bottom:12px;">The full picture</h3>
+          <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.8; margin-bottom:16px;">Every predator dot is a direct threat to kiwi survival. Without <strong style="color:#F7F6F2;">Predator Free 2050</strong> &#8212; New Zealand&#8217;s mission to eradicate introduced predators &#8212; the kiwi faces extinction in the wild within decades.</p>
+          <p style="font-size:12px; color:#6B7B6B; font-family:'Inter',sans-serif;">Source: Global Biodiversity Information Facility (GBIF) &middot; Data filtered to verified sightings from 2000 onwards.</p>
+        </div>
+      </div>
+
+      <div style="height:40vh;"></div>
+    </div>
+  </div>
+
+  <!-- Correlation chart -->
+  <div style="background:#1A1E1A; padding:60px 48px 0;">
+    <div style="max-width:960px;">
+      <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#8FAF8A; margin-bottom:12px;">Citizen data vs conservation operations</p>
+      <h3 style="font-family:'Fraunces',serif; font-size:24px; font-weight:300; color:#F7F6F2; line-height:1.3; margin-bottom:8px;">Do operations follow the data?</h3>
+      <p style="font-family:'Inter',sans-serif; font-size:14px; color:#6B7B6B; line-height:1.7; margin-bottom:24px; max-width:640px;">Each bubble is a NZ region. Horizontal axis: predator sightings from GBIF citizen science. Vertical axis: total conservation operations (DOC completed + Trap.NZ community projects). Bubble size reflects kiwi sightings in that region.</p>
+
+      <div style="display:flex; gap:20px; margin-bottom:16px; flex-wrap:wrap;">
+        <span style="display:flex; align-items:center; gap:7px; font-family:'Inter',sans-serif; font-size:12px; color:#9AA398;">
+          <span style="width:10px; height:10px; border-radius:50%; background:#3A5C45; display:inline-block; flex-shrink:0;"></span>Kiwi thriving
+        </span>
+        <span style="display:flex; align-items:center; gap:7px; font-family:'Inter',sans-serif; font-size:12px; color:#9AA398;">
+          <span style="width:10px; height:10px; border-radius:50%; background:#B8883A; display:inline-block; flex-shrink:0;"></span>Moderate pressure
+        </span>
+        <span style="display:flex; align-items:center; gap:7px; font-family:'Inter',sans-serif; font-size:12px; color:#9AA398;">
+          <span style="width:10px; height:10px; border-radius:50%; background:#B85C45; display:inline-block; flex-shrink:0;"></span>High predator pressure
+        </span>
+      </div>
+
+      <div id="cons-bubble" style="width:100%; height:460px;"></div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2px; background:rgba(255,255,255,0.04); border-radius:10px; overflow:hidden; margin-top:28px;">
+        <div style="background:#1E2320; padding:20px 22px;">
+          <div style="font-size:11px; font-weight:600; color:#8FAF8A; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Northland &middot; ratio 1.71</div>
+          <p style="font-family:'Inter',sans-serif; font-size:13px; color:#6B7B6B; line-height:1.6; margin:0;">Most operations per predator sighting of any region. Also has 1,107 kiwi sightings &#8212; the second highest nationally. Suggests concentrated effort is working.</p>
+        </div>
+        <div style="background:#1E2320; padding:20px 22px;">
+          <div style="font-size:11px; font-weight:600; color:#B8883A; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Canterbury &middot; ratio 0.16</div>
+          <p style="font-family:'Inter',sans-serif; font-size:13px; color:#6B7B6B; line-height:1.6; margin:0;">Third-highest predator density. Second-lowest operations ratio. Zero kiwi sightings recorded. High predators, low response, no kiwi &#8212; the most concerning combination in the dataset.</p>
+        </div>
+        <div style="background:#1E2320; padding:20px 22px;">
+          <div style="font-size:11px; font-weight:600; color:#3A5C45; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Southland &middot; 2,417 kiwi</div>
+          <p style="font-family:'Inter',sans-serif; font-size:13px; color:#6B7B6B; line-height:1.6; margin:0;">Most kiwi of any region. Fewest predator sightings. Few operations needed &#8212; because the threat hasn&#8217;t arrived. The best conservation outcome is a quiet dataset.</p>
+        </div>
+      </div>
+
+      <p style="font-family:'Inter',sans-serif; font-size:11px; color:#3A4A3A; line-height:1.6; margin-top:16px; padding-bottom:8px;">Sources: GBIF / iNaturalist NZ &middot; DOC Pesticide Summary (completed operations 2015&#8211;2025) &middot; Trap.NZ public community projects</p>
+    </div>
+  </div>
+
+  <!-- What this means -->
+  <div style="background:#1A1E1A; padding:48px 48px 0;">
+    <div style="max-width:760px;">
+      <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#B8883A; margin-bottom:16px;">What this means</p>
+      <h3 style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#F7F6F2; line-height:1.25; letter-spacing:-0.3px; margin-bottom:12px;">Every sighting logged is a contribution to kiwi survival.</h3>
+      <p style="font-family:'Fraunces',serif; font-size:20px; font-weight:300; color:#B8883A; font-style:italic; margin-bottom:28px; line-height:1.4;">The data shows that where communities engage, conservation follows &#8212; and wildlife responds.</p>
+      <p style="font-family:'Inter',sans-serif; font-size:15px; color:#9AA398; line-height:1.8; margin-bottom:32px;">The collection pipeline is working. Observations logged on iNaturalist NZ are verified by the community, reach Research Grade, and flow automatically into GBIF &#8212; where they sit alongside records from researchers, universities, and museum collections, all queryable through a single open API. Cross-referencing that sighting data against DOC&#8217;s completed pesticide operations and Trap.NZ community trapping projects reveals a partial but meaningful answer &#8212; and one genuine gap.</p>
+      <div style="display:flex; flex-direction:column; gap:0; border:1px solid rgba(255,255,255,0.07); border-radius:10px; overflow:hidden;">
+        <div style="padding:24px 28px; border-bottom:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.03);">
+          <div style="font-size:12px; font-weight:600; color:#8FAF8A; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Where the community is responding &#8212; and it shows</div>
+          <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.7; margin:0;"><strong style="color:#F7F6F2;">Wellington</strong> has the highest predator density of any region and the highest number of community Trap.NZ projects (323). Kiwi are not naturally wild in Wellington &#8212; the GBIF sightings here almost certainly come from <strong style="color:#F7F6F2;">Zealandia</strong>, the fenced predator-free sanctuary in Karori. But the community trapping effort is producing real results beyond the fence line: k&#257;k&#257;, once locally extinct in Wellington, have spread from Zealandia back into suburban neighbourhoods and are now a common sight across the city. The loop is closing &#8212; not for kiwi yet, but for the broader ecosystem that makes kiwi recovery possible. <strong style="color:#F7F6F2;">Northland</strong> tells a different story: the highest conservation-to-predator ratio of any region, and 1,107 kiwi sightings &#8212; genuine wild populations &#8212; to show for it.</p>
+        </div>
+        <div style="padding:24px 28px; border-bottom:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.03);">
+          <div style="font-size:12px; font-weight:600; color:#B8883A; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">One region stands out as a gap</div>
+          <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.7; margin:0;"><strong style="color:#F7F6F2;">Canterbury</strong> has the third-highest predator sighting density in the country, but only 14 DOC operations and 107 Trap.NZ projects &#8212; the second-lowest operations-to-predator ratio after Southland. Unlike Southland, this is not explained by low predator pressure. It has zero recorded kiwi sightings in the GBIF dataset. Historically, kiwi were present across much of the South Island including Canterbury &#8212; but conversion of the Canterbury Plains to farmland, combined with unchecked predation, drove them out over generations. With high predator density and limited conservation response, there is currently little realistic pathway for their return. That combination &#8212; a species that was once here, predators that are still here, and operations that largely aren&#8217;t &#8212; is the most concerning pattern in the dataset.</p>
+        </div>
+        <div style="padding:24px 28px; background:rgba(255,255,255,0.03);">
+          <div style="font-size:12px; font-weight:600; color:#8FAF8A; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">Where kiwi thrive, the data explains why</div>
+          <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.7; margin:0;"><strong style="color:#F7F6F2;">Southland</strong> has more kiwi sightings than any other region (2,417) and the fewest predator records &#8212; and the geography explains much of it. The region encompasses <strong style="color:#F7F6F2;">Stewart Island/Rakiura</strong>, estimated to hold around 20,000 kiwi and one of the last places in New Zealand where they live largely free from introduced predators, as well as the remote wilderness of <strong style="color:#F7F6F2;">Fiordland National Park</strong>, home to Piopiotahi (Milford Sound) and vast stretches of terrain so inaccessible that stoats, rats, and possums have never reached full density. These are places where isolation has done what conservation operations elsewhere have to achieve deliberately. Few interventions are needed because geography has already provided the buffer &#8212; a reminder that the best conservation outcome is one where the data shows nothing alarming. The question is whether that natural protection holds as climate change shifts mast years and predator ranges.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- How it was built -->
+  <div style="background:#1A1E1A; padding:48px 48px 0; border-top:1px solid rgba(255,255,255,0.06); margin-top:48px;">
+    <div style="max-width:760px;">
+      <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#8FAF8A; margin-bottom:12px;">How it was built</p>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:rgba(255,255,255,0.05); border-radius:10px; overflow:hidden;">
+        <div style="background:#1E2320; padding:20px 22px;">
+          <div style="font-size:12px; font-weight:600; color:#8FAF8A; letter-spacing:0.05em; margin-bottom:6px;">Data &middot; Python + REST API</div>
+          <div style="font-size:13px; color:#6B7B6B; line-height:1.6;">A Python script calls the GBIF <code style="font-size:12px; color:#9AA398;">/occurrence/search</code> endpoint, paginating through up to 300 verified records per species and writing the results to CSV.</div>
+        </div>
+        <div style="background:#1E2320; padding:20px 22px;">
+          <div style="font-size:12px; font-weight:600; color:#8FAF8A; letter-spacing:0.05em; margin-bottom:6px;">Visualisation &middot; Plotly</div>
+          <div style="font-size:13px; color:#6B7B6B; line-height:1.6;">Six species are rendered as individual <code style="font-size:12px; color:#9AA398;">scattergeo</code> traces. Plotly&#8217;s <code style="font-size:12px; color:#9AA398;">restyle</code> method swaps trace visibility on each scroll step without re-rendering the full chart.</div>
+        </div>
+        <div style="background:#1E2320; padding:20px 22px;">
+          <div style="font-size:12px; font-weight:600; color:#8FAF8A; letter-spacing:0.05em; margin-bottom:6px;">Scroll logic &middot; Scrollama</div>
+          <div style="font-size:13px; color:#6B7B6B; line-height:1.6;">Scrollama fires step-enter and step-exit events as the user scrolls. Each event maps to a predator layer, creating the layered reveal without any CSS animation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Humpback CTA -->
+  <div style="background:#1A1E1A; padding:60px 48px; border-top:1px solid rgba(255,255,255,0.06); margin-top:48px;">
+    <div style="max-width:760px; display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap;">
+      <div>
+        <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#8FAF8A; margin-bottom:10px;">Marine wildlife</p>
+        <h3 style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:#F7F6F2; line-height:1.3; margin-bottom:8px;">Not all native species are in decline</h3>
+        <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.7;">The humpback whale was hunted to near-extinction from NZ shores. 38 years after the whaling moratorium, they&#8217;re back &#8212; one of conservation&#8217;s genuine success stories.</p>
+      </div>
+      <a href="humpback.html" style="display:inline-flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13px; color:#B8883A; text-decoration:none; border:1px solid rgba(184,136,58,0.35); border-radius:40px; padding:12px 24px; white-space:nowrap; transition:all 0.2s; flex-shrink:0;" onmouseover="this.style.background='rgba(184,136,58,0.1)';this.style.borderColor='#B8883A'" onmouseout="this.style.background='';this.style.borderColor='rgba(184,136,58,0.35)'">Explore the humpback story &#8594;</a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span>Harry Candlish &middot; Data Analyst &middot; Wellington, NZ</span>
+    <a href="projects.html">&#8592; All stories</a>
+  </footer>
+
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="https://unpkg.com/scrollama@3.2.0/build/scrollama.min.js"></script>
+  <script src="predator_data.js"></script>
+  <script>
+  (function () {
+    const SPECIES_ORDER = [
+      "Apteryx mantelli",
+      "Apteryx australis",
+      "Trichosurus vulpecula",
+      "Rattus rattus",
+      "Rattus norvegicus",
+      "Mustela erminea",
+    ];
+    const COLOURS = {
+      "Apteryx mantelli":      "#5A7D66",
+      "Apteryx australis":     "#8B6914",
+      "Trichosurus vulpecula": "#8B4513",
+      "Rattus rattus":         "#CC4400",
+      "Rattus norvegicus":     "#E8762B",
+      "Mustela erminea":       "#9B2335",
+    };
+    const VISIBILITY = [
+      [true,  true,  false, false, false, false],
+      [true,  true,  true,  false, false, false],
+      [true,  true,  false, true,  true,  false],
+      [true,  true,  false, false, false, true ],
+      [true,  true,  true,  true,  true,  true ],
+    ];
+
+    function buildTraces() {
+      return SPECIES_ORDER.map((sci, i) => {
+        const d = PREDATOR_DATA[sci];
+        return {
+          type: "scattergeo",
+          lat:  d.records.map(r => r[0]),
+          lon:  d.records.map(r => r[1]),
+          customdata: d.records.map(r => [r[3], r[2]]),
+          mode: "markers",
+          name: d.name + " (" + d.records.length.toLocaleString() + ")",
+          visible: i < 2,
+          marker: {
+            size: 5,
+            color: COLOURS[sci],
+            opacity: 0.7,
+            line: { color: "rgba(0,0,0,0.2)", width: 0.3 },
+          },
+          hovertemplate:
+            "<b>" + d.name + "</b><br>" +
+            "Region: %{customdata[0]}<br>" +
+            "Year: %{customdata[1]}" +
+            "<extra></extra>",
+        };
+      });
+    }
+
+    const layout = {
+      paper_bgcolor: "#1A1E1A",
+      plot_bgcolor:  "#1A1E1A",
+      height: null,
+      autosize: true,
+      margin: { l: 0, r: 0, t: 0, b: 0 },
+      dragmode: false,
+      geo: {
+        resolution: 50,
+        showland: true,
+        landcolor: "#2A2E2A",
+        showocean: true,
+        oceancolor: "#1A1E1A",
+        showcoastlines: true,
+        coastlinecolor: "#4A5A4A",
+        coastlinewidth: 0.8,
+        showframe: false,
+        bgcolor: "#1A1E1A",
+        showlakes: false,
+        lataxis: { range: [-48, -33], showgrid: false },
+        lonaxis: { range: [165, 180], showgrid: false },
+      },
+      legend: {
+        bgcolor: "rgba(26,30,26,0.85)",
+        bordercolor: "#3A4A3A",
+        borderwidth: 1,
+        font: { size: 10, color: "#9AA398", family: "Inter, sans-serif" },
+        x: 0.01, y: 0.06,
+        xanchor: "left", yanchor: "bottom",
+      },
+      hoverlabel: {
+        bgcolor: "#2A2E2A",
+        bordercolor: "#3A5C45",
+        font: { size: 12, family: "Inter, sans-serif", color: "#F7F6F2" },
+      },
+    };
+
+    const mapDiv = document.getElementById("predator-map");
+    Plotly.newPlot(mapDiv, buildTraces(), layout, {
+      displayModeBar: false,
+      scrollZoom: false,
+      responsive: true,
+    });
+
+    function updateMap(step) {
+      const vis = VISIBILITY[Math.min(step, VISIBILITY.length - 1)];
+      Plotly.restyle(mapDiv, { visible: vis });
+    }
+
+    const steps = document.querySelectorAll(".scroll-step");
+    function setActiveStep(index) {
+      steps.forEach((el, i) => {
+        el.style.opacity = i === index ? "1" : "0.3";
+      });
+      updateMap(index);
+    }
+
+    mapDiv.on("plotly_afterplot", function initScrollama() {
+      mapDiv.removeListener("plotly_afterplot", initScrollama);
+      const scroller = scrollama();
+      scroller.setup({
+        step: ".scroll-step",
+        offset: 0.55,
+      })
+      .onStepEnter(({ index }) => setActiveStep(index))
+      .onStepExit(({ index, direction }) => {
+        if (direction === "up" && index > 0) setActiveStep(index - 1);
+      });
+      window.addEventListener("resize", scroller.resize);
+    });
+  })();
+  </script>
+
+  <script>
+  (function() {
+    var regions   = ["Wellington","Otago","Canterbury","Waikato","Auckland","East Coast","West Coast","Nelson Marlborough","Northland","Southland","Bay of Plenty"];
+    var predators = [1104, 858, 766, 710, 641, 531, 489, 405, 238, 154, 50];
+    var totalOps  = [375, 212, 121, 241, 324, 131, 166, 114, 408, 20, 21];
+    var kiwi      = [85, 180, 0, 89, 330, 51, 21, 7, 1107, 2417, 66];
+    var docOps    = [52, 63, 14, 79, 24, 86, 98, 10, 52, 9, 6];
+    var trapnz    = [323, 149, 107, 162, 300, 45, 68, 104, 356, 11, 15];
+
+    var colours = regions.map(function(r, i) {
+      var ratio = kiwi[i] / (predators[i] + 1);
+      if (ratio > 2)   return "#3A5C45";
+      if (ratio > 0.5) return "#B8883A";
+      return "#B85C45";
+    });
+
+    var sizes = kiwi.map(function(k) { return Math.max(12, k / 18 + 12); });
+
+    var customdata = regions.map(function(r, i) {
+      return [r, predators[i], docOps[i], trapnz[i], kiwi[i]];
+    });
+
+    var annotations = [
+      { x: 238,  y: 408, text: "Northland",     xanchor: "left",  xshift: 10,  yshift: 4 },
+      { x: 1104, y: 375, text: "Wellington",     xanchor: "left",  xshift: 10,  yshift: 4 },
+      { x: 766,  y: 121, text: "Canterbury \u26A0",   xanchor: "right", xshift: -10, yshift: 4 },
+      { x: 154,  y: 20,  text: "Southland",      xanchor: "left",  xshift: 10,  yshift: 4 },
+      { x: 641,  y: 324, text: "Auckland",       xanchor: "left",  xshift: 10,  yshift: 4 },
+    ].map(function(a) {
+      return Object.assign(a, {
+        xref: "x", yref: "y", showarrow: false,
+        font: { size: 11, color: "#9AA398", family: "Inter, sans-serif" },
+      });
+    });
+
+    Plotly.newPlot("cons-bubble", [{
+      type: "scatter",
+      mode: "markers",
+      x: predators,
+      y: totalOps,
+      customdata: customdata,
+      hovertemplate:
+        "<b>%{customdata[0]}</b><br>" +
+        "Predator sightings: %{customdata[1]}<br>" +
+        "DOC operations: %{customdata[2]}<br>" +
+        "Trap.NZ projects: %{customdata[3]}<br>" +
+        "Kiwi sightings: %{customdata[4]}" +
+        "<extra></extra>",
+      marker: {
+        size: sizes,
+        color: colours,
+        opacity: 0.88,
+        line: { color: "rgba(255,255,255,0.2)", width: 1.5 },
+      },
+      showlegend: false,
+    }], {
+      paper_bgcolor: "#1A1E1A",
+      plot_bgcolor:  "#1A1E1A",
+      font: { family: "Inter, sans-serif", color: "#9AA398", size: 12 },
+      margin: { l: 60, r: 20, t: 10, b: 60 },
+      xaxis: {
+        title: { text: "Predator sightings (citizen science / GBIF)", font: { size: 11, color: "#4A5A4A" } },
+        showgrid: true, gridcolor: "rgba(255,255,255,0.05)",
+        zeroline: false, tickfont: { size: 11, color: "#6B7B6B" },
+      },
+      yaxis: {
+        title: { text: "Conservation operations (DOC + Trap.NZ)", font: { size: 11, color: "#4A5A4A" } },
+        showgrid: true, gridcolor: "rgba(255,255,255,0.05)",
+        zeroline: false, tickfont: { size: 11, color: "#6B7B6B" },
+      },
+      annotations: annotations,
+      hoverlabel: {
+        bgcolor: "#2A2E2A",
+        bordercolor: "#3A5C45",
+        font: { size: 12, family: "Inter, sans-serif", color: "#F7F6F2" },
+      },
+    }, { displayModeBar: false, responsive: true });
+  })();
+  </script>
+
+</body>
+</html>

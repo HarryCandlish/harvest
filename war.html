@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Age of Impunity · War Begets War · Harvest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <script src="https://unpkg.com/scrollama@3.2.0/build/scrollama.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: #1A1E1A; color: #F7F6F2; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+    .site-nav {
+      background: #1A1E1A; padding: 0 48px; height: 57px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-back { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: #F7F6F2; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #F7F6F2; }
+
+    .step-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 28px;
+    }
+    .step-label { font-size: 11px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 10px; }
+    .step-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 300; color: #F7F6F2; line-height: 1.3; letter-spacing: -0.2px; margin-bottom: 12px; }
+    .step-body { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.8; }
+    .step-body strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+    .step-stat { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 300; line-height: 1; margin-top: 16px; }
+    .step-stat span { font-family: 'Inter', sans-serif; font-size: 12px; color: rgba(255,255,255,0.35); margin-left: 8px; }
+    .step-mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+    .step-mini-num { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 300; line-height: 1; }
+    .step-mini-label { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 4px; }
+
+    .section-divider {
+      padding: 80px 48px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 40px 0; }
+    .data-card {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 24px;
+    }
+    .data-card-num { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 300; line-height: 1; margin-bottom: 8px; }
+    .data-card-label { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+    .event-timeline { display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
+    .event-row {
+      display: grid; grid-template-columns: 80px 1fr;
+      gap: 24px; padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      align-items: start;
+    }
+    .event-row:last-child { border-bottom: none; }
+    .event-year { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 300; color: #C0392B; line-height: 1.2; padding-top: 2px; }
+    .event-country { font-size: 10px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+    .event-title { font-size: 14px; color: #F7F6F2; margin-bottom: 6px; font-weight: 500; }
+    .event-body { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.75; }
+    .event-tag {
+      display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase; padding: 3px 9px; border-radius: 12px;
+      margin-top: 8px;
+    }
+
+    .forgotten-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+    .forgotten-card {
+      background: rgba(192,57,43,0.08); border: 1px solid rgba(192,57,43,0.2);
+      border-radius: 16px; padding: 32px;
+    }
+    .forgotten-label { font-size: 10px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: #C0392B; margin-bottom: 12px; }
+    .forgotten-title { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 300; color: #F7F6F2; line-height: 1.25; margin-bottom: 8px; }
+    .forgotten-sub { font-size: 13px; color: rgba(255,255,255,0.35); margin-bottom: 20px; line-height: 1.6; }
+    .forgotten-body { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+    .forgotten-body strong { color: rgba(255,255,255,0.8); font-weight: 500; }
+    .forgotten-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(192,57,43,0.15); }
+    .forgotten-stat-num { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 300; color: #C0392B; line-height: 1; }
+    .forgotten-stat-label { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 4px; line-height: 1.4; }
+
+    .body-text { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.85; max-width: 720px; }
+    .body-text strong { color: rgba(255,255,255,0.8); font-weight: 500; }
+
+    .pull-quote {
+      border-left: 3px solid #C0392B; padding: 16px 24px;
+      margin: 32px 0; background: rgba(192,57,43,0.06); border-radius: 0 8px 8px 0;
+    }
+    .pull-quote p { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 300; color: #F7F6F2; line-height: 1.5; letter-spacing: -0.2px; }
+    .pull-quote cite { display: block; font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 10px; font-style: normal; letter-spacing: 0.5px; }
+
+    .methodology {
+      background: #0D1210;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 48px;
+      margin-top: 80px;
+    }
+    .methodology-inner { max-width: 960px; margin: 0 auto; }
+
+    @media (max-width: 900px) {
+      .site-nav { padding: 0 24px; }
+      #numbers-scrolly { flex-direction: column; }
+      #numbers-chart-panel { position: sticky; top: 57px; height: 55vw; min-height: 280px; width: 100% !important; }
+      #numbers-steps-col { width: 100% !important; padding: 0 24px !important; }
+      .section-divider { padding: 56px 24px 0; }
+      .forgotten-grid { grid-template-columns: 1fr; }
+      .data-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-back">← Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="projects.html">Stories</a></li>
+      <li><a href="fuel_prices.html">Iran War</a></li>
+      <li><a href="taiwan.html">Taiwan</a></li>
+      <li><a href="war.html" class="active">Age of Impunity</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ───────────────────────────────────────────────────────────── -->
+  <div style="padding:80px 48px 0; border-bottom:1px solid rgba(255,255,255,0.06);">
+    <div style="max-width:1100px; margin:0 auto;">
+
+      <!-- Title row -->
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:48px; flex-wrap:wrap; margin-bottom:56px;">
+        <div style="flex:1; min-width:0;">
+          <p style="font-size:11px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; color:#C0392B; margin-bottom:16px;">Data analysis · UCDP / IMF / ACLED · 2025</p>
+          <h1 style="font-family:'Fraunces',serif; font-size:clamp(32px,4.5vw,56px); font-weight:300; color:#F7F6F2; line-height:1.15; margin-bottom:20px; letter-spacing:-0.5px;">The Age of Impunity — <em style="color:#B8883A; font-style:normal;">war begets war</em></h1>
+          <p style="font-size:16px; color:rgba(255,255,255,0.45); line-height:1.8; max-width:640px; margin-bottom:28px;">2024 recorded more active armed conflicts than at any point since records began in 1946. This is not a coincidence. As Western economic power declines, the cost of starting a war falls. As democracies normalise military force, others follow their lead. This is the evidence.</p>
+          <div style="display:inline-flex; gap:8px; flex-wrap:wrap;">
+            <span style="font-size:11px; background:rgba(192,57,43,0.12); border:1px solid rgba(192,57,43,0.3); color:#C0392B; padding:5px 12px; border-radius:20px; letter-spacing:0.5px;">61 active conflicts · 2024 record</span>
+            <span style="font-size:11px; background:rgba(184,136,58,0.12); border:1px solid rgba(184,136,58,0.3); color:#B8883A; padding:5px 12px; border-radius:20px; letter-spacing:0.5px;">Four theses</span>
+            <span style="font-size:11px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); color:rgba(255,255,255,0.5); padding:5px 12px; border-radius:20px; letter-spacing:0.5px;">Sudan · Myanmar · risk map</span>
+          </div>
+        </div>
+        <div style="flex-shrink:0; width:240px; background:rgba(139,26,26,0.1); border:1px solid rgba(192,57,43,0.25); border-radius:16px; padding:28px;">
+          <div style="font-size:10px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:20px;">Armed conflicts · 2024</div>
+          <div style="font-family:'Fraunces',serif; font-size:64px; font-weight:300; color:#F7F6F2; line-height:1; letter-spacing:-3px; margin-bottom:4px;">61</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.4); margin-bottom:20px;">state-based armed conflicts in 2024 — highest since records began 1946</div>
+          <div style="padding-top:16px; border-top:1px solid rgba(192,57,43,0.15); display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline;">
+              <span style="font-size:11px; color:rgba(255,255,255,0.3);">2005–2020 avg</span>
+              <span style="font-size:12px; font-family:'Fraunces',serif; font-weight:300; color:rgba(255,255,255,0.55);">~43</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline;">
+              <span style="font-size:11px; color:rgba(255,255,255,0.3);">2020–2024 avg</span>
+              <span style="font-size:12px; font-family:'Fraunces',serif; font-weight:300; color:rgba(255,255,255,0.55);">58</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline;">
+              <span style="font-size:11px; color:rgba(255,255,255,0.3);">Deaths 2024</span>
+              <span style="font-size:12px; font-family:'Fraunces',serif; font-weight:300; color:#C0392B;">~160,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chapter strip -->
+      <div style="border-top:1px solid rgba(255,255,255,0.07); padding:36px 0 40px;">
+        <p style="font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.2); margin-bottom:24px;">Four theses — five sections</p>
+        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:rgba(255,255,255,0.06); border-radius:10px; overflow:hidden;">
+
+          <div style="background:#0D1210; padding:20px 18px;">
+            <div style="font-size:9px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase; color:#C0392B; margin-bottom:8px;">Thesis 1</div>
+            <div style="font-family:'Fraunces',serif; font-size:15px; font-weight:300; color:#F7F6F2; margin-bottom:6px; line-height:1.3;">The Numbers</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.5;">2020–2035 will see more war than the 15 years prior. 2024 hit 61 conflicts — a new record. The trend is unambiguous.</div>
+          </div>
+
+          <div style="background:#0D1210; padding:20px 18px;">
+            <div style="font-size:9px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase; color:#B8883A; margin-bottom:8px;">Thesis 2</div>
+            <div style="font-family:'Fraunces',serif; font-size:15px; font-weight:300; color:#F7F6F2; margin-bottom:6px; line-height:1.3;">The Power Shift</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.5;">G7 GDP share has fallen from 65% to 39%. Sanctions bite less. Military deterrence is no longer credible for most of the world.</div>
+          </div>
+
+          <div style="background:#0D1210; padding:20px 18px;">
+            <div style="font-size:9px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase; color:#B8883A; margin-bottom:8px;">Thesis 3</div>
+            <div style="font-family:'Fraunces',serif; font-size:15px; font-weight:300; color:#F7F6F2; margin-bottom:6px; line-height:1.3;">Democracy's Paradox</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.5;">The US and Israel have set precedents that every authoritarian government is watching.</div>
+          </div>
+
+          <div style="background:#0D1210; padding:20px 18px;">
+            <div style="font-size:9px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase; color:#3A5C45; margin-bottom:8px;">Thesis 4</div>
+            <div style="font-family:'Fraunces',serif; font-size:15px; font-weight:300; color:#F7F6F2; margin-bottom:6px; line-height:1.3;">The Climate Multiplier</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.5;">Climate doesn't start wars. It degrades the conditions under which conflicts can be prevented. The Sahel is the proof.</div>
+          </div>
+
+          <div style="background:#0D1210; padding:20px 18px;">
+            <div style="font-size:9px; font-weight:700; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:8px;">Overlooked</div>
+            <div style="font-family:'Fraunces',serif; font-size:15px; font-weight:300; color:#F7F6F2; margin-bottom:6px; line-height:1.3;">The Forgotten</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.5;">Sudan and Myanmar — catastrophes ignored by Western media. Plus a global risk map.</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <!-- THESIS 1: THE NUMBERS — scrollama                                  -->
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <div id="numbers-scrolly" style="position:relative; display:flex; align-items:flex-start; background:#0D1210; border-top:1px solid rgba(255,255,255,0.04);">
+
+    <!-- LEFT: Sticky chart panel -->
+    <div id="numbers-chart-panel" style="position:sticky; top:57px; height:calc(100vh - 57px); width:58%; flex-shrink:0; display:flex; flex-direction:column;">
+      <div style="position:relative; flex:1; padding:16px 8px 8px 16px;">
+        <div id="conflict-chart" style="width:100%; height:100%;"></div>
+        <div id="chart-pill" style="position:absolute; top:24px; left:24px; background:rgba(13,18,16,0.9); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:6px 14px; pointer-events:none; backdrop-filter:blur(4px);">
+          <span id="chart-pill-text" style="font-size:10px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:rgba(255,255,255,0.4); font-family:'Inter',sans-serif;">UCDP · State-based armed conflicts</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Step cards -->
+    <div id="numbers-steps-col" style="width:42%; padding:0 48px 0 32px;">
+      <div style="height:40vh;"></div>
+
+      <!-- Step 0 -->
+      <div class="num-step" data-step="0" style="min-height:90vh; display:flex; align-items:center; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#C0392B;">The trend — 2000 to 2024</p>
+          <h3 class="step-title">More armed conflicts are active today than at any point since records began in 1946</h3>
+          <p class="step-body">The Uppsala Conflict Data Program — the gold standard for conflict tracking — recorded <strong>61 state-based armed conflicts</strong> in 2024, up from 59 in 2023. That is the highest number since UCDP began collecting data in 1946. Eleven reached the threshold of "war" — 1,000+ deaths in a year — the most since 2016. The number has risen in 16 of the last 20 years. This is not a post-pandemic blip. It is a structural shift.</p>
+          <div class="step-stat" style="color:#C0392B;">61 <span>active conflicts · 2024 record</span></div>
+        </div>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="num-step" data-step="1" style="min-height:80vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#B8883A;">2005–2020: the baseline</p>
+          <h3 class="step-title">The 15 years before 2020 averaged 43 active conflicts per year</h3>
+          <p class="step-body">Between 2005 and 2020, the world averaged roughly <strong>43 active state-based armed conflicts</strong> per year. This period included Iraq, Afghanistan, Syria, Libya, and Yemen — already a significant toll. But relative to what came after, it was the floor. The international rules-based order — however imperfect — was still functioning as a deterrent.</p>
+          <div class="step-mini-grid">
+            <div><div class="step-mini-num" style="color:#B8883A;">43</div><div class="step-mini-label">avg active conflicts 2005–2020</div></div>
+            <div><div class="step-mini-num" style="color:#B8883A;">2008</div><div class="step-mini-label">global financial crisis — temporary dip</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="num-step" data-step="2" style="min-height:80vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:#C0392B;">2020–2024: the surge</p>
+          <h3 class="step-title">From 2020, conflict numbers began accelerating sharply — driven by new wars, not just old ones</h3>
+          <p class="step-body">Russia's full-scale Ukraine invasion (2022), the resumption of war in Sudan (2023), the eruption of fighting in Gaza (2023), and the deepening of Myanmar's civil war drove the number from <strong>56 in 2020 to 61 in 2024</strong> — four years, four new major conflicts. The 2020–2024 average of <strong>58</strong> is 35% higher than the 2005–2020 baseline. Civilian deaths rose a further 31% in 2024 alone. ACLED tracked over 204,000 discrete conflict events in the 12 months to late 2025.</p>
+          <div class="step-mini-grid">
+            <div><div class="step-mini-num" style="color:#C0392B;">+35%</div><div class="step-mini-label">more conflicts vs prior 15-yr baseline</div></div>
+            <div><div class="step-mini-num" style="color:#C0392B;">~160k</div><div class="step-mini-label">deaths in organised violence · 2024</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="num-step" data-step="3" style="min-height:80vh; display:flex; align-items:center; opacity:0.3; transition:opacity 0.4s;">
+        <div class="step-card">
+          <p class="step-label" style="color:rgba(192,57,43,0.6);">2024–2035: the projection</p>
+          <h3 class="step-title">If the structural drivers are not reversed, the trend reaches 70+ conflicts by 2035</h3>
+          <p class="step-body">No credible reversal is in sight. The three structural forces driving conflict — declining Western economic power, democratic precedent-setting, and the failure of international institutions — are all strengthening. A linear trend from 2020 suggests <strong>~75 active conflicts by 2035</strong>. This forecast is conservative: it excludes tail risks like a Taiwan war or an Iran conflict that could trigger cascading regional wars simultaneously.</p>
+          <div class="step-stat" style="color:rgba(192,57,43,0.7);">~75 <span>projected conflicts by 2035</span></div>
+          <p style="font-size:11px; color:rgba(255,255,255,0.25); margin-top:12px; line-height:1.6;">Projection based on 2020–2023 trend rate. UCDP definition: state-based armed conflict causing ≥25 battle-related deaths in a calendar year.</p>
+        </div>
+      </div>
+
+      <div style="height:20vh;"></div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <!-- THESIS 2: THE POWER SHIFT                                          -->
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <div class="section-divider" style="padding-top:80px;">
+    <div class="section-inner">
+
+      <div style="margin-bottom:48px;">
+        <p style="font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#B8883A; margin-bottom:10px;">Thesis 2</p>
+        <h2 style="font-family:'Fraunces',serif; font-size:clamp(26px,3.5vw,42px); font-weight:300; color:#F7F6F2; line-height:1.2; letter-spacing:-0.4px; margin-bottom:16px;">The Power Shift — <em style="color:#B8883A; font-style:normal;">the cost of aggression is falling</em></h2>
+        <p class="body-text" style="margin-bottom:16px;">Western power has traditionally deterred aggression through two mechanisms. The first is economic: sanctions, trade restrictions, financial isolation. The second is military: the credible threat that the United States, or a Western coalition, will intervene. Both are weakening simultaneously — and it is the combination that defines this moment.</p>
+        <p class="body-text">Declining G7 economic weight means sanctions can be absorbed or routed around. Overstretched military commitments, domestic political fractures, and the lessons of Afghanistan mean that for a growing category of conflicts, the military threat simply isn't credible. Smaller nations and non-state actors are doing this maths explicitly. <strong>The honest answer to "will the West intervene?" is, for most conflicts in the world today, probably not.</strong> That calculation is what the age of impunity is built on.</p>
+      </div>
+
+      <!-- G7 GDP Chart -->
+      <div style="background:#0D1210; border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:32px; margin-bottom:48px;">
+        <div style="margin-bottom:24px;">
+          <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:6px;">G7 share of global GDP (PPP) · 2000–2024</p>
+          <p style="font-size:13px; color:rgba(255,255,255,0.35); line-height:1.6;">The Western economic bloc has ceded 25 percentage points of global output in a generation. Source: IMF World Economic Outlook.</p>
+        </div>
+        <div id="gdp-chart" style="height:340px;"></div>
+      </div>
+
+      <div class="pull-quote">
+        <p>"When a bloc controlling 65% of the world economy threatens sanctions, every government listens. When that bloc controls 39% — and falling — the calculus changes. There are now alternative financial systems, alternative trading partners, alternative sources of capital. The threat has a workaround."</p>
+        <cite>Analysis · IMF World Economic Outlook 2024</cite>
+      </div>
+
+      <div class="data-grid" style="margin-bottom:0;">
+        <div class="data-card">
+          <div class="data-card-num" style="color:#C0392B;">−25pp</div>
+          <div class="data-card-label">G7 share of global GDP lost since 2000 — from 64.5% to under 40%. The economic bloc underwriting Western deterrence has shrunk by a quarter.</div>
+        </div>
+        <div class="data-card">
+          <div class="data-card-num" style="color:#B8883A;">BRICS+</div>
+          <div class="data-card-label">The BRICS+ bloc (China, India, Russia, Brazil, South Africa + new members) now accounts for a larger share of global GDP (PPP) than the G7. A first.</div>
+        </div>
+        <div class="data-card">
+          <div class="data-card-num" style="color:rgba(255,255,255,0.5);">∅ effect</div>
+          <div class="data-card-label">Russia sanctions post-2022: the Russian economy contracted by 2.1% in 2022, then grew 3.6% in 2023. China, India, and Turkey absorbed the redirected trade.</div>
+        </div>
+      </div>
+
+      <div style="margin-top:48px;">
+        <p class="body-text" style="margin-bottom:20px;">The mechanism is straightforward. <strong>Economic coercion works when the coercing bloc has no substitute.</strong> When Russia invaded Ukraine in 2022, the West imposed the most sweeping sanctions package in history. They slowed Russian growth — but did not stop the war, and did not cause the economic collapse that was predicted. China absorbed Russian energy exports. India bought discounted Russian oil. The SWIFT alternative CIPS processed China-Russia transactions. Iran, sanctioned for decades, continued its proxy wars throughout the Middle East.</p>
+        <p class="body-text">The lesson was not lost. <strong>Every potential aggressor watched and noted:</strong> sanctions hurt, but they do not stop a war. They are a cost to be managed — not a veto on military action.</p>
+      </div>
+
+      <!-- Power shift detail -->
+      <div style="margin-top:48px; display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:28px;">
+          <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:16px;">Sanctions failures · case studies</p>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div style="padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.05);">
+              <div style="font-size:13px; color:#F7F6F2; margin-bottom:4px; font-weight:500;">Russia · 2022–present</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.6;">Economy contracted 2.1% in 2022, grew 3.6% in 2023 and 3.2% in 2024. War continues. Sanctions absorbed by China/India pivot.</div>
+            </div>
+            <div style="padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.05);">
+              <div style="font-size:13px; color:#F7F6F2; margin-bottom:4px; font-weight:500;">Iran · 1979–present</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.6;">45+ years of sanctions. Iran funds Hezbollah, Houthis, Hamas, and Iraqi militias — and attacked Israel directly twice in 2024.</div>
+            </div>
+            <div>
+              <div style="font-size:13px; color:#F7F6F2; margin-bottom:4px; font-weight:500;">North Korea · since 1950</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.6;">Most heavily sanctioned state on earth. Has a nuclear arsenal. Sent 10,000+ troops to Russia in 2024 — and got technology transfers in return.</div>
+            </div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:28px;">
+          <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:16px;">Why impunity is rising</p>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div style="padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.05);">
+              <div style="font-size:13px; color:#F7F6F2; margin-bottom:4px; font-weight:500;">Alternative financial architecture</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.6;">China's CIPS system, yuan-denominated trade deals, and Belt and Road investments give sanctioned states routes around dollar-denominated systems.</div>
+            </div>
+            <div style="padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.05);">
+              <div style="font-size:13px; color:#F7F6F2; margin-bottom:4px; font-weight:500;">Global South non-alignment</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.6;">India, Brazil, Indonesia, South Africa, Mexico — representing 3+ billion people — declined to sanction Russia. Western moral authority does not translate to global compliance.</div>
+            </div>
+            <div>
+              <div style="font-size:13px; color:#F7F6F2; margin-bottom:4px; font-weight:500;">ICC and UN paralysis</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.6;">The UN Security Council is effectively deadlocked by Russian and Chinese vetoes. The ICC issued an arrest warrant for Putin in 2023. He attended the BRICS summit in South Africa — a member state — the same year, unchallenged.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- The intervention calculation -->
+      <div style="margin-top:64px; padding-top:48px; border-top:1px solid rgba(255,255,255,0.07);">
+
+        <div style="margin-bottom:32px;">
+          <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:10px;">Part 2 of the power shift</p>
+          <h3 style="font-family:'Fraunces',serif; font-size:clamp(20px,2.5vw,30px); font-weight:300; color:#F7F6F2; line-height:1.25; letter-spacing:-0.3px; margin-bottom:16px;">The intervention calculation — who can now act without consequence</h3>
+          <p class="body-text">Before starting a war, every government and armed group runs a version of the same calculation: what will the West do? For most of the post-Cold War period, that question carried real uncertainty. The Gulf War showed the US would act. Kosovo, Bosnia, Libya — the West would sometimes intervene even without direct strategic interest. That uncertainty was itself a deterrent. It is no longer uncertain. A generation of evidence has made the answer to "will the US intervene?" largely predictable — and the conditions under which the answer is "no" now cover most of the world.</p>
+        </div>
+
+        <!-- Variables grid -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:32px;">
+
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:28px;">
+            <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:16px;">What goes into the calculation</p>
+            <div style="display:flex; flex-direction:column; gap:14px;">
+              <div style="padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                <div style="font-size:13px; color:#F7F6F2; margin-bottom:4px; font-weight:500;">Is the US already in another major conflict?</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.6;">Ukraine support, Middle East strikes, and Taiwan deterrence are simultaneously consuming US military bandwidth, political capital, and public appetite for engagement. Each active commitment reduces the credible threat of opening a new one.</div>
+              </div>
+              <div style="padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                <div style="font-size:13px; color:#F7F6F2; margin-bottom:4px; font-weight:500;">Is there domestic political will?</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.6;">Post-Afghanistan, post-Iraq, and in the Trump era of explicit non-interventionism, US domestic support for military action in strategically peripheral countries is near zero. Authoritarian leaders read American polling data.</div>
+              </div>
+              <div style="padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                <div style="font-size:13px; color:#F7F6F2; margin-bottom:4px; font-weight:500;">Is there a nuclear weapon or a nuclear patron?</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.6;">Nuclear weapons are the most reliable guarantor of non-intervention. North Korea is untouchable. Russia cannot be directly engaged. Iran's nuclear threshold deters all but targeted strikes. A Chinese security relationship performs the same function for non-nuclear states.</div>
+              </div>
+              <div>
+                <div style="font-size:13px; color:#F7F6F2; margin-bottom:4px; font-weight:500;">Is the target covered by a formal US alliance?</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.6;">NATO Article 5 provides a credible guarantee. Outside that formal architecture — which excludes most of the world — the guarantee is political, not legal, and subject to revision. Ukraine learned this in 2022.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:rgba(192,57,43,0.07); border:1px solid rgba(192,57,43,0.18); border-radius:12px; padding:28px;">
+            <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:#C0392B; margin-bottom:16px;">The no-credible-cost zone</p>
+            <p style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.75; margin-bottom:16px;">Countries or actors that score "no" on all the deterrence variables operate in near-impunity. The profile is consistent:</p>
+            <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;">
+              <div style="display:flex; gap:10px; align-items:flex-start;">
+                <div style="width:6px; height:6px; border-radius:50%; background:#C0392B; flex-shrink:0; margin-top:5px;"></div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.6;"><strong style="color:rgba(255,255,255,0.7);">Not in NATO or a formal US alliance</strong> — the written guarantee doesn't apply</div>
+              </div>
+              <div style="display:flex; gap:10px; align-items:flex-start;">
+                <div style="width:6px; height:6px; border-radius:50%; background:#C0392B; flex-shrink:0; margin-top:5px;"></div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.6;"><strong style="color:rgba(255,255,255,0.7);">Not strategically vital to Western interests</strong> — no semiconductor fabs, no major oil routes, no trade dependency</div>
+              </div>
+              <div style="display:flex; gap:10px; align-items:flex-start;">
+                <div style="width:6px; height:6px; border-radius:50%; background:#C0392B; flex-shrink:0; margin-top:5px;"></div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.6;"><strong style="color:rgba(255,255,255,0.7);">Victims are non-European</strong> — the political pressure for Western intervention is demonstrably lower</div>
+              </div>
+              <div style="display:flex; gap:10px; align-items:flex-start;">
+                <div style="width:6px; height:6px; border-radius:50%; background:#C0392B; flex-shrink:0; margin-top:5px;"></div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.6;"><strong style="color:rgba(255,255,255,0.7);">Has a Russian or Chinese patron</strong> — Security Council veto blocks any UN authorisation</div>
+              </div>
+            </div>
+            <div style="padding:14px; background:rgba(255,255,255,0.04); border-radius:8px;">
+              <p style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.7;"><strong style="color:rgba(255,255,255,0.65);">Countries in this zone today:</strong> Sudan, Myanmar, Mali, Niger, Burkina Faso, DRC, Haiti, Ethiopia, Somalia, Yemen. Combined population: over 400 million people. Current Western military intervention in any of them: zero.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- The moments that sharpened the calculation -->
+        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:28px; margin-bottom:40px;">
+          <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.2); margin-bottom:20px;">The moments that sharpened the calculation — watched by every government in the world</p>
+          <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:rgba(255,255,255,0.05); border-radius:8px; overflow:hidden;">
+            <div style="background:#0D1210; padding:18px;">
+              <div style="font-size:11px; font-weight:700; color:#B8883A; margin-bottom:6px;">2013 — Syria</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.6;">Obama drew a "red line" on chemical weapons use. Assad crossed it. No US military action followed. Lesson filed: stated commitments from Washington are conditional and reversible.</div>
+            </div>
+            <div style="background:#0D1210; padding:18px;">
+              <div style="font-size:11px; font-weight:700; color:#B8883A; margin-bottom:6px;">2014 — Ukraine/Crimea</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.6;">Russia annexed Crimea. The Budapest Memorandum — signed by the US, UK, and Russia — had guaranteed Ukraine's territorial integrity. Western response: sanctions. Lesson: written guarantees to non-NATO states are not military guarantees.</div>
+            </div>
+            <div style="background:#0D1210; padding:18px;">
+              <div style="font-size:11px; font-weight:700; color:#B8883A; margin-bottom:6px;">2021 — Afghanistan</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.6;">The US withdrew after 20 years. The government it built collapsed in 11 days. Lesson: Western commitment is finite. Patient adversaries — states and non-state actors alike — can outlast it by simply waiting.</div>
+            </div>
+            <div style="background:#0D1210; padding:18px;">
+              <div style="font-size:11px; font-weight:700; color:#B8883A; margin-bottom:6px;">2022 — Ukraine</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.6;">Russia invaded a European country for the first time since WWII. NATO did not send troops. The West armed Ukraine but explicitly ruled out direct military engagement. Lesson: even full-scale invasion of a Western partner does not trigger US boots on the ground.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pull-quote">
+          <p>"The Sahel juntas, Myanmar's generals, Sudan's RSF, and Hamas all ran the same calculation — and got the same answer. The West will issue statements. It may impose sanctions. It will not send soldiers. Once that answer is clear, the last meaningful deterrent is gone."</p>
+          <cite>Analytical framework · Age of Impunity · Harvest 2025</cite>
+        </div>
+
+      </div>
+
+      <!-- The vacuum effect -->
+      <div style="margin-top:64px; padding-top:48px; border-top:1px solid rgba(255,255,255,0.07);">
+
+        <div style="margin-bottom:32px;">
+          <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:10px;">The evidence on the ground</p>
+          <h3 style="font-family:'Fraunces',serif; font-size:clamp(20px,2.5vw,30px); font-weight:300; color:#F7F6F2; line-height:1.25; letter-spacing:-0.3px; margin-bottom:16px;">The vacuum effect — where Western influence has already collapsed</h3>
+          <p class="body-text">The power shift is not an abstract future measured in GDP percentages. It has already produced a concrete, observable result: a wave of military coups across West Africa's Sahel, each expelling Western forces and inviting Russian mercenaries in — while Sudan burns and Western donors cut their aid budgets to fund priorities closer to home. Ukraine and Gaza are not merely humanitarian crises. They are consuming the diplomatic capital, military resources, and financial bandwidth that once underwrote Western deterrence everywhere else.</p>
+        </div>
+
+        <!-- Two-column: Sahel + Sudan -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:40px;">
+
+          <!-- Sahel Coups -->
+          <div style="background:rgba(192,57,43,0.07); border:1px solid rgba(192,57,43,0.18); border-radius:14px; padding:28px;">
+            <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:#C0392B; margin-bottom:14px;">West Africa · 2020–2025</p>
+            <h4 style="font-family:'Fraunces',serif; font-size:20px; font-weight:300; color:#F7F6F2; line-height:1.3; margin-bottom:12px;">Six coups in five years — and France left with nothing</h4>
+            <p style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; margin-bottom:20px;">France had maintained a military presence in the Sahel for a decade — Operation Barkhane, thousands of troops, the logic of a secular democratic ally holding the line against jihadist expansion. Between 2020 and 2023, that entire architecture collapsed. Not through military defeat, but through a cascade of coups that each expelled Western forces and turned to Russia instead.</p>
+
+            <!-- Coup timeline -->
+            <div style="display:flex; flex-direction:column; gap:0; border-top:1px solid rgba(255,255,255,0.06);">
+              <div style="display:grid; grid-template-columns:90px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.04);">
+                <div style="font-size:11px; font-weight:600; color:#B8883A;">Aug 2020</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.5); line-height:1.5;"><strong style="color:rgba(255,255,255,0.75);">Mali — coup 1.</strong> President Keïta overthrown. France stays, negotiates.</div>
+              </div>
+              <div style="display:grid; grid-template-columns:90px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.04);">
+                <div style="font-size:11px; font-weight:600; color:#B8883A;">May 2021</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.5); line-height:1.5;"><strong style="color:rgba(255,255,255,0.75);">Mali — coup 2.</strong> Goïta removes the interim president. Wagner deployed. France expelled Aug 2022.</div>
+              </div>
+              <div style="display:grid; grid-template-columns:90px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.04);">
+                <div style="font-size:11px; font-weight:600; color:#B8883A;">Sep 2021</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.5); line-height:1.5;"><strong style="color:rgba(255,255,255,0.75);">Guinea.</strong> Elected president Condé overthrown. ECOWAS suspends; West condemns; nothing changes.</div>
+              </div>
+              <div style="display:grid; grid-template-columns:90px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.04);">
+                <div style="font-size:11px; font-weight:600; color:#B8883A;">Sep 2022</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.5); line-height:1.5;"><strong style="color:rgba(255,255,255,0.75);">Burkina Faso — coup 2.</strong> Captain Traoré takes power. French ambassador expelled. Russia invited in.</div>
+              </div>
+              <div style="display:grid; grid-template-columns:90px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.04);">
+                <div style="font-size:11px; font-weight:600; color:#B8883A;">Jul 2023</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.5); line-height:1.5;"><strong style="color:rgba(255,255,255,0.75);">Niger.</strong> President Bazoum overthrown. ECOWAS threatens military intervention — then backs down. US base closed.</div>
+              </div>
+              <div style="display:grid; grid-template-columns:90px 1fr; gap:12px; padding:10px 0;">
+                <div style="font-size:11px; font-weight:600; color:#B8883A;">Jan 2025</div>
+                <div style="font-size:12px; color:rgba(255,255,255,0.5); line-height:1.5;"><strong style="color:rgba(255,255,255,0.75);">Alliance of Sahel States</strong> formally withdraws from ECOWAS. A new Russia-aligned bloc of 72 million people, outside the Western order.</div>
+              </div>
+            </div>
+
+            <div style="margin-top:20px; padding:14px; background:rgba(255,255,255,0.03); border-radius:8px; border-left:3px solid rgba(192,57,43,0.4);">
+              <p style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.7;"><strong style="color:rgba(255,255,255,0.6);">The outcome:</strong> Jihadist fatalities across Mali, Burkina Faso, and Niger hit record highs in the first half of 2024 — after Russia replaced France. The security situation got worse. The coup leaders remain in power. Western leverage is gone.</p>
+            </div>
+          </div>
+
+          <!-- Sudan -->
+          <div style="background:rgba(192,57,43,0.07); border:1px solid rgba(192,57,43,0.18); border-radius:14px; padding:28px;">
+            <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:#C0392B; margin-bottom:14px;">Sudan · April 2023–present</p>
+            <h4 style="font-family:'Fraunces',serif; font-size:20px; font-weight:300; color:#F7F6F2; line-height:1.3; margin-bottom:12px;">The world's largest humanitarian crisis — and a case study in Western abandonment</h4>
+            <p style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; margin-bottom:20px;">When the Sudan war began in April 2023, Western governments issued statements. They funded aid. They launched mediation talks in Jeddah — led by the US, Egypt, and Saudi Arabia — that produced nothing. Two years later, the response has not scaled to match the catastrophe. It has shrunk.</p>
+
+            <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:20px;">
+              <div style="display:flex; justify-content:space-between; align-items:baseline; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                <span style="font-size:12px; color:rgba(255,255,255,0.4);">UN funding appeal 2024</span>
+                <span style="font-family:'Fraunces',serif; font-size:16px; font-weight:300; color:#C0392B;">$2.7B requested · 48% met</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:baseline; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                <span style="font-size:12px; color:rgba(255,255,255,0.4);">USAID cuts Feb 2025</span>
+                <span style="font-family:'Fraunces',serif; font-size:16px; font-weight:300; color:#C0392B;">83% of programs eliminated</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:baseline; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                <span style="font-size:12px; color:rgba(255,255,255,0.4);">Food kitchens closed</span>
+                <span style="font-family:'Fraunces',serif; font-size:16px; font-weight:300; color:#C0392B;">80%+ shut down</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                <span style="font-size:12px; color:rgba(255,255,255,0.4);">Projected avoidable deaths by 2030</span>
+                <span style="font-family:'Fraunces',serif; font-size:16px; font-weight:300; color:#C0392B;">8.5–20 million</span>
+              </div>
+            </div>
+
+            <div style="padding:14px; background:rgba(255,255,255,0.03); border-radius:8px; border-left:3px solid rgba(192,57,43,0.4); margin-bottom:16px;">
+              <p style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.7; font-style:italic;">"The cuts to USAID have come with a body count."</p>
+              <p style="font-size:10px; color:rgba(255,255,255,0.25); margin-top:6px;">— US Special Envoy to Sudan, 2025</p>
+            </div>
+
+            <div style="padding:14px; background:rgba(255,255,255,0.03); border-radius:8px; border-left:3px solid rgba(255,255,255,0.1);">
+              <p style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.7;"><strong style="color:rgba(255,255,255,0.6);">Meanwhile:</strong> Russia's Africa Corps and Wagner successors are supplying weapons to the RSF — the very militia committing genocide in Darfur. France, Germany, Switzerland, and the UK have also scaled back aid. WHO's Director-General stated that the world's "really low" attention on Sudan is partly explained by race. The conflict is consuming more lives than Ukraine. It receives 3% of the coverage.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Afghanistan -->
+        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:28px; margin-bottom:24px;">
+          <div style="display:grid; grid-template-columns:1fr 340px; gap:40px; align-items:start;">
+            <div>
+              <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:14px;">Afghanistan · 2001–2021</p>
+              <h4 style="font-family:'Fraunces',serif; font-size:20px; font-weight:300; color:#F7F6F2; line-height:1.3; margin-bottom:14px;">$2.3 trillion. Twenty years. Eleven days to collapse.</h4>
+              <p style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; margin-bottom:14px;">In August 2021, the United States completed its withdrawal from Afghanistan after twenty years of military presence, $2.3 trillion in spending, and the deaths of 241,000 people. The Afghan government the West had spent two decades building collapsed in eleven days. The Taliban — which had simply waited — walked into Kabul on August 15.</p>
+              <p style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; margin-bottom:14px;">The Taliban did not defeat the West militarily. They outlasted it. The lesson — widely absorbed — is that Western security commitments are time-limited. Patient adversaries, insurgencies, and authoritarian governments watching from the outside updated their models: <strong style="color:rgba(255,255,255,0.75);">if you can survive long enough, America leaves.</strong></p>
+              <p style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8;">What followed the withdrawal confirmed the analysis. Within months, the Taliban reversed every social and political gain of the previous two decades. Girls were banned first from secondary school, then from primary school — the most extreme restrictions on female education anywhere in the world. The economy contracted by over 30%. By late 2021, an estimated 97% of Afghans had fallen below the poverty line. The UN declared the largest humanitarian emergency on earth — briefly, before Sudan overtook it. And now Afghanistan is at war with Pakistan, its nuclear-armed neighbour, in a conflict that began with Pakistani airstrikes in October 2025.</p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <div style="background:rgba(192,57,43,0.08); border:1px solid rgba(192,57,43,0.2); border-radius:10px; padding:20px;">
+                <div style="font-size:10px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:rgba(192,57,43,0.7); margin-bottom:12px;">The cost</div>
+                <div style="display:flex; flex-direction:column; gap:10px;">
+                  <div style="display:flex; justify-content:space-between; align-items:baseline; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                    <span style="font-size:11px; color:rgba(255,255,255,0.35);">Total US expenditure</span>
+                    <span style="font-family:'Fraunces',serif; font-size:15px; font-weight:300; color:#F7F6F2;">$2.3 trillion</span>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:baseline; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                    <span style="font-size:11px; color:rgba(255,255,255,0.35);">People killed 2001–2021</span>
+                    <span style="font-family:'Fraunces',serif; font-size:15px; font-weight:300; color:#F7F6F2;">241,000+</span>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:baseline; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                    <span style="font-size:11px; color:rgba(255,255,255,0.35);">Days to collapse after withdrawal</span>
+                    <span style="font-family:'Fraunces',serif; font-size:15px; font-weight:300; color:#C0392B;">11</span>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:baseline; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                    <span style="font-size:11px; color:rgba(255,255,255,0.35);">Afghan GDP decline post-2021</span>
+                    <span style="font-family:'Fraunces',serif; font-size:15px; font-weight:300; color:#C0392B;">−30%+</span>
+                  </div>
+                  <div style="display:flex; justify-content:space-between; align-items:baseline;">
+                    <span style="font-size:11px; color:rgba(255,255,255,0.35);">Girls banned from school</span>
+                    <span style="font-family:'Fraunces',serif; font-size:15px; font-weight:300; color:#C0392B;">all ages</span>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:14px; background:rgba(255,255,255,0.03); border-radius:8px; border-left:3px solid rgba(255,255,255,0.1);">
+                <p style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.7; font-style:italic;">"You have the watches. We have the time."</p>
+                <p style="font-size:10px; color:rgba(255,255,255,0.2); margin-top:6px;">— Taliban saying, widely attributed during the occupation</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- The resource argument -->
+        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:28px;">
+          <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.2); margin-bottom:14px;">The structural argument</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:20px;">
+            <div>
+              <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#B8883A; margin-bottom:8px;">$2.3T</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.65;">Spent in Afghanistan over 20 years. The government it built lasted 11 days after the US left. The single clearest proof that Western commitment is finite — and that patient adversaries know it.</div>
+            </div>
+            <div>
+              <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#B8883A; margin-bottom:8px;">$100B+</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.65;">Committed to Ukraine since 2022. A necessary response — but one that has visibly depleted diplomatic bandwidth and donor fatigue for every other crisis simultaneously.</div>
+            </div>
+            <div>
+              <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#B8883A; margin-bottom:8px;">6 coups</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.65;">In West Africa in five years. ECOWAS threatened intervention after Niger in 2023 — then backed down. The signal: the West will not reverse coups in strategically peripheral countries.</div>
+            </div>
+            <div>
+              <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#B8883A; margin-bottom:8px;">−40%</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.65;">Drop in global humanitarian funding mid-2025 vs 2024. Russia and China do not fill this gap with aid — they fill it with mercenaries and arms deals on favourable terms.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <!-- THESIS 3: DEMOCRACY'S PARADOX                                       -->
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <div class="section-divider" style="padding-top:80px;">
+    <div class="section-inner">
+
+      <div style="margin-bottom:48px;">
+        <p style="font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#C0392B; margin-bottom:10px;">Thesis 3</p>
+        <h2 style="font-family:'Fraunces',serif; font-size:clamp(26px,3.5vw,42px); font-weight:300; color:#F7F6F2; line-height:1.2; letter-spacing:-0.4px; margin-bottom:16px;">Democracy's Paradox — <em style="color:#B8883A; font-style:normal;">the precedents being set</em></h2>
+        <p class="body-text" style="margin-bottom:20px;">The liberal argument against war rests on a foundational claim: that democracies are more restrained. That international law, public accountability, and shared values prevent the arbitrary use of military force. The last decade has severely tested that claim. The United States and Israel — the two most prominent Western military powers — have established a set of precedents that every authoritarian government is watching, and some are already citing.</p>
+        <p class="body-text">This is not a moral judgement. It is a strategic observation. <strong>Norms are set by the most powerful actors' behaviour — not by their stated principles.</strong> When powerful democracies bypass international law, they do not just break a rule. They signal to everyone else that the rule is optional.</p>
+      </div>
+
+      <div class="pull-quote">
+        <p>"The United States threatens to take Greenland from a NATO ally. Israel strikes Iran directly. Both cite security necessity. Every authoritarian leader in the world files this away."</p>
+        <cite>Strategic logic · March 2025</cite>
+      </div>
+
+      <div class="event-timeline">
+
+        <div class="event-row">
+          <div class="event-year">2003</div>
+          <div>
+            <div class="event-country">United States · Iraq</div>
+            <div class="event-title">Invasion of Iraq — no UN mandate, no WMDs found</div>
+            <div class="event-body">The US-led coalition invaded Iraq without a UN Security Council mandate, citing intelligence that proved false. The invasion killed an estimated 200,000+ civilians and destabilised an entire region. No legal accountability followed. The precedent: a permanent Security Council member can wage a war of choice — intelligence fabricated or not — and face no institutional consequence.</div>
+            <span class="event-tag" style="background:rgba(192,57,43,0.12); border:1px solid rgba(192,57,43,0.3); color:#C0392B;">Precedent: wars of choice are permissible for the powerful</span>
+          </div>
+        </div>
+
+        <div class="event-row">
+          <div class="event-year">2025</div>
+          <div>
+            <div class="event-country">United States · Venezuela</div>
+            <div class="event-title">US government openly pursues regime decapitation — bounties, deportation threats, military options on the table</div>
+            <div class="event-body">In early 2025, the Trump administration escalated its Venezuela posture from sanctions to explicit regime-change strategy. The Justice Department maintained a $25 million bounty on President Maduro for narco-terrorism charges. The administration invoked the Alien Enemies Act — a wartime statute last used in 1942 — to deport Venezuelan nationals to El Salvador's maximum-security Cecot prison without individual hearings, citing a gang designated as a foreign terrorist organisation. Senior officials publicly discussed military intervention options. This was not the language of diplomacy — it was the vocabulary of forcible government removal, deployed by a democracy against a civilian-led state it disfavoured. Beijing's leadership noted that Washington had just normalised the concept of targeting a foreign government's survival as a policy instrument. The question for Taiwan is straightforward: if the US can openly pursue regime decapitation in its own hemisphere, what constrains a regional power doing the same in theirs?</div>
+            <span class="event-tag" style="background:rgba(184,136,58,0.12); border:1px solid rgba(184,136,58,0.3); color:#B8883A;">Precedent: forcible regime change — including leadership targeting — is a legitimate instrument of state policy</span>
+          </div>
+        </div>
+
+        <div class="event-row">
+          <div class="event-year">2023</div>
+          <div>
+            <div class="event-country">Israel · Gaza</div>
+            <div class="event-title">Gaza — 47,000+ killed, 2.1 million displaced, famine declared</div>
+            <div class="event-body">Following the Hamas attacks of October 7, Israel launched a military campaign in Gaza that has killed over 47,000 people — more than two-thirds civilians according to Gaza health ministry figures — and displaced the entire population of the territory. The International Court of Justice issued provisional measures calling for Israel to prevent acts of genocide. The campaign continued. The US vetoed UN Security Council ceasefire resolutions multiple times. The ICJ measures were largely ignored.</div>
+            <span class="event-tag" style="background:rgba(192,57,43,0.12); border:1px solid rgba(192,57,43,0.3); color:#C0392B;">Precedent: ICJ orders and UN resolutions are optional for US allies</span>
+          </div>
+        </div>
+
+        <div class="event-row">
+          <div class="event-year">2024</div>
+          <div>
+            <div class="event-country">Israel · Lebanon</div>
+            <div class="event-title">Full-scale invasion of Lebanon — ground troops and mass displacement</div>
+            <div class="event-body">After months of escalating strikes, Israel launched a full ground invasion of Lebanon in September 2024. Hezbollah's leadership was systematically assassinated — including Hassan Nasrallah — through a combination of precision strikes and, famously, supply-chain sabotage (the pager attack). More than 1.2 million Lebanese were displaced. A ceasefire was brokered in November 2024 but remained fragile.</div>
+            <span class="event-tag" style="background:rgba(184,136,58,0.12); border:1px solid rgba(184,136,58,0.3); color:#B8883A;">Precedent: supply-chain sabotage as an act of war against a civilian population</span>
+          </div>
+        </div>
+
+        <div class="event-row">
+          <div class="event-year">2024</div>
+          <div>
+            <div class="event-country">Israel · Iran</div>
+            <div class="event-title">Direct Israeli strikes on Iranian territory — a first in the conflict's history</div>
+            <div class="event-body">In October 2024, Israel launched direct missile strikes on Iranian territory — the first time a foreign military had struck Iran since the Iran-Iraq war. The strikes targeted air defence systems. Iran had previously struck Israel directly in April 2024 following an Israeli strike on an Iranian consulate in Damascus. The tit-for-tat escalation between two sovereign states — conducted without formal declarations of war — established a new normal for interstate military action.</div>
+            <span class="event-tag" style="background:rgba(192,57,43,0.12); border:1px solid rgba(192,57,43,0.3); color:#C0392B;">Precedent: direct strikes on sovereign states are now an established tool below the threshold of war</span>
+          </div>
+        </div>
+
+        <div class="event-row">
+          <div class="event-year">2025</div>
+          <div>
+            <div class="event-country">United States · Greenland / Denmark</div>
+            <div class="event-title">Trump threatens to "take" Greenland from a NATO ally — by force if necessary</div>
+            <div class="event-body">In January 2025, President Trump explicitly stated the US was not ruling out military or economic force to acquire Greenland from Denmark — a fellow NATO member. This was not a diplomatic abstraction. It was a direct territorial claim against an ally backed by an implicit military threat. Denmark's prime minister called the position "unacceptable" and convened emergency meetings with European allies to reaffirm territorial integrity. The episode was widely reported in Western media as an eccentricity. In Beijing, Moscow, and Pyongyang, it was filed as something else entirely: evidence that the rules-based international order's primary guarantor had abandoned it.</div>
+            <span class="event-tag" style="background:rgba(192,57,43,0.12); border:1px solid rgba(192,57,43,0.3); color:#C0392B;">Precedent: territorial acquisition by force is back on the table — from the West's own leader</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:48px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:32px;">
+        <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:16px;">The cascade effect</p>
+        <p class="body-text" style="margin-bottom:16px;">None of these events is a direct cause of conflicts elsewhere. The causal link is subtler and more durable: <strong>they erode the norm.</strong> When China's leadership watches the US threaten to seize Greenland and face no meaningful consequence from its allies, it updates its model of what is permissible regarding Taiwan. When Russia watches Israel strike Iran directly and face no international legal accountability, it notes that sovereignty is enforced selectively.</p>
+        <p class="body-text">Wars do not happen because leaders are inspired by others' wars. They happen when leaders calculate that the cost of war is acceptable. That calculation is shaped by what they observe. The precedents being set by Western democracies — however justified by their perpetrators — are reducing the perceived cost of aggression globally.</p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <!-- THESIS 4: THE CLIMATE MULTIPLIER                                     -->
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <div class="section-divider" style="padding-top:80px;">
+    <div class="section-inner">
+
+      <div style="margin-bottom:48px;">
+        <p style="font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#3A5C45; margin-bottom:10px;">Thesis 4</p>
+        <h2 style="font-family:'Fraunces',serif; font-size:clamp(26px,3.5vw,42px); font-weight:300; color:#F7F6F2; line-height:1.2; letter-spacing:-0.4px; margin-bottom:16px;">The Climate Multiplier — <em style="color:#8FAF8A; font-style:normal;">the world is running out of easy conditions for peace</em></h2>
+        <p class="body-text" style="margin-bottom:16px;">Climate change does not start wars. It degrades the conditions under which conflicts can be prevented. It shrinks the resource base that governments need to maintain legitimacy. It displaces populations into already-fragile cities and border regions. It hands militant groups a ready-made recruitment argument — <em>your government failed you, the land is dying, join us</em>. And it does all of this fastest and hardest in the regions that are already closest to the edge.</p>
+        <p class="body-text">The IPCC now reflects a consensus: climate shocks amplify the well-documented drivers of conflict — poverty, economic instability, political marginalisation, agricultural dependence. A moderate worsening of climate conditions increases intergroup violence by approximately 2.5% (Burke et al.). With 2–4× that warming projected, conflict risk from climate alone could rise 5–10%. But the compounding effect is what matters most: climate is one of four structural forces now running simultaneously. It is the one that cannot be negotiated with.</p>
+      </div>
+
+      <!-- Chart -->
+      <div style="background:#0D1210; border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:32px; margin-bottom:48px;">
+        <div style="margin-bottom:24px;">
+          <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:6px;">Sub-Saharan Africa armed conflicts vs global temperature anomaly · 2000–2024</p>
+          <p style="font-size:13px; color:rgba(255,255,255,0.35); line-height:1.6;">Two independent data series on the same timeline. The visual correlation does not prove causation — but the direction of both lines is the same. Sources: UCDP; NASA GISS Surface Temperature Analysis.</p>
+        </div>
+        <div id="climate-chart" style="height:340px;"></div>
+      </div>
+
+      <!-- Three pathways -->
+      <div style="margin-bottom:48px;">
+        <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.2); margin-bottom:20px;">Three pathways from climate stress to conflict</p>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+
+          <div style="background:rgba(58,92,69,0.1); border:1px solid rgba(58,92,69,0.25); border-radius:12px; padding:24px;">
+            <div style="font-size:28px; font-family:'Fraunces',serif; font-weight:300; color:#3A5C45; margin-bottom:10px;">01</div>
+            <div style="font-size:14px; color:#F7F6F2; font-weight:500; margin-bottom:8px;">Resource competition</div>
+            <div style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.75;">Drought and desertification shrink arable land and water access. Herding communities push south into farming territory. Violence follows the resource line — not because people are inherently violent, but because there is no longer enough land for both.</div>
+          </div>
+
+          <div style="background:rgba(58,92,69,0.1); border:1px solid rgba(58,92,69,0.25); border-radius:12px; padding:24px;">
+            <div style="font-size:28px; font-family:'Fraunces',serif; font-weight:300; color:#3A5C45; margin-bottom:10px;">02</div>
+            <div style="font-size:14px; color:#F7F6F2; font-weight:500; margin-bottom:8px;">Displacement and recruitment</div>
+            <div style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.75;">Climate displacement floods cities and border regions with impoverished, traumatised people who have lost their land and their state. Militant groups recruit directly from this pool. The Sahel's jihadist expansion maps almost exactly onto its displacement corridors.</div>
+          </div>
+
+          <div style="background:rgba(58,92,69,0.1); border:1px solid rgba(58,92,69,0.25); border-radius:12px; padding:24px;">
+            <div style="font-size:28px; font-family:'Fraunces',serif; font-weight:300; color:#3A5C45; margin-bottom:10px;">03</div>
+            <div style="font-size:14px; color:#F7F6F2; font-weight:500; margin-bottom:8px;">State fragility</div>
+            <div style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.75;">Climate shocks hit weakest states hardest, destroying agricultural tax bases, overwhelming health systems, and generating grievances the government cannot address. The space left behind — ungoverned, resource-stripped — is where armed groups establish themselves.</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Sahel deep dive -->
+      <div style="background:rgba(58,92,69,0.07); border:1px solid rgba(58,92,69,0.2); border-radius:14px; padding:32px; margin-bottom:40px;">
+        <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:#3A5C45; margin-bottom:14px;">Case study — The Sahel</p>
+        <div style="display:grid; grid-template-columns:1fr 280px; gap:40px; align-items:start;">
+          <div>
+            <h3 style="font-family:'Fraunces',serif; font-size:22px; font-weight:300; color:#F7F6F2; line-height:1.3; margin-bottom:14px;">The coups had a prehistory the news didn't cover</h3>
+            <p style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; margin-bottom:14px;">The wave of military coups that swept Mali, Guinea, Burkina Faso, and Niger between 2020 and 2023 is covered in this page under the power shift — as evidence of declining Western influence. That is accurate. But it is incomplete. Those governments fell partly because they had already failed their populations on the most basic level: food, land, and physical safety. That failure had a climate prehistory stretching back decades.</p>
+            <p style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; margin-bottom:14px;">The Sahel's temperatures are rising <strong style="color:rgba(255,255,255,0.75);">1.5× faster than the global average</strong>. The Lake Chad basin — once the sixth-largest lake in the world — has shrunk by over 90% since the 1960s, displacing tens of millions and eliminating the fishing and agricultural economies of four countries. The Sahara is advancing south at an estimated 48 kilometres per year in some areas. Niger loses 100,000 to 120,000 hectares of arable land every year to desertification — land that simply disappears from the agricultural base.</p>
+            <p style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8;">As land degrades, Tuareg and Fulani herders have pushed south into the farming territories of settled communities. These farmer-pastoralist clashes are documented across Burkina Faso, Mali, Niger, Nigeria, and Ghana — and they predate the jihadist expansion. What JNIM and ISGS did was <strong style="color:rgba(255,255,255,0.75);">weaponise existing grievances</strong> that climate had created: offering protection to one community against another, and exploiting the ethnic dimension of land disputes. By the time the coups happened, these governments were already failing to govern the land their people were fighting over.</p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="background:rgba(255,255,255,0.04); border-radius:10px; padding:18px;">
+              <div style="font-size:10px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:rgba(58,92,69,0.8); margin-bottom:12px;">The Sahel in numbers</div>
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <div style="padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                  <div style="font-family:'Fraunces',serif; font-size:20px; font-weight:300; color:#8FAF8A; line-height:1;">1.5×</div>
+                  <div style="font-size:11px; color:rgba(255,255,255,0.35); margin-top:3px; line-height:1.4;">faster temperature rise than global average</div>
+                </div>
+                <div style="padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                  <div style="font-family:'Fraunces',serif; font-size:20px; font-weight:300; color:#8FAF8A; line-height:1;">80%+</div>
+                  <div style="font-size:11px; color:rgba(255,255,255,0.35); margin-top:3px; line-height:1.4;">of Sahel land now degraded — affects 100M+ people</div>
+                </div>
+                <div style="padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                  <div style="font-family:'Fraunces',serif; font-size:20px; font-weight:300; color:#8FAF8A; line-height:1;">+2,400%</div>
+                  <div style="font-size:11px; color:rgba(255,255,255,0.35); margin-top:3px; line-height:1.4;">surge in internally displaced people since 2014</div>
+                </div>
+                <div style="padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
+                  <div style="font-family:'Fraunces',serif; font-size:20px; font-weight:300; color:#8FAF8A; line-height:1;">+532%</div>
+                  <div style="font-size:11px; color:rgba(255,255,255,0.35); margin-top:3px; line-height:1.4;">rise in food insecurity since 2014</div>
+                </div>
+                <div>
+                  <div style="font-family:'Fraunces',serif; font-size:20px; font-weight:300; color:#8FAF8A; line-height:1;">+172%</div>
+                  <div style="font-size:11px; color:rgba(255,255,255,0.35); margin-top:3px; line-height:1.4;">people needing humanitarian assistance since 2016</div>
+                </div>
+              </div>
+            </div>
+            <div style="padding:14px; background:rgba(255,255,255,0.03); border-radius:8px; border-left:3px solid rgba(58,92,69,0.5);">
+              <p style="font-size:12px; color:rgba(255,255,255,0.4); line-height:1.7;">Lake Chad has shrunk by over <strong style="color:rgba(255,255,255,0.6);">90%</strong> since the 1960s. An entire regional economy — fishing, agriculture, trade — has disappeared. The communities it supported did not.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- The compounding argument -->
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:28px; margin-bottom:40px;">
+        <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.2); margin-bottom:16px;">Why the combination is worse than the sum of the parts</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+          <div>
+            <p style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; margin-bottom:14px;">Each of the four structural forces in this analysis would be serious on its own. Together, they form a feedback loop. Climate stress weakens states — and weak states are exactly where the power shift's "no-credible-cost zone" applies. When a government collapses under combined climate and jihadist pressure, the West has neither the leverage to sanction effectively nor the political will to intervene militarily. The vacuum is filled by Russia and China, whose interest is transactional, not developmental. The state gets weaker still.</p>
+            <p style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8;">Meanwhile, democratic precedents — wars launched without UN mandates, international law ignored when inconvenient — remove the normative pressure that might otherwise restrain regional powers from exploiting climate-weakened neighbours. The four forces are not independent. They amplify each other.</p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div style="display:flex; gap:14px; align-items:flex-start;">
+              <div style="width:32px; flex-shrink:0; font-family:'Fraunces',serif; font-size:18px; font-weight:300; color:#3A5C45; padding-top:1px;">1→</div>
+              <div style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.7;"><strong style="color:rgba(255,255,255,0.7);">Climate degrades states</strong> — agricultural collapse, displacement, ethnic resource conflict undermine government legitimacy</div>
+            </div>
+            <div style="display:flex; gap:14px; align-items:flex-start;">
+              <div style="width:32px; flex-shrink:0; font-family:'Fraunces',serif; font-size:18px; font-weight:300; color:#B8883A; padding-top:1px;">2→</div>
+              <div style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.7;"><strong style="color:rgba(255,255,255,0.7);">Power shift removes consequences</strong> — degraded states fall into the no-credible-cost zone; no Western intervention follows</div>
+            </div>
+            <div style="display:flex; gap:14px; align-items:flex-start;">
+              <div style="width:32px; flex-shrink:0; font-family:'Fraunces',serif; font-size:18px; font-weight:300; color:#B8883A; padding-top:1px;">3→</div>
+              <div style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.7;"><strong style="color:rgba(255,255,255,0.7);">Democratic precedents erode norms</strong> — regional powers observe that international law is enforced selectively and act accordingly</div>
+            </div>
+            <div style="display:flex; gap:14px; align-items:flex-start;">
+              <div style="width:32px; flex-shrink:0; font-family:'Fraunces',serif; font-size:18px; font-weight:300; color:#C0392B; padding-top:1px;">4→</div>
+              <div style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.7;"><strong style="color:rgba(255,255,255,0.7);">Conflict accelerates climate damage</strong> — the first 120 days of the Gaza war generated more CO₂ than 26 countries' entire annual emissions</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Forward look -->
+      <div class="pull-quote">
+        <p>"By 2040, the number of countries facing extreme climate-related hazards is expected to rise from 3 to 65. The vast majority of those countries already host displaced populations. Almost none of them are covered by a formal Western security guarantee. This is not a future risk. It is a scheduled collision."</p>
+        <cite>IPCC AR6 / Climate Vulnerability Projections 2025 — contextualised by Harvest</cite>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <!-- THE FORGOTTEN                                                        -->
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <div class="section-divider" style="padding-top:80px;">
+    <div class="section-inner">
+
+      <div style="margin-bottom:48px;">
+        <p style="font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:10px;">Overlooked conflicts</p>
+        <h2 style="font-family:'Fraunces',serif; font-size:clamp(26px,3.5vw,42px); font-weight:300; color:#F7F6F2; line-height:1.2; letter-spacing:-0.4px; margin-bottom:16px;">The Forgotten</h2>
+        <p class="body-text">While Western media coverage focused on Ukraine and Gaza, two of the most destructive conflicts of the 2020s unfolded with almost no sustained international attention. Sudan and Myanmar together account for more than 20 million displaced people — roughly the population of Australia.</p>
+      </div>
+
+      <div class="forgotten-grid">
+
+        <!-- Sudan -->
+        <div class="forgotten-card">
+          <div class="forgotten-label">Sudan · Since April 2023</div>
+          <div class="forgotten-title">The world's largest displacement crisis</div>
+          <div class="forgotten-sub">Khartoum · Darfur · El Fasher · Port Sudan</div>
+          <div class="forgotten-body">
+            <p>On April 15, 2023, fighting broke out between the Sudanese Armed Forces (SAF) and the Rapid Support Forces (RSF) — a paramilitary group that emerged from the Janjaweed militias responsible for the Darfur genocide of the 2000s. Within days, the capital Khartoum became a battleground.</p>
+            <br>
+            <p>The conflict rapidly spread across the country. In Darfur, the RSF conducted mass atrocities against non-Arab communities, with the UN and multiple governments declaring that acts of genocide were taking place in El Geneina and surrounding areas. The city was razed. <strong>Tens of thousands were killed in Darfur alone.</strong></p>
+            <br>
+            <p>By early 2025, Sudan had become the <strong>world's largest displacement crisis</strong> — surpassing Ukraine. Famine was officially declared in multiple regions in 2024, the first famine declaration anywhere in the world in years. International response has been minimal. No major power has intervened. The UN Security Council remains divided. The war continues.</p>
+          </div>
+          <div class="forgotten-stats">
+            <div>
+              <div class="forgotten-stat-num">150k+</div>
+              <div class="forgotten-stat-label">estimated dead · ongoing</div>
+            </div>
+            <div>
+              <div class="forgotten-stat-num">12M+</div>
+              <div class="forgotten-stat-label">internally displaced — world's largest IDP crisis</div>
+            </div>
+            <div>
+              <div class="forgotten-stat-num">3M+</div>
+              <div class="forgotten-stat-label">refugees fled to neighbouring countries</div>
+            </div>
+            <div>
+              <div class="forgotten-stat-num">Famine</div>
+              <div class="forgotten-stat-label">declared 2024 — first anywhere in world in years</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Myanmar -->
+        <div class="forgotten-card">
+          <div class="forgotten-label">Myanmar · Since February 2021</div>
+          <div class="forgotten-title">A military junta losing a war it cannot stop</div>
+          <div class="forgotten-sub">Rakhine · Shan · Sagaing · Mandalay</div>
+          <div class="forgotten-body">
+            <p>The February 2021 military coup that overthrew Aung San Suu Kyi's elected government triggered a nationwide resistance. What began as street protests evolved into one of the most complex multi-front civil wars in Asia. The People's Defence Forces (PDF), aligned with the National Unity Government (NUG), launched guerrilla operations across the country.</p>
+            <br>
+            <p>In late 2023, a coordinated offensive by three ethnic armed organisations — the Three Brotherhood Alliance — inflicted the most significant territorial losses the junta has suffered, capturing key border towns and trade routes. <strong>By early 2025, the junta controlled less than half of Myanmar's territory</strong> — a remarkable reversal for a military that has held power through force for decades.</p>
+            <br>
+            <p>The human cost has been catastrophic. The military has conducted systematic airstrikes on civilian areas, burned villages, and carried out mass executions. International response has been largely rhetorical. ASEAN's "Five-Point Consensus" — the regional body's response — has produced no measurable change. China, which borders Myanmar, has maintained ties with both the junta and some ethnic armed groups, prioritising stability over accountability.</p>
+          </div>
+          <div class="forgotten-stats">
+            <div>
+              <div class="forgotten-stat-num">50k+</div>
+              <div class="forgotten-stat-label">killed since coup — ongoing</div>
+            </div>
+            <div>
+              <div class="forgotten-stat-num">3.3M</div>
+              <div class="forgotten-stat-label">internally displaced people</div>
+            </div>
+            <div>
+              <div class="forgotten-stat-num">&lt;50%</div>
+              <div class="forgotten-stat-label">territory under junta control by 2025</div>
+            </div>
+            <div>
+              <div class="forgotten-stat-num">∅</div>
+              <div class="forgotten-stat-label">meaningful international intervention</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Media coverage callout -->
+      <div style="margin-top:32px; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:28px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px;">
+        <div>
+          <div style="font-size:10px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:8px;">Western media coverage</div>
+          <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:rgba(255,255,255,0.3); margin-bottom:6px;">~3%</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.35); line-height:1.6;">of international conflict coverage dedicated to Sudan vs ~40% for Ukraine and ~35% for Gaza/Israel (Media Cloud, 2024)</div>
+        </div>
+        <div>
+          <div style="font-size:10px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:8px;">Why it matters</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.75;">Media silence translates directly into political silence, donor silence, and diplomatic silence. The conflicts that are not on the front page do not generate the political pressure that leads to intervention — or even humanitarian funding.</div>
+        </div>
+        <div>
+          <div style="font-size:10px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; color:rgba(255,255,255,0.25); margin-bottom:8px;">The pattern</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.75;">Sudan and Myanmar share a profile common to the ignored: non-European victims, no direct Western strategic interest, complex internal politics, and no singular dramatic event (like an invasion) to anchor news cycles.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <!-- RISK MAP                                                             -->
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <div class="section-divider" style="padding-top:80px; padding-bottom:80px;">
+    <div class="section-inner">
+
+      <div style="margin-bottom:32px;">
+        <p style="font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:10px;">Global overview</p>
+        <h2 style="font-family:'Fraunces',serif; font-size:clamp(26px,3.5vw,42px); font-weight:300; color:#F7F6F2; line-height:1.2; letter-spacing:-0.4px; margin-bottom:16px;">Where war is — and where it could start</h2>
+        <p class="body-text">Active conflicts, at-risk zones, and overlooked flashpoints as of early 2025. Size indicates severity or risk level. Hover for detail.</p>
+      </div>
+
+      <!-- Legend -->
+      <div style="display:flex; gap:20px; margin-bottom:16px; flex-wrap:wrap;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="width:12px; height:12px; border-radius:50%; background:#C0392B; opacity:0.8;"></div>
+          <span style="font-size:11px; color:rgba(255,255,255,0.45);">Active conflict</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="width:12px; height:12px; border-radius:50%; background:#E67E22; opacity:0.8;"></div>
+          <span style="font-size:11px; color:rgba(255,255,255,0.45);">High risk · may escalate</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div style="width:12px; height:12px; border-radius:50%; background:#B8883A; opacity:0.8;"></div>
+          <span style="font-size:11px; color:rgba(255,255,255,0.45);">Overlooked / underreported</span>
+        </div>
+      </div>
+
+      <div style="background:#0D1210; border:1px solid rgba(255,255,255,0.08); border-radius:16px; overflow:hidden;">
+        <div id="risk-map" style="height:520px;"></div>
+      </div>
+
+      <!-- Risk table -->
+      <div style="margin-top:32px;">
+        <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.2); margin-bottom:20px;">Highest risk flashpoints — 2025–2030</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(255,255,255,0.06); border-radius:10px; overflow:hidden;">
+
+          <div style="background:#0D1210; padding:20px;">
+            <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:8px;">
+              <div style="width:8px; height:8px; border-radius:50%; background:#C0392B; flex-shrink:0; margin-top:4px;"></div>
+              <div>
+                <div style="font-size:13px; color:#F7F6F2; font-weight:500; margin-bottom:3px;">Taiwan Strait</div>
+                <div style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.6;">Cross-strait tensions highest since 1996 crisis. PLA air incursions into Taiwan's ADIZ averaged 30+ per month in 2024. A miscalculation risk grows with each incident.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#0D1210; padding:20px;">
+            <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:8px;">
+              <div style="width:8px; height:8px; border-radius:50%; background:#C0392B; flex-shrink:0; margin-top:4px;"></div>
+              <div>
+                <div style="font-size:13px; color:#F7F6F2; font-weight:500; margin-bottom:3px;">Iran</div>
+                <div style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.6;">Following the October 2024 Israeli strikes on Iranian air defences, Iran has accelerated nuclear enrichment. Enrichment at 60%+ (weapons-grade is 90%+). US and Israeli strikes remain a stated option.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#0D1210; padding:20px;">
+            <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:8px;">
+              <div style="width:8px; height:8px; border-radius:50%; background:#E67E22; flex-shrink:0; margin-top:4px;"></div>
+              <div>
+                <div style="font-size:13px; color:#F7F6F2; font-weight:500; margin-bottom:3px;">Korean Peninsula</div>
+                <div style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.6;">North Korea sent 10,000+ troops to Russia in 2024, receiving advanced weapons and satellite technology in return. A newly armed and emboldened Pyongyang — with Russian backing — changes the peninsula's threat calculus.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#0D1210; padding:20px;">
+            <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:8px;">
+              <div style="width:8px; height:8px; border-radius:50%; background:#E67E22; flex-shrink:0; margin-top:4px;"></div>
+              <div>
+                <div style="font-size:13px; color:#F7F6F2; font-weight:500; margin-bottom:3px;">Venezuela</div>
+                <div style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.6;">Maduro's disputed 2024 election result led to mass protests and international non-recognition. The Trump administration discussed military options. Esequibo territorial claims against Guyana remain live.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#0D1210; padding:20px;">
+            <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:8px;">
+              <div style="width:8px; height:8px; border-radius:50%; background:#B8883A; flex-shrink:0; margin-top:4px;"></div>
+              <div>
+                <div style="font-size:13px; color:#F7F6F2; font-weight:500; margin-bottom:3px;">Ethiopia</div>
+                <div style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.6;">The Tigray ceasefire of November 2022 is fragile. Amhara and Oromo conflicts continue. Ethiopia has declared its intent to access the sea — which could bring conflict with Eritrea or Somalia. A country of 125 million people under structural stress.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#0D1210; padding:20px;">
+            <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:8px;">
+              <div style="width:8px; height:8px; border-radius:50%; background:#B8883A; flex-shrink:0; margin-top:4px;"></div>
+              <div>
+                <div style="font-size:13px; color:#F7F6F2; font-weight:500; margin-bottom:3px;">Haiti</div>
+                <div style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.6;">Gang federations control an estimated 80% of Port-au-Prince. The state has effectively ceased to function. A Kenyan-led multinational security support mission deployed in 2024 but lacks the numbers and mandate to restore order. A full state collapse is not a tail risk — it is the baseline scenario.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#0D1210; padding:20px;">
+            <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:8px;">
+              <div style="width:8px; height:8px; border-radius:50%; background:#C0392B; flex-shrink:0; margin-top:4px;"></div>
+              <div>
+                <div style="font-size:13px; color:#F7F6F2; font-weight:500; margin-bottom:3px;">Pakistan / Afghanistan</div>
+                <div style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.6;">In October 2025, Pakistan launched "Operation Khyber Storm" — airstrikes on Kabul, Khost and Paktika targeting TTP positions. The Taliban retaliated in the largest cross-border fighting since 2021. A Qatar-brokered ceasefire held briefly before Afghan forces launched fresh attacks in February 2026. Two nuclear-adjacent states in open inter-state war.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#0D1210; padding:20px;">
+            <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:8px;">
+              <div style="width:8px; height:8px; border-radius:50%; background:#C0392B; flex-shrink:0; margin-top:4px;"></div>
+              <div>
+                <div style="font-size:13px; color:#F7F6F2; font-weight:500; margin-bottom:3px;">DRC / Rwanda — M23</div>
+                <div style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.6;">Rwanda-backed M23 rebels captured Goma — eastern DRC's largest city — in January 2025, displacing 700,000+. A Washington peace accord was signed by both presidents on December 4, 2025. Within days, DRC accused Rwanda of violations as M23 continued advancing in South Kivu. The peace deal is on paper only.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#0D1210; padding:20px;">
+            <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:8px;">
+              <div style="width:8px; height:8px; border-radius:50%; background:#E67E22; flex-shrink:0; margin-top:4px;"></div>
+              <div>
+                <div style="font-size:13px; color:#F7F6F2; font-weight:500; margin-bottom:3px;">Thailand / Cambodia</div>
+                <div style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.6;">A border skirmish in late May 2025 escalated into sustained fighting in July — the first time Thailand's air force engaged in combat since 1988. Royal Thai Air Force F-16s conducted strikes; 100+ died, 500,000+ were displaced across both countries. A second ceasefire was announced December 27, 2025. Two ASEAN members at war — unreported in most Western outlets.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#0D1210; padding:20px;">
+            <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:8px;">
+              <div style="width:8px; height:8px; border-radius:50%; background:#E67E22; flex-shrink:0; margin-top:4px;"></div>
+              <div>
+                <div style="font-size:13px; color:#F7F6F2; font-weight:500; margin-bottom:3px;">Cuba</div>
+                <div style="font-size:11px; color:rgba(255,255,255,0.35); line-height:1.6;">The Cuban economy is in free fall — power cuts lasting 20+ hours daily, food and medicine shortages, the largest emigration wave in Cuban history (nearly 1 million in three years). In January 2026, Trump issued an executive order declaring Cuba an "extraordinary threat." Russia and China operate intelligence facilities on the island. The risk is not a Cuban offensive — it is regime collapse triggering a US intervention or a mass migration crisis.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <!-- CONFLICT STATUS MONITOR                                              -->
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <div class="section-divider" style="padding-top:80px; padding-bottom:80px;">
+    <div class="section-inner">
+
+      <div style="margin-bottom:40px;">
+        <p style="font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:10px;">Live tracker</p>
+        <h2 style="font-family:'Fraunces',serif; font-size:clamp(26px,3.5vw,42px); font-weight:300; color:#F7F6F2; line-height:1.2; letter-spacing:-0.4px; margin-bottom:16px;">Conflict Status Monitor</h2>
+        <p class="body-text" style="margin-bottom:28px;">Not every conflict is a shooting war. Between "active combat" and "genuine peace" lies a spectrum — violated ceasefires, frozen standoffs, initialed treaties that neither side is implementing. Tracking this spectrum matters: frozen conflicts are the most likely source of the next hot war. Status as of March 2026.</p>
+
+        <!-- Status key -->
+        <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:32px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:9px; font-weight:700; letter-spacing:1.2px; background:#C0392B; color:#F7F6F2; padding:3px 8px; border-radius:4px;">ACTIVE</span>
+            <span style="font-size:11px; color:rgba(255,255,255,0.4);">Ongoing combat</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:9px; font-weight:700; letter-spacing:1.2px; background:#B85C2B; color:#F7F6F2; padding:3px 8px; border-radius:4px;">VIOLATED</span>
+            <span style="font-size:11px; color:rgba(255,255,255,0.4);">Ceasefire signed, broken in practice</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:9px; font-weight:700; letter-spacing:1.2px; background:#B87A2B; color:#F7F6F2; padding:3px 8px; border-radius:4px;">CEASEFIRE</span>
+            <span style="font-size:11px; color:rgba(255,255,255,0.4);">Formal ceasefire holding, fragile</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:9px; font-weight:700; letter-spacing:1.2px; background:#2C5F8A; color:#F7F6F2; padding:3px 8px; border-radius:4px;">TREATY</span>
+            <span style="font-size:11px; color:rgba(255,255,255,0.4);">Agreement signed/initialed, awaiting implementation</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:9px; font-weight:700; letter-spacing:1.2px; background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.5); padding:3px 8px; border-radius:4px;">FROZEN</span>
+            <span style="font-size:11px; color:rgba(255,255,255,0.4);">No fighting, no peace — unresolved status quo</span>
+          </div>
+        </div>
+
+        <!-- Monitor table -->
+        <div style="border:1px solid rgba(255,255,255,0.07); border-radius:12px; overflow:hidden;">
+
+          <!-- Header -->
+          <div style="display:grid; grid-template-columns:110px 200px 1fr 180px; gap:0; background:#0D1210; padding:12px 20px; border-bottom:1px solid rgba(255,255,255,0.07);">
+            <div style="font-size:9px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:rgba(255,255,255,0.2);">Status</div>
+            <div style="font-size:9px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:rgba(255,255,255,0.2);">Conflict</div>
+            <div style="font-size:9px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:rgba(255,255,255,0.2);">Latest development</div>
+            <div style="font-size:9px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:rgba(255,255,255,0.2);">Watch for</div>
+          </div>
+
+          <!-- Rows -->
+          <div style="display:grid; grid-template-columns:110px 200px 1fr 180px; gap:0; padding:14px 20px; border-bottom:1px solid rgba(255,255,255,0.05); align-items:start;">
+            <div><span style="font-size:9px; font-weight:700; letter-spacing:1px; background:#C0392B; color:#F7F6F2; padding:3px 7px; border-radius:4px;">ACTIVE</span></div>
+            <div style="font-size:13px; color:#F7F6F2; font-weight:500; padding-right:12px;">Sudan</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.65;">RSF continues to advance. No ceasefire in sight. Famine ongoing in multiple regions. International attention almost zero.</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.3); line-height:1.6;">AU-led talks; any external arms embargo</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:110px 200px 1fr 180px; gap:0; padding:14px 20px; border-bottom:1px solid rgba(255,255,255,0.05); align-items:start;">
+            <div><span style="font-size:9px; font-weight:700; letter-spacing:1px; background:#C0392B; color:#F7F6F2; padding:3px 7px; border-radius:4px;">ACTIVE</span></div>
+            <div style="font-size:13px; color:#F7F6F2; font-weight:500; padding-right:12px;">Ukraine</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.65;">Heaviest fighting of the war continuing. Trump peace initiative stalled after Russia rejected terms. ~76,000 battle deaths in 2024 alone.</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.3); line-height:1.6;">Any US-Russia direct talks; NATO Article 5 trigger risks</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:110px 200px 1fr 180px; gap:0; padding:14px 20px; border-bottom:1px solid rgba(255,255,255,0.05); align-items:start;">
+            <div><span style="font-size:9px; font-weight:700; letter-spacing:1px; background:#C0392B; color:#F7F6F2; padding:3px 7px; border-radius:4px;">ACTIVE</span></div>
+            <div style="font-size:13px; color:#F7F6F2; font-weight:500; padding-right:12px;">Myanmar</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.65;">Junta now controls less than half of national territory. Mandalay, the second city, under resistance siege. No international engagement with the NUG.</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.3); line-height:1.6;">Junta collapse scenario; Chinese intervention to stabilise border</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:110px 200px 1fr 180px; gap:0; padding:14px 20px; border-bottom:1px solid rgba(255,255,255,0.05); align-items:start;">
+            <div><span style="font-size:9px; font-weight:700; letter-spacing:1px; background:#C0392B; color:#F7F6F2; padding:3px 7px; border-radius:4px;">ACTIVE</span></div>
+            <div style="font-size:13px; color:#F7F6F2; font-weight:500; padding-right:12px;">Pakistan / Afghanistan</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.65;">Oct 2025 Pakistani airstrikes triggered Taliban retaliation. Qatar brokered ceasefire. Afghan forces launched fresh attacks Feb 2026. Escalation cycle continues with no political resolution in sight.</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.3); line-height:1.6;">Pakistan nuclear doctrine; any Taliban border offensive</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:110px 200px 1fr 180px; gap:0; padding:14px 20px; border-bottom:1px solid rgba(255,255,255,0.05); align-items:start;">
+            <div><span style="font-size:9px; font-weight:700; letter-spacing:1px; background:#B85C2B; color:#F7F6F2; padding:3px 7px; border-radius:4px;">VIOLATED</span></div>
+            <div style="font-size:13px; color:#F7F6F2; font-weight:500; padding-right:12px;">DRC / Rwanda (M23)</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.65;">Washington accord signed Dec 4 2025. Within days Rwanda accused of violations as M23 advanced further in South Kivu. Framework deal in Doha Nov 2025 also being ignored. The agreement is on paper only.</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.3); line-height:1.6;">US aid conditionality on Rwanda; EAC troop withdrawal</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:110px 200px 1fr 180px; gap:0; padding:14px 20px; border-bottom:1px solid rgba(255,255,255,0.05); align-items:start;">
+            <div><span style="font-size:9px; font-weight:700; letter-spacing:1px; background:#B85C2B; color:#F7F6F2; padding:3px 7px; border-radius:4px;">VIOLATED</span></div>
+            <div style="font-size:13px; color:#F7F6F2; font-weight:500; padding-right:12px;">Gaza</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.65;">Ceasefire agreed Jan 2025 repeatedly broken. Israeli operations resumed March 2025. Humanitarian aid blockade continues. ICJ provisional measures being ignored. 47,000+ dead.</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.3); line-height:1.6;">Iran response; West Bank escalation; US arms supply decisions</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:110px 200px 1fr 180px; gap:0; padding:14px 20px; border-bottom:1px solid rgba(255,255,255,0.05); align-items:start;">
+            <div><span style="font-size:9px; font-weight:700; letter-spacing:1px; background:#B87A2B; color:#F7F6F2; padding:3px 7px; border-radius:4px;">CEASEFIRE</span></div>
+            <div style="font-size:13px; color:#F7F6F2; font-weight:500; padding-right:12px;">Thailand / Cambodia</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.65;">Second ceasefire announced Dec 27 2025 following a July ceasefire that broke down in December. 100+ dead, 500k+ displaced. Temple territory dispute unresolved. Two ASEAN members. No permanent political settlement.</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.3); line-height:1.6;">ICJ ruling on Ta Muen Thom; ASEAN mediation credibility</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:110px 200px 1fr 180px; gap:0; padding:14px 20px; border-bottom:1px solid rgba(255,255,255,0.05); align-items:start;">
+            <div><span style="font-size:9px; font-weight:700; letter-spacing:1px; background:#B87A2B; color:#F7F6F2; padding:3px 7px; border-radius:4px;">CEASEFIRE</span></div>
+            <div style="font-size:13px; color:#F7F6F2; font-weight:500; padding-right:12px;">Ethiopia (Tigray)</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.65;">Pretoria Agreement (Nov 2022) ended the main Tigray war. Amhara conflict ongoing. Ceasefire monitoring limited, implementation incomplete. 600,000+ estimated dead in Tigray war. Fragile.</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.3); line-height:1.6;">Amhara/Fano escalation; Ethiopia sea access push (Eritrea, Somalia)</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:110px 200px 1fr 180px; gap:0; padding:14px 20px; border-bottom:1px solid rgba(255,255,255,0.05); align-items:start;">
+            <div><span style="font-size:9px; font-weight:700; letter-spacing:1px; background:#2C5F8A; color:#F7F6F2; padding:3px 7px; border-radius:4px;">TREATY</span></div>
+            <div style="font-size:13px; color:#F7F6F2; font-weight:500; padding-right:12px;">Armenia / Azerbaijan</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.65;">Peace treaty initialed Aug 8 2025 with Trump mediation. All terms agreed in principle March 2025. Not yet ratified. Azerbaijan demanding Armenia amend its constitution before signing. Zangezur corridor, border demarcation, and POW release all outstanding.</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.3); line-height:1.6;">Armenian constitutional referendum; Azerbaijani compliance; Russian reaction to reduced influence</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:110px 200px 1fr 180px; gap:0; padding:14px 20px; border-bottom:1px solid rgba(255,255,255,0.05); align-items:start;">
+            <div><span style="font-size:9px; font-weight:700; letter-spacing:1px; background:#2C5F8A; color:#F7F6F2; padding:3px 7px; border-radius:4px;">TREATY</span></div>
+            <div style="font-size:13px; color:#F7F6F2; font-weight:500; padding-right:12px;">Yemen</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.65;">Saudi-Houthi talks ongoing via Oman. Partial truce broadly holding in the Saudi-Yemen theatre. Houthi Red Sea attacks on international shipping (response to Gaza) brought direct US and UK strikes. Two parallel conflicts with different dynamics.</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.3); line-height:1.6;">Gaza ceasefire — directly links to Houthi posture; Iranian nuclear deal</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:110px 200px 1fr 180px; gap:0; padding:14px 20px; border-bottom:1px solid rgba(255,255,255,0.05); align-items:start;">
+            <div><span style="font-size:9px; font-weight:700; letter-spacing:1px; background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.5); padding:3px 7px; border-radius:4px;">FROZEN</span></div>
+            <div style="font-size:13px; color:#F7F6F2; font-weight:500; padding-right:12px;">Kosovo / Serbia</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.65;">Brussels normalisation agreement stalled. Serbia does not recognise Kosovo. NATO KFOR (4,500 troops) prevents resumption of hostilities. Serbia accelerating military build-up. The 2023 incursion by Serbian-backed gunmen showed the fragility of the freeze.</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.3); line-height:1.6;">Serbian election results; KFOR mandate renewal; EU accession progress</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:110px 200px 1fr 180px; gap:0; padding:14px 20px; border-bottom:1px solid rgba(255,255,255,0.05); align-items:start;">
+            <div><span style="font-size:9px; font-weight:700; letter-spacing:1px; background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.5); padding:3px 7px; border-radius:4px;">FROZEN</span></div>
+            <div style="font-size:13px; color:#F7F6F2; font-weight:500; padding-right:12px;">Western Sahara</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.65;">Ceasefire since 1991 between Morocco and the Polisario Front. The UN mission MINURSO has operated for 34 years without resolving the underlying question of self-determination. Morocco has steadily expanded its control and won Trump recognition of its sovereignty claim in 2020. Polisario resumed low-level hostilities in 2020.</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.3); line-height:1.6;">UN envoy mandate; Algerian posture; Morocco-EU trade deal</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:110px 200px 1fr 180px; gap:0; padding:14px 20px; align-items:start;">
+            <div><span style="font-size:9px; font-weight:700; letter-spacing:1px; background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.5); padding:3px 7px; border-radius:4px;">FROZEN</span></div>
+            <div style="font-size:13px; color:#F7F6F2; font-weight:500; padding-right:12px;">Cyprus</div>
+            <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.65;">Divided since the Turkish invasion of 1974. UN buffer zone maintained for over 50 years. Reunification talks collapsed in 2017 and have not resumed meaningfully. Turkey has the third-largest NATO army garrisoned in northern Cyprus. Both sides of the island are EU members. Status quo shows no sign of shifting.</div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.3); line-height:1.6;">New UN special envoy appointment; Turkey-EU relations</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <!-- GLOBAL CONSEQUENCES                                                  -->
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <div class="section-divider" style="padding-top:80px; padding-bottom:80px;">
+    <div class="section-inner">
+
+      <div style="margin-bottom:48px;">
+        <p style="font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:10px;">What this means</p>
+        <h2 style="font-family:'Fraunces',serif; font-size:clamp(26px,3.5vw,42px); font-weight:300; color:#F7F6F2; line-height:1.2; letter-spacing:-0.4px; margin-bottom:16px;">The Cost — <em style="color:#B8883A; font-style:normal;">what a world with more war looks like</em></h2>
+        <p class="body-text">The numbers in this analysis — 61 conflicts, 59 countries affected by terrorism, 123 million displaced — are not abstractions. They are the aggregate of individual lives destroyed, economies hollowed out, and political systems pushed to collapse. This is what the trend toward more conflict, left unchecked, produces. All figures are current as of 2024–2025.</p>
+      </div>
+
+      <!-- Six consequence cards -->
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; margin-bottom:48px;">
+
+        <!-- Deaths -->
+        <div style="background:rgba(192,57,43,0.08); border:1px solid rgba(192,57,43,0.2); border-radius:14px; padding:28px; display:flex; flex-direction:column;">
+          <div style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:#C0392B; margin-bottom:16px;">Casualties</div>
+          <div style="font-family:'Fraunces',serif; font-size:52px; font-weight:300; color:#F7F6F2; line-height:1; letter-spacing:-2px; margin-bottom:8px;">160k</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.35); margin-bottom:16px;">deaths in organised violence · 2024</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; flex:1;">That is the official UCDP count for deaths in state-based armed conflict — a figure that excludes the tens of thousands more killed in non-state violence, gang conflict, and one-sided attacks on civilians. Ukraine alone accounted for ~76,000 battle deaths. The true toll of all organised violence in 2024 is significantly higher. Civilian deaths rose 31% year-on-year.</div>
+        </div>
+
+        <!-- Displacement -->
+        <div style="background:rgba(192,57,43,0.08); border:1px solid rgba(192,57,43,0.2); border-radius:14px; padding:28px; display:flex; flex-direction:column;">
+          <div style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:#C0392B; margin-bottom:16px;">Displacement</div>
+          <div style="font-family:'Fraunces',serif; font-size:52px; font-weight:300; color:#F7F6F2; line-height:1; letter-spacing:-2px; margin-bottom:8px;">123M</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.35); margin-bottom:16px;">forcibly displaced worldwide at end of 2024</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; flex:1;"><strong style="color:rgba(255,255,255,0.75);">1 in every 67 people on Earth</strong> is currently displaced by conflict, persecution, or violence. That number has risen every single year for over a decade. 73.5 million are internally displaced — unable to cross a border, trapped inside their own failing state. Sudan alone accounts for 11.6 million — the largest internal displacement crisis ever recorded.</div>
+        </div>
+
+        <!-- Hunger -->
+        <div style="background:rgba(184,136,58,0.08); border:1px solid rgba(184,136,58,0.2); border-radius:14px; padding:28px; display:flex; flex-direction:column;">
+          <div style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:#B8883A; margin-bottom:16px;">Hunger &amp; malnutrition</div>
+          <div style="font-family:'Fraunces',serif; font-size:52px; font-weight:300; color:#F7F6F2; line-height:1; letter-spacing:-2px; margin-bottom:8px;">295M</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.35); margin-bottom:16px;">facing acute hunger across 53 countries · 2024</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; flex:1;">Acute food insecurity rose for the <strong style="color:rgba(255,255,255,0.75);">sixth consecutive year</strong> in 2024. Conflict is the primary driver, affecting 140 million people in 20 countries. 1.9 million face catastrophic hunger (IPC Phase 5 — one step from famine) — the highest number ever recorded, having doubled in a single year. Conflict disrupts harvests, destroys supply chains, and blocks aid. In Sudan, 80% of aid kitchens have closed.</div>
+        </div>
+
+        <!-- Economic cost -->
+        <div style="background:rgba(184,136,58,0.08); border:1px solid rgba(184,136,58,0.2); border-radius:14px; padding:28px; display:flex; flex-direction:column;">
+          <div style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:#B8883A; margin-bottom:16px;">Economic cost</div>
+          <div style="font-family:'Fraunces',serif; font-size:52px; font-weight:300; color:#F7F6F2; line-height:1; letter-spacing:-2px; margin-bottom:8px;">$19T</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.35); margin-bottom:16px;">total economic impact of violence · 2024</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; flex:1;"><strong style="color:rgba(255,255,255,0.75);">13.5% of global GDP</strong> — roughly the entire economic output of the United States — is consumed annually by the direct and indirect costs of violence. This includes $9 trillion in military spending (up $540 billion in 2024 alone), $462 billion in GDP losses directly caused by active conflict (up 44% in a single year), and $343 billion in the cost of refugees and displaced people. Money spent on war cannot be spent on health, education, or climate adaptation.</div>
+        </div>
+
+        <!-- Terrorism -->
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); border-radius:14px; padding:28px; display:flex; flex-direction:column;">
+          <div style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:16px;">Terrorism &amp; militant expansion</div>
+          <div style="font-family:'Fraunces',serif; font-size:52px; font-weight:300; color:#F7F6F2; line-height:1; letter-spacing:-2px; margin-bottom:8px;">66</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.35); margin-bottom:16px;">countries experiencing terrorism in 2024 · up from 58</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; flex:1;">The Global Terrorism Index 2025 found that <strong style="color:rgba(255,255,255,0.75);">45 countries deteriorated</strong> and only 34 improved — the first time more countries worsened than improved in seven years. Islamic State now operates in 22 countries. The Sahel accounts for over half of all terrorism-related deaths globally. 98% of all terrorist deaths occur in active conflict zones. Conflict zones are militant group incubators: ungoverned space, displaced recruits, and weapons in circulation.</div>
+        </div>
+
+        <!-- Refugees & migration -->
+        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.09); border-radius:14px; padding:28px; display:flex; flex-direction:column;">
+          <div style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:16px;">Refugees &amp; migration pressure</div>
+          <div style="font-family:'Fraunces',serif; font-size:52px; font-weight:300; color:#F7F6F2; line-height:1; letter-spacing:-2px; margin-bottom:8px;">8.4M</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.35); margin-bottom:16px;">asylum-seekers awaiting decisions · record high · 2024</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; flex:1;">8.4 million people were waiting on asylum decisions at the end of 2024 — a 22% increase and the highest number ever recorded. Refugee flows from conflict zones are straining host governments across Europe, the Middle East, and Africa. The political reaction — rising anti-immigration sentiment, border militarisation, far-right electoral gains — is reshaping democracies far from the original conflicts. War exports its consequences to countries that never chose to be involved.</div>
+        </div>
+
+      </div>
+
+      <!-- The feedback loop -->
+      <div style="background:#0D1210; border:1px solid rgba(255,255,255,0.07); border-radius:14px; padding:32px; margin-bottom:40px;">
+        <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.2); margin-bottom:20px;">Why these consequences make the next war more likely</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start;">
+          <div>
+            <p style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; margin-bottom:14px;">The consequences of conflict are not merely the cost of the wars that are happening. They are the conditions that produce the next ones. Displaced populations in fragile host countries create political pressure that destabilises governments. Hunger strips agricultural communities of the livelihoods that kept them from turning to armed groups. Economic damage in conflict-adjacent countries — trade disruption, energy price spikes, capital flight — weakens institutions and creates grievances. Terrorism from one ungoverned zone spreads to neighbouring states.</p>
+            <p style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8;">The $19 trillion annual cost of violence also directly competes with the spending needed to address the other structural drivers in this analysis. Every dollar spent on military procurement is a dollar not spent on climate adaptation in a vulnerable Sahel community. Every billion consumed by reconstruction after a preventable war is a billion not spent building the state capacity that makes the next coup less likely.</p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; gap:14px; align-items:flex-start; padding:14px; background:rgba(255,255,255,0.03); border-radius:8px;">
+              <div style="font-family:'Fraunces',serif; font-size:18px; font-weight:300; color:#C0392B; flex-shrink:0; padding-top:1px;">→</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.7;"><strong style="color:rgba(255,255,255,0.65);">Displacement</strong> destabilises host countries, fuels anti-immigration politics, and weakens the democratic coalitions most likely to resist future conflicts</div>
+            </div>
+            <div style="display:flex; gap:14px; align-items:flex-start; padding:14px; background:rgba(255,255,255,0.03); border-radius:8px;">
+              <div style="font-family:'Fraunces',serif; font-size:18px; font-weight:300; color:#C0392B; flex-shrink:0; padding-top:1px;">→</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.7;"><strong style="color:rgba(255,255,255,0.65);">Hunger</strong> removes the economic stake that gives communities reason to avoid conflict — people with nothing left to lose are easier to recruit</div>
+            </div>
+            <div style="display:flex; gap:14px; align-items:flex-start; padding:14px; background:rgba(255,255,255,0.03); border-radius:8px;">
+              <div style="font-family:'Fraunces',serif; font-size:18px; font-weight:300; color:#C0392B; flex-shrink:0; padding-top:1px;">→</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.7;"><strong style="color:rgba(255,255,255,0.65);">Terrorism</strong> from conflict zones spreads to neighbouring states, drawing them into conflicts they did not choose and creating new theatres of instability</div>
+            </div>
+            <div style="display:flex; gap:14px; align-items:flex-start; padding:14px; background:rgba(255,255,255,0.03); border-radius:8px;">
+              <div style="font-family:'Fraunces',serif; font-size:18px; font-weight:300; color:#C0392B; flex-shrink:0; padding-top:1px;">→</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.45); line-height:1.7;"><strong style="color:rgba(255,255,255,0.65);">Economic damage</strong> reduces state capacity in conflict-adjacent countries, bringing more governments closer to the fragility threshold where coups and civil war become probable</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pull-quote">
+        <p>"In 2024, violence cost the world $19 trillion — enough to eliminate global extreme poverty seventeen times over. The question is not whether the world can afford to prevent conflict. It is whether it has calculated the cost of not doing so."</p>
+        <cite>Institute for Economics &amp; Peace · Global Peace Index / Harvest contextualisation · 2025</cite>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <!-- METHODOLOGY                                                          -->
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <div class="methodology">
+    <div class="methodology-inner">
+      <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(255,255,255,0.2); margin-bottom:16px;">Sources and methodology</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px;">
+        <div>
+          <p style="font-size:12px; color:rgba(255,255,255,0.5); line-height:1.75;"><strong style="color:rgba(255,255,255,0.7);">Conflict data:</strong> Uppsala Conflict Data Program (UCDP), Uppsala University. 2024 figures from the UCDP annual report released June 2025 — 61 state-based conflicts, 11 wars, ~160,000 deaths. State-based armed conflict definition: organised use of armed force by a state party, causing at least 25 battle-related deaths in a calendar year. 2025–2035 figures are author projections based on 2020–2024 trend rate and should be treated as indicative, not predictive. ACLED conflict event data covers 1 Dec 2024–Nov 2025.</p>
+        </div>
+        <div>
+          <p style="font-size:12px; color:rgba(255,255,255,0.5); line-height:1.75;"><strong style="color:rgba(255,255,255,0.7);">Economic data:</strong> IMF World Economic Outlook Database (October 2024 edition). GDP figures use purchasing power parity (PPP) to allow cross-country comparison. G7 defined as Canada, France, Germany, Italy, Japan, United Kingdom, United States.</p>
+        </div>
+        <div>
+          <p style="font-size:12px; color:rgba(255,255,255,0.5); line-height:1.75;"><strong style="color:rgba(255,255,255,0.7);">Humanitarian &amp; consequences data:</strong> UNHCR Global Trends 2024 (displacement, asylum figures); Global Report on Food Crises 2025 — FAO/WFP/UNICEF (hunger and malnutrition); Global Terrorism Index 2025 — Institute for Economics &amp; Peace (terrorism country counts, militant group expansion); Institute for Economics &amp; Peace Global Peace Index 2024 (economic cost of violence). Casualty figures for active conflicts are estimates; conflict zones make independent verification extremely difficult. All figures are the most recent credible estimates available as of March 2026.</p>
+        </div>
+      </div>
+      <p style="font-size:11px; color:rgba(255,255,255,0.2); margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.06);">Produced by Harvest · March 2026 · Data journalism for New Zealand</p>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <!-- SCRIPTS                                                              -->
+  <!-- ════════════════════════════════════════════════════════════════════ -->
+  <script>
+  // ── Conflict trend chart ────────────────────────────────────────────────
+  (function() {
+    const years_actual = [2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,
+                          2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,
+                          2020,2021,2022,2023,2024];
+    const values_actual = [34,34,33,35,33,32,35,36,37,37,
+                           32,38,38,40,42,50,49,49,52,54,
+                           56,56,57,59,61];
+
+    const years_proj = [2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035];
+    const values_proj = [61,63,64,65,67,68,69,70,71,73,74,75];
+
+    // Shaded region 2005-2020 baseline
+    const trace_baseline_fill = {
+      x: [2005,2005,2020,2020],
+      y: [0,65,65,0],
+      fill: 'toself',
+      fillcolor: 'rgba(184,136,58,0.06)',
+      line: { color: 'transparent' },
+      mode: 'lines',
+      showlegend: false,
+      hoverinfo: 'skip',
+      name: 'baseline fill'
+    };
+
+    // Shaded region 2020-2023
+    const trace_surge_fill = {
+      x: [2020,2020,2024,2024],
+      y: [0,65,65,0],
+      fill: 'toself',
+      fillcolor: 'rgba(192,57,43,0.08)',
+      line: { color: 'transparent' },
+      mode: 'lines',
+      showlegend: false,
+      hoverinfo: 'skip',
+      name: 'surge fill'
+    };
+
+    const trace_actual = {
+      x: years_actual,
+      y: values_actual,
+      mode: 'lines+markers',
+      name: 'Recorded conflicts (UCDP)',
+      line: { color: '#F7F6F2', width: 2.5 },
+      marker: { color: '#F7F6F2', size: 5 },
+      hovertemplate: '<b>%{x}</b><br>%{y} active conflicts<extra></extra>'
+    };
+
+    const trace_proj = {
+      x: years_proj,
+      y: values_proj,
+      mode: 'lines',
+      name: 'Projection (trend)',
+      line: { color: '#C0392B', width: 2, dash: 'dot' },
+      hovertemplate: '<b>%{x}</b><br>~%{y} projected (trend)<extra></extra>'
+    };
+
+    const layout = {
+      paper_bgcolor: 'transparent',
+      plot_bgcolor: 'transparent',
+      font: { family: 'Inter, sans-serif', color: 'rgba(255,255,255,0.5)', size: 11 },
+      margin: { t: 24, b: 56, l: 48, r: 24 },
+      xaxis: {
+        gridcolor: 'rgba(255,255,255,0.05)',
+        tickcolor: 'rgba(255,255,255,0.12)',
+        linecolor: 'rgba(255,255,255,0.08)',
+        range: [1999, 2036],
+        tickmode: 'array',
+        tickvals: [2000, 2005, 2010, 2015, 2020, 2025, 2030, 2035],
+        ticktext: ['2000', '2005', '2010', '2015', '2020', '2025', '2030', '2035'],
+      },
+      yaxis: {
+        gridcolor: 'rgba(255,255,255,0.05)',
+        tickcolor: 'rgba(255,255,255,0.06)',
+        linecolor: 'rgba(255,255,255,0.06)',
+        range: [25, 82],
+        title: { text: 'Armed conflicts', font: { size: 10, color: 'rgba(255,255,255,0.25)' } }
+      },
+      showlegend: false,
+      annotations: [
+        {
+          x: 2012.5, y: 30,
+          text: '2005–2020<br>avg: ~43',
+          showarrow: false,
+          font: { size: 9, color: 'rgba(184,136,58,0.6)' },
+          align: 'center'
+        },
+        {
+          x: 2021.5, y: 30,
+          text: '2020–2024<br>avg: 58',
+          showarrow: false,
+          font: { size: 9, color: 'rgba(192,57,43,0.6)' },
+          align: 'center'
+        },
+        {
+          x: 2024, y: 63,
+          text: '<b>61</b> — 2024 record',
+          showarrow: true,
+          arrowhead: 2,
+          arrowsize: 0.8,
+          arrowcolor: '#C0392B',
+          ax: 30, ay: -20,
+          font: { size: 10, color: '#C0392B' }
+        },
+        {
+          x: 2035, y: 77,
+          text: '~75 projected',
+          showarrow: false,
+          font: { size: 9, color: 'rgba(192,57,43,0.5)' }
+        }
+      ]
+    };
+
+    Plotly.newPlot('conflict-chart', [trace_baseline_fill, trace_surge_fill, trace_actual, trace_proj], layout, {
+      displayModeBar: false, responsive: true
+    });
+  })();
+
+
+  // ── G7 GDP share chart ──────────────────────────────────────────────────
+  (function() {
+    const years = [2000, 2005, 2010, 2015, 2020, 2022, 2024];
+    const g7 =   [64.5, 59.2, 50.4, 45.8, 42.8, 41.2, 39.5];
+    const brics = [18.4, 22.5, 29.2, 32.8, 35.2, 36.9, 38.4];
+
+    const trace_g7 = {
+      x: years, y: g7,
+      mode: 'lines+markers',
+      name: 'G7 share',
+      fill: 'tozeroy',
+      fillcolor: 'rgba(58,92,69,0.12)',
+      line: { color: '#3A5C45', width: 2.5 },
+      marker: { color: '#3A5C45', size: 6 },
+      hovertemplate: 'G7: <b>%{y}%</b> (%{x})<extra></extra>'
+    };
+
+    const trace_brics = {
+      x: years, y: brics,
+      mode: 'lines+markers',
+      name: 'BRICS+ share',
+      fill: 'tozeroy',
+      fillcolor: 'rgba(192,57,43,0.08)',
+      line: { color: '#C0392B', width: 2, dash: 'dot' },
+      marker: { color: '#C0392B', size: 6 },
+      hovertemplate: 'BRICS+: <b>%{y}%</b> (%{x})<extra></extra>'
+    };
+
+    const layout = {
+      paper_bgcolor: 'transparent',
+      plot_bgcolor: 'transparent',
+      font: { family: 'Inter, sans-serif', color: 'rgba(255,255,255,0.5)', size: 11 },
+      margin: { t: 16, b: 56, l: 56, r: 24 },
+      xaxis: {
+        gridcolor: 'rgba(255,255,255,0.05)',
+        tickcolor: 'rgba(255,255,255,0.1)',
+        linecolor: 'rgba(255,255,255,0.08)',
+      },
+      yaxis: {
+        gridcolor: 'rgba(255,255,255,0.05)',
+        tickcolor: 'rgba(255,255,255,0.06)',
+        linecolor: 'rgba(255,255,255,0.06)',
+        range: [0, 75],
+        ticksuffix: '%',
+        title: { text: 'Share of world GDP (PPP)', font: { size: 10, color: 'rgba(255,255,255,0.25)' } }
+      },
+      legend: {
+        x: 0.6, y: 0.95,
+        font: { size: 10, color: 'rgba(255,255,255,0.5)' },
+        bgcolor: 'rgba(0,0,0,0)',
+        borderwidth: 0
+      },
+      annotations: [
+        {
+          x: 2024, y: 39.5,
+          text: '39.5%',
+          showarrow: false,
+          font: { size: 10, color: '#3A5C45' },
+          xanchor: 'left', xshift: 6
+        },
+        {
+          x: 2024, y: 38.4,
+          text: '38.4%',
+          showarrow: false,
+          font: { size: 10, color: '#C0392B' },
+          xanchor: 'left', xshift: 6
+        }
+      ]
+    };
+
+    Plotly.newPlot('gdp-chart', [trace_g7, trace_brics], layout, {
+      displayModeBar: false, responsive: true
+    });
+  })();
+
+
+  // ── Risk map ────────────────────────────────────────────────────────────
+  (function() {
+    const active = {
+      lats:  [15.5,  49.0,  31.4,  19.7,  -4.0,  -1.6,  15.6,  14.5,   2.0,  18.5, 12.4, 33.5],
+      lons:  [32.5,  31.0,  34.3,  96.1,  23.7,  29.2,  48.5,  40.0,  45.3, -72.3, -1.5, 70.5],
+      sizes: [  28,    24,    22,    20,    14,    16,    18,    14,    12,    14,   12,   14],
+      labels: [
+        'Sudan — 150k+ dead, 12M displaced, famine declared',
+        'Ukraine — full-scale war since Feb 2022',
+        'Gaza — 47k+ dead, 2.1M displaced',
+        'Myanmar — 50k+ dead, 3.3M displaced',
+        'DR Congo (east) — ongoing insurgency',
+        'DRC / Rwanda — M23 took Goma Jan 2025, Washington accord signed Dec 2025 but M23 still advancing',
+        'Yemen — 150k+ dead, 21M in humanitarian need',
+        'Ethiopia — Tigray ceasefire fragile, Amhara/Oromo ongoing',
+        'Somalia — Al-Shabaab insurgency continues',
+        'Haiti — state collapse, 80% of capital under gang control',
+        'Mali / Sahel — Wagner/AES, Islamist insurgency',
+        'Pakistan / Afghanistan — "Operation Khyber Storm" Oct 2025, ceasefire brokered, fighting resumed Feb 2026'
+      ]
+    };
+
+    const at_risk = {
+      lats:  [23.7, 32.4,  8.0, 40.0, 42.9, 34.1, 22.0, 14.0],
+      lons:  [120.5, 53.7, -66.5, 127.5, 20.9, 76.0, -79.5, 103.5],
+      sizes: [  20,   18,   14,   16,   10,   12,   12,   13],
+      labels: [
+        'Taiwan Strait — PLA incursions, cross-strait tension at highest since 1996',
+        'Iran — direct strikes exchanged with Israel 2024, nuclear enrichment at 60%+',
+        'Venezuela — disputed election, US military option discussed',
+        'North Korea — armed Russia with 10k+ troops, received weapons tech in return',
+        'Kosovo / Serbia — normalisation process stalled, flashpoint risk',
+        'Kashmir — Line of Control tensions, nuclear-armed neighbours',
+        'Cuba — economy in free fall, Trump executive order Jan 2026, regime collapse risk',
+        'Thailand / Cambodia — 100+ dead, 500k displaced July 2025; second ceasefire Dec 27 2025 fragile'
+      ]
+    };
+
+    const overlooked = {
+      lats:  [-15.3, 39.8, -6.5, 33.5],
+      lons:  [ 40.7, 46.7, 143.9, 43.9],
+      sizes: [   10,    9,     8,    9],
+      labels: [
+        'Mozambique — Cabo Delgado Islamist insurgency, 1M+ displaced',
+        'Armenia / Azerbaijan — peace treaty initialed Aug 2025 with Trump mediation; ratification pending, key issues unresolved',
+        'Papua New Guinea — tribal conflict, election violence, state fragility',
+        'Syria — Assad fell Dec 2024, new power vacuum, ongoing displacement'
+      ]
+    };
+
+    const trace_active = {
+      type: 'scattergeo',
+      mode: 'markers',
+      lat: active.lats, lon: active.lons,
+      marker: {
+        size: active.sizes,
+        color: '#C0392B',
+        opacity: 0.75,
+        line: { color: 'rgba(192,57,43,0.3)', width: 1 }
+      },
+      text: active.labels,
+      hovertemplate: '<b>Active conflict</b><br>%{text}<extra></extra>',
+      name: 'Active conflict'
+    };
+
+    const trace_risk = {
+      type: 'scattergeo',
+      mode: 'markers',
+      lat: at_risk.lats, lon: at_risk.lons,
+      marker: {
+        size: at_risk.sizes,
+        color: '#E67E22',
+        opacity: 0.7,
+        line: { color: 'rgba(230,126,34,0.3)', width: 1 }
+      },
+      text: at_risk.labels,
+      hovertemplate: '<b>High risk</b><br>%{text}<extra></extra>',
+      name: 'High risk'
+    };
+
+    const trace_overlooked = {
+      type: 'scattergeo',
+      mode: 'markers',
+      lat: overlooked.lats, lon: overlooked.lons,
+      marker: {
+        size: overlooked.sizes,
+        color: '#B8883A',
+        opacity: 0.65,
+        line: { color: 'rgba(184,136,58,0.3)', width: 1 }
+      },
+      text: overlooked.labels,
+      hovertemplate: '<b>Overlooked</b><br>%{text}<extra></extra>',
+      name: 'Overlooked'
+    };
+
+    const layout = {
+      paper_bgcolor: 'transparent',
+      geo: {
+        bgcolor: '#0D1210',
+        showland: true,
+        landcolor: '#1E2420',
+        showocean: true,
+        oceancolor: '#141814',
+        showcountries: true,
+        countrycolor: 'rgba(255,255,255,0.06)',
+        showframe: false,
+        coastlinecolor: 'rgba(255,255,255,0.08)',
+        projection: { type: 'natural earth' },
+        lataxis: { range: [-60, 80] }
+      },
+      margin: { t: 8, b: 8, l: 0, r: 0 },
+      showlegend: false
+    };
+
+    Plotly.newPlot('risk-map', [trace_active, trace_risk, trace_overlooked], layout, {
+      displayModeBar: false, responsive: true
+    });
+  })();
+
+
+  // ── Climate chart ───────────────────────────────────────────────────────
+  (function() {
+    const years = [2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,
+                   2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,
+                   2020,2021,2022,2023,2024];
+
+    // UCDP armed conflicts in sub-Saharan Africa (approximate)
+    const ssa_conflicts = [15,15,14,14,13,12,14,15,14,13,
+                           12,15,16,17,20,24,23,23,25,27,
+                           29,29,31,32,34];
+
+    // Global mean temperature anomaly °C above 1951–1980 baseline (NASA GISS, approximate)
+    const temp_anomaly = [0.42,0.54,0.63,0.62,0.54,0.68,0.61,0.66,0.54,0.64,
+                          0.72,0.61,0.64,0.68,0.75,0.87,1.01,0.92,0.85,0.98,
+                          1.02,0.85,0.89,1.17,1.29];
+
+    const trace_conflicts = {
+      x: years, y: ssa_conflicts,
+      name: 'Armed conflicts — sub-Saharan Africa (UCDP)',
+      type: 'bar',
+      yaxis: 'y',
+      marker: { color: 'rgba(192,57,43,0.55)', line: { color: 'rgba(192,57,43,0.8)', width: 1 } },
+      hovertemplate: '<b>%{x}</b><br>%{y} conflicts (SSA)<extra></extra>'
+    };
+
+    const trace_temp = {
+      x: years, y: temp_anomaly,
+      name: 'Global temp anomaly °C (NASA GISS)',
+      type: 'scatter',
+      mode: 'lines+markers',
+      yaxis: 'y2',
+      line: { color: '#3A5C45', width: 2.5 },
+      marker: { color: '#3A5C45', size: 5 },
+      hovertemplate: '<b>%{x}</b><br>+%{y}°C anomaly<extra></extra>'
+    };
+
+    const layout = {
+      paper_bgcolor: 'transparent',
+      plot_bgcolor: 'transparent',
+      font: { family: 'Inter, sans-serif', color: 'rgba(255,255,255,0.5)', size: 11 },
+      margin: { t: 16, b: 56, l: 48, r: 56 },
+      xaxis: {
+        gridcolor: 'rgba(255,255,255,0.05)',
+        tickcolor: 'rgba(255,255,255,0.1)',
+        linecolor: 'rgba(255,255,255,0.08)',
+      },
+      yaxis: {
+        gridcolor: 'rgba(255,255,255,0.05)',
+        tickcolor: 'rgba(255,255,255,0.06)',
+        linecolor: 'rgba(255,255,255,0.06)',
+        title: { text: 'Armed conflicts (SSA)', font: { size: 10, color: 'rgba(192,57,43,0.6)' } },
+        range: [0, 42]
+      },
+      yaxis2: {
+        title: { text: 'Temp anomaly °C', font: { size: 10, color: 'rgba(58,92,69,0.8)' } },
+        overlaying: 'y',
+        side: 'right',
+        gridcolor: 'transparent',
+        tickcolor: 'rgba(255,255,255,0.06)',
+        ticksuffix: '°',
+        range: [0, 1.6]
+      },
+      legend: {
+        x: 0.02, y: 0.98,
+        font: { size: 10, color: 'rgba(255,255,255,0.45)' },
+        bgcolor: 'rgba(0,0,0,0)',
+        borderwidth: 0
+      },
+      barmode: 'overlay'
+    };
+
+    Plotly.newPlot('climate-chart', [trace_conflicts, trace_temp], layout, {
+      displayModeBar: false, responsive: true
+    });
+  })();
+
+
+  // ── Scrollama: conflict chart steps ────────────────────────────────────
+  (function() {
+    const scroller = scrollama();
+    const steps = document.querySelectorAll('.num-step');
+
+    scroller.setup({
+      step: '.num-step',
+      offset: 0.5,
+      progress: false
+    }).onStepEnter(({ element, index }) => {
+      steps.forEach(s => s.style.opacity = '0.3');
+      element.style.opacity = '1';
+
+      const pill = document.getElementById('chart-pill-text');
+
+      // Update chart annotations / shapes based on step
+      if (index === 0) {
+        pill.textContent = 'UCDP · State-based armed conflicts';
+        Plotly.relayout('conflict-chart', {
+          'xaxis.range': [1999, 2036],
+          'shapes': []
+        });
+      } else if (index === 1) {
+        pill.textContent = '2005–2020 baseline — avg 43 conflicts/yr';
+        Plotly.relayout('conflict-chart', {
+          'xaxis.range': [1999, 2036],
+          'shapes': [{
+            type: 'rect', xref: 'x', yref: 'paper',
+            x0: 2005, x1: 2020, y0: 0, y1: 1,
+            fillcolor: 'rgba(184,136,58,0.12)',
+            line: { color: 'rgba(184,136,58,0.4)', width: 1, dash: 'dot' }
+          }]
+        });
+      } else if (index === 2) {
+        pill.textContent = '2020–2024 surge — 35% above baseline';
+        Plotly.relayout('conflict-chart', {
+          'shapes': [{
+            type: 'rect', xref: 'x', yref: 'paper',
+            x0: 2020, x1: 2024.5, y0: 0, y1: 1,
+            fillcolor: 'rgba(192,57,43,0.18)',
+            line: { color: 'rgba(192,57,43,0.5)', width: 1, dash: 'dot' }
+          }]
+        });
+      } else if (index === 3) {
+        pill.textContent = 'Trend projection to 2035';
+        Plotly.relayout('conflict-chart', {
+          'shapes': [{
+            type: 'rect', xref: 'x', yref: 'paper',
+            x0: 2024.5, x1: 2035.5, y0: 0, y1: 1,
+            fillcolor: 'rgba(192,57,43,0.08)',
+            line: { color: 'rgba(192,57,43,0.3)', width: 1, dash: 'dot' }
+          }]
+        });
+      }
+    });
+
+    // Set first step visible
+    if (steps.length > 0) steps[0].style.opacity = '1';
+  })();
+  </script>
+
+</body>
+</html>

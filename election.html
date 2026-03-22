@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finding Signal in the Noise · 2026 Election Analysis · Harvest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: #F7F6F2; color: #1A1E1A; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+    .site-nav {
+      background: #1A1E1A; padding: 0 48px; height: 57px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-back { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: #F7F6F2; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #F7F6F2; }
+
+    .site-footer {
+      background: #1A1E1A; padding: 40px 48px; border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-footer span { font-size: 13px; color: rgba(255,255,255,0.3); }
+    .site-footer a {
+      font-size: 13px; color: #B8883A; text-decoration: none;
+      border: 1px solid rgba(184,136,58,0.35); border-radius: 40px;
+      padding: 10px 20px; transition: all 0.2s;
+    }
+    .site-footer a:hover { background: rgba(184,136,58,0.1); }
+
+    @media (max-width: 640px) {
+      .site-nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .site-footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-back">← Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="projects.html">Stories</a></li>
+      <li><a href="kiwi.html">Kiwi</a></li>
+      <li><a href="kiwisaver.html">KiwiSaver</a></li>
+      <li><a href="election.html" class="active">Election 2026</a></li>
+    </ul>
+  </nav>
+
+  <!-- Intro -->
+  <div style="max-width:1400px; margin:0 auto; padding:100px 48px 64px;">
+    <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#B8883A; margin-bottom:16px;">2026 Election Analysis · AI-guided insight</p>
+    <h2 style="font-family:'Fraunces',serif; font-size:clamp(36px,5vw,64px); font-weight:300; color:#1A1E1A; line-height:1.1; letter-spacing:-0.02em; margin-bottom:24px;">Finding signal<br><em style="font-style:italic; color:#B8883A;">in the noise</em></h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;">
+      <div>
+        <p style="font-family:'Inter',sans-serif; font-size:17px; color:#4A5248; line-height:1.8; margin-bottom:20px;">
+          With New Zealand's 2026 general election approaching, I scraped press releases from all six major parties and ran keyword analysis across eight policy topics to see where each party is choosing to focus. The results reveal starkly different narratives.
+        </p>
+        <p style="font-family:'Inter',sans-serif; font-size:16px; color:#4A5248; line-height:1.8; margin-bottom:20px;">
+          One of AI's most powerful capabilities is finding patterns inside large volumes of unstructured text — the kind of data that's too slow to read manually and too messy for a spreadsheet. Party press releases, customer reviews, support tickets, meeting notes: AI can scan thousands of documents in seconds, extract the topics that matter, and surface insight that would otherwise stay buried.
+        </p>
+        <p style="font-family:'Inter',sans-serif; font-size:16px; color:#4A5248; line-height:1.8;">
+          Here the approach was deliberately transparent: scrape the raw text, define keyword categories before analysis to avoid bias, normalise by word count so volume differences don't skew the comparison, then visualise. Raw text, keyword counts, word-frequency normalisation. No calls on what matters — the data decides what's being talked about.
+        </p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:20px; padding-top:8px;">
+        <div style="display:flex; gap:16px; align-items:flex-start;">
+          <div style="width:32px; height:32px; background:#3A5C45; border-radius:8px; display:flex; align-items:center; justify-content:center; color:white; font-family:'Inter',sans-serif; font-size:14px; flex-shrink:0;">1</div>
+          <div>
+            <div style="font-family:'Inter',sans-serif; font-size:14px; font-weight:500; color:#1A1E1A; margin-bottom:4px;">Scrape &amp; collect</div>
+            <div style="font-family:'Inter',sans-serif; font-size:14px; color:#6B7B6B; line-height:1.6;">287 press releases pulled automatically from six party websites — raw, unedited text, straight from the source.</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:16px; align-items:flex-start;">
+          <div style="width:32px; height:32px; background:#3A5C45; border-radius:8px; display:flex; align-items:center; justify-content:center; color:white; font-family:'Inter',sans-serif; font-size:14px; flex-shrink:0;">2</div>
+          <div>
+            <div style="font-family:'Inter',sans-serif; font-size:14px; font-weight:500; color:#1A1E1A; margin-bottom:4px;">Keyword match &amp; classify</div>
+            <div style="font-family:'Inter',sans-serif; font-size:14px; color:#6B7B6B; line-height:1.6;">Each document is scanned against pre-defined topic categories using whole-word regex matching — the same technique used in large-scale text mining pipelines.</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:16px; align-items:flex-start;">
+          <div style="width:32px; height:32px; background:#3A5C45; border-radius:8px; display:flex; align-items:center; justify-content:center; color:white; font-family:'Inter',sans-serif; font-size:14px; flex-shrink:0;">3</div>
+          <div>
+            <div style="font-family:'Inter',sans-serif; font-size:14px; font-weight:500; color:#1A1E1A; margin-bottom:4px;">Normalise &amp; compare</div>
+            <div style="font-family:'Inter',sans-serif; font-size:14px; color:#6B7B6B; line-height:1.6;">Frequencies normalised per 1,000 words so the comparison is fair regardless of how much each party publishes. The gaps that emerge are real differences in emphasis, not volume.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats row -->
+  <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(0,0,0,0.07); border-top:1px solid rgba(0,0,0,0.07); border-bottom:1px solid rgba(0,0,0,0.07); margin-bottom:80px;">
+    <div style="background:#EFEDE7; padding:32px 40px;">
+      <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:6px;">287</div>
+      <div style="font-family:'Inter',sans-serif; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#9AA398;">Statements analysed</div>
+    </div>
+    <div style="background:#EFEDE7; padding:32px 40px;">
+      <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:6px;">107k</div>
+      <div style="font-family:'Inter',sans-serif; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#9AA398;">Words processed</div>
+    </div>
+    <div style="background:#EFEDE7; padding:32px 40px;">
+      <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:6px;">8</div>
+      <div style="font-family:'Inter',sans-serif; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#9AA398;">Policy topics</div>
+    </div>
+    <div style="background:#EFEDE7; padding:32px 40px;">
+      <div style="font-family:'Fraunces',serif; font-size:36px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:6px;">6</div>
+      <div style="font-family:'Inter',sans-serif; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#9AA398;">Parties compared</div>
+    </div>
+  </div>
+
+  <!-- Section 01: frequency chart -->
+  <div style="max-width:1400px; margin:0 auto; padding:0 48px 80px; border-bottom:1px solid rgba(0,0,0,0.07);">
+    <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#B8883A; margin-bottom:12px;">01 — Topic frequency</p>
+    <h3 style="font-family:'Fraunces',serif; font-size:clamp(22px,2.5vw,32px); font-weight:300; color:#1A1E1A; margin-bottom:12px;">What each party is talking about</h3>
+    <p style="font-family:'Inter',sans-serif; font-size:15px; color:#4A5248; max-width:640px; line-height:1.8; margin-bottom:36px;">
+      Keyword mentions normalised per 1,000 words — so the comparison is fair regardless of how many statements each party has published.
+    </p>
+    <div style="display:flex; align-items:center; gap:20px; margin-bottom:24px; flex-wrap:wrap;">
+      <div style="display:flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13px; color:#4A5248;"><div style="width:10px; height:10px; border-radius:50%; background:#00529F;"></div> National (110 releases)</div>
+      <div style="display:flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13px; color:#4A5248;"><div style="width:10px; height:10px; border-radius:50%; background:#D82A20;"></div> Labour (62 releases)</div>
+      <div style="display:flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13px; color:#4A5248;"><div style="width:10px; height:10px; border-radius:50%; background:#4A4A4A;"></div> NZ First (50 releases)</div>
+      <div style="display:flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13px; color:#4A5248;"><div style="width:10px; height:10px; border-radius:50%; background:#D4A800;"></div> ACT (35 releases)</div>
+      <div style="display:flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13px; color:#4A5248;"><div style="width:10px; height:10px; border-radius:50%; background:#8B0000;"></div> Te Pāti Māori (8 releases)</div>
+      <div style="display:flex; align-items:center; gap:8px; font-family:'Inter',sans-serif; font-size:13px; color:#4A5248;"><div style="width:10px; height:10px; border-radius:50%; background:#098137;"></div> Green Party (22 releases)</div>
+    </div>
+    <div style="background:white; border:1px solid rgba(0,0,0,0.07); border-radius:2px; padding:28px; box-shadow:0 4px 24px rgba(0,0,0,0.05);">
+      <div id="sn-chart-bar" style="height:660px;"></div>
+    </div>
+  </div>
+
+  <!-- Section 02: gap chart -->
+  <div style="max-width:1400px; margin:0 auto; padding:80px 48px; border-bottom:1px solid rgba(0,0,0,0.07);">
+    <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#B8883A; margin-bottom:12px;">02 — The gap</p>
+    <h3 style="font-family:'Fraunces',serif; font-size:clamp(22px,2.5vw,32px); font-weight:300; color:#1A1E1A; margin-bottom:12px;">Where the narratives diverge</h3>
+    <p style="font-family:'Inter',sans-serif; font-size:15px; color:#4A5248; max-width:640px; line-height:1.8; margin-bottom:36px;">
+      Topics where <span style="color:#D82A20; font-weight:500;">Labour</span> dominates push right, topics where <span style="color:#00529F; font-weight:500;">National</span> leads push left. The bar length is the gap between the two parties.
+    </p>
+    <div style="background:white; border:1px solid rgba(0,0,0,0.07); border-radius:2px; padding:28px; box-shadow:0 4px 24px rgba(0,0,0,0.05);">
+      <div id="sn-chart-gap" style="height:380px;"></div>
+    </div>
+  </div>
+
+  <!-- Section 03: key findings -->
+  <div style="max-width:1400px; margin:0 auto; padding:80px 48px;">
+    <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#B8883A; margin-bottom:12px;">03 — Key findings</p>
+    <h3 style="font-family:'Fraunces',serif; font-size:clamp(22px,2.5vw,32px); font-weight:300; color:#1A1E1A; margin-bottom:12px;">What the data tells us</h3>
+    <p style="font-family:'Inter',sans-serif; font-size:15px; color:#4A5248; max-width:640px; line-height:1.8; margin-bottom:40px;">
+      Opposition parties naturally attack government record — so Labour's heavy focus on economy, health and housing reflects the standard playbook. But the scale of the gaps, National's near-silence on environment, and NZ First's narrow but consistent focus on immigration and sovereignty all stand out.
+    </p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px;">
+      <div style="background:#EFEDE7; border:1px solid rgba(0,0,0,0.06); border-radius:2px; padding:24px;">
+        <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#D82A20; margin-bottom:8px;">Economy · Everyone's talking</div>
+        <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:8px;">Dominant topic</div>
+        <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">Economy and cost of living are the highest-frequency topics across all six parties. Labour (11.43) leads, but Green (3.50) and NZ First (3.94) both outpace National (6.05) on economic language — the opposition is louder on the economy than the government managing it.</p>
+      </div>
+      <div style="background:#EFEDE7; border:1px solid rgba(0,0,0,0.06); border-radius:2px; padding:24px;">
+        <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#098137; margin-bottom:8px;">Environment · Opposition vs Coalition</div>
+        <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:8px;">10× gap</div>
+        <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">Labour and the Greens average 3.97 environment mentions per 1,000 words. National, NZ First and ACT average 0.41. The three governing parties are near-silent on climate. The Greens (3.39) and Labour (4.56) carry almost all the environmental messaging between them.</p>
+      </div>
+      <div style="background:#EFEDE7; border:1px solid rgba(0,0,0,0.06); border-radius:2px; padding:24px;">
+        <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#8B0000; margin-bottom:8px;">Housing · Three parties</div>
+        <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:8px;">Te Pāti Māori #1</div>
+        <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">Te Pāti Māori leads every party on housing at 7.38 per 1,000 words, framing it as a Māori and Tiriti issue. Labour (6.83) and Green (3.50) follow. National sits at 2.03 — the party that campaigned on fixing housing is the quietest governing voice on the topic. <em style="color:#9AA398;">TPM figure based on 8 releases — indicative.</em></p>
+      </div>
+      <div style="background:#EFEDE7; border:1px solid rgba(0,0,0,0.06); border-radius:2px; padding:24px;">
+        <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#9AA398; margin-bottom:8px;">The full picture</div>
+        <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:8px;">Six parties, one story</div>
+        <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">Across 287 releases, the pattern is consistent: opposition parties talk more, about more topics, more loudly. The governing coalition — National, NZ First, ACT — keeps its messaging tight and topic-narrow. Whether that's discipline or defensiveness is a question the election will answer.</p>
+      </div>
+      <div style="background:#EFEDE7; border:1px solid rgba(0,0,0,0.06); border-radius:2px; padding:24px;">
+        <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#4A4A4A; margin-bottom:8px;">Immigration · NZ First</div>
+        <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:8px;">NZ First owns it</div>
+        <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">NZ First leads all parties on immigration at 1.65 per 1,000 words — ahead of National (1.38) and ACT (0.16). Labour, Green and Te Pāti Māori barely register on the topic. NZ First is the only party making immigration a consistent messaging priority in 2026.</p>
+      </div>
+      <div style="background:#EFEDE7; border:1px solid rgba(0,0,0,0.06); border-radius:2px; padding:24px;">
+        <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#D82A20; margin-bottom:8px;">Healthcare · Incumbent disadvantage</div>
+        <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:8px;">2.3× Labour lead</div>
+        <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">Labour mentions health 2.3 times more than National — hospital waitlists, Pharmac cuts, mental health funding. National has little incentive to amplify a topic where they're on the back foot. Notably, Te Pāti Māori (0.74) is quieter than expected given Māori health disparities are a documented priority.</p>
+      </div>
+      <div style="background:#EFEDE7; border:1px solid rgba(0,0,0,0.06); border-radius:2px; padding:24px;">
+        <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#9AA398; margin-bottom:8px;">Crime · Contested ground</div>
+        <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:8px;">Most evenly spread</div>
+        <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">Crime is the most evenly distributed topic across all parties — National (1.72), NZ First (1.47), Te Pāti Māori (4.06), Labour (2.28), ACT (0.82). Everyone has a crime narrative, but they're rarely talking about the same thing: public safety, sentencing, gang policy and systemic incarceration sit in very different conversations.</p>
+      </div>
+      <div style="background:#EFEDE7; border:1px solid rgba(0,0,0,0.06); border-radius:2px; padding:24px;">
+        <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#D4A800; margin-bottom:8px;">Education · Unexpected leaders</div>
+        <div style="font-family:'Fraunces',serif; font-size:28px; font-weight:300; color:#1A1E1A; line-height:1; margin-bottom:8px;">ACT 3.68 · TPM 3.32</div>
+        <p style="font-family:'Inter',sans-serif; font-size:13px; color:#4A5248; line-height:1.6;">ACT tops all parties on education at 3.68 per 1,000 words, followed closely by Te Pāti Māori at 3.32 — two parties with entirely opposing visions for schooling. National (2.71) sits in the middle while Labour barely registers. Charter schools and curriculum reform versus kaupapa Māori — the same topic, opposite directions.</p>
+      </div>
+    </div>
+
+    <!-- Source note -->
+    <div style="margin-top:48px; padding-top:40px; border-top:1px solid rgba(0,0,0,0.07);">
+      <p style="font-family:'Inter',sans-serif; font-size:14px; color:#9AA398; line-height:1.7;">
+        287 press releases · National, Labour, NZ First, ACT, Te Pāti Māori &amp; Green · Jan–Mar 2026 · keyword-matched, normalised per 1,000 words
+      </p>
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    var sBG  = 'white';
+    var sTxt = '#4A5248';
+    var sGrd = '#EBEBEB';
+    var sFnt = { family: 'Georgia, serif', color: sTxt, size: 13 };
+    var cfg  = { displayModeBar: false, responsive: true };
+    var base = { paper_bgcolor: sBG, plot_bgcolor: sBG, font: sFnt, showlegend: false,
+                 margin: { l: 10, r: 20, t: 10, b: 40 } };
+
+    var cats     = ['Economy','Healthcare','Housing','Environment','Crime','Cost of Living','Education','Immigration'];
+    var natRates = [6.05, 3.89, 2.03, 0.44, 1.72, 1.54, 2.71, 1.38];
+    var labRates = [11.43, 9.11, 6.83, 4.56, 2.28, 2.28, 0.04, null];
+    var nzfRates = [3.94, 1.41, 0.53, 0.47, 1.47, 1.18, 0.65, 1.65];
+    var actRates = [1.63, 1.06, 1.06, 0.33, 0.82, 2.45, 3.68, 0.16];
+    var tpmRates = [1.85, 0.74, 7.38, 1.11, 4.06, null, 3.32, null];
+    var grnRates = [3.50, 0.35, 0.70, 3.39, 0.70, 2.69, 0.58, null];
+
+    Plotly.newPlot('sn-chart-bar', [
+      { name:'National', y:cats, x:natRates, type:'bar', orientation:'h',
+        marker:{ color:'#00529F', line:{width:0} }, opacity:0.85,
+        hovertemplate:'<b>%{y}</b><br>National: %{x:.2f} / 1,000 words<extra></extra>' },
+      { name:'Labour',   y:cats, x:labRates, type:'bar', orientation:'h',
+        marker:{ color:'#D82A20', line:{width:0} }, opacity:0.85,
+        hovertemplate:'<b>%{y}</b><br>Labour: %{x:.2f} / 1,000 words<extra></extra>' },
+      { name:'NZ First', y:cats, x:nzfRates, type:'bar', orientation:'h',
+        marker:{ color:'#4A4A4A', line:{width:0} }, opacity:0.85,
+        hovertemplate:'<b>%{y}</b><br>NZ First: %{x:.2f} / 1,000 words<extra></extra>' },
+      { name:'ACT',           y:cats, x:actRates, type:'bar', orientation:'h',
+        marker:{ color:'#D4A800', line:{width:0} }, opacity:0.85,
+        hovertemplate:'<b>%{y}</b><br>ACT: %{x:.2f} / 1,000 words<extra></extra>' },
+      { name:'Te Pāti Māori', y:cats, x:tpmRates, type:'bar', orientation:'h',
+        marker:{ color:'#8B0000', line:{width:0} }, opacity:0.85,
+        hovertemplate:'<b>%{y}</b><br>Te Pāti Māori: %{x:.2f} / 1,000 words<extra></extra>' },
+      { name:'Green Party',   y:cats, x:grnRates, type:'bar', orientation:'h',
+        marker:{ color:'#098137', line:{width:0} }, opacity:0.85,
+        hovertemplate:'<b>%{y}</b><br>Green Party: %{x:.2f} / 1,000 words<extra></extra>' },
+    ], Object.assign({}, base, {
+      showlegend: true,
+      legend: { orientation:'h', yanchor:'bottom', y:1.02, xanchor:'left', x:0,
+                font:{size:13}, bgcolor:'rgba(0,0,0,0)' },
+      barmode:'group', bargap:0.25, bargroupgap:0.06,
+      xaxis: { title:{text:'mentions per 1,000 words', font:{size:11, color:'#9AA398'}},
+               showgrid:true, gridcolor:sGrd, zeroline:false, tickfont:{size:11}, range:[-0.5, null] },
+      yaxis: { showgrid:false, tickfont:{size:13}, automargin:true, ticklabelstandoff:5 },
+    }), cfg);
+
+    var gapCats = ['Education','Immigration','Cost of Living','Crime','Environment','Housing','Healthcare','Economy'];
+    var gapVals = [-2.67, -1.38, 0.74, 0.56, 4.12, 4.80, 5.22, 5.38];
+    Plotly.newPlot('sn-chart-gap', [{
+      y: gapCats, x: gapVals, type:'bar', orientation:'h', showlegend:false,
+      marker:{ color: gapVals.map(function(g){ return g>0?'#D82A20':'#00529F'; }), line:{width:0} },
+      opacity:0.85,
+      customdata: gapVals.map(function(g){ return g>0?'Labour +'+g.toFixed(2):'National +'+Math.abs(g).toFixed(2); }),
+      hovertemplate:'<b>%{y}</b><br>%{customdata}<extra></extra>',
+    }], Object.assign({}, base, {
+      shapes:[{ type:'line', x0:0, x1:0, y0:-0.5, y1:7.5,
+                line:{color:'rgba(0,0,0,0.15)', width:1} }],
+      annotations:[
+        { x:-1.8, y:7.6, xref:'x', yref:'y', text:'← National leads', showarrow:false,
+          font:{size:11, color:'#00529F'}, xanchor:'center' },
+        { x:3.5,  y:7.6, xref:'x', yref:'y', text:'Labour leads →',   showarrow:false,
+          font:{size:11, color:'#D82A20'}, xanchor:'center' },
+      ],
+      xaxis:{ title:{text:'gap in mentions per 1,000 words', font:{size:11, color:'#9AA398'}},
+              showgrid:true, gridcolor:sGrd, zeroline:false, tickfont:{size:11} },
+      yaxis:{ showgrid:false, tickfont:{size:13}, automargin:true },
+    }), cfg);
+  })();
+  </script>
+
+  <!-- What this means -->
+  <div style="background:#1A1E1A;">
+    <div style="max-width:1400px; margin:0 auto; padding:80px 48px;">
+      <div style="border-top:2px solid #B8883A; padding-top:40px;">
+        <p style="font-family:'Inter',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:#B8883A; margin-bottom:12px;">What this means</p>
+        <h3 style="font-family:'Fraunces',serif; font-size:clamp(22px,2.5vw,32px); font-weight:300; color:#F7F6F2; margin-bottom:24px;">Turning analysis into action</h3>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px;">
+          <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:2px; padding:24px;">
+            <div style="font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#00529F; margin-bottom:8px;">For parties &amp; strategists</div>
+            <p style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(255,255,255,0.5); line-height:1.6;">Messaging gaps are measurable vulnerabilities. National's near-silence on housing and environment — two of voters' top concerns — creates a quantifiable space for opposition parties to fill. Communications teams can use this kind of analysis to identify where they are ceding narrative ground before an election campaign begins.</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:2px; padding:24px;">
+            <div style="font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:#D82A20; margin-bottom:8px;">For journalists &amp; researchers</div>
+            <p style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(255,255,255,0.5); line-height:1.6;">Normalising by word count gives a fairer basis for comparing party activity than raw volume — a small party publishing fewer releases isn't quieter on an issue, just smaller. This methodology can be applied to any corpus of political text: speeches, Hansard debates, social media posts, or post-election policy documents.</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:2px; padding:24px;">
+            <div style="font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:8px;">For voters</div>
+            <p style="font-family:'Inter',sans-serif; font-size:13px; color:rgba(255,255,255,0.5); line-height:1.6;">What a party talks about most is a reasonable proxy for what it will prioritise in government. This data cuts through campaign messaging to show revealed priorities — the topics each party chose to put words behind, unprompted, over several months. That's a more reliable signal than a manifesto written for an election.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <span>Harry Candlish · Data Analyst · Wellington, NZ</span>
+    <a href="projects.html">← All stories</a>
+  </footer>
+
+</body>
+</html>
