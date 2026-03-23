@@ -7,6 +7,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="https://unpkg.com/scrollama@3.2.0/build/scrollama.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -218,10 +221,88 @@
     }
     .site-footer a:hover { background: rgba(58,92,69,0.1); }
 
+    /* Case study scrollytelling */
+    .case-scroll-outer {
+      margin: 40px -48px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      min-height: 100vh;
+    }
+    .case-map-sticky {
+      position: sticky;
+      top: 64px;
+      height: calc(100vh - 64px);
+      background: #0A0E0C;
+    }
+    #prehn-map { width: 100%; height: 100%; }
+    .case-panels { padding: 20px 48px 60px; }
+    .case-panel {
+      min-height: 65vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px 0;
+      opacity: 0.25;
+      transition: opacity 0.4s ease;
+      border-left: 2px solid rgba(255,255,255,0.04);
+      padding-left: 24px;
+      margin-left: -24px;
+    }
+    .case-panel.is-active {
+      opacity: 1;
+      border-left-color: rgba(58,92,69,0.5);
+    }
+    .panel-date {
+      font-size: 10px; font-weight: 600; letter-spacing: 1.4px;
+      text-transform: uppercase; color: var(--green-lt); margin-bottom: 12px;
+    }
+    .panel-heading {
+      font-family: 'Fraunces', serif; font-size: 20px; font-weight: 300;
+      color: #F7F6F2; line-height: 1.3; letter-spacing: -0.2px; margin-bottom: 14px;
+    }
+    .panel-body { font-size: 13px; color: rgba(247,246,242,0.45); line-height: 1.8; }
+    .panel-body + .panel-body { margin-top: 12px; }
+    .panel-callout {
+      margin-top: 16px; padding: 13px 16px;
+      background: rgba(58,92,69,0.07); border-left: 2px solid rgba(74,122,89,0.6);
+      border-radius: 0 6px 6px 0; font-size: 12px; font-style: italic;
+      color: rgba(247,246,242,0.5); line-height: 1.7;
+    }
+    .panel-alert {
+      margin-top: 16px; padding: 13px 16px;
+      background: rgba(184,136,58,0.05); border-left: 2px solid rgba(184,136,58,0.4);
+      border-radius: 0 6px 6px 0; font-size: 12px;
+      color: rgba(247,246,242,0.5); line-height: 1.7;
+    }
+    /* Leaflet overrides */
+    .leaflet-container { background: #0A0E0C !important; }
+    .leaflet-control-attribution {
+      background: rgba(0,0,0,0.6) !important; color: rgba(255,255,255,0.2) !important;
+      font-size: 9px !important;
+    }
+    .leaflet-control-attribution a { color: rgba(255,255,255,0.3) !important; }
+    .map-label {
+      font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600;
+      color: rgba(247,246,242,0.6); background: transparent; border: none;
+      white-space: nowrap; letter-spacing: 0.5px; text-transform: uppercase;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    }
+    .leaflet-tooltip {
+      background: rgba(15,22,16,0.95) !important; border: 1px solid rgba(58,92,69,0.4) !important;
+      color: rgba(247,246,242,0.8) !important; font-family: 'Inter', sans-serif !important;
+      font-size: 11px !important; border-radius: 4px !important; box-shadow: none !important;
+    }
+
     @media (max-width: 860px) {
       .stat-hero { grid-template-columns: 1fr; }
       .plb-split { grid-template-columns: 1fr; }
       .cost-banner { grid-template-columns: 1fr 1fr !important; }
+      .case-scroll-outer { grid-template-columns: 1fr; }
+      .case-map-sticky { position: relative; top: 0; height: 65vw; min-height: 280px; }
+      .case-panels { padding: 32px 24px 48px; }
     }
     @media (max-width: 640px) {
       .site-nav { padding: 0 24px; }
@@ -335,6 +416,68 @@
     </div>
 
     <p class="body-text">Drowning at river crossings is particularly significant because it is often survivable with faster rescue response. A swollen river crossing gone wrong doesn't have to be fatal — but if no one knows where you are, it will be.</p>
+
+    <hr class="section-divider">
+
+    <!-- Case Study: Christian Prehn -->
+    <p class="section-label">Case study · Nelson Lakes · 2014</p>
+    <h2 class="section-title">Christian Prehn — 19 years old, never found</h2>
+    <p class="body-text">He was a German backpacker on a gap year. Well-equipped, experienced enough to attempt the Travers-Sabine Circuit alone. He went missing on 25 February 2014 and his body was never recovered. His case sits at the intersection of everything this story is about: a solo international visitor, no PLB, no trip contact, and a three-day gap before anyone raised the alarm — closed only because a stranger found his abandoned pack by chance.</p>
+
+    <div class="case-scroll-outer">
+      <div class="case-map-sticky">
+        <div id="prehn-map"></div>
+      </div>
+      <div class="case-panels" id="prehn-panels">
+
+        <div class="case-panel" data-step="0">
+          <p class="panel-date">The Travers-Sabine Circuit</p>
+          <h3 class="panel-heading">An 80km alpine loop in Nelson Lakes National Park</h3>
+          <p class="panel-body">The Travers-Sabine is one of New Zealand's classic multi-day circuits — crossing Travers Saddle at 1,787m, through steep, remote alpine terrain. It is not a Great Walk. There are no rangers, no phone signal, and no huts with emergency comms above the valley floor.</p>
+          <p class="panel-body">Christian Prehn, 19, from Germany, had been in New Zealand since October 2013. By February 2014 he was experienced enough to plan it solo.</p>
+          <div class="panel-callout">Green line: confirmed route. Gold dashed: presumed summit attempt. No cell coverage exists in the upper Travers Valley or at Travers Saddle.</div>
+        </div>
+
+        <div class="case-panel" data-step="1">
+          <p class="panel-date">23 February 2014</p>
+          <h3 class="panel-heading">He parks his car at St Arnaud and begins</h3>
+          <p class="panel-body">He left his car in the St Arnaud village carpark with provisions for several days and a planned return date of 1 March. He did not file a trip intention. No one was waiting for him to return.</p>
+          <div class="panel-alert">Filing a trip intention means leaving your route, return date, and an emergency contact with someone who will call Police if you don't check in. It costs nothing and takes five minutes. Most international visitors don't know it exists.</div>
+        </div>
+
+        <div class="case-panel" data-step="2">
+          <p class="panel-date">24–25 February 2014</p>
+          <h3 class="panel-heading">Upper Travers Hut — the last confirmed rest stop</h3>
+          <p class="panel-body">He spent a night at Upper Travers Hut, the highest hut on the Travers side before the saddle. Two other trampers on the circuit encountered him here. They later confirmed he seemed well — experienced, properly equipped, in good spirits.</p>
+          <p class="panel-body">They were the last people to see him alive at the hut. Their account became crucial to the timeline searchers later tried to reconstruct.</p>
+        </div>
+
+        <div class="case-panel" data-step="3">
+          <p class="panel-date">25 February 2014, ~11:30am</p>
+          <h3 class="panel-heading">Below Travers Saddle — the last confirmed sighting</h3>
+          <p class="panel-body">The same two trampers encountered him again on the track below Travers Saddle, heading upward. He was described as "standing and looking up at the black peak of Mt Travers." They talked about attempting the summit.</p>
+          <p class="panel-body">He said he would leave his pack at the saddle and go up light. The two trampers continued on the circuit. That was the last confirmed sighting.</p>
+          <div class="panel-callout">"Standing and looking up at the black peak of Mt Travers." — Wilderness Magazine account of the final sighting</div>
+        </div>
+
+        <div class="case-panel" data-step="4">
+          <p class="panel-date">25 February 2014 — presumed</p>
+          <h3 class="panel-heading">Mt Travers — 2,338 metres</h3>
+          <p class="panel-body">Mt Travers is the second-highest peak in Nelson Lakes National Park. The terrain is described as "treacherously steep," consisting of rock that readily fractures. There is no marked route to the summit.</p>
+          <p class="panel-body">What happened on the mountain is not known. His body was never recovered. Not a footprint. Not a food wrapper. The coroner ruled accidental death.</p>
+          <div class="panel-alert">No PLB. No cell coverage. No trip intention. If he fell, there was no mechanism in place for anyone to know where to look — or even that he needed help.</div>
+        </div>
+
+        <div class="case-panel" data-step="5">
+          <p class="panel-date">1 March 2014 — three days later</p>
+          <h3 class="panel-heading">A stranger finds his pack. The alarm is raised.</h3>
+          <p class="panel-body">A couple walking the circuit came across his grey Lowe Alpine pack at Travers Saddle — full of gear, personal items, and food. They notified DOC staff. A search began the following day.</p>
+          <p class="panel-body">The search was halted on 6 March by snow and -10°C windchill. A second community-funded search was run in 2015, paid for by €5,400 raised at a music school concert in Germany. No trace was ever found.</p>
+          <div class="panel-callout">He wasn't reported missing because anyone who knew him raised the alarm. He was reported missing because a stranger found his belongings. Without that chance encounter, the alert could have come days later — or not at all.</div>
+        </div>
+
+      </div>
+    </div>
 
     <hr class="section-divider">
 
@@ -566,6 +709,103 @@
       });
 
       Plotly.newPlot('chart-causes', [trace], layout, { displayModeBar: false, responsive: true });
+    })();
+
+    // Prehn map — Leaflet + Scrollama
+    (function() {
+      if (!document.getElementById('prehn-map')) return;
+
+      const map = L.map('prehn-map', {
+        center: [-41.905, 172.820],
+        zoom: 11,
+        zoomControl: false,
+        scrollWheelZoom: false,
+        dragging: false,
+        touchZoom: false,
+        doubleClickZoom: false,
+        keyboard: false,
+      });
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+        subdomains: 'abcd', maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      }).addTo(map);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}{r}.png', {
+        subdomains: 'abcd', maxZoom: 19,
+      }).addTo(map);
+
+      // Route polylines
+      const confirmedRoute = [
+        [-41.804, 172.849],
+        [-41.840, 172.838],
+        [-41.868, 172.823],
+        [-41.912, 172.808],
+        [-41.943, 172.798],
+        [-41.967, 172.788],
+        [-41.983, 172.779],
+        [-41.993, 172.773],
+      ];
+      const summitRoute = [
+        [-41.993, 172.773],
+        [-41.996, 172.782],
+        [-41.998, 172.797],
+      ];
+
+      L.polyline(confirmedRoute, { color: '#4A7A59', weight: 3, opacity: 0.85 }).addTo(map);
+      L.polyline(summitRoute, { color: '#B8883A', weight: 2.5, opacity: 0.75, dashArray: '7, 9' }).addTo(map);
+
+      // Markers
+      const dot = (latlng, color, r, tip) =>
+        L.circleMarker(latlng, { radius: r, fillColor: color, color: 'rgba(247,246,242,0.25)', weight: 1.5, fillOpacity: 0.95 })
+         .bindTooltip(tip, { direction: 'top', offset: [0, -6] });
+
+      const mArnaud   = dot([-41.804, 172.849], '#4A7A59', 8, 'St Arnaud — Start');
+      const mUpperHut = dot([-41.967, 172.788], '#4A7A59', 6, 'Upper Travers Hut');
+      const mLastSeen = dot([-41.983, 172.779], '#B8883A', 8, 'Last sighting — 25 Feb ~11:30am');
+      const mSaddle   = dot([-41.993, 172.773], '#B8883A', 8, 'Travers Saddle — pack found 1 March');
+      const mSummit   = dot([-41.998, 172.797], '#C0392B', 7, 'Mt Travers — 2,338m');
+
+      [mArnaud, mUpperHut, mLastSeen, mSaddle, mSummit].forEach(m => m.addTo(map));
+
+      // Static labels (visible at overview zoom)
+      const label = (latlng, text, offset) => L.marker(latlng, {
+        icon: L.divIcon({ className: 'map-label', html: text, iconAnchor: offset || [0, 0] }),
+        interactive: false,
+      }).addTo(map);
+
+      label([-41.804, 172.849], 'St Arnaud', [-4, -14]);
+      label([-41.998, 172.797], 'Mt Travers<br>2,338m', [-4, -14]);
+      label([-41.993, 172.773], 'Travers Saddle', [-4, -14]);
+
+      // Map state per panel
+      const states = [
+        { center: [-41.905, 172.820], zoom: 11 },
+        { center: [-41.804, 172.853], zoom: 14 },
+        { center: [-41.967, 172.788], zoom: 13 },
+        { center: [-41.983, 172.776], zoom: 14 },
+        { center: [-41.998, 172.797], zoom: 13 },
+        { center: [-41.993, 172.770], zoom: 14 },
+      ];
+
+      // Scrollama
+      const scroller = scrollama();
+      scroller.setup({
+        step: '#prehn-panels .case-panel',
+        offset: 0.55,
+      }).onStepEnter(({ element, index }) => {
+        document.querySelectorAll('#prehn-panels .case-panel').forEach(p => p.classList.remove('is-active'));
+        element.classList.add('is-active');
+        const s = states[index];
+        if (s) map.flyTo(s.center, s.zoom, { animate: true, duration: 1.0, easeLinearity: 0.4 });
+      });
+
+      // Activate first panel immediately
+      const first = document.querySelector('#prehn-panels .case-panel');
+      if (first) first.classList.add('is-active');
+
+      // Resize handler for Scrollama
+      window.addEventListener('resize', scroller.resize);
     })();
   </script>
 
