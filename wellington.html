@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Case for Wellington · Harry Candlish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: #0A0F0D; color: #F7F6F2; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+    :root {
+      --teal: #2C8A78;
+      --teal-lt: #3AA38F;
+      --gold: #B8883A;
+      --bg-dark: #0A0F0D;
+      --bg-card: #0F1612;
+      --bg-section: #111810;
+    }
+
+    /* Nav */
+    .site-nav {
+      background: #1A1E1A; padding: 0 48px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 300; color: #F7F6F2; text-decoration: none; letter-spacing: -0.2px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #F7F6F2; }
+    .nav-links a.active { color: #F7F6F2; }
+
+    /* Hero */
+    .page-hero {
+      background: var(--bg-dark); padding: 96px 48px 80px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 65% 40%, rgba(44,138,120,0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .page-hero-inner { max-width: 760px; position: relative; }
+    .page-hero-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+    }
+    .page-hero-label::before {
+      content: ''; display: inline-block; width: 20px; height: 1px; background: var(--teal);
+    }
+    .page-hero-title {
+      font-family: 'Fraunces', serif; font-size: clamp(36px, 5vw, 56px); font-weight: 300;
+      color: #F7F6F2; line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 24px;
+    }
+    .page-hero-title em { font-style: italic; color: rgba(247,246,242,0.5); }
+    .hero-divider { width: 32px; height: 1px; background: rgba(44,138,120,0.5); margin: 28px 0; }
+    .page-hero-sub { font-size: 15px; color: rgba(247,246,242,0.5); line-height: 1.85; max-width: 580px; }
+
+    /* Content */
+    .content-area { max-width: 1000px; margin: 0 auto; padding: 72px 48px 100px; }
+
+    .section-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase;
+      color: rgba(247,246,242,0.3); margin-bottom: 20px;
+    }
+    .section-title {
+      font-family: 'Fraunces', serif; font-size: clamp(24px, 3vw, 34px); font-weight: 300;
+      color: #F7F6F2; line-height: 1.2; letter-spacing: -0.3px; margin-bottom: 20px;
+    }
+    .body-text { font-size: 14px; color: rgba(247,246,242,0.5); line-height: 1.85; }
+    .body-text + .body-text { margin-top: 16px; }
+    .body-text strong { color: rgba(247,246,242,0.8); font-weight: 500; }
+
+    .section-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 64px 0; }
+
+    /* Methodology cards */
+    .method-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 32px 0;
+    }
+    .method-card {
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 20px 16px; text-align: center;
+    }
+    .method-pct {
+      font-family: 'Fraunces', serif; font-size: 28px; font-weight: 300;
+      line-height: 1; margin-bottom: 8px;
+    }
+    .method-name { font-size: 11px; color: rgba(247,246,242,0.4); line-height: 1.5; }
+
+    /* Bias cards */
+    .bias-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+    .bias-card {
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 28px;
+    }
+    .bias-card-label { font-size: 10px; font-weight: 600; letter-spacing: 1.3px; text-transform: uppercase; margin-bottom: 10px; }
+    .bias-card-title { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 300; color: #F7F6F2; line-height: 1.3; margin-bottom: 12px; }
+    .bias-card-body { font-size: 13px; color: rgba(247,246,242,0.45); line-height: 1.75; }
+
+    /* Stat row */
+    .stat-row-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 32px 0; }
+    .stat-card {
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 24px;
+    }
+    .stat-val { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 300; line-height: 1; margin-bottom: 8px; }
+    .stat-desc { font-size: 12px; color: rgba(247,246,242,0.4); line-height: 1.6; }
+
+    /* Chart container */
+    .chart-wrap {
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px; padding: 32px; margin: 32px 0;
+    }
+    .chart-title { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 300; color: #F7F6F2; margin-bottom: 6px; }
+    .chart-sub { font-size: 12px; color: rgba(247,246,242,0.35); margin-bottom: 24px; line-height: 1.5; }
+
+    /* Verdict section */
+    .verdict-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 32px 0; }
+    .verdict-card {
+      border-radius: 14px; padding: 32px;
+    }
+    .verdict-card.higher { background: rgba(44,138,120,0.08); border: 1px solid rgba(44,138,120,0.25); }
+    .verdict-card.right { background: rgba(184,136,58,0.08); border: 1px solid rgba(184,136,58,0.25); }
+    .verdict-label { font-size: 10px; font-weight: 600; letter-spacing: 1.3px; text-transform: uppercase; margin-bottom: 14px; }
+    .verdict-title { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 300; color: #F7F6F2; line-height: 1.3; margin-bottom: 16px; }
+    .verdict-list { display: flex; flex-direction: column; gap: 10px; }
+    .verdict-item { font-size: 13px; color: rgba(247,246,242,0.5); line-height: 1.7; padding-left: 16px; position: relative; }
+    .verdict-item::before { content: '→'; position: absolute; left: 0; color: rgba(247,246,242,0.25); }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 3px solid var(--teal); padding: 20px 28px; margin: 32px 0;
+      background: rgba(44,138,120,0.05); border-radius: 0 10px 10px 0;
+    }
+    .pull-quote p { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 300; font-style: italic; color: rgba(247,246,242,0.7); line-height: 1.6; }
+
+    /* Footer */
+    .site-footer {
+      background: #1A1E1A; padding: 40px 48px; border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-footer span { font-size: 13px; color: rgba(255,255,255,0.3); }
+    .site-footer a {
+      font-size: 13px; color: #B8883A; text-decoration: none;
+      border: 1px solid rgba(184,136,58,0.35); border-radius: 40px;
+      padding: 10px 20px; transition: all 0.2s;
+    }
+    .site-footer a:hover { background: rgba(184,136,58,0.1); }
+
+    @media (max-width: 860px) {
+      .method-grid { grid-template-columns: repeat(3, 1fr); }
+      .bias-grid { grid-template-columns: 1fr; }
+      .verdict-grid { grid-template-columns: 1fr; }
+      .stat-row-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .site-nav { padding: 0 24px; }
+      .page-hero { padding: 56px 24px 48px; }
+      .content-area { padding: 48px 24px 72px; }
+      .method-grid { grid-template-columns: 1fr 1fr; }
+      .stat-row-grid { grid-template-columns: 1fr; }
+      .site-footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">Harry Candlish</a>
+    <ul class="nav-links">
+      <li><a href="projects.html">Stories</a></li>
+      <li><a href="economy.html">The Ledger</a></li>
+      <li><a href="wellington.html" class="active">Wellington</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Get in touch</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-label">The Ledger · Liveability analysis · 2025</p>
+      <h1 class="page-hero-title">A case for Wellington.<br><em>Why number 20 undersells it.</em></h1>
+      <div class="hero-divider"></div>
+      <p class="page-hero-sub">Wellington ranked 20th in the 2025 EIU Global Liveability Index — its lowest placing in a decade. But the index has a structural bias that systematically disadvantages smaller cities on two of its five categories. When you account for population size, Wellington's true liveability may sit several places higher.</p>
+    </div>
+  </div>
+
+  <div class="content-area">
+
+    <!-- SECTION 1: What is the index -->
+    <p class="section-label">Background · The Economist Intelligence Unit</p>
+    <h2 class="section-title">What the Global Liveability Index actually measures</h2>
+
+    <p class="body-text">Since 2002, the Economist Intelligence Unit has published an annual ranking of the world's most liveable cities. The index assesses <strong>173 cities</strong> across five categories, each weighted by importance. The resulting score — out of 100 — determines global rank. It's used by multinational companies to calculate hardship allowances for employees relocated abroad, which explains its design: it measures liveability from the perspective of an expatriate professional, not a local resident.</p>
+
+    <p class="body-text" style="margin-top:16px;">That design choice matters. The index is not asking "is this a good place to grow up, age, or raise a family on a local salary?" It's asking "is this a comfortable, safe, functional city for someone arriving from elsewhere?" Both questions are worth answering — but they don't always point to the same place.</p>
+
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-pct" style="color:var(--teal);">25%</div>
+        <div class="method-name">Stability<br><span style="color:rgba(247,246,242,0.25); font-size:10px;">Crime, unrest, conflict</span></div>
+      </div>
+      <div class="method-card">
+        <div class="method-pct" style="color:var(--teal);">20%</div>
+        <div class="method-name">Healthcare<br><span style="color:rgba(247,246,242,0.25); font-size:10px;">Availability & quality</span></div>
+      </div>
+      <div class="method-card">
+        <div class="method-pct" style="color:var(--teal);">25%</div>
+        <div class="method-name">Culture &amp; Environment<br><span style="color:rgba(247,246,242,0.25); font-size:10px;">Events, dining, nature</span></div>
+      </div>
+      <div class="method-card">
+        <div class="method-pct" style="color:var(--teal);">10%</div>
+        <div class="method-name">Education<br><span style="color:rgba(247,246,242,0.25); font-size:10px;">Schools & universities</span></div>
+      </div>
+      <div class="method-card">
+        <div class="method-pct" style="color:var(--teal);">20%</div>
+        <div class="method-name">Infrastructure<br><span style="color:rgba(247,246,242,0.25); font-size:10px;">Transport, utilities</span></div>
+      </div>
+    </div>
+
+    <p class="body-text">Two of those five categories — Culture & Environment (25%) and Infrastructure (20%) — account for <strong>45% of the total score</strong>. Both are sensitive to city size in ways that disadvantage smaller populations. A city of 200,000 will always offer fewer international transport routes, fewer major sporting events, and a smaller restaurant and cultural scene than a city of 2 million — regardless of how well it performs on those measures per capita.</p>
+
+    <hr class="section-divider">
+
+    <!-- SECTION 2: History -->
+    <p class="section-label">Historical context · EIU data via Wikipedia</p>
+    <h2 class="section-title">Wellington's ranking over time</h2>
+
+    <p class="body-text">Wellington has featured in or near the top 20 for much of the past decade, broadly tracking Auckland but consistently ranking several places lower. The pandemic years produced a notable anomaly: cities that handled COVID well — including both New Zealand cities — briefly climbed the rankings in 2020 and 2021, before falling back as European cities recovered. Wellington's slide to 20th in 2025 reflects both a normalisation of that pandemic advantage and the continued rise of European competitors.</p>
+
+    <div class="chart-wrap">
+      <p class="chart-title">Wellington &amp; Auckland — Global Liveability rank, 2015–2025</p>
+      <p class="chart-sub">Lower rank = more liveable. Grey band indicates pandemic period. Source: EIU Global Liveability Index via Wikipedia.</p>
+      <div id="history-chart" style="height:320px;"></div>
+    </div>
+
+    <div class="stat-row-grid">
+      <div class="stat-card">
+        <div class="stat-val" style="color:var(--teal);">20th</div>
+        <div class="stat-desc">Wellington's 2025 ranking — its joint-lowest in the modern index era</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val" style="color:var(--teal);">7th</div>
+        <div class="stat-desc">Auckland's 2025 ranking — tied with Osaka, highest since 2022</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val" style="color:var(--teal);">13</div>
+        <div class="stat-desc">Places separating Wellington and Auckland in 2025 — the widest gap on record</div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- SECTION 3: Population gap -->
+    <p class="section-label">The structural argument · Population &amp; index bias</p>
+    <h2 class="section-title">The index has a sweet spot — and Wellington sits outside it</h2>
+
+    <p class="body-text">Look at the 2025 top 20 and one pattern stands out: the majority of ranked cities have populations between <strong>500,000 and 3 million</strong>. That range is the index's sweet spot — large enough to support a full cultural and transport offering, small enough to maintain low crime and high liveability. Wellington, at around 215,000 people (city proper), sits well below that band. So do Geneva and Luxembourg City — both of which rank higher than Wellington despite similar or smaller populations.</p>
+
+    <div class="chart-wrap">
+      <p class="chart-title">2025 Top 20 — city population vs. liveability rank</p>
+      <p class="chart-sub">X axis: city population (log scale). Y axis: rank (lower = more liveable). Wellington, Geneva, Luxembourg, and Tokyo highlighted as notable outliers from the population sweet spot. Population figures are city proper estimates.</p>
+      <div id="population-chart" style="height:420px;"></div>
+    </div>
+
+    <p class="body-text">The chart reveals the population spread clearly. Most top-20 cities cluster between 0.5M and 3M. <strong>Tokyo</strong> is the extreme outlier at the high end — it makes the list despite 14 million residents, driven by exceptional infrastructure and a uniquely safe urban environment. At the low end, <strong>Geneva</strong> (5th) and <strong>Luxembourg City</strong> (11th) both beat Wellington despite smaller populations — but both benefit from extraordinary wealth, international institutions, and EU connectivity that inflates their scores on categories where small size would otherwise hurt them.</p>
+
+    <div class="bias-grid">
+      <div class="bias-card">
+        <p class="bias-card-label" style="color:rgba(192,57,43,0.8);">Where small cities are penalised</p>
+        <h3 class="bias-card-title">Culture &amp; Environment · Infrastructure<br><span style="color:rgba(247,246,242,0.3); font-size:14px;">45% of total score</span></h3>
+        <div class="bias-card-body">
+          <p style="margin-bottom:10px;">Fewer international flights and direct long-haul routes. Less frequent public transport. A smaller calendar of major sporting events, international concerts, and cultural festivals. A more limited restaurant scene by sheer variety. These are structural realities of a city of 215,000 — not failures of governance or ambition.</p>
+          <p>Wellington has one international airport with limited direct routes, a bus network that has improved significantly but lacks the frequency of European comparators, and a cultural calendar that punches above its weight — but still cannot match cities three to five times its size.</p>
+        </div>
+      </div>
+      <div class="bias-card">
+        <p class="bias-card-label" style="color:var(--teal);">Where small cities are rewarded</p>
+        <h3 class="bias-card-title">Stability · Healthcare · Education<br><span style="color:rgba(247,246,242,0.3); font-size:14px;">55% of total score</span></h3>
+        <div class="bias-card-body">
+          <p style="margin-bottom:10px;">Violent crime is exceptionally low. Political stability is among the highest in the world — Wellington is the capital of a country that has not experienced a coup, civil conflict, or major political violence in its modern history. Healthcare is publicly funded and accessible.</p>
+          <p>On the categories that constitute the majority of the index score, Wellington competes directly with the top-ranked European cities. The problem is that the 45% of the score where population matters most pulls the overall number down in ways that have nothing to do with how pleasant the city actually is to live in.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>The question the index doesn't answer is: what would Wellington's score look like if you normalised Culture &amp; Environment and Infrastructure for population size? On a per-capita basis, a city that hosts a world-class national museum, a professional rugby team, a symphony orchestra, and an international film industry at 215,000 people is doing something remarkable.</p>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- SECTION 4: Verdict -->
+    <p class="section-label">The verdict · Two honest readings</p>
+    <h2 class="section-title">Why it might be higher — and why 20th might be about right</h2>
+
+    <p class="body-text" style="margin-bottom:32px;">The population bias argument is real, but it doesn't tell the whole story. There are genuine reasons Wellington ranks where it does — and genuine reasons to think the number undersells the place.</p>
+
+    <div class="verdict-grid">
+      <div class="verdict-card higher">
+        <p class="verdict-label" style="color:var(--teal);">The case for higher</p>
+        <h3 class="verdict-title">The index underweights what Wellington does well at its size</h3>
+        <div class="verdict-list">
+          <p class="verdict-item">Safety and stability that rival any city in the top 5 — Wellington has world-class scores on crime, political stability, and civil unrest</p>
+          <p class="verdict-item">Cultural output disproportionate to population — Te Papa, Royal NZ Ballet, NZSO, Weta Workshop, and the most restaurants per capita of any NZ city</p>
+          <p class="verdict-item">A compact, walkable city centre where the practical experience of daily life — commute times, access to nature, street safety — is excellent</p>
+          <p class="verdict-item">Healthcare quality comparable to European counterparts, fully publicly funded and accessible without insurance</p>
+          <p class="verdict-item">If Culture & Environment and Infrastructure scores were normalised per capita, Wellington's rank would likely sit several places higher</p>
+        </div>
+      </div>
+      <div class="verdict-card right">
+        <p class="verdict-label" style="color:var(--gold);">The case for about right</p>
+        <h3 class="verdict-title">Housing costs and transport constraints are real penalties</h3>
+        <div class="verdict-list">
+          <p class="verdict-item">Housing affordability in Wellington has deteriorated sharply — median house prices relative to median income are among the worst in the OECD, rivalling Sydney and Melbourne</p>
+          <p class="verdict-item">Cost of living has risen significantly — groceries, dining, and services are expensive relative to wages, which the index doesn't fully capture</p>
+          <p class="verdict-item">International transport is genuinely limited — no direct routes to Europe or North America, restricted long-haul options for a capital city</p>
+          <p class="verdict-item">Public transport, while improved, still falls well short of European comparators of similar size — reliability and frequency remain issues</p>
+          <p class="verdict-item">The index measures what an expatriate professional experiences. For that person, Wellington's cost and connectivity gaps are real and felt daily</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="body-text" style="margin-top:16px;">The honest reading is probably this: Wellington at 20th is the correct answer to the question the index is asking — how does it compare as a destination for an international professional? But it is the wrong answer to a different, arguably more important question: for the people who actually live there, how does the daily experience of Wellington compare to the cities ranked above it? On that question, the population bias matters, and the number is almost certainly too low.</p>
+
+    <hr class="section-divider">
+
+    <!-- Data note -->
+    <div style="background:var(--bg-card); border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:28px;">
+      <p style="font-size:10px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; color:rgba(247,246,242,0.25); margin-bottom:12px;">Data &amp; methodology note</p>
+      <p style="font-size:12px; color:rgba(247,246,242,0.3); line-height:1.75;">2025 rankings from the EIU Global Liveability Index. Historical rankings sourced from Wikipedia's index of EIU annual reports. Population figures are city proper estimates from national statistics agencies and UN World Urbanisation Prospects; where city proper boundaries differ significantly from urban area experience (e.g. Tokyo, Frankfurt), metro area figures may better reflect the city as experienced. Category weightings from EIU published methodology. The argument about population bias is the author's analysis and is not endorsed by the EIU.</p>
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <span>Harry Candlish · Data Analyst · Wellington, NZ</span>
+    <a href="economy.html">← The Ledger</a>
+  </footer>
+
+  <script>
+    // ── Chart 1: Historical rankings ─────────────────────────────
+    (function() {
+      var years = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025];
+
+      var wellington = [16, 15, 16, 16, null, 14, 16, 16, 17, 20, 20];
+      var auckland   = [9,  8,  8,  10, 10,  8,  26, 8,  9,  10, 7];
+
+      var traceWgtn = {
+        x: years, y: wellington,
+        mode: 'lines+markers',
+        name: 'Wellington',
+        line: { color: '#2C8A78', width: 2.5 },
+        marker: { color: '#2C8A78', size: 7 },
+        connectgaps: false,
+        hovertemplate: 'Wellington · %{x}: <b>%{y}th</b><extra></extra>'
+      };
+
+      var traceAkl = {
+        x: years, y: auckland,
+        mode: 'lines+markers',
+        name: 'Auckland',
+        line: { color: 'rgba(184,136,58,0.7)', width: 2, dash: 'dot' },
+        marker: { color: '#B8883A', size: 6 },
+        hovertemplate: 'Auckland · %{x}: <b>%{y}th</b><extra></extra>'
+      };
+
+      var layout = {
+        paper_bgcolor: 'transparent', plot_bgcolor: 'transparent',
+        font: { family: 'Inter', color: 'rgba(247,246,242,0.5)', size: 12 },
+        xaxis: {
+          gridcolor: 'rgba(255,255,255,0.05)',
+          tickcolor: 'rgba(255,255,255,0.1)',
+          linecolor: 'rgba(255,255,255,0.08)',
+          tickfont: { size: 11 }
+        },
+        yaxis: {
+          autorange: 'reversed',
+          gridcolor: 'rgba(255,255,255,0.05)',
+          tickcolor: 'rgba(255,255,255,0.1)',
+          linecolor: 'rgba(255,255,255,0.08)',
+          title: { text: 'Rank (lower = better)', font: { size: 11, color: 'rgba(247,246,242,0.3)' } },
+          range: [30, 1]
+        },
+        legend: { orientation: 'h', y: -0.18, font: { size: 12, color: 'rgba(247,246,242,0.6)' } },
+        margin: { t: 10, r: 20, b: 60, l: 60 },
+        shapes: [{
+          type: 'rect', xref: 'x', yref: 'paper',
+          x0: 2019.5, x1: 2021.5, y0: 0, y1: 1,
+          fillcolor: 'rgba(255,255,255,0.03)', line: { width: 0 }
+        }],
+        annotations: [{
+          x: 2020.5, y: 0.05, xref: 'x', yref: 'paper',
+          text: 'Pandemic period', showarrow: false,
+          font: { size: 10, color: 'rgba(247,246,242,0.2)' }
+        }, {
+          x: 2021, y: 26, xref: 'x', yref: 'y',
+          text: 'Auckland falls<br>due to lockdowns', showarrow: true,
+          arrowhead: 2, arrowcolor: 'rgba(184,136,58,0.4)',
+          ax: 40, ay: -30,
+          font: { size: 10, color: 'rgba(247,246,242,0.4)' }
+        }, {
+          x: 2015, y: null, xref: 'x', yref: 'y',
+          text: '2019: Wellington<br>outside top 20', showarrow: false,
+          font: { size: 10, color: 'rgba(247,246,242,0.3)' },
+          align: 'left'
+        }]
+      };
+
+      Plotly.newPlot('history-chart', [traceWgtn, traceAkl], layout, { displayModeBar: false, responsive: true });
+    })();
+
+    // ── Chart 2: Population vs rank scatter ───────────────────────
+    (function() {
+      var cities = [
+        'Copenhagen','Vienna','Zurich','Melbourne','Geneva',
+        'Sydney','Osaka','Auckland','Adelaide','Vancouver',
+        'Luxembourg City','Toronto','Helsinki','Tokyo','Perth',
+        'Brisbane','Frankfurt','Calgary','Amsterdam','Wellington'
+      ];
+      var ranks = [1,2,2,4,5,6,7,7,9,10,11,12,13,14,15,16,17,18,19,20];
+      var pops  = [0.79,1.93,0.43,5.19,0.21,5.31,2.75,1.72,1.37,0.68,0.13,2.93,0.66,13.96,2.07,2.56,0.76,1.34,0.92,0.22];
+
+      var colors = cities.map(function(c) {
+        if (c === 'Wellington') return '#2C8A78';
+        if (c === 'Tokyo') return '#C0392B';
+        if (c === 'Geneva' || c === 'Luxembourg City') return '#B8883A';
+        return 'rgba(247,246,242,0.25)';
+      });
+
+      var sizes = cities.map(function(c) {
+        return (c === 'Wellington' || c === 'Tokyo' || c === 'Geneva' || c === 'Luxembourg City') ? 14 : 9;
+      });
+
+      var trace = {
+        x: pops, y: ranks,
+        mode: 'markers+text',
+        text: cities.map(function(c) {
+          return (c === 'Wellington' || c === 'Tokyo' || c === 'Geneva' || c === 'Luxembourg City') ? c : '';
+        }),
+        textposition: cities.map(function(c) {
+          if (c === 'Wellington') return 'top center';
+          if (c === 'Tokyo') return 'top right';
+          if (c === 'Geneva') return 'bottom center';
+          if (c === 'Luxembourg City') return 'top left';
+          return 'top center';
+        }),
+        textfont: { size: 11, color: colors },
+        marker: { color: colors, size: sizes, opacity: 1 },
+        hovertemplate: '<b>%{text}</b><br>Population: %{x:.2f}M<br>Rank: %{y}<extra></extra>',
+        customdata: cities,
+        hovertemplate: cities.map(function(c, i) { return '<b>' + c + '</b><br>Population: ' + pops[i].toFixed(2) + 'M<br>Rank: ' + ranks[i] + '<extra></extra>'; })
+      };
+
+      // Fix hovertemplate per point
+      var traceFixed = {
+        x: pops, y: ranks,
+        mode: 'markers+text',
+        text: cities.map(function(c) {
+          return (c === 'Wellington' || c === 'Tokyo' || c === 'Geneva' || c === 'Luxembourg City') ? c : '';
+        }),
+        textposition: ['bottom center','top center','top center','top center','bottom center',
+                       'top center','top center','top center','top center','top center',
+                       'top left','top center','top center','top right','top center',
+                       'top center','top center','top center','top center','top center'],
+        textfont: { size: 11, color: colors },
+        marker: { color: colors, size: sizes },
+        customdata: cities.map(function(c, i) { return [c, pops[i], ranks[i]]; }),
+        hovertemplate: '<b>%{customdata[0]}</b><br>Population: %{customdata[1]:.2f}M<br>Rank: %{customdata[2]}<extra></extra>',
+        type: 'scatter'
+      };
+
+      var layout = {
+        paper_bgcolor: 'transparent', plot_bgcolor: 'transparent',
+        font: { family: 'Inter', color: 'rgba(247,246,242,0.5)', size: 12 },
+        xaxis: {
+          type: 'log',
+          title: { text: 'City population (millions, log scale)', font: { size: 11, color: 'rgba(247,246,242,0.3)' } },
+          gridcolor: 'rgba(255,255,255,0.05)',
+          tickcolor: 'rgba(255,255,255,0.1)',
+          linecolor: 'rgba(255,255,255,0.08)',
+          tickformat: '.1f',
+          tickvals: [0.1, 0.2, 0.5, 1, 2, 5, 10],
+          ticktext: ['0.1M', '0.2M', '0.5M', '1M', '2M', '5M', '10M']
+        },
+        yaxis: {
+          autorange: 'reversed',
+          range: [22, 0],
+          title: { text: 'Rank (1 = most liveable)', font: { size: 11, color: 'rgba(247,246,242,0.3)' } },
+          gridcolor: 'rgba(255,255,255,0.05)',
+          tickcolor: 'rgba(255,255,255,0.1)',
+          linecolor: 'rgba(255,255,255,0.08)',
+          dtick: 5
+        },
+        shapes: [{
+          type: 'rect', xref: 'x', yref: 'paper',
+          x0: Math.log10(0.5), x1: Math.log10(3), y0: 0, y1: 1,
+          fillcolor: 'rgba(44,138,120,0.06)', line: { width: 1, color: 'rgba(44,138,120,0.15)', dash: 'dot' }
+        }],
+        annotations: [{
+          x: Math.log10(1.2), y: 0.06, xref: 'x', yref: 'paper',
+          text: 'Population sweet spot<br>0.5M – 3M', showarrow: false,
+          font: { size: 10, color: 'rgba(44,138,120,0.5)' }, align: 'center'
+        }],
+        margin: { t: 20, r: 20, b: 60, l: 60 },
+        showlegend: false
+      };
+
+      Plotly.newPlot('population-chart', [traceFixed], layout, { displayModeBar: false, responsive: true });
+    })();
+  </script>
+
+</body>
+</html>
