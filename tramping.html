@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Backcountry Gap · Harry Candlish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: #0A0F0B; color: #F7F6F2; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+    :root {
+      --green: #3A5C45;
+      --green-lt: #4A7A59;
+      --gold: #B8883A;
+      --bg-dark: #0A0F0B;
+      --bg-card: #0D1410;
+      --bg-section: #0F1812;
+    }
+
+    /* Nav */
+    .site-nav {
+      background: #1A1E1A; padding: 0 48px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-logo { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 300; color: #F7F6F2; text-decoration: none; letter-spacing: -0.2px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #F7F6F2; }
+    .nav-links a.active { color: #F7F6F2; }
+
+    /* Hero */
+    .page-hero {
+      background: var(--bg-dark); padding: 96px 48px 80px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative; overflow: hidden;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 60% 40%, rgba(58,92,69,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .page-hero-inner { max-width: 760px; position: relative; }
+    .page-hero-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase;
+      color: var(--green-lt); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+    }
+    .page-hero-label::before {
+      content: ''; display: inline-block; width: 20px; height: 1px; background: var(--green-lt);
+    }
+    .page-hero-title {
+      font-family: 'Fraunces', serif; font-size: clamp(36px, 5vw, 56px); font-weight: 300;
+      color: #F7F6F2; line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 24px;
+    }
+    .page-hero-title em { font-style: italic; color: rgba(247,246,242,0.5); }
+    .hero-divider { width: 32px; height: 1px; background: rgba(58,92,69,0.6); margin: 28px 0; }
+    .page-hero-sub { font-size: 15px; color: rgba(247,246,242,0.5); line-height: 1.85; max-width: 580px; }
+
+    /* Big stat callout */
+    .stat-hero {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+      margin: 48px 0; border-radius: 14px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .stat-hero-cell {
+      background: var(--bg-card); padding: 40px 40px 36px;
+      position: relative;
+    }
+    .stat-hero-cell::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .stat-hero-cell.callouts::after { background: rgba(58,92,69,0.6); }
+    .stat-hero-cell.deaths::after { background: #B8883A; }
+    .stat-hero-num {
+      font-family: 'Fraunces', serif; font-size: clamp(48px, 6vw, 72px); font-weight: 300;
+      line-height: 1; letter-spacing: -2px; margin-bottom: 12px;
+    }
+    .stat-hero-cell.callouts .stat-hero-num { color: var(--green-lt); }
+    .stat-hero-cell.deaths .stat-hero-num { color: var(--gold); }
+    .stat-hero-label { font-size: 13px; color: rgba(247,246,242,0.45); line-height: 1.6; }
+    .stat-hero-label strong { color: rgba(247,246,242,0.8); font-weight: 500; display: block; margin-bottom: 4px; }
+
+    /* Content */
+    .content-area { max-width: 1000px; margin: 0 auto; padding: 72px 48px 100px; }
+
+    .section-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase;
+      color: rgba(247,246,242,0.3); margin-bottom: 20px;
+    }
+    .section-title {
+      font-family: 'Fraunces', serif; font-size: clamp(24px, 3vw, 34px); font-weight: 300;
+      color: #F7F6F2; line-height: 1.2; letter-spacing: -0.3px; margin-bottom: 20px;
+    }
+    .body-text { font-size: 14px; color: rgba(247,246,242,0.5); line-height: 1.85; }
+    .body-text + .body-text { margin-top: 16px; }
+    .body-text strong { color: rgba(247,246,242,0.8); font-weight: 500; }
+
+    .section-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 64px 0; }
+
+    /* Chart container */
+    .chart-wrap {
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px; overflow: hidden; margin: 36px 0;
+    }
+    .chart-header { padding: 28px 32px 0; }
+    .chart-title {
+      font-family: 'Fraunces', serif; font-size: 18px; font-weight: 400;
+      color: #F7F6F2; margin-bottom: 6px;
+    }
+    .chart-sub { font-size: 12px; color: rgba(247,246,242,0.35); line-height: 1.6; }
+    .chart-inner { padding: 8px 0 0; }
+
+    /* Reason cards */
+    .reason-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px; margin: 32px 0;
+    }
+    .reason-card {
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 28px 28px 24px;
+      border-top: 3px solid rgba(58,92,69,0.5);
+    }
+    .reason-card-num {
+      font-family: 'Fraunces', serif; font-size: 28px; font-weight: 300;
+      color: var(--green-lt); letter-spacing: -0.5px; margin-bottom: 10px;
+    }
+    .reason-card-title {
+      font-size: 13px; font-weight: 600; color: rgba(247,246,242,0.8);
+      margin-bottom: 10px; letter-spacing: 0.1px;
+    }
+    .reason-card-body { font-size: 13px; color: rgba(247,246,242,0.4); line-height: 1.75; }
+
+    /* PLB section */
+    .plb-split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+      margin: 32px 0;
+    }
+    .plb-card {
+      background: var(--bg-card); border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px; padding: 32px;
+    }
+    .plb-card.highlight { border-color: rgba(58,92,69,0.3); }
+    .plb-card-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 1.3px; text-transform: uppercase;
+      color: var(--green-lt); margin-bottom: 16px;
+    }
+    .plb-card-title {
+      font-family: 'Fraunces', serif; font-size: 20px; font-weight: 300;
+      color: #F7F6F2; line-height: 1.3; margin-bottom: 14px;
+    }
+    .plb-card-body { font-size: 13px; color: rgba(247,246,242,0.45); line-height: 1.8; }
+    .plb-stat-row {
+      display: flex; align-items: baseline; gap: 12px;
+      padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .plb-stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .plb-stat-val {
+      font-family: 'Fraunces', serif; font-size: 24px; font-weight: 300;
+      color: var(--green-lt); letter-spacing: -0.5px; white-space: nowrap;
+    }
+    .plb-stat-desc { font-size: 13px; color: rgba(247,246,242,0.4); line-height: 1.5; }
+
+    /* Fix proposals */
+    .fix-list { display: flex; flex-direction: column; gap: 16px; margin: 32px 0; }
+    .fix-item {
+      display: grid; grid-template-columns: 48px 1fr; gap: 20px;
+      align-items: start; padding: 24px; background: var(--bg-card);
+      border: 1px solid rgba(255,255,255,0.07); border-radius: 12px;
+    }
+    .fix-num {
+      font-family: 'Fraunces', serif; font-size: 22px; font-weight: 300;
+      color: rgba(58,92,69,0.7); letter-spacing: -0.3px;
+    }
+    .fix-content-title {
+      font-size: 14px; font-weight: 600; color: rgba(247,246,242,0.85);
+      margin-bottom: 8px;
+    }
+    .fix-content-body { font-size: 13px; color: rgba(247,246,242,0.4); line-height: 1.75; }
+
+    /* Cost banner */
+    .cost-banner {
+      background: rgba(184,136,58,0.06); border: 1px solid rgba(184,136,58,0.15);
+      border-radius: 12px; padding: 36px 40px; margin: 32px 0;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+    }
+    .cost-item { display: flex; flex-direction: column; gap: 6px; }
+    .cost-val {
+      font-family: 'Fraunces', serif; font-size: 28px; font-weight: 300;
+      color: var(--gold); letter-spacing: -0.5px;
+    }
+    .cost-label { font-size: 12px; color: rgba(247,246,242,0.4); line-height: 1.5; }
+
+    /* Source note */
+    .source-note {
+      margin-top: 64px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 11px; color: rgba(247,246,242,0.25); line-height: 1.8;
+    }
+    .source-note a { color: rgba(247,246,242,0.35); text-decoration: none; }
+    .source-note a:hover { color: rgba(247,246,242,0.6); }
+
+    /* Footer */
+    .site-footer {
+      background: #1A1E1A; padding: 40px 48px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-footer span { font-size: 13px; color: rgba(255,255,255,0.3); }
+    .site-footer a {
+      font-size: 13px; color: var(--green-lt); text-decoration: none;
+      border: 1px solid rgba(58,92,69,0.35); border-radius: 40px;
+      padding: 10px 20px; transition: all 0.2s;
+    }
+    .site-footer a:hover { background: rgba(58,92,69,0.1); }
+
+    @media (max-width: 860px) {
+      .stat-hero { grid-template-columns: 1fr; }
+      .plb-split { grid-template-columns: 1fr; }
+      .cost-banner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .site-nav { padding: 0 24px; }
+      .page-hero { padding: 56px 24px 48px; }
+      .content-area { padding: 48px 24px 72px; }
+      .stat-hero-cell { padding: 28px 24px; }
+      .cost-banner { grid-template-columns: 1fr; gap: 20px; padding: 24px; }
+      .fix-item { grid-template-columns: 36px 1fr; }
+      .site-footer { padding: 32px 24px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="index.html" class="nav-logo">Harry Candlish</a>
+    <ul class="nav-links">
+      <li><a href="projects.html">Stories</a></li>
+      <li><a href="nature.html">Field Notes</a></li>
+      <li><a href="tramping.html" class="active">Backcountry Gap</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Get in touch</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-hero-label">Field Notes · Outdoor safety · NZ backcountry</p>
+      <h1 class="page-hero-title">The backcountry gap —<br><em>why foreign hikers die when locals don't.</em></h1>
+      <div class="hero-divider"></div>
+      <p class="page-hero-sub">International visitors account for around 13% of search and rescue callouts in New Zealand's backcountry. They account for close to half of all deaths. The gap isn't explained by bad luck — it's explained by a predictable chain of failures that a $25 device could help break.</p>
+    </div>
+  </div>
+
+  <div class="content-area">
+
+    <!-- The number -->
+    <p class="section-label">The disparity</p>
+    <h2 class="section-title">Two very different numbers</h2>
+    <p class="body-text">Before New Zealand's borders closed in 2020, international visitors made up roughly <strong>12–14% of all search and rescue callouts</strong> in the backcountry. That's not a majority. It's not even a quarter. But in the decade ending 2017, 57 people died on New Zealand's tracks — and international tourists made up <strong>close to half of those deaths</strong>.</p>
+    <p class="body-text" style="margin-top:16px;">The gap is not about frequency. Tourists aren't getting into trouble more often than locals. When they do get into trouble, they are far more likely to die. That distinction matters for understanding what's actually going wrong — and what could fix it.</p>
+
+    <div class="stat-hero">
+      <div class="stat-hero-cell callouts">
+        <div class="stat-hero-num">13%</div>
+        <div class="stat-hero-label">
+          <strong>of SAR callouts involve international visitors</strong>
+          Pre-2020 average. Tourists are not overrepresented in the number of incidents.
+        </div>
+      </div>
+      <div class="stat-hero-cell deaths">
+        <div class="stat-hero-num">~50%</div>
+        <div class="stat-hero-label">
+          <strong>of tramping deaths are international visitors</strong>
+          In the decade to 2017, tourists made up close to half of all fatalities on NZ tracks.
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart 1: The disparity -->
+    <div class="chart-wrap">
+      <div class="chart-header">
+        <p class="chart-title">Callouts vs deaths — the scale of the gap</p>
+        <p class="chart-sub">International visitors as share of SAR callouts versus share of tramping fatalities, pre-2020 average. Source: NZSAR, NZ Mountain Safety Council.</p>
+      </div>
+      <div class="chart-inner">
+        <div id="chart-disparity"></div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Why -->
+    <p class="section-label">Why it happens</p>
+    <h2 class="section-title">Three failures that keep repeating</h2>
+    <p class="body-text">Coroner's reports, DOC ranger accounts, and Mountain Safety Council research point to the same pattern across incidents involving overseas visitors. The environment isn't uniquely deadly — but it is unforgiving of three specific mistakes.</p>
+
+    <div class="reason-grid">
+
+      <div class="reason-card">
+        <div class="reason-card-num">01</div>
+        <div class="reason-card-title">Wrong gear for the wrong conditions</div>
+        <div class="reason-card-body">DOC rangers have documented tourists at trailheads in skinny jeans, snowboarding boots, cashmere sweaters, and mesh-cut leggings. New Zealand's weather can shift from warm to dangerous in under an hour. Cotton and fashion gear become hypothermia risks.</div>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-card-num">02</div>
+        <div class="reason-card-title">Grading that doesn't translate</div>
+        <div class="reason-card-body">New Zealand's DOC track grades are based on fitness level, not technical difficulty. A "Tramping Track" signals nothing about river crossings, alpine exposure, or navigation skill. Visitors from countries with standardised alpine grading systems read this as easier than it is.</div>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-card-num">03</div>
+        <div class="reason-card-title">The Great Walks false ceiling</div>
+        <div class="reason-card-body">New Zealand's Great Walks are well-maintained, well-marked, and well-serviced. Completing them can lead visitors to believe they're ready for backcountry routes that require genuine navigation, river-crossing competence, and the ability to bivouac safely. They often aren't.</div>
+      </div>
+
+    </div>
+
+    <p class="body-text">The risk-per-day for international visitors in New Zealand's national parks has been estimated at <strong>4–6 times higher</strong> than for New Zealand residents doing the same trips. That multiplier isn't about the environment being different — it's about preparation being different.</p>
+
+    <!-- Chart 2: Causes of death -->
+    <div class="chart-wrap">
+      <div class="chart-header">
+        <p class="chart-title">How people die on New Zealand tracks</p>
+        <p class="chart-sub">Cause of death breakdown across tramping fatalities. Drowning — including river crossings — accounts for more than a quarter of deaths. Source: NZ Mountain Safety Council, NZSAR fatality data.</p>
+      </div>
+      <div class="chart-inner">
+        <div id="chart-causes"></div>
+      </div>
+    </div>
+
+    <p class="body-text">Drowning at river crossings is particularly significant because it is often survivable with faster rescue response. A swollen river crossing gone wrong doesn't have to be fatal — but if no one knows where you are, it will be.</p>
+
+    <hr class="section-divider">
+
+    <!-- PLB section -->
+    <p class="section-label">The fix</p>
+    <h2 class="section-title">A $25 device that most tourists never hear about</h2>
+    <p class="body-text">A Personal Locator Beacon (PLB) doesn't prevent accidents. It compresses rescue response time from days to hours — and in exposure, drowning survival, and hypothermia scenarios, that compression is often the difference between survival and a fatality statistic.</p>
+    <p class="body-text" style="margin-top:16px;">New Zealand already has the infrastructure. The problem is delivery.</p>
+
+    <div class="plb-split">
+
+      <div class="plb-card highlight">
+        <p class="plb-card-label">What already exists</p>
+        <p class="plb-card-title">The rental network is there</p>
+        <div class="plb-stat-row">
+          <span class="plb-stat-val">100K+</span>
+          <span class="plb-stat-desc">PLBs in circulation in New Zealand</span>
+        </div>
+        <div class="plb-stat-row">
+          <span class="plb-stat-val">92</span>
+          <span class="plb-stat-desc">rental outlets nationwide</span>
+        </div>
+        <div class="plb-stat-row">
+          <span class="plb-stat-val">550</span>
+          <span class="plb-stat-desc">units available for hire through Southland Locator Beacons alone</span>
+        </div>
+        <div class="plb-stat-row">
+          <span class="plb-stat-val">$15–$30</span>
+          <span class="plb-stat-desc">per trip — less than a restaurant meal</span>
+        </div>
+      </div>
+
+      <div class="plb-card">
+        <p class="plb-card-label">What's missing</p>
+        <p class="plb-card-title">The moment of friction</p>
+        <p class="plb-card-body">DOC recommends beacons. That's it. There is no mandatory check at visitor centre check-in for backcountry tracks. No PLB rental prompt when purchasing Great Walk tickets online — DOC's primary touchpoint with international visitors. No multilingual beacon information at the trailheads where tourists make their last decision before going in.</p>
+        <p class="plb-card-body" style="margin-top:14px;">The infrastructure exists. The moment of intervention doesn't.</p>
+      </div>
+
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Cost -->
+    <p class="section-label">The cost</p>
+    <h2 class="section-title">What the current system spends</h2>
+
+    <div class="cost-banner">
+      <div class="cost-item">
+        <span class="cost-val">$42.1M</span>
+        <span class="cost-label">Government SAR spend per year (2021–22), covering operations, training, and equipment</span>
+      </div>
+      <div class="cost-item">
+        <span class="cost-val">~$150K</span>
+        <span class="cost-label">Cost of a single complex rescue operation — one callout can exceed annual PLB rental revenue</span>
+      </div>
+      <div class="cost-item">
+        <span class="cost-val">$0</span>
+        <span class="cost-label">Charged to trampers for rescue in New Zealand — one of few countries where SAR is entirely taxpayer-funded</span>
+      </div>
+    </div>
+
+    <p class="body-text">The reputational cost is harder to quantify but visible. In 2018, South China Morning Post ran the headline: <em>"New Zealand asks locals to help save foreign hikers' lives after spate of accidents and incidents."</em> New Zealand markets itself as a world-class wilderness destination. The deaths of overseas visitors in preventable circumstances — no beacon, wrong gear, ignored weather warnings — are the kind of story that travels.</p>
+
+    <hr class="section-divider">
+
+    <!-- What would change things -->
+    <p class="section-label">What would actually change things</p>
+    <h2 class="section-title">Four things that don't require new infrastructure</h2>
+    <p class="body-text">None of these proposals require building anything new. They require changing defaults — shifting the burden from opt-in awareness to opt-out decision.</p>
+
+    <div class="fix-list">
+
+      <div class="fix-item">
+        <span class="fix-num">01</span>
+        <div>
+          <p class="fix-content-title">Bundle a PLB prompt into every Great Walk booking confirmation</p>
+          <p class="fix-content-body">DOC already operates the booking platform. A single additional screen — "Would you like to hire a personal locator beacon for your trip? $25. Pick up at the visitor centre." — would reach the exact population most likely to continue into harder terrain afterward. Opt-out, not opt-in.</p>
+        </div>
+      </div>
+
+      <div class="fix-item">
+        <span class="fix-num">02</span>
+        <div>
+          <p class="fix-content-title">Add an international difficulty equivalent to track grades</p>
+          <p class="fix-content-body">New Zealand's five-grade system is locally understood but opaque to visitors. A secondary label — cross-referenced with European Alpine grading or the Yosemite Decimal System — would help experienced overseas hikers calibrate risk accurately. A "Tramping Track" that involves unguided river crossings deserves a different signal than one that doesn't.</p>
+        </div>
+      </div>
+
+      <div class="fix-item">
+        <span class="fix-num">03</span>
+        <div>
+          <p class="fix-content-title">Multilingual safety information at the 20 highest-incident trailheads</p>
+          <p class="fix-content-body">Current DOC safety signage at backcountry trailheads is English-only. International visitors who die on NZ tracks include significant proportions of Mandarin, Korean, German, and French speakers. Safety information in the languages of the people actually using the tracks is a low-cost, high-signal change.</p>
+        </div>
+      </div>
+
+      <div class="fix-item">
+        <span class="fix-num">04</span>
+        <div>
+          <p class="fix-content-title">Real-time river hazard alerts for registered hikers</p>
+          <p class="fix-content-body">Drowning accounts for 26% of tramping deaths, most at river crossings that were safe when the hike began. Many flood events are predictable 12–24 hours ahead. An SMS or app alert system for hikers who have registered on high-risk routes is technically straightforward and could prevent the most common single cause of tramping fatalities.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="body-text" style="margin-top:32px;">The question this data raises isn't whether New Zealand has a missing trampers problem. It doesn't — not in volume terms. The question is why the gap between callout rate and mortality rate is so large for one specific group of people, and whether the answer to that is something New Zealand has chosen to do nothing about.</p>
+
+    <div class="source-note">
+      <strong style="color:rgba(247,246,242,0.4);">Data and sources</strong><br>
+      Fatality and callout statistics: <a href="https://www.nzsar.govt.nz">NZ Search and Rescue Secretariat</a> annual reports; <a href="https://www.mountainsafety.org.nz/explore/a-walk-in-the-park/">NZ Mountain Safety Council, A Walk in the Park? (2018)</a>; <a href="https://journalofsar.com/wp-content/uploads/2021/12/v5-1_4-NZSAR-fatality-paper-2020-Dec-29.pdf">Journal of SAR, NZSAR fatality paper (2020)</a>. PLB data: <a href="https://www.locatorbeacons.co.nz">Southland Locator Beacons Charitable Company</a>; <a href="https://www.doc.govt.nz/parks-and-recreation/know-before-you-go/distress-beacon/">DOC distress beacon guidance</a>. Cost figures: NZSAR 2021–22 annual report. Risk multiplier (4–6×): <a href="https://www.doc.govt.nz/globalassets/documents/about-doc/role/managing-conservation/natural-hazards/doc-risk-comparison.pdf">DOC Risk Comparisons for Visitors (2019)</a>. The 13%/~50% figures represent pre-2020 averages; the death proportion covers the decade ending June 2017.
+    </div>
+
+  </div>
+
+  <footer class="site-footer">
+    <span>Harry Candlish · Data Analyst · Wellington, NZ</span>
+    <a href="nature.html">← Field Notes</a>
+  </footer>
+
+  <script>
+    const plotBg = '#0D1410';
+    const gridCol = 'rgba(255,255,255,0.05)';
+    const textCol = 'rgba(247,246,242,0.45)';
+    const font = { family: 'Inter, sans-serif', color: textCol };
+
+    const baseLayout = {
+      paper_bgcolor: plotBg,
+      plot_bgcolor: plotBg,
+      font: font,
+      margin: { t: 20, r: 32, b: 48, l: 120 },
+      xaxis: {
+        gridcolor: gridCol, zerolinecolor: gridCol,
+        tickfont: { size: 11, color: textCol },
+      },
+      yaxis: {
+        gridcolor: gridCol, zerolinecolor: 'rgba(0,0,0,0)',
+        tickfont: { size: 11, color: textCol },
+      },
+      showlegend: false,
+    };
+
+    // Chart 1 — Disparity
+    (function() {
+      const categories = ['SAR callouts', 'Tramping deaths'];
+      const international = [13, 48];
+      const local = [87, 52];
+
+      const traceLocal = {
+        x: local, y: categories, type: 'bar', orientation: 'h',
+        name: 'NZ residents',
+        marker: { color: 'rgba(58,92,69,0.45)', line: { color: 'rgba(58,92,69,0.7)', width: 1 } },
+        text: local.map(v => v + '%'),
+        textposition: 'inside', textfont: { size: 12, color: 'rgba(247,246,242,0.7)' },
+        hovertemplate: 'NZ residents: %{x}%<extra></extra>',
+      };
+      const traceIntl = {
+        x: international, y: categories, type: 'bar', orientation: 'h',
+        name: 'International visitors',
+        marker: { color: 'rgba(184,136,58,0.6)', line: { color: '#B8883A', width: 1 } },
+        text: international.map(v => v + '%'),
+        textposition: 'inside', textfont: { size: 12, color: 'rgba(247,246,242,0.9)' },
+        hovertemplate: 'International: %{x}%<extra></extra>',
+      };
+
+      const layout = Object.assign({}, baseLayout, {
+        barmode: 'stack',
+        margin: { t: 20, r: 32, b: 48, l: 130 },
+        height: 200,
+        xaxis: Object.assign({}, baseLayout.xaxis, {
+          range: [0, 100], ticksuffix: '%', tickvals: [0, 25, 50, 75, 100],
+        }),
+        annotations: [
+          { x: 43, y: 'SAR callouts', text: 'NZ residents 87%', showarrow: false, font: { size: 11, color: 'rgba(247,246,242,0.5)' }, xanchor: 'center', yanchor: 'middle' },
+          { x: 95.5, y: 'SAR callouts', text: '13%', showarrow: false, font: { size: 11, color: 'rgba(247,246,242,0.7)' }, xanchor: 'center', yanchor: 'middle' },
+          { x: 26, y: 'Tramping deaths', text: 'NZ residents ~52%', showarrow: false, font: { size: 11, color: 'rgba(247,246,242,0.5)' }, xanchor: 'center', yanchor: 'middle' },
+          { x: 76, y: 'Tramping deaths', text: 'International ~48%', showarrow: false, font: { size: 12, color: 'rgba(247,246,242,0.85)', weight: 600 }, xanchor: 'center', yanchor: 'middle' },
+        ],
+        showlegend: true,
+        legend: { orientation: 'h', x: 0, y: -0.25, font: { size: 11, color: textCol } },
+      });
+
+      Plotly.newPlot('chart-disparity', [traceLocal, traceIntl], layout, { displayModeBar: false, responsive: true });
+    })();
+
+    // Chart 2 — Causes of death
+    (function() {
+      const causes = ['Other / unknown', 'Medical event', 'Drowning', 'Falling'];
+      const pcts = [20, 24, 26, 30];
+      const colours = [
+        'rgba(58,92,69,0.3)',
+        'rgba(58,92,69,0.45)',
+        'rgba(184,136,58,0.5)',
+        'rgba(184,136,58,0.75)',
+      ];
+
+      const trace = {
+        x: pcts, y: causes, type: 'bar', orientation: 'h',
+        marker: { color: colours },
+        text: pcts.map(v => v + '%'),
+        textposition: 'outside',
+        textfont: { size: 12, color: 'rgba(247,246,242,0.7)' },
+        hovertemplate: '%{y}: %{x}%<extra></extra>',
+      };
+
+      const layout = Object.assign({}, baseLayout, {
+        height: 240,
+        margin: { t: 20, r: 60, b: 48, l: 130 },
+        xaxis: Object.assign({}, baseLayout.xaxis, {
+          range: [0, 38], ticksuffix: '%',
+        }),
+      });
+
+      Plotly.newPlot('chart-causes', [trace], layout, { displayModeBar: false, responsive: true });
+    })();
+  </script>
+
+</body>
+</html>
