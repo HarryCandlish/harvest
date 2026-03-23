@@ -221,7 +221,7 @@
     @media (max-width: 860px) {
       .stat-hero { grid-template-columns: 1fr; }
       .plb-split { grid-template-columns: 1fr; }
-      .cost-banner { grid-template-columns: 1fr 1fr; }
+      .cost-banner { grid-template-columns: 1fr 1fr !important; }
     }
     @media (max-width: 640px) {
       .site-nav { padding: 0 24px; }
@@ -392,10 +392,14 @@
     <p class="section-label">The cost</p>
     <h2 class="section-title">What the current system spends</h2>
 
-    <div class="cost-banner">
+    <div class="cost-banner" style="grid-template-columns: repeat(4, 1fr);">
       <div class="cost-item">
         <span class="cost-val">$42.1M</span>
         <span class="cost-label">Government SAR spend per year (2021–22), covering operations, training, and equipment</span>
+      </div>
+      <div class="cost-item">
+        <span class="cost-val">$11.7M</span>
+        <span class="cost-label">ACC spent in 2024 helping people recover from tramping injuries — 9,009 claims</span>
       </div>
       <div class="cost-item">
         <span class="cost-val">~$150K</span>
@@ -456,7 +460,9 @@
 
     <div class="source-note">
       <strong style="color:rgba(247,246,242,0.4);">Data and sources</strong><br>
-      Fatality and callout statistics: <a href="https://www.nzsar.govt.nz">NZ Search and Rescue Secretariat</a> annual reports; <a href="https://www.mountainsafety.org.nz/explore/a-walk-in-the-park/">NZ Mountain Safety Council, A Walk in the Park? (2018)</a>; <a href="https://journalofsar.com/wp-content/uploads/2021/12/v5-1_4-NZSAR-fatality-paper-2020-Dec-29.pdf">Journal of SAR, NZSAR fatality paper (2020)</a>. PLB data: <a href="https://www.locatorbeacons.co.nz">Southland Locator Beacons Charitable Company</a>; <a href="https://www.doc.govt.nz/parks-and-recreation/know-before-you-go/distress-beacon/">DOC distress beacon guidance</a>. Cost figures: NZSAR 2021–22 annual report. Risk multiplier (4–6×): <a href="https://www.doc.govt.nz/globalassets/documents/about-doc/role/managing-conservation/natural-hazards/doc-risk-comparison.pdf">DOC Risk Comparisons for Visitors (2019)</a>. The 13%/~50% figures represent pre-2020 averages; the death proportion covers the decade ending June 2017.
+      Fatality and callout statistics: <a href="https://www.nzsar.govt.nz">NZ Search and Rescue Secretariat</a> annual reports; <a href="https://www.mountainsafety.org.nz/explore/a-walk-in-the-park/">NZ Mountain Safety Council, A Walk in the Park? (2018)</a>; <a href="https://journalofsar.com/wp-content/uploads/2021/12/v5-1_4-NZSAR-fatality-paper-2020-Dec-29.pdf">Journal of SAR, NZSAR fatality paper (2020)</a>. Tramping injury data: ACC (Accident Compensation Corporation), 2024. PLB data: <a href="https://www.locatorbeacons.co.nz">Southland Locator Beacons Charitable Company</a>; <a href="https://www.doc.govt.nz/parks-and-recreation/know-before-you-go/distress-beacon/">DOC distress beacon guidance</a>. SAR cost figures: NZSAR 2021–22 annual report.<br><br>
+      <strong style="color:rgba(247,246,242,0.4);">A note on data vintage</strong><br>
+      The 13% callout / ~50% death split, and the ~40% international tramper participation figure, come from MSC research covering the decade to June 2017. New Zealand's borders closed in March 2020 and international visitor numbers only recovered from 2022 onward — which means no equivalent post-pandemic study yet exists for the tourist-specific figures. The ACC injury data (9,009 claims, $11.7M) is current to 2024. Overall SAR incident volumes have remained broadly stable since 2018, though the proportion of fatal incidents has increased.
     </div>
 
   </div>
